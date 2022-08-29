@@ -7,7 +7,7 @@ spring:
   datasource: #DB 접속
     driver-class-name: oracle.jdbc.OracleDriver
     url: jdbc:oracle:thin:@211.63.89.70:1521:xe
-    username: c##team02
+    username: c##team01
     password: 1234
     hikari: #커넥션풀 구성
       connection-timeout: 30000
