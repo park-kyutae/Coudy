@@ -39,6 +39,25 @@ create sequence com_scrap_seq;
 
 create table com_review(
   re_num   NUMBER(20) not null,
+  mem_num NUMBER(20) not null,
+  com_num NUMBER(20) not null,
+  re_title VARCHAR2(40) not null,
+  re_company VARCHAR2(20) not null,
+  re_content VARCHAR2(1000) not null,
+  re_regdate date default SYSDATE not null,
+  constraint review_pk primary key (re_num),
+  constraint review_fk foreign key (mem_num) references member_detail (mem_num),
+  constraint review_fk2 foreign key (com_num) references com_info (com_num)
+);
+create sequence com_review_seq;
 
-)
+create table com_apply(
+  apply_num NUMBER(20) not null,
+  mem_num NUMBER(20) not null,
+  com_num NUMBER(20) not null,
+  constraint apply_pk primary key (apply_num),
+  constraint apply_fk foreign key (mem_num) references member_detail (mem_num),
+  constraint apply_fk2 foreign key (com_num) references com_info (com_num)
+);
 
+create sequence com_apply_seq;
