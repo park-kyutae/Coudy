@@ -10,6 +10,11 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/company/comHome.jsp"/>
     </definition>
+	<definition name="insertCom" extends="main">
+		<put-attribute name="title" value="채용 공고 글쓰기"/>
+		<put-attribute name="body"
+		  value="/WEB-INF/views/company/insertCom.jsp"/>
+	</definition>
 </tiles-definitions>
 
 
