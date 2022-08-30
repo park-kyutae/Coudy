@@ -2,7 +2,6 @@
 --회원관리
 create table member(
 	mem_num number not null,
-	id varchar2(12) unique not null,
 	auth number(1) default 2 not null, -- 0 탈퇴회원, 1정지회원, 2일반회원, 3관리자
 	
 	constraint member_pk primary key (mem_num)
@@ -13,6 +12,7 @@ create table member(
 create table member_detail(
 	mem_num number not null,
 	name varchar2(30) not null,
+	id varchar2(15) unique not null,
 	passwd varchar2(12) not null,
 	phone varchar2(15) not null,
 	email varchar2(50) not null,
