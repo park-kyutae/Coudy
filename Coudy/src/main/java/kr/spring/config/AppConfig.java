@@ -1,7 +1,10 @@
 package kr.spring.config;
 
+import kr.spring.interceptor.LoginTestInterceptor;
+import kr.spring.study.plan.artgumentResolver.LoginArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
@@ -10,6 +13,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import kr.spring.interceptor.LoginCheckInterceptor;
 
+import java.util.List;
+
 //자바코드 기반 설정 클래스
 
 @Configuration
@@ -17,14 +22,22 @@ public class AppConfig implements WebMvcConfigurer{
 
 	//인터셉터 지정
 	@Override
-	public void addInterceptors(
-			       InterceptorRegistry registry) {
-		registry.addInterceptor(
-				    new LoginCheckInterceptor())
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LoginCheckInterceptor())
+				.order(1)
 		        .addPathPatterns("/member/myPage.do");
-		
+		//TODO 로그인 기능 완성 시 삭제
+		registry.addInterceptor(new LoginTestInterceptor())
+				.order(2)
+				.addPathPatterns("/study/plan");
+
 	}
-	
+
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		resolvers.add(new LoginArgumentResolver());
+	}
+
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
 		final TilesConfigurer configurer = 
