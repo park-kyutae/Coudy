@@ -15,11 +15,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/style_ks.css">
 
-<style>
-.form_center {
-	margin: 0 auto;
-}
-</style>
 
 <h2>로그인</h2>
 
@@ -32,7 +27,7 @@
 				placeholder="id" />
 			<form:errors path="id" cssClass="error-color" />
 			<label for="id">아이디</label> 
-			<span id="message_id"></span>
+			<div class="valid-feedback">Looks good!</div>
 		</div>
 
 		<div class="form-floating mb-3">
@@ -40,23 +35,7 @@
 				placeholder="passwd" />
 			<form:errors path="passwd" cssClass="error-color" />
 			<label for="passwd">비밀번호</label>
-		</div>
-
-		<div class="row">
-			<div class="col-5">
-				<label for="validationCustom01" class="form-label">아이디</label> <input
-					type="text" class="form-control" id="validationCustom01"
-					value="Mark" required>
-				<div class="valid-feedback">Looks good!</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5">
-				<label for="validationCustom02" class="form-label">비밀번호</label> <input
-					type="password" class="form-control" id="validationCustom02"
-					value="Otto" required>
-				<div class="valid-feedback">Looks good!</div>
-			</div>
+			<div class="valid-feedback">Looks good!</div>
 		</div>
 
 		<div>

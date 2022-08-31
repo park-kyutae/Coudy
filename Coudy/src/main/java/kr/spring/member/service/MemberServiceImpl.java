@@ -28,8 +28,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVO selectCheckMember(MemberVO member) {
-		return null;
+	public MemberVO selectCheckMember(String id) {
+		return memberMapper.selectCheckMember(id);
 	}
 
 	@Override

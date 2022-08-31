@@ -129,6 +129,43 @@ public class MemberVO {
 				+ modify_date + "]";
 	}
 	
+	//=======================로그인체크 =========================//
+	
+	public boolean isCheckedPasswd(String user_passwd) {
+		
+		if(auth>1 && passwd.equals(user_passwd)) {
+			return true;
+		}
+		return false;
+	}
+	
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

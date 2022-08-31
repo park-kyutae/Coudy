@@ -11,10 +11,7 @@
 	<c:if test="${!empty user && empty user.photo}">
 		<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
 	</c:if>
-	<c:if test="${!empty user && !empty user.nick_name}">
-		[<span class="user_name">${user.nick_name}</span>]
-	</c:if>
-	<c:if test="${!empty user && empty user.nick_name}">
+	<c:if test="${!empty user}">
 		[<span class="user_name">${user.id}</span>]
 	</c:if>
 	<c:if test="${empty user}">
