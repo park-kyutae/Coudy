@@ -9,21 +9,20 @@ import javax.validation.constraints.Size;
 
 public class MemberVO {
 	
-	@NotEmpty
+
 	private int mem_num;
 	
-	@NotEmpty
 	private int auth;
 	
-	@Pattern(regexp="^[A-Za-z{4,12}]$")
+	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
 	private String id;
 	
 	@NotEmpty
 	private String name;
 	
-	@Pattern(regexp="^[A-Za-z{4,12}]$")
+	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
 	private String passwd;
-	
+	 
 	@NotEmpty
 	private String phone;
 	
