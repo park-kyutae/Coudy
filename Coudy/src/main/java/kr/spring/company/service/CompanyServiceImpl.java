@@ -23,6 +23,6 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public void insertCompany(CompanyVO companyVO) {
-
+        companyMapper.insertCompany(companyVO);
     }
 }

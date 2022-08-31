@@ -1,7 +1,10 @@
 package kr.spring.company.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.io.IOException;
 import java.sql.Date;
 
 public class CompanyVO {
@@ -20,17 +23,23 @@ public class CompanyVO {
     @NotEmpty
     private String com_time;
     @NotEmpty
-    private String com_emptype;
+    private String com_empType;
     private String com_tag;
     @Size(min = 5,max = 5)
-    private int com_zipcode;
+    private String com_zipcode;
+    @NotEmpty
     private String com_address1;
+    @NotEmpty
     private String com_address2;
     private Date com_schedule;
+    @NotEmpty
     private String com_part;
     private String com_filename;
-    private Byte[] com_photo;
+    @NotEmpty
+    private byte[] com_photo;
+    @NotEmpty
     private String com_comTitle;
+    @NotEmpty
     private String com_comContent;
     private int com_hit;
 
@@ -98,12 +107,12 @@ public class CompanyVO {
         this.com_time = com_time;
     }
 
-    public String getCom_emptype() {
-        return com_emptype;
+    public String getCom_empType() {
+        return com_empType;
     }
 
-    public void setCom_emptype(String com_emptype) {
-        this.com_emptype = com_emptype;
+    public void setCom_empType(String com_empType) {
+        this.com_empType = com_empType;
     }
 
     public String getCom_tag() {
@@ -114,11 +123,11 @@ public class CompanyVO {
         this.com_tag = com_tag;
     }
 
-    public int getCom_zipcode() {
+    public String getCom_zipcode() {
         return com_zipcode;
     }
 
-    public void setCom_zipcode(int com_zipcode) {
+    public void setCom_zipcode(String com_zipcode) {
         this.com_zipcode = com_zipcode;
     }
 
@@ -162,12 +171,19 @@ public class CompanyVO {
         this.com_filename = com_filename;
     }
 
-    public Byte[] getCom_photo() {
+    public byte[] getCom_photo() {
         return com_photo;
     }
 
-    public void setCom_photo(Byte[] com_photo) {
+    public void setCom_photo(byte[] com_photo) {
         this.com_photo = com_photo;
+    }
+    public void setUpload(MultipartFile upload)
+            throws IOException {
+        //MultipartFile -> byte[]
+        setCom_photo(upload.getBytes());
+        //파일 이름
+        setCom_filename(upload.getOriginalFilename());
     }
 
     public String getCom_comTitle() {
@@ -205,7 +221,7 @@ public class CompanyVO {
                 ", com_pay='" + com_pay + '\'' +
                 ", com_edu='" + com_edu + '\'' +
                 ", com_time='" + com_time + '\'' +
-                ", com_emptype='" + com_emptype + '\'' +
+                ", com_empType='" + com_empType + '\'' +
                 ", com_tag='" + com_tag + '\'' +
                 ", com_zipcode=" + com_zipcode +
                 ", com_address1='" + com_address1 + '\'' +
