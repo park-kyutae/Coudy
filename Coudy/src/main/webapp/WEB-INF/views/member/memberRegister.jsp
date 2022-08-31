@@ -71,7 +71,9 @@
 		<form:errors path="address2"/>
 		<label for="address2">상세주소</label>
 	</div>
-	
+	<div>
+		abc
+	</div>
 	
 	
 </div>
