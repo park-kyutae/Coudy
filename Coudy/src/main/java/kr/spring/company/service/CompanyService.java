@@ -7,6 +7,7 @@ import java.util.Map;
 
 public interface CompanyService {
     public List<CompanyVO> selectList(Map<String,Object> map);
+    public int selectListCount();
 
     public void insertCompany(CompanyVO companyVO);
 }

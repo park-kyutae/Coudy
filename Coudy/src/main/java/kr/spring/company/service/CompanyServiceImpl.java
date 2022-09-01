@@ -18,7 +18,12 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public List<CompanyVO> selectList(Map<String, Object> map) {
-        return null;
+        return companyMapper.selectList(map);
+    }
+
+    @Override
+    public int selectListCount() {
+        return companyMapper.selectListCount();
     }
 
     @Override

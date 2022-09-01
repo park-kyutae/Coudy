@@ -13,9 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CompanyController {
@@ -26,9 +31,23 @@ public class CompanyController {
     public CompanyVO initCommand(){ return new CompanyVO();}
 
     @RequestMapping("/company/comHome.do")
-    public String home(){
+    public ModelAndView home(){
+        ModelAndView mav = new ModelAndView();
 
-        return "comHome";
+        Map<String,Object> map = new HashMap<String, Object>();
+        int count = companyService.selectListCount();
+        logger.debug("<<count : >>"+ count);
+
+        List<CompanyVO> list = null;
+
+        if(count>0){
+            list = companyService.selectList(map);
+
+        }
+        mav.addObject("list",list);
+        mav.addObject("count",count);
+        mav.setViewName("comHome");
+        return mav;
     }
 
     @GetMapping("/company/insertCom.do")
