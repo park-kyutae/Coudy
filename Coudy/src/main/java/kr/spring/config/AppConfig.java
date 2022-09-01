@@ -1,6 +1,6 @@
 package kr.spring.config;
 
-import kr.spring.interceptor.LoginTestInterceptor;
+import kr.spring.study.plan.testUtil.LoginTestInterceptor;
 import kr.spring.study.plan.artgumentResolver.LoginArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

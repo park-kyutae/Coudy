@@ -1,5 +1,6 @@
-package kr.spring.interceptor;
+package kr.spring.study.plan.testUtil;
 
+import kr.spring.study.plan.artgumentResolver.AuthConst;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +11,8 @@ public class LoginTestInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        if (session.getAttribute("mem_num") == null) {
-            session.setAttribute(LoginConst.MEMBER,LoginConst.MEM_NUM);
+        if (session.getAttribute(AuthConst.MEMBER) == null) {
+            session.setAttribute(AuthConst.MEMBER, 1);
         }
         return true;
 

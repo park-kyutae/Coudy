@@ -1,34 +1,38 @@
 package kr.spring.study.plan.controller;
 
-import kr.spring.interceptor.LoginConst;
 import kr.spring.study.plan.artgumentResolver.Login;
+import kr.spring.study.plan.testUtil.MemberTest;
+import kr.spring.study.plan.testUtil.StudyTest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
+
+import java.awt.image.ImageProducer;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 @Controller
 @RequestMapping("study/plan")
+@Slf4j
 public class PlanController {
-    //TODO 팀원 기능 완성 시 제거
-    private boolean isStudyManager(Integer mem_num) {
-        if (mem_num == null) {
-            return false;
-        }
-        return true;
 
-    }
 
     @GetMapping
-    public String planMain(@Login Integer mem_num, Model model) {
+    public String planMain(@Login Integer memNum,Model model) {
 
+        List<StudyUserForm> studyUserForms = StudyTest.findStudyUsers().stream()
+                .map(x -> new StudyUserForm(x, MemberTest.getMemberName(x)))
+                .collect(Collectors.toList());
 
-
+        model.addAttribute("studyUserForms", studyUserForms);
 
         return "study/plan/plan";
     }
+
+
 }

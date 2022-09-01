@@ -1,7 +1,6 @@
 package kr.spring.study.plan.artgumentResolver;
 
 
-import kr.spring.interceptor.LoginConst;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -10,7 +9,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 public class LoginArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
@@ -28,6 +26,6 @@ public class LoginArgumentResolver implements HandlerMethodArgumentResolver {
             return null;
         }
 
-        return session.getAttribute(LoginConst.MEMBER);
+        return session.getAttribute(AuthConst.MEMBER);
     }
 }
