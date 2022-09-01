@@ -2,6 +2,7 @@ package kr.spring.company.controller;
 
 import kr.spring.company.service.CompanyService;
 import kr.spring.company.vo.CompanyVO;
+import kr.spring.member.vo.MemberVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +43,11 @@ public class CompanyController {
         if(result.hasErrors()){
             return form();
         }
-        CompanyVO user = (CompanyVO) session.getAttribute("user");
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        logger.debug("<<user>>"+user);
         companyVO.setMem_num(user.getMem_num());
         companyService.insertCompany(companyVO);
-
+        logger.debug("<<user>>성공성곳엄라우니ㅏ룸ㄴ이ㅏㅜ리ㅏㅜㄴㅁㅇ룽"+user);
         model.addAttribute(companyVO);
         return "comHome";
     }
