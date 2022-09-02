@@ -5,17 +5,17 @@
 <h2 class="align-center">SpringPage</h2>
 <div class="align-right">
 	<a href="${pageContext.request.contextPath}/study/studygrouplist.do">스터디</a>
+	<a href="${pageContext.request.contextPath}/techblog/techblogList.do">기술블로그</a>
+	<a href="${pageContext.request.contextPath}/company/comHome.do">채용공고</a>
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
+
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>
 	<c:if test="${!empty user && empty user.photo}">
 		<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
 	</c:if>
-	<c:if test="${!empty user && !empty user.nick_name}">
-		[<span class="user_name">${user.nick_name}</span>]
-	</c:if>
-	<c:if test="${!empty user && empty user.nick_name}">
+	<c:if test="${!empty user}">
 		[<span class="user_name">${user.id}</span>]
 	</c:if>
 	<c:if test="${empty user}">
