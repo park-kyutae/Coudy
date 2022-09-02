@@ -28,8 +28,10 @@ public class CompanyController {
     public CompanyVO initCommand(){ return new CompanyVO();}
 
     @RequestMapping("/company/comHome.do")
-    public ModelAndView home(){
+    public ModelAndView home(HttpSession session){
         ModelAndView mav = new ModelAndView();
+
+        MemberVO user = (MemberVO) session.getAttribute("user");
 
         Map<String,Object> map = new HashMap<String, Object>();
         int count = companyService.selectListCount();
@@ -41,6 +43,8 @@ public class CompanyController {
             list = companyService.selectList(map);
 
         }
+        mav.addObject("user",user);
+        logger.debug("<<user>>"+user);
         mav.addObject("list",list);
         mav.addObject("count",count);
         mav.setViewName("comHome");
