@@ -3,6 +3,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>   
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
+
 
 <style>
 .input-form{
@@ -25,50 +27,69 @@
 
 
 <h2>회원가입</h2>
-<form:form if="register_form" action="registerUser.do" modelAttribute="memberVO">
+<form:form id="register_form" action="registerUser.do" modelAttribute="memberVO">
 <div class="input-form">
 
 	<div class="form-floating mb-3">
 		<form:input path="id" class="form-control left-input" placeholder="id"/>
 		<input class="btn btn-secondary right-button" type="button" value="아이디중복체크"/>
-		<form:errors path="id"/>
+		<form:errors path="id" cssClass="error-color"/>
 		<label for="id">아이디</label>
+		<span id="message_id"></span>
 	</div>
 	
 	<div class="form-floating mb-3">
 		<form:password path="passwd" class="form-control" placeholder="passwd"/>
-		<form:errors path="passwd"/>
+		<form:errors path="passwd" cssClass="error-color"/>
 		<label for="passwd">비밀번호</label>
 	</div>
 	
-	<div class="form-floating mb-3">
+ 	<div class="form-floating mb-3">
 		<form:input path="name" class="form-control" placeholder="name"/>
-		<form:errors path="name"/>
+		<form:errors path="name" cssClass="error-color"/>
 		<label for="name">이름</label>
-	</div>
+	</div> 
+	
+	<div class="form-floating mb-3">
+		<form:input path="phone" class="form-control" placeholder="phone"/>
+		<form:errors path="phone" cssClass="error-color"/>
+		<label for="phone">전화번호</label>
+	</div> 
+	
+<%-- 	<div class="form-floating mb-3">
+		<form:input path="name" class="form-control" placeholder="name"/>
+		<form:errors path="name" cssClass="error-color"/>
+		<input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+		<div id="validationServerUsernameFeedback" class="invalid-feedback">
+        	이름을 쓰세요 
+      	</div>
+		<label for="name">이름</label>
+	</div> --%>
+	
+	
 	
 	<div class="form-floating mb-3">
 		<form:input type="email"  path="email" class="form-control" placeholder="name@example.com"/>
-		<form:errors path="email"/>
+		<form:errors path="email" cssClass="error-color"/>
 		<label for="email">이메일</label>
 	</div>
 	
 	<div class="form-floating mb-3">
 		<form:input path="zipcode" class="form-control left-input" placeholder="zipcode"/>
 		<input class="btn btn-secondary right-button" type="button" value="우편번호찾기" onclick="execDaumPostcode()"/>
-		<form:errors path="zipcode"/>
+		<form:errors path="zipcode" cssClass="error-color"/>
 		<label for="zipcode">우편번호</label>
 	</div>
 	
-	<div class="form-floating mb-3">
+	<div class="form-floating mb-3"> 
 		<form:input path="address1" class="form-control" placeholder="address1"/>
-		<form:errors path="address1"/>
+		<form:errors path="address1" cssClass="error-color"/>
 		<label for="address1">주소</label>
 	</div>
 	
 	<div class="form-floating mb-3">
 		<form:input path="address2" class="form-control" placeholder="address2"/>
-		<form:errors path="address2"/>
+		<form:errors path="address2" cssClass="error-color"/>
 		<label for="address2">상세주소</label>
 	</div>
 	<div>
@@ -78,7 +99,8 @@
 	
 </div>
 <div class="col-12 input-form">
-    <button class="btn btn-primary" type="submit" style="width:50%;">가입하기</button>
+	    <button class="btn btn-primary" type="submit" style="width:50%;">가입하기</button>
+	    <button class="btn btn-secondary" type="button" style="width:50%;float:right;" onclick="location.href='/main/main.do'">홈으로</button>
 </div>
 </form:form>	
 

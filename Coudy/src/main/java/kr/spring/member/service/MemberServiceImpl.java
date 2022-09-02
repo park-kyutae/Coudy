@@ -21,13 +21,15 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void insertMember(MemberVO member) {
-		memberMapper.insertMember(member);
+		member.setMem_num(memberMapper.selectMem_num());
+		memberMapper.insertMember_detail(member); //엄마 
+		memberMapper.insertMember(member); //자식 
 		
 	}
 
 	@Override
-	public MemberVO selectCheckMember(MemberVO member) {
-		return null;
+	public MemberVO selectCheckMember(String id) {
+		return memberMapper.selectCheckMember(id);
 	}
 
 	@Override
@@ -49,5 +51,6 @@ public class MemberServiceImpl implements MemberService{
 	public void deleteMember(Integer mem_num) {
 		
 	}
+
 
 }
