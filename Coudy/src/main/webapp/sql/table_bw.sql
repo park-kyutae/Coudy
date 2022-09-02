@@ -56,18 +56,21 @@ create table application(
 
 create sequence application_seq;
 
-
---게시판 좋아요
-create table spboard_fav(
-                            fav_num number not null,
-                            fav_date date default sysdate not null,
-                            board_num number not null,
+--스터디 리뷰 테이블
+create table studygroup_review(
+                            studygroup_review_num number not null,
+                            content varchar2(900) not null,
+                            reg_date date default sysdate not null,
+                            modify_date date,
+                            studygroup_review_ip varchar2(40) not null,
+                            study_num number not null,
                             mem_num number not null,
-                            constraint spboard_fav_pk primary key (fav_num),
-                            constraint spboard_fav_fk1 foreign key (board_num)
-                                references spboard (board_num),
-                            constraint spboard_fav_fk2 foreign key (mem_num)
-                                references spmember(mem_num)
+                            constraint studygroup_review_pk primary key (studygroup_review_num),
+                            constraint studygroup_review_fk1 foreign key (study_num)
+                                references studygroup (study_num),
+                            constraint studygroup_review_fk2 foreign key (mem_num)
+                                references member (mem_num)
 );
 
-create sequence fav_seq;
+create sequence studygroup_review_seq;
+

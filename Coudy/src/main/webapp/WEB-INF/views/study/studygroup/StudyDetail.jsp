@@ -5,20 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><tiles:getAsString name="title"/></title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
 </head>
 <body>
 <div id="main">
-	<div id="main_header">
-		<tiles:insertAttribute name="header"/>
-	</div>
-	<div id="main_body">
-		<tiles:insertAttribute name="body"/>
-	</div>
-	<div id="main_footer">
-		<tiles:insertAttribute name="footer"/>
-	</div>
+
 </div>
 </body>
 </html>
