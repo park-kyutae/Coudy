@@ -10,4 +10,5 @@ public interface CompanyService {
     public int selectListCount();
 
     public void insertCompany(CompanyVO companyVO);
+    public CompanyVO selectCompany(Integer com_num);
 }

@@ -37,7 +37,7 @@
                 <div class="row">
                     <c:forEach var="company" items="${list}">
                         <div class="col-6 col-lg-3 p-4">
-                            <img class="img-fluid d-block mb-3 mx-auto" src="https://static.pingendo.com/cover-moon.svg" width="200" alt="Card image cap">
+                            <img class="img-fluid d-block mb-3 mx-auto" src="imageView.do?com_num=${company.com_num}&com_type=2" width="200" alt="Card image cap">
                             <h4> <b>${company.com_name}</b> </h4>
                             <p class="mb-3">${company.com_title}</p>
                             <p class="mb-0 content">${company.com_comContent}</p>

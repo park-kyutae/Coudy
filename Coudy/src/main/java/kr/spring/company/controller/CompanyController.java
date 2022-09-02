@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -47,6 +44,27 @@ public class CompanyController {
         mav.addObject("list",list);
         mav.addObject("count",count);
         mav.setViewName("comHome");
+        return mav;
+    }
+    //=========이미지 출력=========//
+    @RequestMapping("/company/imageView.do")
+    public ModelAndView viewImage(
+            @RequestParam int com_num,
+            @RequestParam int com_type) {
+
+        CompanyVO company = companyService.selectCompany(com_num);
+
+        ModelAndView mav = new ModelAndView();
+        //뷰 이름
+        mav.setViewName("imageView");
+
+        if(com_type==1) {//
+            mav.addObject("imageFile", company.getCom_photo());
+            mav.addObject("filename", company.getCom_filename());
+        }else if(com_type==2) {//업로드된 이미지
+            mav.addObject("imageFile", company.getCom_photo());
+            mav.addObject("filename", company.getCom_filename());
+        }
         return mav;
     }
 
