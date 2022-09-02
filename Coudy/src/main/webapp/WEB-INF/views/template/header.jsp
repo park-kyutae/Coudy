@@ -4,7 +4,7 @@
 <!-- 상단 시작 -->
 <h2 class="align-center">SpringPage</h2>
 <div class="align-right">
-	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
+	<a href="${pageContext.request.contextPath}/techblog/techblogList.do">기술블로그</a>
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>
