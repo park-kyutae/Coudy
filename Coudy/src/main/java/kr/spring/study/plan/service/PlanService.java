@@ -9,5 +9,7 @@ public interface PlanService {
     List<PlanVO> findPlans(Integer studyNum,String thisYearMonth);
 
     void createPlan(PlanVO planVO);
+    void updatePlan(PlanVO planVO);
+    void deletePlan(int planNum);
 
 }

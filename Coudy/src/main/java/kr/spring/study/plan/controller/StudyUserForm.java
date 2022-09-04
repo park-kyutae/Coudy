@@ -1,13 +1,14 @@
 package kr.spring.study.plan.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Getter
 @ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class StudyUserForm {
-    private final int memNum;
-    private final String  studyUserName;
+    private  int memNum;
+    private  String  studyUserName;
 }

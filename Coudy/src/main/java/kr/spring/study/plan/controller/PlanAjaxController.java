@@ -33,6 +33,22 @@ public class PlanAjaxController {
 
         log.info("planVO = {}", planVO);
     }
+    @PostMapping("/updatePlan")
+    public void updatePlan(@Login Integer mem_num, @ModelAttribute UpdatePlanForm form, BindingResult result) {
+        int studyNum = StudyTest.getStudyNum();
+        PlanVO planVO = new PlanVO(form.getPlanNum(),studyNum, form.getPlanContent(), form.getPlanStartDate(),
+                form.getPlanEndDate(), form.getPlanColor(), mem_num, form.isPlanIsCompleted(), form.isPlanIsShared());
+        planService.updatePlan(planVO);
+
+        log.info("update planVO = {}", planVO);
+    }
+    @PostMapping("/deletePlan")
+    public void deletePlan(@Login Integer mem_num, @RequestParam Integer planNum) {
+        int studyNum = StudyTest.getStudyNum();
+        log.info("Call PlanAjaxController.deletePlan --- Variable = studyNum = {}", studyNum);
+        planService.deletePlan(planNum);
+
+    }
 
     @GetMapping("/findPlans")
     public List<FindPlanForm> findPlans(@Login Integer mem_num,
