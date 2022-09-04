@@ -17,7 +17,7 @@
 <body>
 <div id="container">
     <h1>스터디 그룹 개설하기</h1>
-    <form class="row g-3 needs-validation" action="studygroupcreate.do" novalidate>
+    <form class="row g-3 needs-validation" action="studygroupcreate.do">
         <div class="mb-3 col-lg-12">
             <label for="name" class="form-label">스터디 명</label>
             <input type="text" class="form-control" id="name" aria-describedby="aboutName" required>
@@ -56,19 +56,18 @@
         </div>
         <div class="mb-3">
             <label for="limit-date" class="form-label">모집 종료 날짜</label>
-            <input type="text" class="form-control datepicker" id="limit-date" required>
+            <input type="date" class="form-control datepicker" id="limit-date" required>
         </div>
 
         <div class="mb-3">
             <label for="start_date" class="form-label">스터디 시작일</label>
-            <input type="text" class="form-control datepicker" id="start_date" required>
+            <input type="date" class="form-control datepicker" id="start_date" required>
         </div>
         <div class="mb-3">
             <label for="end_date" class="form-label">스터디 종료일</label>
-            <input type="text" class="form-control" id="end_date" required>
+            <input type="date" class="form-control" id="end_date" required>
         </div>
-
-        <button type="submit" class="btn btn-primary">개설하기</button>
+        <input type="submit" class="btn btn-primary" value="개설하기"></input>
     </form>
 </div>
 </body>

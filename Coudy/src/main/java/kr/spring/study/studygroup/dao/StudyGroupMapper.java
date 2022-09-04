@@ -10,8 +10,7 @@ import java.util.Map;
 public interface StudyGroupMapper {
 
     public List<StudyGroupVO> selectAllStudyGroups(Map<String,Object> map);
-
-    @Insert("INSERT INTO STUDYGROUP (study_num, stack, name, description, limit, location, purpose, limit_date, start_date, end_date, mem_num) " +
+    @Insert("INSERT INTO studygroup (study_num,stack,name,description,limit,location,purpose,limit_date,start_date,end_date,mem_num) " +
             "VALUES (studygroup_seq.nextval,#{stack},#{name},#{description},#{limit},#{location},#{purpose},#{limit_date},#{start_date},#{end_date},#{mem_num})")
     public void insertStudyGroup(StudyGroupVO studyGroup);
     public int selectRowCount(Map<String,Object> map);

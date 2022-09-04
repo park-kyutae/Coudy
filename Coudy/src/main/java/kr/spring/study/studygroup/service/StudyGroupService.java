@@ -17,7 +17,7 @@ public interface StudyGroupService {
     //스터디 삭제
     public void deleteStudyGroup(Integer study_num);
     //스터디 갯수 세기
-    public void selectRowCount(Map<String,Object> map);
+    public int selectRowCount(Map<String,Object> map);
     //스터디 선택
     public StudyGroupVO selectStudyGroup(Integer study_num);
     //스터디 프로필 사진 삭제
