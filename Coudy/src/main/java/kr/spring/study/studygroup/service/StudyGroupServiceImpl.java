@@ -38,8 +38,8 @@ public class StudyGroupServiceImpl implements StudyGroupService{
     }
 
     @Override
-    public void selectRowCount(Map<String, Object> map) {
-        studyGroupMapper.selectRowCount(map);
+    public int selectRowCount(Map<String, Object> map) {
+        return studyGroupMapper.selectRowCount(map);
     }
 
     @Override
