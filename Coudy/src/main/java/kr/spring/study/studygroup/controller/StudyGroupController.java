@@ -1,7 +1,7 @@
 package kr.spring.study.studygroup.controller;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.study.studygroup.service.StudyGroupService;
-import kr.spring.study.studygroup.service.StudyGroupServiceImpl;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
 import org.mybatis.logging.Logger;
 import org.mybatis.logging.LoggerFactory;
@@ -43,19 +43,20 @@ public class StudyGroupController {
         return "CreateStudyGroup";
     }
 
-    /*
+
     @PostMapping("/study/studygroupcreate.do")
     public String submit(@Valid StudyGroupVO studyGroupVO, BindingResult result, HttpServletRequest request,
-                         HttpSession httpSession, Model model){
-        logger.debug(" << 스터디 그룹 저장 >> : " + studyGroupVO);
+                         HttpSession session, Model model){
+        //logger.debug("<<스터디 그룹 저장>> : " + studyGroupVO);
         //유효성 검사 결과 오류가 있으면 폼 호출
         if(result.hasErrors()) {
-            return form();
+            return form2();
         }
 
-        MemberVO user = (MemberVO)session.getAttribute("user");
+        //MemberVO user = (MemberVO)session.getAttribute("user");
         //회원번호 셋팅
-        studyGroupVO.setMem_num(user.getMem_num());
+        //studyGroupVO.setMem_num(user.getMem_num());
+        studyGroupVO.setMem_num(1);
         //ip셋팅
         studyGroupVO.setIp(request.getRemoteAddr());
 
@@ -66,8 +67,8 @@ public class StudyGroupController {
         model.addAttribute(
                 "message", "글 등록이 완료되었습니다.");
         model.addAttribute(
-                "url", request.getContextPath()+"/board/list.do");
+                "url", request.getContextPath()+"/study/studygrouplist.do");
 
         return "common/resultView";
-    }*/
+    }
 }

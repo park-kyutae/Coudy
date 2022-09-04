@@ -36,5 +36,5 @@ public class StudyGroupVO {
     private byte[] photo;//프로필 사진
     private String photo_name;//프로필 사진명
 
-    private int member_num;
+    private int mem_num;
 }
