@@ -1,7 +1,7 @@
 CREATE TABLE techblog(
 	tech_num number not null,
-	tech_title varchar2(40) not null,
-	tech_name varchar2(15) not null,
+	tech_title varchar2(150) not null,
+	tech_name varchar2(30) not null,
 	tech_date DATE default sysdate not null,
 	tech_modifydate DATE,
 	tech_photo blob,
@@ -20,7 +20,7 @@ create sequence techblog_seq;
 
 create table techblog_reply(
 	tech_re_num number not null,
-	tech_re_content varchar2(500) not null,
+	tech_re_content varchar2(900) not null,
 	tech_re_date DATE default sysdate not null,
 	tech_re_modifydate date,
 	tech_num number not null,

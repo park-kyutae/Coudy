@@ -9,11 +9,21 @@ import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import kr.spring.interceptor.LoginCheckInterceptor;
+import kr.spring.interceptor.WriterCheckInterceptor;
 
 //자바코드 기반 설정 클래스
 
 @Configuration
 public class AppConfig implements WebMvcConfigurer{
+	
+	WriterCheckInterceptor interceptor;
+	//WriterCheckInterceptor에서 BoardService 객체를
+	//주입받아야 하기때문에 Bean 객체로 등록함
+	@Bean
+	public WriterCheckInterceptor interceptor() {
+		interceptor = new WriterCheckInterceptor();
+		return interceptor;
+	}
 
 	//인터셉터 지정
 	@Override
@@ -21,7 +31,14 @@ public class AppConfig implements WebMvcConfigurer{
 			       InterceptorRegistry registry) {
 		registry.addInterceptor(
 				    new LoginCheckInterceptor())
-		        .addPathPatterns("/member/myPage.do");
+		        .addPathPatterns("/member/myPage.do")
+				.addPathPatterns("/techblog/techblogWrite.do")
+				.addPathPatterns("/techblog/techblogUpdate.do")
+				.addPathPatterns("/techblog/techblogDelete.do");
+		
+		registry.addInterceptor(interceptor)
+		.addPathPatterns("/techblog/techblogUpdate.do")
+		.addPathPatterns("/techblog/techblogDelete.do");
 		
 	}
 	

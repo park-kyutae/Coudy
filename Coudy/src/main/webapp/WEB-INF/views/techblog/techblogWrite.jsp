@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .ck-editor__editable_inline{
-	min-height:250px;
+	min-height:500px;
 }
 </style>
 <!-- include ckeditor js -->
@@ -68,10 +68,6 @@
 		                console.error( error );
 		            } );
 			    </script>               
-			</li>
-			<li>
-				<label for="upload">사진올리기</label>
-				<input type="file" name="upload" id="upload">
 			</li>
 		</ul>    
 		<div class="align-center">
