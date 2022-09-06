@@ -36,23 +36,18 @@ public class StudyGroupController {
         return new StudyGroupVO();
     }
 
-    @GetMapping("/study/studygrouplist.do")
-    public String form(){
+/*    @GetMapping("/study/studygrouplist.do")
+    public String form() {
         return "StudyGroupList";
     }
+*/
 
-    /*
     @RequestMapping("/study/studygrouplist.do")
-    public ModelAndView process(
-            @RequestParam(value="pageNum",defaultValue="1")
-                    int currentPage,
-            @RequestParam(value="keyfield",defaultValue="")
-                    String keyfield,
-            @RequestParam(value="keyword",defaultValue="")
-                    String keyword) {
+    public ModelAndView process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
+                                @RequestParam(value = "keyfield", defaultValue = "") String keyfield,
+                                @RequestParam(value = "keyword", defaultValue = "") String keyword) {
 
-        Map<String,Object> map =
-                new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("keyfield", keyfield);
         map.put("keyword", keyword);
 
@@ -63,10 +58,10 @@ public class StudyGroupController {
 
         //페이지 처리
         PagingUtil page =
-                new PagingUtil(keyfield,keyword, currentPage,count, rowCount,pageCount,"list.do");
+                new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "studygrouplist.do");
 
         List<StudyGroupVO> list = null;
-        if(count > 0) {
+        if (count > 0) {
 
             map.put("start", page.getStartRow());
             map.put("end", page.getEndRow());
@@ -82,27 +77,26 @@ public class StudyGroupController {
 
         return mav;
     }
-*/
+
     @GetMapping("/study/studygroupcreate.do")
-    public String form2(){
+    public String form2() {
         return "CreateStudyGroup";
     }
 
 
     @PostMapping("/study/studygroupcreate.do")
     public String submit(@Valid StudyGroupVO studyGroupVO, BindingResult result, HttpServletRequest request,
-                         HttpSession session, Model model){
+                         HttpSession session, Model model) {
 
         logger.debug("<<스터디 그룹 저장>> : " + studyGroupVO);
         //유효성 검사 결과 오류가 있으면 폼 호출
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return form2();
         }
 
-        //MemberVO user = (MemberVO)session.getAttribute("user");
+        MemberVO user = (MemberVO) session.getAttribute("user");
         //회원번호 셋팅
-        //studyGroupVO.setMem_num(user.getMem_num());
-        studyGroupVO.setMem_num(1);
+        studyGroupVO.setMem_num(user.getMem_num());
         //ip셋팅
         studyGroupVO.setIp(request.getRemoteAddr());
 
@@ -113,9 +107,7 @@ public class StudyGroupController {
         model.addAttribute(
                 "message", "글 등록이 완료되었습니다.");
         model.addAttribute(
-                "url", request.getContextPath()+"/study/studygrouplist.do");
-
-        System.out.println(model);
+                "url", request.getContextPath() + "/study/studygrouplist.do");
 
         return "common/resultView";
     }
