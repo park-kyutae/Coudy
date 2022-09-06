@@ -28,7 +28,6 @@ public class PlanController {
         List<StudyUserForm> studyUserForms = StudyTest.findStudyUsers().stream()
                 .map(x -> new StudyUserForm(x, MemberTest.getMemberName(x)))
                 .collect(Collectors.toList());
-
         model.addAttribute("studyUserForms", studyUserForms);
 
         return "study/plan/plan";

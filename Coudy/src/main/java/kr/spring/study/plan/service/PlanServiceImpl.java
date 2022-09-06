@@ -25,12 +25,10 @@ public class PlanServiceImpl implements PlanService{
 
     @Override
     public void createPlan(PlanVO planVO) {
-        log.info("update planVO = {}", planVO);
         planMapper.createPlan(planVO);
     }
     @Override
     public void updatePlan(PlanVO planVO) {
-        log.info("update planVO = {}", planVO);
         planMapper.updatePlan(planVO);
     }
 

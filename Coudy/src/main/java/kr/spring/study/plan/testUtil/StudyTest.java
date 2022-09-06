@@ -11,6 +11,6 @@ public class StudyTest {
 
     public static List<Integer> findStudyUsers() {
         return new ArrayList<>(Arrays.asList(1, 999, 998, 997, 996, 995));
-
     }
+
 }

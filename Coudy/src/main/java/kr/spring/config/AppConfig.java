@@ -18,53 +18,52 @@ import java.util.List;
 //자바코드 기반 설정 클래스
 
 @Configuration
-public class AppConfig implements WebMvcConfigurer{
+public class AppConfig implements WebMvcConfigurer {
 
-	//인터셉터 지정
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginCheckInterceptor())
-				.order(1)
-		        .addPathPatterns("/member/myPage.do");
-		//TODO 로그인 기능 완성 시 삭제
-		registry.addInterceptor(new LoginTestInterceptor())
-				.order(2)
-				.addPathPatterns("/study/plan");
+    //인터셉터 지정
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginCheckInterceptor())
+                .order(1)
+                .addPathPatterns("/member/myPage.do");
+        //TODO 로그인 기능 완성 시 삭제
+        registry.addInterceptor(new LoginTestInterceptor())
+                .order(2)
+                .addPathPatterns("/study/plan");
+    }
 
-	}
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        resolvers.add(new LoginArgumentResolver());
+    }
 
-	@Override
-	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-		resolvers.add(new LoginArgumentResolver());
-	}
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        final TilesConfigurer configurer =
+                new TilesConfigurer();
 
-	@Bean
-	public TilesConfigurer tilesConfigurer() {
-		final TilesConfigurer configurer = 
-				new TilesConfigurer();
-		
-		//해당 경로에 xml 설정 파일을 넣음
-		configurer.setDefinitions(new String[] {
-				"/WEB-INF/tiles-def/main.xml",
-				"/WEB-INF/tiles-def/first.xml",
-				"/WEB-INF/tiles-def/second.xml",
-				"/WEB-INF/tiles-def/third.xml",
-				"/WEB-INF/tiles-def/forth.xml",
-				"/WEB-INF/tiles-def/fifth.xml",
-				"/WEB-INF/tiles-def/sixth.xml"
-		});
-		configurer.setCheckRefresh(true);
-		return configurer;
-	}
-	
-	@Bean
-	public TilesViewResolver tilesViewResolver() {
-		final TilesViewResolver tilesViewResolver =
-				new TilesViewResolver();
-		tilesViewResolver.setViewClass(TilesView.class);
-		return tilesViewResolver;
-	}
-	
+        //해당 경로에 xml 설정 파일을 넣음
+        configurer.setDefinitions(new String[]{
+                "/WEB-INF/tiles-def/main.xml",
+                "/WEB-INF/tiles-def/first.xml",
+                "/WEB-INF/tiles-def/second.xml",
+                "/WEB-INF/tiles-def/third.xml",
+                "/WEB-INF/tiles-def/forth.xml",
+                "/WEB-INF/tiles-def/fifth.xml",
+                "/WEB-INF/tiles-def/sixth.xml"
+        });
+        configurer.setCheckRefresh(true);
+        return configurer;
+    }
+
+    @Bean
+    public TilesViewResolver tilesViewResolver() {
+        final TilesViewResolver tilesViewResolver =
+                new TilesViewResolver();
+        tilesViewResolver.setViewClass(TilesView.class);
+        return tilesViewResolver;
+    }
+
 }
 
 
