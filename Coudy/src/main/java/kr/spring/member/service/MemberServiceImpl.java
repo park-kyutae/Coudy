@@ -22,8 +22,8 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void insertMember(MemberVO member) {
 		member.setMem_num(memberMapper.selectMem_num());
-		memberMapper.insertMember_detail(member); //엄마 
-		memberMapper.insertMember(member); //자식 
+		memberMapper.insertMember(member); //부모 
+		memberMapper.insertMember_detail(member); //자식  
 		
 	}
 
@@ -34,7 +34,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberVO selectMember(Integer mem_num) {
-		return null;
+		return memberMapper.selectMember(mem_num);
 	}
 
 	@Override
@@ -49,6 +49,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void deleteMember(Integer mem_num) {
+		
+	}
+
+	@Override
+	public void updateProfile(MemberVO member) {
+		memberMapper.updateProfile(member);
 		
 	}
 
