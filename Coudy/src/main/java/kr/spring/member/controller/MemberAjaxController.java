@@ -30,15 +30,20 @@ public class MemberAjaxController {
 		//json 형태의 데이터를 받기				//멤버값(session의 num을 가져와서 memberVO가져오기 위한 값의 세팅)
 											//session으로 num값을 가져오기 
 		
-		logger.debug("<<memberAjax진입 >>");
 		
 		Map<String,String> mapAjax = new HashMap<String,String>();
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user==null) {
 			mapAjax.put("result", "logout");
+			
 		}else {
+			logger.debug("<<memberAjax진입 >>" +memberVO);
+			
 			memberVO.setMem_num(user.getMem_num());
+			
+			logger.debug("<<memberAjax진입 >>" +memberVO);
+
 			memberService.updateProfile(memberVO);
 		
 			
