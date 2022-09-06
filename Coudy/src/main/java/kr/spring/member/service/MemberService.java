@@ -9,7 +9,7 @@ public interface MemberService {
 	public int selectMem_num();
 	
 	public void insertMember(MemberVO member);
-	public MemberVO selectCheckMember(MemberVO member);
+	public MemberVO selectCheckMember(String id);
 	public MemberVO selectMember(Integer mem_num);
 	public void updateMember(MemberVO member);
 	public void updatePasswd(MemberVO member);
