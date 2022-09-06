@@ -5,10 +5,25 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="test5" extends="main">
-    	<put-attribute name="title" value="게시판목록"/>
+    <definition name="techblogList" extends="main">
+    	<put-attribute name="title" value="기술블로그"/>
     	<put-attribute name="body"
-    	  value="/WEB-INF/views/board/boardList.jsp"/>                   
+    	  value="/WEB-INF/views/techblog/techblogList.jsp"/>                   
+    </definition>
+    <definition name="techblogWrite" extends="main">
+    	<put-attribute name="title" value="기술블로그 등록"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogWrite.jsp"/>                   
+    </definition>
+    <definition name="techblogView" extends="main">
+    	<put-attribute name="title" value="상세정보"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogView.jsp"/>                   
+    </definition>
+    <definition name="techblogModify" extends="main">
+    	<put-attribute name="title" value="기술블로그 수정"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogModify.jsp"/>                   
     </definition>
 </tiles-definitions>
 
