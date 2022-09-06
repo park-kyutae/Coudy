@@ -17,16 +17,16 @@ public interface TechblogMapper {
 	public List<TechblogVO>selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
 	@Insert("INSERT INTO techblog (tech_num,tech_title,tech_name,"
-			+ "tech_photo,tech_photoname,tech_content,tech_kategorie,"
+			+ "tech_content,tech_kategorie,"
 			+ "tech_tag,mem_num) VALUES (techblog_seq.nextval,#{tech_title},"
-			+ "#{tech_name},#{tech_photo},#{tech_photoname},#{tech_content},"
+			+ "#{tech_name},#{tech_content},"
 			+ "#{tech_kategorie},#{tech_tag},#{mem_num})")
 	public void insertTechblog(TechblogVO techblog);
 	@Select("SELECT * FROM techblog t JOIN member m "
 			+ "USING(mem_num) JOIN member_detail d "
 			+ "USING(mem_num) WHERE t.tech_num=#{tech_num}")
 	public TechblogVO selectTechblog(Integer tech_num);
-	@Update("UPDATE techblog SET hit=hit+1 WHERE tech_num=#{tech_num}")
+	@Update("UPDATE techblog SET tech_hit=tech_hit+1 WHERE tech_num=#{tech_num}")
 	public void updateTechblogHit(Integer tech_num);
 	public void updateTechblog(TechblogVO techblog);
 	@Delete("DELETE FROM techblog WHERE tech_num=#{tech_num}")

@@ -64,6 +64,11 @@ public class TechblogController {
 			return form();
 		}
 		
+		MemberVO user = 
+				(MemberVO)session.getAttribute("user");
+		//회원번호 셋팅
+		techblogVO.setMem_num(user.getMem_num());
+		
 		//글쓰기 
 		techblogService.insertTechblog(techblogVO);
 		
@@ -99,7 +104,7 @@ public class TechblogController {
 			PagingUtil page = 
 					new PagingUtil(keyfield,keyword,
 							currentPage,count,
-							rowCount,pageCount,"list.do");
+							rowCount,pageCount,"techblogList.do");
 			
 			List<TechblogVO> list = null;
 			if(count > 0) {
@@ -122,9 +127,10 @@ public class TechblogController {
 		//========게시판 글상세===========//
 		@RequestMapping("/techblog/techblogDetail.do")
 		public ModelAndView detail(
-				          @RequestParam int tech_num) {
+				          @RequestParam int tech_num
+				          ) {
 			
-			logger.debug("<<board_num>> : " + tech_num);
+			logger.debug("<<tech_num>> : " + tech_num);
 			
 			//해당 글의 조회수 증가
 			techblogService.updateTechblogHit(tech_num);
@@ -160,6 +166,29 @@ public class TechblogController {
 			mav.addObject("filename", 
 					          techblogVO.getTech_photoname());
 			
+			return mav;
+		}
+		
+		//=========이미지 출력=========//
+		@RequestMapping("/techblog/imageView.do")
+		public ModelAndView viewImage(
+				   @RequestParam int tech_num,
+				   @RequestParam int tech_type) {
+			
+			TechblogVO techblogVO = 
+					techblogService.selectTechblog(tech_num);
+			
+			ModelAndView mav = new ModelAndView();
+			//뷰 이름
+			mav.setViewName("imageView");
+			
+			if(tech_type==1) {//프로필 사진
+				mav.addObject("imageFile", techblogVO.getPhoto());
+				mav.addObject("filename", techblogVO.getPhoto_name());
+			}else if(tech_type==2) {//업로드된 이미지
+				mav.addObject("imageFile", techblogVO.getTech_photo());
+				mav.addObject("filename", techblogVO.getTech_photoname());
+			}
 			return mav;
 		}
 		
