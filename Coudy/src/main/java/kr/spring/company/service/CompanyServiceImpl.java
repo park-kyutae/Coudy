@@ -35,4 +35,9 @@ public class CompanyServiceImpl implements CompanyService{
     public CompanyVO selectCompany(Integer com_num) {
         return companyMapper.selectCompany(com_num);
     }
+
+    @Override
+    public void updateHit(Integer com_num) {
+        companyMapper.updateHit(com_num);
+    }
 }

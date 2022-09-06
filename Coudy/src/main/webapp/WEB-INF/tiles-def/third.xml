@@ -15,6 +15,11 @@
 		<put-attribute name="body"
 		  value="/WEB-INF/views/company/insertCom.jsp"/>
 	</definition>
+	<definition name="comView" extends="main">
+		<put-attribute name="title" value="공고 상세"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/company/comView.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

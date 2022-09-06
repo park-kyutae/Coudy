@@ -3,6 +3,7 @@ package kr.spring.company.controller;
 import kr.spring.company.service.CompanyService;
 import kr.spring.company.vo.CompanyVO;
 import kr.spring.member.vo.MemberVO;
+import kr.spring.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,4 +93,18 @@ public class CompanyController {
         model.addAttribute(companyVO);
         return "comHome";
     }
+
+    @RequestMapping("/company/comDetail.do")
+    public ModelAndView detail(@RequestParam int com_num){
+        logger.debug("<<companyNum : >>"+com_num);
+
+        companyService.updateHit(com_num);
+//        ModelAndView mav = new ModelAndView();
+
+        CompanyVO companyVO = companyService.selectCompany(com_num);
+        companyVO.setCom_title(StringUtil.useNoHtml(companyVO.getCom_title()));
+
+        return new ModelAndView ("comView","companyVO",companyVO);
+    }
+
 }

@@ -4,6 +4,7 @@ import kr.spring.company.vo.CompanyVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Map;
@@ -20,4 +21,7 @@ public interface CompanyMapper {
 
     @Select("SELECT * FROM com_info WHERE com_num=#{com_num}")
     public CompanyVO selectCompany(Integer com_num);
+
+    @Update("UPDATE com_info SET com_hit = com_hit+1 WHERE com_num=#{com_num}")
+    public void updateHit(Integer com_num);
 }
