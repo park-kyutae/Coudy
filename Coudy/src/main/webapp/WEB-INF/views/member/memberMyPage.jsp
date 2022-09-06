@@ -20,7 +20,6 @@
 
 
 <div class="align-left">
-<form  enctype="multipart/form-data">
 <h2>Profile</h2>
 <figure class="figure">
 	<c:if test="${empty member.photo_name}">
@@ -37,13 +36,10 @@
 	<div class="align-center" style="display:none;" id="photo_choice">
 		<input type="file" class="btn btn-secondary btn-sm" id="upload" accept="image/gif,image/png,image/jpeg">
 		<input type="button" class="btn btn-secondary" id="photo_cancel" value="취소">
-		<input type="submit" class="btn btn-primary" id="photo_submit" value="저장">
+		<input type="button" class="btn btn-primary" id="photo_submit" value="저장">
 		
 	</div>
 </figure>
-</form>
-
-
 
 </div>
 
