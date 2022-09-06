@@ -148,6 +148,65 @@ public class MemberController {
 			return "memberMyPage";
 		}
 		
+		//프로필 사진 출력(로그인 전용)
+		@RequestMapping("/member/photoView.do")
+		public ModelAndView getProfile(HttpSession session, HttpServletRequest request) {
+			
+			ModelAndView mav = new ModelAndView();
+			
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			
+			//로그인이 안된경우
+			if(user==null) {
+				byte[] readbyte = 
+						FileUtil.getBytes(
+				     request.getServletContext().getRealPath(
+						          "/image_bundle/face.png"));
+				mav.addObject("imageFile", readbyte);
+				mav.addObject("filename", "face.png");
+				mav.setViewName("imageView");
+				
+			}else { //로그인이 된 경우
+				MemberVO memberVO = memberService.selectMember(user.getMem_num());
+				viewProfile(memberVO,request,mav);
+			}
+			
+			
+			
+			return mav;
+		}
+		//프로필 사진 출력(회원번호 지정)
+		@RequestMapping("/member/viewProfile.do")
+		public ModelAndView getProfileByMem_num(
+				          @RequestParam int mem_num,
+				          HttpSession session,
+				          HttpServletRequest request) {
+			
+			ModelAndView mav = new ModelAndView();
+			
+			MemberVO memberVO = memberService.selectMember(mem_num);
+			
+			viewProfile(memberVO,request,mav);
+			
+			return mav;
+		}
+
+		//이미지 처리 공통 코드 
+		private void viewProfile(MemberVO memberVO, HttpServletRequest request, ModelAndView mav) {
+			if(memberVO.getPhoto_name()==null) {//업로드한 프로필 사진이 없다는 것 
+				byte[] readbyte 												//왜 이미지번들이지?
+					= FileUtil.getBytes(request.getServletContext().getRealPath("/image_bundle/face.png"));
+				mav.addObject("imageFile", readbyte);
+				mav.addObject("filename", "face.png");
+			}else {
+				//업로드한 프로필 사진이 있음
+				mav.addObject("imageFile", memberVO.getPhoto());
+				mav.addObject("filename", memberVO.getPhoto_name());
+			}
+			//뷰 이름 지정
+			mav.setViewName("imageView");
+		}
+		
 		
 
 		
