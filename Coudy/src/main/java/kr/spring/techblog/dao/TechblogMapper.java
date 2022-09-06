@@ -21,6 +21,7 @@ public interface TechblogMapper {
 			+ "tech_tag,mem_num) VALUES (techblog_seq.nextval,#{tech_title},"
 			+ "#{tech_name},#{tech_content},"
 			+ "#{tech_kategorie},#{tech_tag},#{mem_num})")
+			
 	public void insertTechblog(TechblogVO techblog);
 	@Select("SELECT * FROM techblog t JOIN member m "
 			+ "USING(mem_num) JOIN member_detail d "
