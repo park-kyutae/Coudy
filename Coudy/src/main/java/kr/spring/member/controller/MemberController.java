@@ -1,5 +1,6 @@
 package kr.spring.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,11 +13,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
+import kr.spring.util.FileUtil;
 
 @Controller
 public class MemberController {
@@ -76,10 +80,12 @@ public class MemberController {
 			}
 			
 			MemberVO member = null;
-			
-			
+
 			try {
 				member = memberService.selectCheckMember(memberVO.getId());
+				logger.debug("<<try 멤버  >> : " + memberVO);
+				logger.debug("<<try 멤버  >> : " + member);
+
 				
 				boolean check= false;
 				
@@ -109,16 +115,45 @@ public class MemberController {
 				}else {
 					result.reject("invalidIdOrPassword");
 				}
-				
-				return formLogin();
+				logger.debug("<<뭔가 잘못됨 >>");
+				return formLogin();//
 					
 			}
 
 			
 		}
+		
+		//==============로그아웃===============//
+		@RequestMapping("/member/logout.do")
+		public String logout(HttpSession session) {
+			session.invalidate();
+			
+			return "redirect:/main/main.do";
+		}
+		
+		//=================myPage==============//
+		@GetMapping("/member/myPage.do")
+		public String myPage(HttpSession session, Model model) {
+			
+			//유저정보 가져오기
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			
+			//한 건의 레코드 읽어오기
+			MemberVO member = memberService.selectMember(user.getMem_num());
+			logger.debug("<<한건의 레코드 읽어오기 >> :"+member);
+			
+			//request에 참조할 수 있도록 함  -->?
+			model.addAttribute("member",member);
+			
+			return "memberMyPage";
+		}
+		
+		
+
+		
 	
 } 
-
+ 
 
 
 
