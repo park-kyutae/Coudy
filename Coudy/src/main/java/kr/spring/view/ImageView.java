@@ -59,8 +59,3 @@ public class ImageView extends AbstractView{
 	}
 
 }
-
-
-
-
-
