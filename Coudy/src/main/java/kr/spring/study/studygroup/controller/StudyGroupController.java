@@ -36,11 +36,13 @@ public class StudyGroupController {
         return new StudyGroupVO();
     }
 
-/*    @GetMapping("/study/studygrouplist.do")
+    /*
+    @GetMapping("/study/studygrouplist.do")
     public String form() {
         return "StudyGroupList";
-    }
-*/
+    }*/
+
+
 
     @RequestMapping("/study/studygrouplist.do")
     public ModelAndView process(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,

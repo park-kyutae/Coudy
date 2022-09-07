@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="StudyGroupList" extends="main">
+    	<put-attribute name="title" value="스터디그룹 메인"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/study/studygroup/StudyList.jsp"/>
+    </definition>
+	<definition name="CreateStudyGroup" extends="main">
+		<put-attribute name="title" value="스터디그룹 생성하기"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/studygroup/StudyCreation.jsp"/>
+	</definition>
+	<definition name="ModifyStudyGroup" extends="main">
+		<put-attribute name="title" value="스터디그룹 수정하기"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/studygroup/StudyModify.jsp"/>
+	</definition>
+
+</tiles-definitions>
+
+
+

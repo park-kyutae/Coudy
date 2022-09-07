@@ -14,7 +14,7 @@
                     s.name LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 2">
-                    m.id LIKE '%' || #{keyword} || '%'
+                    s.description LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 3">
                     s.stack LIKE '%' || #{keyword} || '%'
@@ -41,8 +41,7 @@
         s.stack,
         s.description,
         s.limit,
-        s.mem_num,
-        m.id
+        s.mem_num
         FROM studygroup s JOIN member m
         ON s.mem_num = m.mem_num
         <where>
@@ -51,10 +50,10 @@
                     s.stack LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 2">
-                    m.id LIKE '%' || #{keyword} || '%'
+                    s.limit LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 3">
-                    s. LIKE '%' || #{keyword} || '%'
+                    s.description LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 4">
                     s.stack LIKE '%' || #{keyword} || '%' OR
