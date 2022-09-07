@@ -100,7 +100,7 @@ public class StudyGroupController {
         //회원번호 셋팅
         studyGroupVO.setMem_num(user.getMem_num());
         //ip셋팅
-        studyGroupVO.setIp(request.getRemoteAddr());
+        //studyGroupVO.setIp(request.getRemoteAddr());
 
         //글쓰기
         studyGroupService.insertStudyGroup(studyGroupVO);

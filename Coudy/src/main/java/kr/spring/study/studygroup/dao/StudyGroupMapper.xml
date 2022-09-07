@@ -53,7 +53,7 @@
                     s.limit LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 3">
-                    s.description LIKE '%' || #{keyword} || '%'
+                    s.name LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 4">
                     s.stack LIKE '%' || #{keyword} || '%' OR
