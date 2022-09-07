@@ -1,13 +1,17 @@
 package kr.spring.techblog.vo;
 
+import java.io.IOException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class TechblogVO {
 	private int tech_num;
 	@NotEmpty
 	private String tech_title;
+	@NotEmpty
 	private String tech_name;
 	private Date tech_date;
 	private Date tech_modifydate;
@@ -16,11 +20,40 @@ public class TechblogVO {
 	@NotEmpty
 	private String tech_content;
 	private int tech_hit;
+	@NotEmpty
 	private String tech_kategorie;
+	@NotEmpty
 	private String tech_tag;
 	private int mem_num;
 	
 	private String id;
+	private byte[] photo;//프로필 사진
+	private String photo_name;//프로필 사진명
+	
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
+	public String getPhoto_name() {
+		return photo_name;
+	}
+
+	public void setPhoto_name(String photo_name) {
+		this.photo_name = photo_name;
+	}
+
+	//파일 업로드 처리
+	public void setUpload(MultipartFile upload)
+	                              throws IOException{
+		//MultipartFile -> byte[] 변환
+		setTech_photo(upload.getBytes());
+		//파일명 구하기
+		setTech_photoname(upload.getOriginalFilename());
+	}
 	
 	public int getTech_num() {
 		return tech_num;

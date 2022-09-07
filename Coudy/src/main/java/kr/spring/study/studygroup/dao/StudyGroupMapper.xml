@@ -43,7 +43,7 @@
         s.limit,
         s.mem_num,
         m.id
-        FROM studygroup s JOIN memser m
+        FROM studygroup s JOIN member m
         ON s.mem_num = m.mem_num
         <where>
             <if test="keyword != null and keyword != ''">
