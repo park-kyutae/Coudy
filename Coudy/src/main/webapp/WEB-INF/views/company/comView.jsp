@@ -45,7 +45,6 @@
                 <span class="float-end">근무시간 : <i style="color: #0d6efd">${companyVO.com_time}</i> </span><br>
                 <span>고용형태 : <i style="color: #0d6efd">${companyVO.com_empType}</i></span>
                 <span class="float-end">근무지역 : ${companyVO.com_address1} </span><br>
-
             </div>
             <div class="col-6 text-center align-center">
                 <div class="row d-grid gap-2">
