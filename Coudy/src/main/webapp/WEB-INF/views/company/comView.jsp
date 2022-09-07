@@ -26,7 +26,7 @@
 <div style="height: 150px">
 
 </div>
-<div class="container" style="height: 800px">
+<div class="container" style="height: 1500px">
     <div class="row-cols-4 align-center">
         <div class="align-center col-sm-12">
             <h4>${companyVO.com_name}</h4>
@@ -48,22 +48,27 @@
 
             </div>
             <div class="col-6 text-center align-center">
-                <div class="row d-grid gap-2 mx-auto">
+                <div class="row d-grid gap-2">
                     <br>
-                    <button class="scrap_btn btn btn-lg btn-outline-primary mb-2">스크랩
+                    <button class="scrap_btn btn btn-sm btn-outline-primary mb-2">스크랩
                         <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" id="star" class="bi bi-star" viewBox="0 0 16 16">
                             <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                         </svg>
                     </button>
                 </div>
-                <div class="row">
-                    <button class="btn btn-lg btn-outline-primary" >즉시지원</button>
+                <div class="row align-center text-center">
+                    <button style="width: 300px;" class="btn btn-sm btn-outline-primary" >즉시지원</button>
                 </div>
             </div>
         </div>
     </div>
     <hr>
+    <div class="row">
+        <div class="col">
+            <img width="100%" height="424px" src="imageView.do?com_num=${companyVO.com_num}&com_type=2">
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-6">
             <h3>남은 시간</h3>
@@ -76,7 +81,13 @@
             <span>${companyVO.com_part}</span>
         </div>
     </div>
+    <div class="row mt-4">
+        <div class="col">
+            <h3>${companyVO.com_comTitle}</h3>
+            <span>${companyVO.com_comContent}</span>
+        </div>
 
+    </div>
     <sl-button href="comHome.do">홈으로</sl-button>
 </div>
 <script type="text/javascript"
