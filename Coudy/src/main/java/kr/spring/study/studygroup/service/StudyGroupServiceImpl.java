@@ -1,7 +1,6 @@
 package kr.spring.study.studygroup.service;
 
 import kr.spring.study.studygroup.dao.StudyGroupMapper;
-import kr.spring.study.studygroup.vo.StudyGroupReviewVO;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

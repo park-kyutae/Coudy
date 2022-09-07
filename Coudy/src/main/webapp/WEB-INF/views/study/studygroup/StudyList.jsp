@@ -12,20 +12,50 @@
 </head>
 <body>
 <div id="main">
-    <h1>get test</h1>
+    <h1>스터디 그룹</h1>
+    <form action="studygrouplist.do" id="search_form" method="get">
+        <ul class="search">
+            <li>
+                <select name="keyfield" id="keyfield">
+                    <option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
+                    <option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>ID+별명</option>
+                    <option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
+                    <option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>제목+내용</option>
+                </select>
+            </li>
+            <li>
+                <input type="search" name="keyword" id="keyword"
+                       value="${param.keyword}">
+            </li>
+            <li>
+                <input type="submit" value="찾기">
+                <input type="button" value="목록"
+                       onclick="location.href='studygrouplist.do'">
+            </li>
+        </ul>
+    </form>
+    <c:if test="${count == 0}">
+        <div>표시할 스터디 그룹이 없습니다.</div>
+    </c:if>
+    <c:if test="${count > 0}">
     <div class="row">
-    <c:forEach var="i" begin="1" end="5">
+    <c:forEach var="studygroup" items="${StudyGroupList}" begin="1" end="3">
             <div class="col-3">
-                <div class="card ma-2" style="width: 18rem;">
-                    <img src="https://i.pravatar.cc/64" class="card-img-top">
+                <div class="card ma-2 pa-3" style="width: 18rem;">
+                    <img width="200" src="https://i.pravatar.cc/64" class="card-img-top">
                     <div class="card-body">
+                        <p>${studygroup.study_num}</p>
                         <p class="card-text">스터디 방입니다.</p>
                     </div>
                 </div>
             </div>
     </c:forEach>
+        <c:if test="${!empty user}">
+            <button type="button" class="btn btn-primary" onclick="location.href='studygroupcreate.do'">생성하기</button>
+        </c:if>
     </div>
-    <button type="button" class="btn btn-primary" onclick="location.href='studygroupcreate.do'">생성하기</button>
+        <div class="align-center">${page}</div>
+    </c:if>
 </div>
 </body>
 </html>
