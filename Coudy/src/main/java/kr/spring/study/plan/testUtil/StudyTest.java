@@ -13,4 +13,9 @@ public class StudyTest {
         return new ArrayList<>(Arrays.asList(1, 999, 998, 997, 996, 995));
     }
 
+    public static boolean isStudyManager(int memNum) {
+        if (memNum ==1) {
+            return true;
+        } else return false;
+    }
 }

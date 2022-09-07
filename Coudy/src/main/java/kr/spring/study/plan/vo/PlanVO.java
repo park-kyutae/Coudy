@@ -9,7 +9,7 @@ import java.sql.Date;
 @EqualsAndHashCode
 @AllArgsConstructor
 public class PlanVO {
-    private Integer planNum;
+    private int planNum;
     private int studyNum;
     private String planContent;
     private String  planStartDate;

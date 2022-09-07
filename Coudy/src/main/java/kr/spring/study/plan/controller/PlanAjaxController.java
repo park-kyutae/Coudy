@@ -22,34 +22,37 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
-@RequestMapping("/study/plan")
+@RequestMapping("/study/plan/{studyNum}")
 @RequiredArgsConstructor
 public class PlanAjaxController {
     private final PlanService planService;
     private final MessageSource messageSource;
 
-    @PostMapping("/createPlan")
-    public Object createPlan(@Login Integer mem_num, @Validated @ModelAttribute CreatePlanForm form, BindingResult result,Locale locale) throws ParseException {
+    @PostMapping("/create")
+    public Object createPlan(@Login Integer mem_num, @Validated @ModelAttribute CreatePlanForm form,
+                             BindingResult result, Locale locale, @PathVariable Integer studyNum) throws ParseException {
         log.info("Call PlanAjaxController.createPlan --- Variable = form = {}", form);
         log.info("Call PlanAjaxController.createPlan --- Variable = result = {}", result.getAllErrors());
+        //일정 삭제할 권한 있는지 검사 >> 인터셉터에서 처리?aop
+
 
         if (!result.hasErrors()) {
             if (isInvalidDate(form.getPlanStartDate(), form.getPlanEndDate())) {
                 result.reject("laterThanStart");
-                return getErrorMessages(result,locale);
+                return getErrorMessages(result, locale);
             }
-            int studyNum = StudyTest.getStudyNum();
             PlanVO planVO = new PlanVO(studyNum, form.getPlanContent(), form.getPlanStartDate(),
                     form.getPlanEndDate(), form.getPlanColor(), mem_num, form.isPlanIsShared());
             planService.createPlan(planVO);
         }
 
-        return getErrorMessages(result,locale);
+        return getErrorMessages(result, locale);
     }
 
 
-    @PostMapping("/updatePlan")
-    public Object updatePlan(@Login Integer mem_num, @Validated @ModelAttribute UpdatePlanForm form, BindingResult result,Locale locale) throws ParseException {
+    @PostMapping("/update")
+    public Object updatePlan(@Login Integer mem_num, @Validated @ModelAttribute UpdatePlanForm form,
+                             BindingResult result, Locale locale, @PathVariable Integer studyNum) throws ParseException {
         log.info("Call PlanAjaxController.updatePlan --- Variable = form = {}", form);
         log.info("Call PlanAjaxController.updatePlan --- Variable = result.getAllErrors() = {}", result.getAllErrors());
 
@@ -60,7 +63,6 @@ public class PlanAjaxController {
                 return getErrorMessages(result, locale);
             }
 
-            int studyNum = StudyTest.getStudyNum();
             PlanVO planVO = new PlanVO(form.getPlanNum(), studyNum, form.getPlanContent(), form.getPlanStartDate(),
                     form.getPlanEndDate(), form.getPlanColor(), mem_num, form.isPlanIsCompleted(), form.isPlanIsShared());
             planService.updatePlan(planVO);
@@ -68,39 +70,46 @@ public class PlanAjaxController {
         return getErrorMessages(result, locale);
     }
 
-    @PostMapping("/deletePlan")
-    public void deletePlan(@Login Integer mem_num, @RequestParam Integer planNum) {
+    @PostMapping("/delete")
+    public Map<String,String> deletePlan(@Login Integer mem_num, @RequestParam Integer planNum, @PathVariable Integer studyNum) {
         log.info("Call PlanAjaxController.deletePlan --- Variable = mem_num = {}", mem_num);
-        int studyNum = StudyTest.getStudyNum();
         planService.deletePlan(planNum);
 
+        //검증 여부따라 result값 바꾸기 + jsp에서 오류 처리
+        return Map.of("result", "success");
     }
 
     @GetMapping("/findPlans")
-    public List<PlanVO> findPlans(@Login Integer mem_num,
-                                  @RequestParam Map<String, String> map) {
-        int studyNum = StudyTest.getStudyNum();
-        List<PlanVO> plans = planService.findPlans(studyNum, map.get("thisYearMonth"));
+    public List<FindPlanForm> findPlans(@Login Integer mem_num,
+                                        @RequestParam Map<String, String> map, @PathVariable Integer studyNum) {
+        //일정 추가/삭제/수정 보여지게 할건지 is_owned,is_team_manager 필드 추가해서 ajax에서 처리
+//        List<PlanVO> plans = planService.findPlans(studyNum, map.get("thisYearMonth"));
+        List<FindPlanForm> plans = planService.findPlans(studyNum, map.get("thisYearMonth")).stream()
+                .map(x -> new FindPlanForm(x.getPlanNum(), x.getStudyNum(), x.getPlanContent(), x.getPlanStartDate(),
+                        x.getPlanEndDate(), x.getPlanColor(), x.getMemNum(), x.isPlanIsCompleted(), x.isPlanIsShared()))
+                .collect(Collectors.toList());
+
+
         log.info("Call PlanAjaxController.findPlans --- Variable = plans = {}", plans);
         return plans;
     }
 
 
-    private List<JsonResult> getErrorMessages(BindingResult result,Locale locale) {
+    private List<JsonResult> getErrorMessages(BindingResult result, Locale locale) {
         List<JsonResult> jsonResults = new ArrayList<>();
-        for (ObjectError error: result.getAllErrors()) {
+        for (ObjectError error : result.getAllErrors()) {
             String field = error instanceof FieldError ? ((FieldError) error).getField() : "globalError";
             jsonResults.add(new JsonResult(error.getObjectName(), messageSource.getMessage(error, locale), field, error.getCode()));
         }
         return jsonResults;
     }
 
-    private boolean isInvalidDate(String startDateStr,String endDateStr) throws ParseException  {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date startDate = format.parse(startDateStr);
-            Date endDate = format.parse(endDateStr);
-            log.info("Call PlanAjaxController.isInvalidDate --- Variable = startDate = {}", startDate);
-            log.info("Call PlanAjaxController.isInvalidDate --- Variable = endDate = {}", endDate);
-            return endDate.before(startDate);
+    private boolean isInvalidDate(String startDateStr, String endDateStr) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date startDate = format.parse(startDateStr);
+        Date endDate = format.parse(endDateStr);
+        log.info("Call PlanAjaxController.isInvalidDate --- Variable = startDate = {}", startDate);
+        log.info("Call PlanAjaxController.isInvalidDate --- Variable = endDate = {}", endDate);
+        return endDate.before(startDate);
     }
 }
