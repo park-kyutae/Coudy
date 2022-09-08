@@ -25,6 +25,11 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/studygroup/StudyDetail.jsp"/>
 	</definition>
+	<definition name="CreateApplication" extends="main">
+		<put-attribute name="title" value="스터디그룹 신청서"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/application/ApplicationWrite.jsp"/>
+	</definition>
 
 </tiles-definitions>
 

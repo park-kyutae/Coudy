@@ -21,8 +21,8 @@
 				<button class="btn btn-info" onclick="location.href='updatestudygroup.do?study_num=${studygroup.study_num}'">수정하기</button>
 				<button class="btn btn-danger" onclick="location.href='deletestudygroup.do?study_num=${studygroup.study_num}'">삭제하기</button>
 			</c:if>
-			<c:if test="${!empty user && studygroup.mem_num == user.mem_num}">
-				<button class="btn btn-danger" onclick="location.href='deletestudygroup.do?study_num=${studygroup.study_num}'">삭제하기</button>
+			<c:if test="${!empty user && studygroup.mem_num != user.mem_num}">
+				<button class="btn btn-info" onclick="location.href='applicationcreate.do'">신청하기</button>
 			</c:if>
 		</div>
 	</div>
