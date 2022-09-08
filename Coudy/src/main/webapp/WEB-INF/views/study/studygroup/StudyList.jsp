@@ -41,8 +41,8 @@
     <div class="row">
     <c:forEach var="studygroup" items="${list}">
                <!--begin="1" end="3">-->
-            <div class="col-3" onclick="location.href='studygroupDetail.do'">
-                <div class="card ma-2 pa-3" style="width: 18rem;">
+            <div class="col-3" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">
+                <div class="card ma-2 pa-3">
                     <img src="https://i.pravatar.cc/64" class="card-img-top">
                     <div class="card-body">
                         <p>${studygroup.name}</p>

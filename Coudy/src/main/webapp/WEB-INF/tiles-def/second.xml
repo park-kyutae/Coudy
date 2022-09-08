@@ -20,6 +20,11 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/studygroup/StudyModify.jsp"/>
 	</definition>
+	<definition name="DetailStudyGroup" extends="main">
+		<put-attribute name="title" value="스터디그룹 상세페이지"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/studygroup/StudyDetail.jsp"/>
+	</definition>
 
 </tiles-definitions>
 
