@@ -20,7 +20,6 @@ public class StudyGroupVO {
     //private String pic;//파일명
     private int limit;
     private String purpose;
-    //private String picname;//프로필사진 이름
     private Date limit_date; //등록일
     private Date start_date; //시작일
     private Date end_date; //종료일
