@@ -19,10 +19,19 @@ public class TodoAjaxController {
     private final TodoService todoService;
 
     @PostMapping("/create")
-    public Object createTodo(@Login Integer memNum, @ModelAttribute CreateTodoForm form, BindingResult result, @PathVariable Integer studyNum) {
+    public Object createTodo(@Login Integer memNum, @RequestBody CreateTodoForm form, BindingResult result, @PathVariable Integer studyNum) {
         log.info("Call TodoAjaxController.createTodo --- Variable = form = {}", form);
 
         todoService.createTodo(new TodoVO(form.getTodoContent(),memNum,studyNum));
+
+        //삭제
+        return result.getAllErrors();
+    }
+    @PostMapping("/nextStep")
+    public Object nextStepTodo(@Login Integer memNum, @RequestBody NextStepTodo form, BindingResult result, @PathVariable Integer studyNum) {
+        log.info("Call TodoAjaxController.nextStepTodo --- Variable = form = {}", form);
+
+        todoService.nextStepTodo(new TodoVO(form.getTodoNum(), form.getProgress()));
 
         //삭제
         return result.getAllErrors();

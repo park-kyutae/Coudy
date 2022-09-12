@@ -10,6 +10,7 @@ import java.util.List;
 public interface TodoService {
 
     void createTodo(TodoVO todoVO);
+    void nextStepTodo(TodoVO todoVO);
 
     List<TodoVO> selectTodos(Integer memNum, Integer studyNum);
 }

@@ -21,6 +21,11 @@ public class TodoVO {
         this.memNum = memNum;
         this.studyNum = studyNum;
     }
+    public TodoVO(int todoNum, int todoProgress) {
+        this.todoNum = todoNum;
+        this.todoProgress = todoProgress;
+    }
+    public TodoVO(int )
     //매퍼 생성자
     public TodoVO(int todoNum, String todoContent, int todoProgress) {
         this.todoNum = todoNum;

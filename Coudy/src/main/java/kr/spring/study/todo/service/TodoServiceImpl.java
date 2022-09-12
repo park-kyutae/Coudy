@@ -28,4 +28,9 @@ public class TodoServiceImpl implements TodoService {
     public List<TodoVO> selectTodos(Integer memNum, Integer studyNum) {
         return todoMapper.selectTodos(memNum, studyNum);
     }
+
+    @Override
+    public void nextStepTodo(TodoVO todoVO) {
+        todoMapper.updateProgressTodo(todoVO);
+    }
 }

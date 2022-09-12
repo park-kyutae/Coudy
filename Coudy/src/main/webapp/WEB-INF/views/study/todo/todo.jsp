@@ -11,12 +11,37 @@
 </head>
 <script>
     $(function () {
+
+        jQuery.fn.serializeObject = function() {
+            var obj = null;
+            try {
+                if(this[0].tagName && this[0].tagName.toUpperCase() == "FORM" ) {
+                    var arr = this.serializeArray();
+                    if(arr){ obj = {};
+                        jQuery.each(arr, function() {
+                            if (this.value == 'on') {
+                                obj[this.name] = 'true';
+                            }else if (this.value == 'off'){
+                                obj[this.name] = 'false';
+                            }else {
+                                obj[this.name] = this.value;
+                            }
+                        });
+
+                    }
+                }
+            }catch(e) {
+                alert(e.message);
+            }finally {}
+            return obj;
+        }
         $('#create_submit').click(function () {
 
             $.ajax({
                 url:$(location).attr('pathname')+'/create',
-                type: 'POST',
-                data: $('#create_todo_form').serialize(),
+                type: 'post',
+                data: JSON.stringify($('#create_todo_form').serializeObject()),
+                contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
@@ -29,7 +54,7 @@
             });
         });
         function findTodos() {
-            const div_1 = '<div class="row todo"><div class="col"><span>'
+            const div_1 = '<div class="row todo"><div class="col" ><input type="checkbox" class="before_check"><span> '
             const div_2 = '</span></div></div>'
             $.ajax({
                 url:$(location).attr('pathname')+'/findTodos',
@@ -41,7 +66,6 @@
                     console.log(param)
                     reset_todos();
                     for (let x of param) {
-
                         if (x.todoProgress == 0) {
                             $('#before_start_todo').append(
                                 div_1+x.todoContent+div_2
@@ -57,11 +81,23 @@
                         }
 
                     }
+                    add_check_event();
                 },
                 error: function () {
                     alert('error');
                 }
             });
+        }
+        function update_todo(param) {
+
+        }
+        function add_check_event() {
+            $('.before_check').change(function () {
+                if ($('.before_check').is(":checked")) {
+                    update_todo()
+                }
+
+            })
         }
         function reset_todos() {
             $('.todo').remove();

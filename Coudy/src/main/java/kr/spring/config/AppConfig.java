@@ -29,7 +29,7 @@ public class AppConfig implements WebMvcConfigurer {
         //TODO 로그인 기능 완성 시 삭제
         registry.addInterceptor(new LoginTestInterceptor())
                 .order(2)
-                .addPathPatterns("/study/plan");
+                .addPathPatterns("/study/plan/**");
     }
 
     @Override

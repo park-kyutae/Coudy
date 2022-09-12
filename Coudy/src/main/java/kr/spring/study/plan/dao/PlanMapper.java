@@ -15,7 +15,9 @@ public interface PlanMapper {
             "and PLAN_START_DATE <= LAST_DAY(TO_DATE(#{thisYearMonth},'YYYY-MM-DD'))")
     List<PlanVO> selectPlansByStudyNum(Integer studyNum, String thisYearMonth);
 
-    @Update("update STUDY_PLAN set PLAN_CONTENT =#{planContent},PLAN_START_DATE=TO_Date(#{planStartDate},'YYYY-MM-DD'),PLAN_END_DATE=TO_Date(#{planEndDate},'YYYY-MM-DD'),PLAN_COLOR=#{planColor},PLAN_IS_COMPLETED=#{planIsCompleted},PLAN_IS_SHARED=#{planIsShared} where plan_num = #{planNum}")
+    @Update("update STUDY_PLAN set PLAN_CONTENT=#{planContent},PLAN_START_DATE=TO_Date(#{planStartDate},'YYYY-MM-DD')," +
+            "PLAN_END_DATE=TO_Date(#{planEndDate},'YYYY-MM-DD'),PLAN_COLOR=#{planColor},PLAN_IS_COMPLETED=#{planIsCompleted},PLAN_IS_SHARED=#{planIsShared} " +
+            "where plan_num = #{planNum}")
     void updatePlan(PlanVO planVO);
 
     @Insert("insert into STUDY_PLAN (PLAN_NUM, STUDY_NUM, PLAN_CONTENT, PLAN_START_DATE, PLAN_END_DATE, PLAN_COLOR, MEM_NUM,PLAN_IS_SHARED)values (STUDY_PLAN_SEQ.nextval,#{studyNum},#{planContent},TO_Date(#{planStartDate},'YYYY-MM-DD')," +

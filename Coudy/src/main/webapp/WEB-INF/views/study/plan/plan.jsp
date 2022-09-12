@@ -27,6 +27,29 @@
         let plans
         let init_plan_color = $('.init_color').attr('name')
 
+        jQuery.fn.serializeObject = function() {
+            var obj = null;
+            try {
+                if(this[0].tagName && this[0].tagName.toUpperCase() == "FORM" ) {
+                    var arr = this.serializeArray();
+                    if(arr){ obj = {};
+                        jQuery.each(arr, function() {
+                            if (this.value == 'on') {
+                                obj[this.name] = 'true';
+                            }else if (this.value == 'off'){
+                                obj[this.name] = 'false';
+                            }else {
+                                obj[this.name] = this.value;
+                            }
+                            });
+
+                    }
+                }
+            }catch(e) {
+                alert(e.message);
+            }finally {}
+            return obj;
+        }
         function reset_validation() {
             $('.invalid-feedback').text('')
             $('.global_validation').text('')
@@ -93,8 +116,8 @@
             }
 
             function render_dates() {
-                let current_month_div_1 = "<div class='current_month border day col' style='cursor: pointer' id='";
-                let div_1 = "<div class='border day col' style='cursor: pointer' id='";
+                let current_month_div_1 = "<div class='current_month border day col' style='cursor: pointer;width:14%;'  id='";
+                let div_1 = "<div class='border day col' style='cursor: pointer; width:14%;' id='";
                 let current_month_div_2 = "'><div class='row '><div class='col '>";
                 let div_2 = "'> <div class='row '><div class='col text-secondary'>";
                 let div_3 = "</div></div></div>";
@@ -231,9 +254,7 @@
             $.ajax({
                 url: $(location).attr('pathname')+'/findPlans',
                 type: 'get',
-                data: {
-                    "thisYearMonth": year + "-" + real_month + "-01"
-                },
+                data: 'thisYearMonth='+year + "-" + real_month + "-01",
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
@@ -268,9 +289,9 @@
                     const plan_height = '25px';
 
                     const div_1 = "<div class='row plan' id='";
-                    let div_2 = "'><div class='col' style='cursor: pointer; height:" + plan_height + ";background-color:#";
-                    let div_3 = "'><span class='text-black  fs-6 fst-italic'>";
-                    const div_4 = "</span><div></div>"
+                    let div_2 = "'><div class='text-truncate text-black  fs-6 fst-italic' style='cursor: pointer; height:" + plan_height + ";background-color:#";
+                    let div_3 = "'>";
+                    const div_4 = "</div></div>"
                     let empty_div = '<div class="row empty" ><div class="col" style="height:' + plan_height + '"></div></div>';
 
 
@@ -445,11 +466,14 @@
 
 
         $('#create_submit').click(function () {
-            reset_validation();
+            console.log(JSON.stringify($('#create_plan_form').serializeObject()))
+
+                reset_validation();
             $.ajax({
-                url: $(location).attr('pathname')+'/createPlan',
+                url: $(location).attr('pathname')+'/create',
                 type: 'post',
-                data: $('#create_plan_form').serialize(),
+                data: JSON.stringify($('#create_plan_form').serializeObject()),
+                contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
@@ -479,9 +503,10 @@
         $('#update_submit').click(function () {
             reset_validation();
             $.ajax({
-                url: $(location).attr('pathname')+'/updatePlan',
+                url: $(location).attr('pathname')+'/update',
                 type: 'post',
-                data: $('#update_plan_form').serialize(),
+                data: JSON.stringify($('#update_plan_form').serializeObject()),
+                contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
@@ -498,7 +523,7 @@
                         }
                     } else {
                         find_plans();
-                        hide_create_modal();
+                        hide_update_modal();
                     }
 
                 },
@@ -512,9 +537,10 @@
             $.ajax({
                 url: $(location).attr('pathname')+'/delete',
                 type: 'post',
-                data: {
-                    'planNum': $('#update_plan_num').val()
-                },
+                data: JSON.stringify({
+                    "planNum":$('#update_plan_num').val()
+                }),
+                contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
@@ -633,7 +659,7 @@
                     </c:forEach>
 
                 </div>
-                <div class="col border border-1">
+                <div class="col  border border-1">
                     <div class="calender">
                         <div class="row" id="week1" style="min-height: 80px"></div>
                         <div class="row" id="week2" style="min-height: 80px"></div>
