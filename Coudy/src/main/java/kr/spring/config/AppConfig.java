@@ -32,7 +32,10 @@ public class AppConfig implements WebMvcConfigurer{
 		registry.addInterceptor(
 				    new LoginCheckInterceptor())
 		        .addPathPatterns("/member/myPage.do")
+		        .addPathPatterns("/member/update.do")
+		        .addPathPatterns("/member/delete.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
+				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
 				.addPathPatterns("/techblog/techblogDelete.do");
 		

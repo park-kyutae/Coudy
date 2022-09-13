@@ -16,12 +16,12 @@
 	href="${pageContext.request.contextPath }/css/style_ks.css">
 
 
-<h2>로그인</h2>
+<h2>회원탈퇴 확인</h2>
 
 
 
 <div class="align_center container">
-	<form:form class="row g-3 needs-validation" id="login_form" action="login.do" modelAttribute="memberVO">
+	<form:form class="row g-3 needs-validation" id="delete_form" action="delete.do" modelAttribute="memberVO">
 		<div class="form-floating mb-3">
 			<form:input path="id" class="form-control left-input"
 				placeholder="id" />
