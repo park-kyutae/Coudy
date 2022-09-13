@@ -30,7 +30,7 @@
 			<div class="valid-feedback">Looks good!</div>
 		</div>
 
-		<div class="form-floating mb-3">
+		<div class="form-floating mb-3">  
 			<form:password path="passwd" class="form-control"
 				placeholder="passwd" />
 			<form:errors path="passwd" cssClass="error-color" />
