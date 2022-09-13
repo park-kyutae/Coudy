@@ -12,6 +12,9 @@
     span{
         font-size: 15pt;
     }
+    pre{
+        font-size: 15pt;
+    }
 </style>
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.82/dist/themes/light.css"/>
@@ -70,24 +73,59 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <h3>남은 시간</h3>
-            <span style="color: crimson" id="remain-time"></span>
+            <h2>남은 시간</h2>
+            <span style="color: red" id="remain-time"></span>
             <input type="hidden" value="${companyVO.com_schedule}" id="schedule">
 <%--            <span>${companyVO.com_schedule} 까지</span>--%>
         </div>
         <div class="col-sm-6">
-            <h3>모집 부문</h3>
+            <h2>모집 부문</h2>
             <span>${companyVO.com_part}</span>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col">
-            <h3>${companyVO.com_comTitle}</h3>
-            <span>${companyVO.com_comContent}</span>
+            <h4>${companyVO.com_comTitle}</h4>
+            <pre style="font-size: 15pt">${companyVO.com_comContent}</pre>
         </div>
 
     </div>
+    <div class="row mt-4">
+        <div class="col">
+            <h2>근무지</h2>
+            <span>${companyVO.com_address1} ${companyVO.com_address2}</span>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <h2>채용절차</h2>
+        <div class="col-md-3 mt-4 px-4 col-6">
+            <svg class="bd-placeholder-img rounded-circle" width="160" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 서류전형" preserveAspectRatio="xMidYMid slice" focusable="false"><title>서류전형</title><rect width="100%" height="100%" fill="#d3d3d3"></rect><text x="30%" y="50%" fill="#000" dy=".3em" style="font-size: 15pt" class="border-0">서류전형</text></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="ms-lg-4 bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+        </div>
+        <div class="col-md-3 mt-4 px-4 col-6">
+            <svg class="bd-placeholder-img rounded-circle" width="160" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 1차면접" preserveAspectRatio="xMidYMid slice" focusable="false"><title>1차면접</title><rect width="100%" height="100%" fill="#d3d3d3"></rect><text x="30%" y="50%" fill="#000" dy=".3em" style="font-size: 15pt" class="border-0">1차면접</text></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="ms-lg-4 bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+        </div>
+        <div class="col-md-3 mt-4 px-4 col-6">
+            <svg class="bd-placeholder-img rounded-circle" width="160" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 2차면접" preserveAspectRatio="xMidYMid slice" focusable="false"><title>2차면접</title><rect width="100%" height="100%" fill="#d3d3d3"></rect><text x="30%" y="50%" fill="#000" dy=".3em" style="font-size: 15pt" class="border-0">2차면접</text></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="ms-lg-4 bi bi-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+        </div>
+        <div class="col-md-3 mt-4 px-4 col-6">
+            <svg class="bd-placeholder-img rounded-circle" width="160" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 최종합격" preserveAspectRatio="xMidYMid slice" focusable="false"><title>최종합격</title><rect width="100%" height="100%" fill="#d3d3d3"></rect><text x="30%" y="50%" fill="#000" dy=".3em" style="font-size: 15pt" class="border-0">최종합격</text></svg>
+        </div>
+        <form id="scrap_num">
+            <input type="hidden" value="${companyVO.com_num}" id="com_num">
+        </form>
+    </div>
+
     <sl-button href="comHome.do">홈으로</sl-button>
 </div>
 <script type="text/javascript"
-        src="${pageContext.request.contextPath}/js/company.js"></script>
+        src="${pageContext.request.contextPath}/js/company1.js"></script>

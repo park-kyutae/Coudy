@@ -1,6 +1,7 @@
 package kr.spring.company.service;
 
 import kr.spring.company.dao.CompanyMapper;
+import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,10 @@ public class CompanyServiceImpl implements CompanyService{
     @Override
     public void updateHit(Integer com_num) {
         companyMapper.updateHit(com_num);
+    }
+
+    @Override
+    public void insertScrap(CompanyScrapVO companyScrapVO) {
+        companyMapper.insertScrap(companyScrapVO);
     }
 }

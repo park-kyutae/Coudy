@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script type="text/javascript"
@@ -25,21 +26,21 @@
     }
 </style>
 <div class="">
-<div class="align-center">
-    <h2>채용 공고</h2>
-</div>
-<c:if test="${!empty user}">
+    <div class="align-center">
+        <h2>채용 공고</h2>
+    </div>
+    <c:if test="${!empty user}">
     <div>
         <input type="button" class="btn btn-secondary" value="공고쓰기"
                onclick="location.href='${pageContext.request.contextPath}/company/insertCom.do'"/>
     </div>
-</c:if>
-<c:if test="${count == 0}">
+    </c:if>
+    <c:if test="${count == 0}">
     <div class="result-display">표시할 게시물이 없습니다.</div>
-</c:if>
-<c:if test="${count > 0}">
+    </c:if>
+    <c:if test="${count > 0}">
     <div class="py-5 text-center text-white"
-         style="background-image: url('https://static.pingendo.com/cover-moon.svg');background-size:cover;background-position:center top;">
+         style="background-image: url('https://img.freepik.com/premium-photo/office-space-for-working-with-computers-office-equipment-3d-rendering_537132-492.jpg?w=2000');background-size:cover;background-position:center bottom;">
         <div class="container">
             <div class="row">
                 <div class="mx-auto p-4 col-md-7">
@@ -49,32 +50,7 @@
             </div>
         </div>
     </div>
-    <div doz_type="row" doz_grid="12" doz_flexible="N" class="doz_row">
-        <div doz_type="grid" doz_grid="6" doz_flexible="Y" class="col-dz col-dz-6">
-            <div doz_type="row" doz_grid="6" doz_order="1" doz_flexible="N" class="doz_row">
-                <div doz_type="grid" doz_grid="6" doz_flexible="N" class="col-dz col-dz-6">
-                    <div doz_type="widget" id="w202205249bba67ba77056">
-                        <div class="_widget_data " data-widget-name="텍스트" data-widget-type="text"
-                             data-widget-anim="none" data-widget-anim-duration="0.7" data-widget-anim-delay="0"
-                             data-widget-parent-is-mobile="N">
-                            <div doz_type="text"
-                                 class="widget _text_wrap widget_text_wrap fr-view  default_padding "
-                                 id="text_w202205249bba67ba77056">
-
-                                <div class="text-table ">
-                                    <div><h3
-                                            style="font-size:36px; margin:0; font-weight:bold; line-height:1.4;">
-                                        아임웹은<br>온라인 비즈니스 성공을 위한<br>가장 확실한 도구예요</h3></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <c:forEach var="company" items="${list}">
                 <div class="col-6 col-lg-3 p-4 border">
@@ -98,25 +74,26 @@
         </div>
     </div>
 
-</c:if>
-<div doz_type="row" doz_grid="6" doz_order="2" doz_flexible="N" class="doz_row">
-    <div doz_type="row" doz_grid="5" doz_order="2" doz_flexible="N" class="doz_row">
-        <div doz_type="grid" doz_grid="5" doz_flexible="N" class="col-dz col-dz-5">
-            <div doz_type="widget" id="w20220525f59f544e93b1e">
-                <div class="_widget_data " data-widget-name="텍스트" data-widget-type="text"
-                     data-widget-anim="none" data-widget-anim-duration="0.7"
-                     data-widget-anim-delay="0" data-widget-parent-is-mobile="N">
-                    <div doz_type="text" class="widget _text_wrap widget_text_wrap fr-view "
-                         id="text_w20220525f59f544e93b1e">
+    </c:if>
+    <div doz_type="row" doz_grid="6" doz_order="2" doz_flexible="N" class="doz_row">
+        <div doz_type="row" doz_grid="5" doz_order="2" doz_flexible="N" class="doz_row">
+            <div doz_type="grid" doz_grid="5" doz_flexible="N" class="col-dz col-dz-5">
+                <div doz_type="widget" id="w20220525f59f544e93b1e">
+                    <div class="_widget_data " data-widget-name="텍스트" data-widget-type="text"
+                         data-widget-anim="none" data-widget-anim-duration="0.7"
+                         data-widget-anim-delay="0" data-widget-parent-is-mobile="N">
+                        <div doz_type="text" class="widget _text_wrap widget_text_wrap fr-view "
+                             id="text_w20220525f59f544e93b1e">
 
-                        <div class="text-table ">
-                            <div><p><span style="color: rgb(0, 0, 0);"><strong><span
-                                    style="font-size: 24px;">편리한 비즈니스 운영을 위한 완벽한 기능</span></strong></span>
-                            </p>
-                                <p style="line-height: 1;"><br></p>
-                                <p style="line-height: 2;"><span
-                                        style="color: rgb(144, 144, 144); font-size: 18px;">아임웹 쇼핑 기능은 비즈니스의 시작부터 완벽한 운영을 도와줍니다. 편리한 상품관리와 간편결제는 기본, 네이버쇼핑, 카카오 쇼핑하우 등 쇼핑몰 운영에 필요한 모든 기능을 한 곳에서 이용해보세요.</span>
-                                </p></div>
+                            <div class="text-table ">
+                                <div><p><span style="color: rgb(0, 0, 0);"><strong><span
+                                        style="font-size: 24px;">편리한 비즈니스 운영을 위한 완벽한 기능</span></strong></span>
+                                </p>
+                                    <p style="line-height: 1;"><br></p>
+                                    <p style="line-height: 2;"><span
+                                            style="color: rgb(144, 144, 144); font-size: 18px;">아임웹 쇼핑 기능은 비즈니스의 시작부터 완벽한 운영을 도와줍니다. 편리한 상품관리와 간편결제는 기본, 네이버쇼핑, 카카오 쇼핑하우 등 쇼핑몰 운영에 필요한 모든 기능을 한 곳에서 이용해보세요.</span>
+                                    </p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,5 +101,8 @@
         </div>
     </div>
 </div>
+<form id="scrap_num">
+    <input type="hidden" value="${companyVO.com_num}" id="com_num">
+</form>
 <script type="text/javascript"
-        src="${pageContext.request.contextPath}/js/company.js"></script>
+        src="${pageContext.request.contextPath}/js/company1.js"></script>

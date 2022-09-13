@@ -1,11 +1,31 @@
 const scrap = {
    init: function() {
       $(document).on('click', '.scrap_star', function() {
+         alert('엥 못읽냐?');
          if(confirm('스크랩 하시겠습니까?')){
-            console.log('scrap');
-            $(this).children().attr('d','M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z')
-            $(this).removeClass('scrap_star');
-            $(this).addClass('unscrap_star');
+            com_num=$('#com_num').val();
+            $.ajax({
+               url:'scrap.do',
+               type:'post',
+               dataType:'json',
+               data:com_num,
+               cache:false,
+               timeout:30000,
+               success:function (param) {
+                  if(param.result=='logout'){
+                     alert('로그인 후 이용가능');
+                  }else if(param.result=='success'){
+                     console.log(com_num);
+                     console.log('scrap');
+                     $(this).children().attr('d','M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z')
+                     $(this).removeClass('scrap_star');
+                     $(this).addClass('unscrap_star');
+                  }
+               },
+               error:function () {
+                  alert('네트워크오류발생');
+               }
+            });
          }else {
             return false;
          }
@@ -21,6 +41,7 @@ const scrap = {
 const scrap_btn = {
    init: function() {
       $(document).on('click', '.scrap_btn', function() {
+         alert('엥 못읽냐?');
          if(confirm('스크랩 하시겠습니까?')){
             console.log('scrap');
             $(this).children().children().attr('d','M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z')

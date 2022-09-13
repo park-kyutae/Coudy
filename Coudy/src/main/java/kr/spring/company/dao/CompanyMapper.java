@@ -1,5 +1,6 @@
 package kr.spring.company.dao;
 
+import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -24,4 +25,7 @@ public interface CompanyMapper {
 
     @Update("UPDATE com_info SET com_hit = com_hit+1 WHERE com_num=#{com_num}")
     public void updateHit(Integer com_num);
+
+    @Insert("INSERT INTO com_scrap (scrap_num,mem_num,com_num) VALUES (com_scrap_seq.nextval,#{mem_num},#{com_num})")
+    public void insertScrap(CompanyScrapVO companyScrapVO);
 }

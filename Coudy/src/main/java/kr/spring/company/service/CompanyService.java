@@ -1,5 +1,6 @@
 package kr.spring.company.service;
 
+import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface CompanyService {
     public void insertCompany(CompanyVO companyVO);
     public CompanyVO selectCompany(Integer com_num);
     public void updateHit(Integer com_num);
+
+    public void insertScrap(CompanyScrapVO companyScrapVO);
 }
