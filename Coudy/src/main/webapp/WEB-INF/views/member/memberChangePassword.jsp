@@ -26,7 +26,7 @@
 		<div class="form-floating mb-3">
 			<form:password path="now_passwd" class="form-control left-input"
 				placeholder="now_passwd" />
-			<form:errors path="now_passwd" cssClass="error-color" />
+			<%-- <form:errors path="now_passwd" cssClass="error-color" /> --%>
 			<label for="now_passwd">현재 비밀번호</label> 
 			<div class="valid-feedback">Looks good!</div>
 		</div>
@@ -34,7 +34,7 @@
 		<div class="form-floating mb-3">
 			<form:password path="passwd" class="form-control"
 				placeholder="passwd" />
-			<form:errors path="passwd" cssClass="error-color" />
+			<%-- <form:errors path="passwd" cssClass="error-color" /> --%>
 			<label for="passwd">새 비밀번호</label>
 			<div class="valid-feedback">Looks good!</div>
 		</div>
