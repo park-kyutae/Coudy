@@ -2,7 +2,9 @@ package kr.spring.study.studygroup.controller;
 
 import kr.spring.member.vo.MemberVO;
 import kr.spring.study.studygroup.service.StudyGroupService;
+import kr.spring.study.studygroup.service.StudyUserService;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
+import kr.spring.study.studygroup.vo.StudyUserVO;
 import kr.spring.util.PagingUtil;
 import kr.spring.util.StringUtil;
 import org.slf4j.Logger;
@@ -30,6 +32,9 @@ public class StudyGroupController {
 
     @Autowired
     private StudyGroupService studyGroupService;
+
+    @Autowired
+    private StudyUserService studyUserService;
 
     //자바빈초기화
     @ModelAttribute
@@ -88,7 +93,8 @@ public class StudyGroupController {
 
 
     @PostMapping("/study/studygroupcreate.do")
-    public String submit(@Valid StudyGroupVO studyGroupVO, BindingResult result, HttpServletRequest request,
+    public String submit(@Valid StudyGroupVO studyGroupVO, @Valid StudyUserVO studyUserVO,
+                         BindingResult result, HttpServletRequest request,
                          HttpSession session, Model model) {
 
         logger.debug("<<스터디 그룹 저장>> : " + studyGroupVO);
@@ -105,6 +111,8 @@ public class StudyGroupController {
 
         //글쓰기
         studyGroupService.insertStudyGroup(studyGroupVO);
+        studyUserVO.setStudy_num(studyUserVO.getStudy_num());
+        studyUserService.insertStudyUser(studyUserVO);
 
         //View에 표시할 메시지
         model.addAttribute(

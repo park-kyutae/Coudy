@@ -42,7 +42,7 @@ logging:
     '[kr.spring]': debug
     
 server:
-  port: 8088
+  port: 8678
   servlet:
     context-path: /
     encoding:

@@ -13,7 +13,11 @@
 <body>
 <div id="container">
     <h1>스터디 그룹 신청하기</h1>
+    <span>${studygroup.name}</span>
     <form class="row g-3 needs-validation" method="post" action="applicationcreate.do">
+        <input type="hidden" id="study_num" name="study_num" value="${studygroup.study_num}">
+        <input type="hidden" id="registered" name="registered" value="N">
+        <input type="hidden" id="is_group_manager" name="is_group_manager" value="N">
         <div class="mb-3 col-lg-12">
             <label for="career" class="form-label">경력</label>
             <input type="text" class="form-control" id="career" name="career" aria-describedby="aboutName" required>
@@ -30,7 +34,7 @@
         </div>
         <div class="mb-3">
             <label for="request" class="form-label">스터디 참여시 요구사항</label>
-            <input type="text" class="form-control" id="request" name="description" required>
+            <input type="text" class="form-control" id="request" name="request" required>
             <div class="invalid-feedback">
                 스터디를 설명해 주세요.
             </div>
