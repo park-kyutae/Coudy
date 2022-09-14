@@ -13,7 +13,7 @@
 <body>
 <div id="main">
     <h1>스터디 그룹</h1>
-    <form action="studygrouplist.do" id="search_form" method="get">
+    <form action="studygrouplist.do" method="get">
         <ul class="search">
             <li>
                 <select name="keyfield" id="keyfield">
@@ -39,12 +39,13 @@
     </c:if>
     <c:if test="${count > 0}">
     <div class="row">
-    <c:forEach var="studygroup" items="${StudyGroupList}" begin="1" end="3">
-            <div class="col-3">
-                <div class="card ma-2 pa-3" style="width: 18rem;">
-                    <img width="200" src="https://i.pravatar.cc/64" class="card-img-top">
+    <c:forEach var="studygroup" items="${list}">
+               <!--begin="1" end="3">-->
+            <div class="col-3" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">
+                <div class="card ma-2 pa-3">
+                    <img src="https://i.pravatar.cc/64" class="card-img-top">
                     <div class="card-body">
-                        <p>${studygroup.study_num}</p>
+                        <p>${studygroup.name}</p>
                         <p class="card-text">스터디 방입니다.</p>
                     </div>
                 </div>

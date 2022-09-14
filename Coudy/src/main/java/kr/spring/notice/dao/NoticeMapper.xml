@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.notice.dao.NoticeMapper">  
+ 
+ 	<select id="selectRowCount" parameterType="map" resultType="integer">
+ 		SELECT 
+ 			COUNT(*)
+ 		FROM notice b JOIN member_detail m
+ 		ON b.mem_num = m.mem_num 
+ 		<where>
+ 			<if test="keyword != null and keyword != ''">
+ 				<if test="keyfield == 1">
+ 					b.notice_title LIKE '%' || #{keyword} || '%' <!-- LIKE : 포함되어 있는걸 검색 -->
+ 				</if>
+ 				<if test="keyfield==2">
+ 					m.id LIKE '%' || #{keyword} || '%' 
+ 				</if>
+ 				<if test="keyfield ==3">
+ 					b.notice_content LIKE '%' || #{keyword} || '%'
+ 				</if>
+ 				<if test="keyfield==4">
+ 					b.notice_title LIKE '%' || #{keyword} || '%' OR
+ 					b.notice_content LIKE '%' || #{keyword} || '%'
+ 				</if>
+ 			</if>
+ 		</where>
+  	</select>
+  	<select id="selectList" parameterType="map" resultType="noticeVO">
+  		SELECT
+  		*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			FROM(SELECT
+  					b.notice_num,
+  					<![CDATA[
+  					REPLACE(REPLACE(b.notice_title,'<','&lt;'),'>','&gt;') notice_title,
+  					]]>
+  					b.notice_hit,
+  					b.notice_filename,
+  					b.notice_reg_date,
+  					b.mem_num,
+  					m.id
+  				FROM notice b JOIN member_detail m
+  				ON b.mem_num=m.mem_num
+  				<where>
+		 			<if test="keyword != null and keyword != ''">
+		 				<if test="keyfield == 1">
+		 					b.notice_title LIKE '%' || #{keyword} || '%' <!-- LIKE : 포함되어 있는걸 검색 /  % : 뒤에 추가 검색 -->
+		 				</if>
+		 				<if test="keyfield==2">
+		 					m.id LIKE '%' || #{keyword} || '%'
+		 				</if>
+		 				<if test="keyfield ==3">
+		 					b.notice_content LIKE '%' || #{keyword} || '%'
+		 				</if>
+		 				<if test="keyfield==4">
+		 					b.notice_title LIKE '%' || #{keyword} || '%' OR
+		 					b.notice_content LIKE '%' || #{keyword} || '%'
+		 				</if>
+		 			</if>
+		 		</where>
+  				ORDER BY b.notice_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  
+  	<update id="updateNotice" parameterType="noticeVO">
+  		UPDATE notice SET
+	  		<if test="notice_filename != ''">
+	  		notice_uploadfile=#{notice_uploadfile},
+	  		notice_filename=#{notice_filename},
+	  		</if>
+	  		notice_title=#{notice_title},
+	  		notice_content=#{notice_content},
+	  		notice_ip=#{notice_ip},
+	  		notice_modify_date=SYSDATE
+  		WHERE notice_num=#{notice_num}
+  	</update>
+  	
+</mapper>
+
+
+
+
+
+
+

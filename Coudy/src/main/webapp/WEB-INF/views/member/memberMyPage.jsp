@@ -17,6 +17,15 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+<style>
+
+#profile{ 
+	width:300px;
+	height:300px;
+
+}
+
+</style>
 
 
 <div class="align-left">
@@ -27,7 +36,7 @@
 	  	<figcaption class="figure-caption">현재 프로필 사진이 없습니다.</figcaption>
 	</c:if>
 	<c:if test="${!empty member.photo_name}">
-	  	<img src="${pageContext.request.contextPath }/images/photoView.do" width="300" height="300" class="figure-img img-fluid rounded my-photo" >
+	  	<img src="${pageContext.request.contextPath }/member/photoView.do" id="profile" width="300" height="300" class="figure-img img-fluid rounded my-photo" >
 	  	<figcaption class="figure-caption">현재 프로필 사진입니다.</figcaption>
 	</c:if>
 	
@@ -59,11 +68,13 @@
 		</c:if>
 	</ul>
 	<div class="align-center">
-		<button type="button" class="btn btn-primary btn-sm" onclick="location.href='update.do'" >정보수정</button>
-		<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='update.do'" >비밀번호변경</button>
-		<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='update.do'" >회원탈퇴</button>
+		<button type="button" class="btn btn-primary btn-sm" onclick="location.href='updateUser.do'" >정보수정</button>
+		<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='changePassword.do'" >비밀번호변경</button>
+		<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='delete.do'" >회원탈퇴</button>
 	</div>
 </div>
+
+
 
 
 
