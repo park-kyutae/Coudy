@@ -18,5 +18,5 @@ public interface CompanyService {
     Integer selectScrapCount(Integer com_num,Integer mem_num);
     public void deleteScrap(Integer scrap_num);
 
-    CompanyScrapVO selectScrap(CompanyScrapVO companyScrapVO);
+    CompanyScrapVO selectScrap(Integer com_num, Integer mem_num);
 }

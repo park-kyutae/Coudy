@@ -41,7 +41,7 @@ public class CompanyAjaxController {
             companyScrapVO.setMem_num(user.getMem_num());
 
             int count= companyService.selectScrapCount(com_num, user.getMem_num());
-            CompanyScrapVO scrapVO = companyService.selectScrap(companyScrapVO);
+            CompanyScrapVO scrapVO = companyService.selectScrap(com_num,user.getMem_num());
 
             logger.debug("<<젱랴부자우람ㄴ위ㅏㄹㅇ>>"+count);
             logger.debug("<<scrapVO 뺴온정보 scrapnum 잘있나?>>"+scrapVO);
@@ -61,16 +61,18 @@ public class CompanyAjaxController {
 
     @RequestMapping("/company/getScrap.do")
     @ResponseBody
-    public Map<String,Object> getScrap(CompanyScrapVO companyScrapVO,HttpSession session){
+    public Map<String,Object> getScrap(CompanyScrapVO companyScrapVO,HttpServletRequest request,HttpSession session){
 
         Map<String,Object> map = new HashMap<String, Object>();
         MemberVO user = (MemberVO) session.getAttribute("user");
+
+
         if(user == null){
             map.put("status","noScrap");
         }else{
             companyScrapVO.setMem_num(user.getMem_num());
 
-            CompanyScrapVO scrapVO = companyService.selectScrap(companyScrapVO);
+            CompanyScrapVO scrapVO = companyService.selectScrap(request.getParameter());
 
             if(scrapVO != null){//스크랩 등록 불가능
 

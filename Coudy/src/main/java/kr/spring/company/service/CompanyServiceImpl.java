@@ -57,8 +57,8 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
-    public CompanyScrapVO selectScrap(CompanyScrapVO companyScrapVO) {
-        return companyMapper.selectScrap(companyScrapVO);
+    public CompanyScrapVO selectScrap(Integer com_num, Integer mem_num) {
+        return companyMapper.selectScrap(com_num,mem_num);
     }
 
 
