@@ -13,7 +13,9 @@
 <body>
 <div id="container">
     <h1>스터디 그룹 개설하기</h1>
-    <form class="row g-3 needs-validation" id="studycreate_form" method="post" action="studygroupcreate.do" enctype="multipart/form-data">
+    <form class="row g-3 needs-validation" method="post" action="studygroupcreate.do">
+        <input type="hidden" id="registered" name="registered" value="Y">
+        <input type="hidden" id="is_group_manager" name="is_group_manager" value="Y">
         <div class="mb-3 col-lg-12">
             <label for="name" class="form-label">스터디 명</label>
             <input type="text" class="form-control" id="name" name="name" aria-describedby="aboutName" required>
