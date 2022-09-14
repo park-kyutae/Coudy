@@ -14,7 +14,7 @@
     $(function () {
         const find_plans = function () {
             $.ajax({
-                url: $(location).attr('pathname') + "find-all-shared",
+                url: $(location).attr('pathname') + "/find-all-shared",
                 type: 'get',
                 dataType: 'json',
                 cache: false,
@@ -56,7 +56,7 @@
             $('.inner-circle').click(function () {
                 console.log('inner')
                 $.ajax({
-                    url: $(location).attr('pathname') + "update-completed",
+                    url: $(location).attr('pathname') + "/update-completed",
                     type: 'patch',
                     data: JSON.stringify({
                         "planNum": $(this).attr('id')
