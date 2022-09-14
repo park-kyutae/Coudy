@@ -21,7 +21,7 @@ public class MemberController {
 	
 	//자바빈 초기화
 	@ModelAttribute
-	public MemberVO initMember() {
+	public MemberVO initMember() {    
 		return new MemberVO();
 	}
 	
