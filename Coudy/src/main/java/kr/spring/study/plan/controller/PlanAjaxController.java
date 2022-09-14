@@ -59,7 +59,7 @@ public class PlanAjaxController {
         return Map.of("result", "success");
     }
     @PatchMapping("/progress/update-completed")
-    public Map<String, Object> updateIsCompleted(@Login Integer mem_num,  @Validated@RequestBody CommonPlanNumForm form,
+    public Map<String, Object> updateIsCompleted(@Login Integer mem_num,  @Validated @RequestBody CommonPlanNumForm form,
                                            @PathVariable Integer studyNum) {
         planService.updateIsCompleted(form.getPlanNum());
         return Map.of("result", "success");
