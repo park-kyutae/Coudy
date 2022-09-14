@@ -43,7 +43,12 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/study/studygroupcreate.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
-				.addPathPatterns("/techblog/techblogDelete.do");
+
+				.addPathPatterns("/techblog/techblogDelete.do")
+				.addPathPatterns("/notice/Write.do")
+				.addPathPatterns("/notice/Update.do")
+				.addPathPatterns("/notice/Delete.do");
+		
 
 		registry.addInterceptor(interceptor)
 				.order(2)
