@@ -18,6 +18,7 @@ const scrap = {
                         if(param.result=='logout'){
                             alert('로그인 후 이용가능');
                         }else if(param.result=='success'){
+                            console.log(param);
                             displayScrap(param);
                         }else{
                             alert('스크랩 중 오류');
@@ -65,30 +66,13 @@ scrap_btn.init();
 
 //스크랩 표시
 function displayScrap(param){
+    let com_num =$(this).data('com-num');
     if(param.status == 'noScrap'){
-        $(this).removeClass('blank');
-        $(this).addClass('checked');
+
     }else{
-        $(this).removeClass('checked');
-        $(this).addClass('blank');
+        document.getElementById('star').classList.replace('blank', 'checked');
     }
-    selectData($('#com_num').val());
-}
-function selectData(com_num) {
-    $.ajax({
-        url: 'getScrap.do',
-        type: 'post',
-        data: {com_num:com_num},
-        dataType: 'json',
-        cache: false,
-        timeout: 30000,
-        success:function (param) {
-            displayScrap(param);
-        },
-        error:function () {
-            alert('네트워크오류류류ㅠ')
-        }
-    })
+
 }
 
 

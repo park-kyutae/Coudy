@@ -62,9 +62,11 @@ public class CompanyAjaxController {
     @RequestMapping("/company/getScrap.do")
     @ResponseBody
     public Map<String,Object> getScrap(CompanyScrapVO companyScrapVO,HttpServletRequest request,HttpSession session){
-
+        logger.debug("<<스크랩 읽기>> : "+companyScrapVO);
         Map<String,Object> map = new HashMap<String, Object>();
+
         MemberVO user = (MemberVO) session.getAttribute("user");
+
         int com_num = Integer.parseInt(request.getParameter("com_num"));
 
         if(user == null){
@@ -73,17 +75,14 @@ public class CompanyAjaxController {
             companyScrapVO.setMem_num(user.getMem_num());
 
             CompanyScrapVO scrapVO = companyService.selectScrap(com_num,user.getMem_num());
-
-            if(scrapVO != null){//스크랩 등록 불가능
-                
-            }else {//스크랩등록 가능
-
+            logger.debug("selectScrap>>>>null이면  : "+ scrapVO);
+            if(scrapVO != null){//스크랩 등록
+                map.put("status","yesScrap");
+            }else {
+                map.put("status","noScrap");
             }
 
         }
-
-
-
         return map;
     }
 
