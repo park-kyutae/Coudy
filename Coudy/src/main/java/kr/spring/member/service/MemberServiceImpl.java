@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
 	public void insertMember(MemberVO member) {
 		member.setMem_num(memberMapper.selectMem_num());
 		memberMapper.insertMember(member); //부모 
-		memberMapper.insertMember_detail(member); //자식  
+		memberMapper.insertMember_detail(member); //자식   
 		
 	}
 

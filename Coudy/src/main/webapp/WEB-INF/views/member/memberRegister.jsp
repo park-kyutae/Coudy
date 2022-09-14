@@ -20,7 +20,7 @@
 
 .left-input{
 	width:70%;
-	float:left;
+	float:left; 
 }
 
 </style>

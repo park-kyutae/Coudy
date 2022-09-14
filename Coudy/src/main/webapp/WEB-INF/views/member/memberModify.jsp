@@ -38,12 +38,6 @@
 		<span id="message_id"></span>
 	</div>
 	
-	<div class="form-floating mb-3">
-		<form:password path="passwd" class="form-control" placeholder="passwd"/>
-		<form:errors path="passwd" cssClass="error-color"/>
-		<label for="passwd">비밀번호</label>
-	</div>
-	
  	<div class="form-floating mb-3">
 		<form:input path="name" class="form-control" placeholder="name"/>
 		<form:errors path="name" cssClass="error-color"/>

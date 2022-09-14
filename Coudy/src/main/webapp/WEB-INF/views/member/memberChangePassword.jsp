@@ -36,6 +36,13 @@
 			<label for="passwd">새 비밀번호</label>
 			<div class="valid-feedback">Looks good!</div>
 		</div>
+		
+		<div class="form-floating mb-3">
+			<form:password path="passwd2" class="form-control" placeholder="passwd2" /> 
+			<form:errors path="passwd2" cssClass="error-color" />
+			<label for="passwd2">새 비밀번호 확인</label>
+			<div class="valid-feedback">Looks good!</div>
+		</div>
 
 		<div>
 			<button class="btn btn-primary" type="submit">Submit form</button>

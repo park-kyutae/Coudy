@@ -23,7 +23,7 @@ import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
 import kr.spring.util.FileUtil;  
 
-@Controller
+@Controller    
 public class MemberController {
 	
 	private static final Logger logger =LoggerFactory.getLogger(MemberController.class); 
