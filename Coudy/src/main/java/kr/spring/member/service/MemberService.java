@@ -13,7 +13,9 @@ public interface MemberService {
 	public MemberVO selectMember(Integer mem_num);
 	public void updateMember(MemberVO member);
 	public void updatePasswd(MemberVO member);
+	
 	public void deleteMember(Integer mem_num);
+ 
 	
 	//프로필 사진 업데이트 
 	public void updateProfile(MemberVO member);

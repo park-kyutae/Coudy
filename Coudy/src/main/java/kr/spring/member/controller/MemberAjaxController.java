@@ -31,7 +31,7 @@ public class MemberAjaxController {
 											//session으로 num값을 가져오기 
 		
 		
-		Map<String,String> mapAjax = new HashMap<String,String>();
+		Map<String,String> mapAjax = new HashMap<String,String>(); 
 		
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		if(user==null) {

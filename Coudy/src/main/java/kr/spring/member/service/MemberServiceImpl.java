@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService{
 	public void insertMember(MemberVO member) {
 		member.setMem_num(memberMapper.selectMem_num());
 		memberMapper.insertMember(member); //부모 
-		memberMapper.insertMember_detail(member); //자식  
+		memberMapper.insertMember_detail(member); //자식   
 		
 	}
 
@@ -39,17 +39,21 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void updateMember(MemberVO member) {
-		
+		//memberMapper.updateMember(member);
+		memberMapper.updateMember_detail(member);
 	}
 
 	@Override
 	public void updatePasswd(MemberVO member) {
+		memberMapper.updatePasswd(member);
 		
 	}
 
 	@Override
 	public void deleteMember(Integer mem_num) {
-		
+		memberMapper.deleteMember(mem_num);
+		memberMapper.deleteMember_detail(mem_num);
+
 	}
 
 	@Override
@@ -57,6 +61,7 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.updateProfile(member);
 		
 	}
+
 
 
 }

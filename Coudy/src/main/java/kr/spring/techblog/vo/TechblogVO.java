@@ -21,7 +21,7 @@ public class TechblogVO {
 	private String tech_content;
 	private int tech_hit;
 	@NotEmpty
-	private String tech_kategorie;
+	private String tech_category;
 	@NotEmpty
 	private String tech_tag;
 	private int mem_num;
@@ -127,12 +127,12 @@ public class TechblogVO {
 		this.tech_hit = tech_hit;
 	}
 
-	public String getTech_kategorie() {
-		return tech_kategorie;
+	public String getTech_category() {
+		return tech_category;
 	}
 
-	public void setTech_kategorie(String tech_kategorie) {
-		this.tech_kategorie = tech_kategorie;
+	public void setTech_category(String tech_category) {
+		this.tech_category = tech_category;
 	}
 
 	public String getTech_tag() {
@@ -163,7 +163,7 @@ public class TechblogVO {
 	public String toString() {
 		return "TechblogVO [tech_num=" + tech_num + ", tech_title=" + tech_title + ", tech_name=" + tech_name
 				+ ", tech_date=" + tech_date + ", tech_modifydate=" + tech_modifydate + ", tech_photoname="
-				+ tech_photoname + ", tech_content=" + tech_content + ", tech_hit=" + tech_hit + ", tech_kategorie="
-				+ tech_kategorie + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + "]";
+				+ tech_photoname + ", tech_content=" + tech_content + ", tech_hit=" + tech_hit + ", tech_category="
+				+ tech_category + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + "]";
 	}
 }

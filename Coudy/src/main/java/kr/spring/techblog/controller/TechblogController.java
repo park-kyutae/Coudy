@@ -148,7 +148,7 @@ public class TechblogController {
 			 StringUtil.useBrNoHtml(board.getContent()));
 			*/
 			                          //뷰 이름    속성명   속성값
-			return new ModelAndView("techblogView","techblogVO",techblogVO);
+			return new ModelAndView("techblogView","techblog",techblogVO);
 		}
 		
 		//===========파일다운로드===========//
