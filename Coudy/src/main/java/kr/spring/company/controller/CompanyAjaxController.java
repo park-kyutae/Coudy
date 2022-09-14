@@ -65,17 +65,17 @@ public class CompanyAjaxController {
 
         Map<String,Object> map = new HashMap<String, Object>();
         MemberVO user = (MemberVO) session.getAttribute("user");
-
+        int com_num = Integer.parseInt(request.getParameter("com_num"));
 
         if(user == null){
             map.put("status","noScrap");
         }else{
             companyScrapVO.setMem_num(user.getMem_num());
 
-            CompanyScrapVO scrapVO = companyService.selectScrap(request.getParameter());
+            CompanyScrapVO scrapVO = companyService.selectScrap(com_num,user.getMem_num());
 
             if(scrapVO != null){//스크랩 등록 불가능
-
+                
             }else {//스크랩등록 가능
 
             }
