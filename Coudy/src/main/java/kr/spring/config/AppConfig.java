@@ -1,7 +1,10 @@
 package kr.spring.config;
 
+import kr.spring.study.plan.artgumentResolver.LoginArgumentResolver;
+import kr.spring.study.plan.testUtil.LoginTestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
@@ -10,6 +13,10 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import kr.spring.interceptor.LoginCheckInterceptor;
 import kr.spring.interceptor.WriterCheckInterceptor;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //자바코드 기반 설정 클래스
 
@@ -31,23 +38,36 @@ public class AppConfig implements WebMvcConfigurer{
 			       InterceptorRegistry registry) {
 		registry.addInterceptor(
 				    new LoginCheckInterceptor())
+				.order(1)
 		        .addPathPatterns("/member/myPage.do")
 				.addPathPatterns("/company/insertCom.do")
+				.addPathPatterns("/study/studygroupcreate.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
 				.addPathPatterns("/techblog/techblogDelete.do");
 
 		registry.addInterceptor(interceptor)
+				.order(2)
 		.addPathPatterns("/techblog/techblogUpdate.do")
 		.addPathPatterns("/techblog/techblogDelete.do");
+		//TODO 로그인 기능 완성 시 삭제
+		registry.addInterceptor(new LoginTestInterceptor())
+				.order(3)
+				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**"));
+
+
 
 	}
-	
+
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		resolvers.add(new LoginArgumentResolver());
+	}
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
-		final TilesConfigurer configurer = 
+		final TilesConfigurer configurer =
 				new TilesConfigurer();
-		
+
 		//해당 경로에 xml 설정 파일을 넣음
 		configurer.setDefinitions(new String[] {
 				"/WEB-INF/tiles-def/main.xml",
@@ -61,7 +81,7 @@ public class AppConfig implements WebMvcConfigurer{
 		configurer.setCheckRefresh(true);
 		return configurer;
 	}
-	
+
 	@Bean
 	public TilesViewResolver tilesViewResolver() {
 		final TilesViewResolver tilesViewResolver =
@@ -69,7 +89,7 @@ public class AppConfig implements WebMvcConfigurer{
 		tilesViewResolver.setViewClass(TilesView.class);
 		return tilesViewResolver;
 	}
-	
+
 }
 
 
