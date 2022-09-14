@@ -42,7 +42,7 @@ public class AppConfig implements WebMvcConfigurer{
 		        .addPathPatterns("/member/myPage.do")
 		        .addPathPatterns("/member/update.do")
 		        .addPathPatterns("/member/delete.do")
-				.addPathPatterns("/study/studygroupcreate.do")
+				.addPathPatterns("/study/studydetail.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
 				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
