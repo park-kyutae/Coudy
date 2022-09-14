@@ -23,10 +23,8 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("study/plan")
 @Slf4j
-@RequiredArgsConstructor
 public class PlanController {
 
-    MemberService memberService;
 
     @GetMapping("/{studyNum}")
     public String planMain(@Login Integer memNum,Model model,@PathVariable Integer studyNum) {
@@ -41,6 +39,12 @@ public class PlanController {
         model.addAttribute("studyUserForms", studyUserForms);
 
         return "study/plan/plan";
+    }
+    @GetMapping("{studyNum}/progress")
+    public String progress(@Login Integer memNum,Model model,@PathVariable Integer studyNum) {
+
+
+        return "study/plan/progress";
     }
 
 

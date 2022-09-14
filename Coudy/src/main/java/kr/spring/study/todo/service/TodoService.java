@@ -11,6 +11,8 @@ public interface TodoService {
 
     void createTodo(TodoVO todoVO);
     void nextStepTodo(TodoVO todoVO);
+    void modifyTodo(TodoVO todoVO);
+    void deleteTodo(int todoNum);
 
-    List<TodoVO> selectTodos(Integer memNum, Integer studyNum);
+    List<TodoVO> selectTodos(int memNum, int studyNum);
 }

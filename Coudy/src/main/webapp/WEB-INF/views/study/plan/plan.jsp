@@ -2,11 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<!-- ✅ load jquery UI ✅ -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/${pageContext.request.contextPath}js/bootstrap.js" type="text/javascript"></script>
     <link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.ko.min.js" type="text/javascript"></script>
@@ -252,7 +253,7 @@
         };
         const find_plans = function () {
             $.ajax({
-                url: $(location).attr('pathname')+'/findPlans',
+                url: $(location).attr('pathname')+"/find",
                 type: 'get',
                 data: 'thisYearMonth='+year + "-" + real_month + "-01",
                 dataType: 'json',
@@ -466,11 +467,10 @@
 
 
         $('#create_submit').click(function () {
-            console.log(JSON.stringify($('#create_plan_form').serializeObject()))
 
                 reset_validation();
             $.ajax({
-                url: $(location).attr('pathname')+'/create',
+                url: $(location).attr('pathname'),
                 type: 'post',
                 data: JSON.stringify($('#create_plan_form').serializeObject()),
                 contentType: 'application/json; charset=utf-8',
@@ -478,9 +478,9 @@
                 cache: false,
                 timeout: 30000,
                 success: function (param) {
-                    if (param.length != 0) {
+                    if ( param instanceof Array) {
                         for (let x of param) {
-                            if (x.code == 'laterThanStart') {
+                            if (x.field == 'globalError') {
                                 $('.global_validation').text(x.message)
                             }else {
                                 let selector = $('form[name=' + x.objectName + '] input[name=' + x.field + ']');
@@ -503,17 +503,17 @@
         $('#update_submit').click(function () {
             reset_validation();
             $.ajax({
-                url: $(location).attr('pathname')+'/update',
-                type: 'post',
+                url: $(location).attr('pathname'),
+                type: 'patch',
                 data: JSON.stringify($('#update_plan_form').serializeObject()),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
                 success: function (param) {
-                    if (param.length != 0) {
+                    if ( param instanceof Array) {
                         for (let x of param) {
-                            if (x.code == 'laterThanStart') {
+                            if (x.field == 'globalError') {
                                 $('.global_validation').text(x.message)
                             }else {
                                 let selector = $('form[name=' + x.objectName + '] input[name=' + x.field + ']');
@@ -535,8 +535,8 @@
         $('#delete_submit').click(function () {
 
             $.ajax({
-                url: $(location).attr('pathname')+'/delete',
-                type: 'post',
+                url: $(location).attr('pathname'),
+                type: 'delete',
                 data: JSON.stringify({
                     "planNum":$('#update_plan_num').val()
                 }),
@@ -597,7 +597,7 @@
                 <div class="col-2"></div>
                 <div class="col-1"></div>
                 <div class="col"></div>
-                <div class="col-1 d-flex align-items-center justify-content-end"><img src="/images/arrow_back.svg"
+                <div class="col-1 d-flex align-items-center justify-content-end"><img src="/images/arrow_backward.svg"
                                                                                       class="h-75"
                                                                                       style="cursor: pointer"
                                                                                       id="calender_back"

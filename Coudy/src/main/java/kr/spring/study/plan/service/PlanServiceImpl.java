@@ -17,7 +17,7 @@ public class PlanServiceImpl implements PlanService{
     private final PlanMapper planMapper;
 
     @Override
-    public List<PlanVO> findPlans(Integer studyNum,String  thisYearMonth) {
+    public List<PlanVO> findPlans(int studyNum,String  thisYearMonth) {
 
         return planMapper.selectPlansByStudyNum(studyNum,thisYearMonth);
 
@@ -30,6 +30,17 @@ public class PlanServiceImpl implements PlanService{
     @Override
     public void updatePlan(PlanVO planVO) {
         planMapper.updatePlan(planVO);
+    }
+
+    @Override
+    public void updateIsCompleted(int planNum) {
+        PlanVO originPlanVO = planMapper.selectPlan(planNum);
+        planMapper.updateCompletePlan(planNum,!originPlanVO.isPlanIsCompleted());
+    }
+
+    @Override
+    public List<PlanVO> findAllPlan(int studyNum) {
+        return planMapper.selectAllSharedPlans(studyNum);
     }
 
     @Override

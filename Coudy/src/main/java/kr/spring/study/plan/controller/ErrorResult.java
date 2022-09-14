@@ -5,9 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class JsonResult {
+public class ErrorResult {
     private String objectName;
     private String message;
     private String field;
-    private String code;
 }

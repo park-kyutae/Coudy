@@ -17,6 +17,8 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class TodoServiceImpl implements TodoService {
+
+
     private final TodoMapper todoMapper;
 
     @Override
@@ -25,8 +27,18 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public List<TodoVO> selectTodos(Integer memNum, Integer studyNum) {
+    public List<TodoVO> selectTodos(int memNum, int studyNum) {
         return todoMapper.selectTodos(memNum, studyNum);
+    }
+    @Override
+    public void deleteTodo(int todoNum) {
+        todoMapper.deleteTodo(todoNum);
+    }
+
+    @Override
+    public void modifyTodo(TodoVO todoVO) {
+        todoMapper.modifyTodo(todoVO);
+
     }
 
     @Override

@@ -13,6 +13,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import kr.spring.interceptor.LoginCheckInterceptor;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //자바코드 기반 설정 클래스
@@ -29,7 +31,7 @@ public class AppConfig implements WebMvcConfigurer {
         //TODO 로그인 기능 완성 시 삭제
         registry.addInterceptor(new LoginTestInterceptor())
                 .order(2)
-                .addPathPatterns("/study/plan/**");
+                .addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**"));
     }
 
     @Override
