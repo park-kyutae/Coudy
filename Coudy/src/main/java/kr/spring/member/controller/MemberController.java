@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
-import kr.spring.util.FileUtil;
+import kr.spring.util.FileUtil;  
 
 @Controller
 public class MemberController {
