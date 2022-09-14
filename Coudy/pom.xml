@@ -113,7 +113,7 @@
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
-					<include>**/*.yml</include>
+					<include>**/*.properties</include>
 				</includes>
 			</resource>
 		</resources>
