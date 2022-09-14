@@ -18,7 +18,7 @@ spring:
       max-lifetime: 1800000
         
   messages: #메시지
-    basename: messages.validation
+    basename: messages.validation,messages.PlanAndChatValidation
     encoding: UTF-8
     
   devtools:
@@ -49,3 +49,7 @@ server:
       charset: UTF-8
       enabled: true
       force: true
+  error:
+    include-stacktrace: never
+    include-exception: false
+    include-message: never
