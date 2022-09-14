@@ -17,12 +17,16 @@
 			<img src="https://i.pravatar.cc/64" class="img-thumbnail rounded float-start" alt="...">
 			<h1>${studygroup.name}</h1>
 			<h2>${studygroup.description}</h2>
+			<h2>${studygroup.registered}</h2>
 			<c:if test="${!empty user && studygroup.mem_num == user.mem_num}">
 				<button class="btn btn-info" onclick="location.href='updatestudygroup.do?study_num=${studygroup.study_num}'">수정하기</button>
 				<button class="btn btn-danger" onclick="location.href='deletestudygroup.do?study_num=${studygroup.study_num}'">삭제하기</button>
 			</c:if>
 			<c:if test="${!empty user && studygroup.mem_num != user.mem_num}">
 				<button class="btn btn-info" onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'">신청하기</button>
+			</c:if>
+			<c:if test="${!empty user && studygroup.registered eq 'Y'.charAt(0)}">
+				<button class="btn btn-info" onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'">보이나요</button>
 			</c:if>
 		</div>
 	</div>

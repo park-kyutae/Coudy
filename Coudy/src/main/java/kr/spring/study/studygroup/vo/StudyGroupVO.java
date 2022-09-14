@@ -13,6 +13,8 @@ import java.sql.Date;
 public class StudyGroupVO {
 
     private int study_num;
+    private char registered;
+    private char is_group_manager;
     private String stack;
     private String name;
     private String description;

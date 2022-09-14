@@ -108,13 +108,10 @@ public class StudyGroupController {
         studyGroupVO.setMem_num(user.getMem_num());
         //ip셋팅
         //studyGroupVO.setIp(request.getRemoteAddr());
-
         //글쓰기
         studyGroupService.insertStudyGroup(studyGroupVO);
-        studyUserVO.setStudy_num(studyUserVO.getStudy_num());
-        studyUserService.insertStudyUser(studyUserVO);
 
-        //View에 표시할 메시지
+                //View에 표시할 메시지
         model.addAttribute(
                 "message", "글 등록이 완료되었습니다.");
         model.addAttribute(
@@ -123,7 +120,7 @@ public class StudyGroupController {
         return "common/resultView";
     }
 
-    //========게시판 글상세===========//
+    //========상세===========//
     @RequestMapping("/study/studydetail.do")
     public ModelAndView detail(
             @RequestParam int study_num) {
@@ -146,7 +143,7 @@ public class StudyGroupController {
         return new ModelAndView("DetailStudyGroup","studygroup",studyGroupVO);
     }
 
-    //===========게시판 글수정===========//
+    //===========수정===========//
     //수정 폼
     @GetMapping("/study/updatestudygroup.do")
     public String formUpdate(
@@ -191,14 +188,14 @@ public class StudyGroupController {
         return "common/resultView";
     }
 
-    //==========게시판 글삭제==========//
+    //==========스터디 방 삭제==========//
     @RequestMapping("/study/deletestudygroup.do")
     public String submitDelete(
             @RequestParam int study_num,
             Model model,
             HttpServletRequest request) {
 
-        logger.debug("<<글삭제>> : " + study_num);
+        logger.debug("<<스터디 방 삭제>> : " + study_num);
 
         //글삭제
         studyGroupService.deleteStudyGroup(study_num);
