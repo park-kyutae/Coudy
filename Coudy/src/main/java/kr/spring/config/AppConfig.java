@@ -40,10 +40,21 @@ public class AppConfig implements WebMvcConfigurer{
 				    new LoginCheckInterceptor())
 				.order(1)
 		        .addPathPatterns("/member/myPage.do")
+<<<<<<< HEAD
+		        .addPathPatterns("/member/update.do")
+		        .addPathPatterns("/member/delete.do")
+=======
 				.addPathPatterns("/study/studygroupcreate.do")
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 				.addPathPatterns("/techblog/techblogWrite.do")
+				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
-				.addPathPatterns("/techblog/techblogDelete.do");
+
+				.addPathPatterns("/techblog/techblogDelete.do")
+				.addPathPatterns("/notice/Write.do")
+				.addPathPatterns("/notice/Update.do")
+				.addPathPatterns("/notice/Delete.do");
+		
 
 		registry.addInterceptor(interceptor)
 				.order(2)

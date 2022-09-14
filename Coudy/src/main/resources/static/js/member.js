@@ -10,13 +10,13 @@ $(function(){
 
 		
 	//처음에 보이는 이미지 태그의 이미지 읽기 
-	let photo_path = $('.my-photo').attr('src'); //
+	let photo_path = $('.my-photo').attr('src');
 	let my_photo; //업로드 하고자 선택한 이미지 저장
 	$('#upload').change(function(){
 		my_photo = this.files[0]; //이부분은 뭐지?
 		
 		if(!my_photo){ //업로드 하고자 하는 이미지가 없을 때 기본이미지로 설정하고 빠져나가기 
-			('.my_photo').attr('src',photo_path); //attr('제어할 값', '제어할값에 넣을 값') : 속성값 제어하기 
+			('.my-photo').attr('src',photo_path); //attr('제어할 값', '제어할값에 넣을 값') : 속성값 제어하기 
 			return;
 		}
 		
@@ -40,7 +40,7 @@ $(function(){
 		
 	});//end of change
 		
-		//이미지 파일 전송 처리
+	//이미지 파일 전송 처리
 	$('#photo_submit').click(function(){
 		if($('#upload').val()==''){
 			alert('파일을 선택하세요!');
@@ -65,6 +65,7 @@ $(function(){
 					alert('로그인 후 사용하세요');
 				}else if(param.result =='success'){
 					alert('프로필 사진이 수정되었습니다.');
+					//교체된 이미지 저장
 					photo_path = $('.my-photo').attr('src'); //프사가바뀌면 교체된 사진으로 변경해준다. -> 
 														//여러번 바뀔수도 있으니까
 					$('#upload').val('');

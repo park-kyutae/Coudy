@@ -21,8 +21,8 @@
 
 
 <div class="align_center container">
-	<form:form class="row g-3 needs-validation" if="login_form" action="login.do" modelAttribute="memberVO">
-		<div class="form-floating mb-3">
+	<form:form class="row g-3 needs-validation" id="login_form" action="login.do" modelAttribute="memberVO">
+		<div class="form-floating mb-3"> 
 			<form:input path="id" class="form-control left-input"
 				placeholder="id" />
 			<form:errors path="id" cssClass="error-color" />
