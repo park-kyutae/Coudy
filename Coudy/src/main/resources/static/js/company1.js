@@ -72,9 +72,23 @@ function displayScrap(param){
         $(this).removeClass('checked');
         $(this).addClass('blank');
     }
-
-
-
+    selectData($('#com_num').val());
+}
+function selectData(com_num) {
+    $.ajax({
+        url: 'getScrap.do',
+        type: 'post',
+        data: {com_num:com_num},
+        dataType: 'json',
+        cache: false,
+        timeout: 30000,
+        success:function (param) {
+            displayScrap(param);
+        },
+        error:function () {
+            alert('네트워크오류류류ㅠ')
+        }
+    })
 }
 
 

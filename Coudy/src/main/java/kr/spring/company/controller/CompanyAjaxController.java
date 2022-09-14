@@ -40,15 +40,17 @@ public class CompanyAjaxController {
             companyScrapVO.setCom_num(com_num);
             companyScrapVO.setMem_num(user.getMem_num());
 
-            int count= companyService.selectScarp(com_num, user.getMem_num());
+            int count= companyService.selectScrapCount(com_num, user.getMem_num());
+            CompanyScrapVO scrapVO = companyService.selectScrap(companyScrapVO);
 
             logger.debug("<<젱랴부자우람ㄴ위ㅏㄹㅇ>>"+count);
-            if (count == 0) {
+            logger.debug("<<scrapVO 뺴온정보 scrapnum 잘있나?>>"+scrapVO);
+            if (scrapVO == null) {
                 companyService.insertScrap(companyScrapVO);
                 map.put("result","success");
                 map.put("status","yesScrap");
             }else{
-                companyService.deleteScrap(companyScrapVO.getScrap_num());
+                companyService.deleteScrap(scrapVO.getScrap_num());
                 map.put("result","success");
                 map.put("status","noScrap");
             }
@@ -57,5 +59,30 @@ public class CompanyAjaxController {
         return map;
     }
 
+    @RequestMapping("/company/getScrap.do")
+    @ResponseBody
+    public Map<String,Object> getScrap(CompanyScrapVO companyScrapVO,HttpSession session){
+
+        Map<String,Object> map = new HashMap<String, Object>();
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        if(user == null){
+            map.put("status","noScrap");
+        }else{
+            companyScrapVO.setMem_num(user.getMem_num());
+
+            CompanyScrapVO scrapVO = companyService.selectScrap(companyScrapVO);
+
+            if(scrapVO != null){//스크랩 등록 불가능
+
+            }else {//스크랩등록 가능
+
+            }
+
+        }
+
+
+
+        return map;
+    }
 
 }

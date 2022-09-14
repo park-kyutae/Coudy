@@ -27,10 +27,10 @@ public interface CompanyMapper {
     void insertScrap(CompanyScrapVO companyScrapVO);
 
     @Select("SELECT count(*) FROM com_scrap WHERE com_num = #{com_num} AND mem_num=#{mem_num}")
-    Integer selectScarp(Integer com_num,Integer mem_num);
+    Integer selectScrapCount(Integer com_num,Integer mem_num);
 
     @Select("SELECT * FROM com_scrap WHERE com_num=#{com_num} AND mem_num=#{mem_num}")
-    CompanyScrapVO selectScrapOne(CompanyScrapVO companyScrapVO);
+    CompanyScrapVO selectScrap(CompanyScrapVO companyScrapVO);
 
     @Delete("DELETE FROM com_scrap WHERE scrap_num=#{scrap_num}")
     public void deleteScrap(Integer scrap_num);
