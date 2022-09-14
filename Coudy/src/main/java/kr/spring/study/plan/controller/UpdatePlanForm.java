@@ -12,26 +12,26 @@ import java.util.Date;
 @Getter
 @ToString
 public class UpdatePlanForm {
-//    @NotNull
+    //    @NotNull
     private int planNum;
     @NotBlank
     @Size(max = 20)
-    private  String planContent;
-//    @NotBlank
+    private String planContent;
+    //    @NotBlank
 //    @Pattern(regexp = "^20[0-9][0-9]-(0?[0-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])$")
-@NotNull
+    @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date planStartDate;
-//    @NotBlank
+    //    @NotBlank
 //    @Pattern(regexp = "^20[0-9][0-9]-(0?[0-9]|1[0-2])-(0?[1-9]|[12][0-9]|3[01])$")
-@NotNull
-@JsonFormat(pattern = "yyyy-MM-dd")
-    private  Date planEndDate;
+    @NotNull
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date planEndDate;
     @NotBlank
     @Pattern(regexp = "^[a-fA-F0-9]{6}$")
-    private  String planColor;
-//    @NotNull
+    private String planColor;
+    //    @NotNull
     private boolean planIsCompleted;
-//    @NotNull
+    //    @NotNull
     private boolean planIsShared;
 }
