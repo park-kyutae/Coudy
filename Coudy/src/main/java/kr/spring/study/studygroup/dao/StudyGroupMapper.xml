@@ -14,7 +14,7 @@
                     s.name LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 2">
-                    m.id LIKE '%' || #{keyword} || '%'
+                    s.description LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 3">
                     s.stack LIKE '%' || #{keyword} || '%'
@@ -41,8 +41,13 @@
         s.stack,
         s.description,
         s.limit,
-        s.mem_num,
-        m.id
+        s.location,
+        s.purpose,
+        s.limit_date,
+        s.start_date,
+        s.end_date,
+        s.reg_date,
+        s.mem_num
         FROM studygroup s JOIN member m
         ON s.mem_num = m.mem_num
         <where>
@@ -51,10 +56,10 @@
                     s.stack LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 2">
-                    m.id LIKE '%' || #{keyword} || '%'
+                    s.limit LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 3">
-                    s. LIKE '%' || #{keyword} || '%'
+                    s.name LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 4">
                     s.stack LIKE '%' || #{keyword} || '%' OR
@@ -67,5 +72,61 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
     </select>
+    <!-- 글수정 -->
+    <update id="updateStudyGroup" parameterType="studygroupVO">
+        UPDATE studygroup SET
+        name=#{name},
+        stack=#{stack},
+        description=#{description},
+        location=#{location},
+        limit=#{limit},
+        purpose=#{purpose},
+        limit_date=#{limit_date},
+        start_date=#{start_date},
+        end_date=#{end_date},
+        modify_date=SYSDATE
+        WHERE study_num=#{study_num}
+    </update>
 
+    <!-- 댓글 목록
+    {이거는 위에 꺼
+    <if test="filename != ''">
+            uploadfile=#{uploadfile},
+            filename=#{filename},
+        </if>}
+
+    <select id="selectListReply" parameterType="map"
+            resultType="boardReplyVO">
+        SELECT
+            *
+        FROM (SELECT
+                  a.*,
+                  rownum rnum
+              FROM (SELECT
+                        re_num,
+  		              <![CDATA[
+                        REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
+  		              ]]>
+  		              re_date,
+                        re_mdate,
+                        board_num,
+                        mem_num,
+                        id,
+                        nick_name
+                    FROM spboard_reply
+                             JOIN spmember USING(mem_num)
+                    WHERE board_num = #{board_num}
+                    ORDER BY re_num DESC)a)
+  		<![CDATA[
+        WHERE rnum >= #{start} AND rnum <= #{end}
+        ]]>
+    </select>
+    -->
 </mapper>
+
+
+
+
+
+
+

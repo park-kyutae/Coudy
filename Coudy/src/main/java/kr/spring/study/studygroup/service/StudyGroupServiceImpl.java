@@ -1,7 +1,7 @@
 package kr.spring.study.studygroup.service;
 
 import kr.spring.study.studygroup.dao.StudyGroupMapper;
-import kr.spring.study.studygroup.vo.StudyGroupReviewVO;
+import kr.spring.study.studygroup.dao.StudyUserMapper;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +17,14 @@ public class StudyGroupServiceImpl implements StudyGroupService{
     @Autowired
     private StudyGroupMapper studyGroupMapper;
 
+    @Autowired
+    private StudyUserMapper studyUserMapper;
+
+    @Override
+    public int selectStudy_num() {
+        return studyGroupMapper.selectStudy_num();
+    }
+
     @Override
     public List<StudyGroupVO> selectAllStudyGroups(Map<String, Object> map) {
         return studyGroupMapper.selectAllStudyGroups(map);
@@ -24,7 +32,9 @@ public class StudyGroupServiceImpl implements StudyGroupService{
 
     @Override
     public void insertStudyGroup(StudyGroupVO studyGroup) {
+        studyGroup.setStudy_num(studyGroupMapper.selectStudy_num());
         studyGroupMapper.insertStudyGroup(studyGroup);
+        studyGroupMapper.insertStudyUser(studyGroup);
     }
 
     @Override

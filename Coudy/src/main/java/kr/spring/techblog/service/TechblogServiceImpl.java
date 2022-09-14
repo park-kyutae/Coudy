@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.techblog.dao.TechblogMapper;
+import kr.spring.techblog.vo.TechblogFavVO;
 import kr.spring.techblog.vo.TechblogVO;
 
 @Service
@@ -49,12 +50,33 @@ public class TechblogServiceImpl implements TechblogService{
 
 	@Override
 	public void deleteTechblog(Integer tech_num) {
+		techblogmapper.deleteFavByTechblogNum(tech_num);
 		techblogmapper.deleteTechblog(tech_num);
 	}
 
 	@Override
 	public void deleteFile(Integer tech_num) {
 		techblogmapper.deleteFile(tech_num);
+	}
+
+	@Override
+	public TechblogFavVO selectFav(TechblogFavVO fav) {
+		return techblogmapper.selectFav(fav);
+	}
+
+	@Override
+	public int selectFavCount(Integer tech_num) {
+		return techblogmapper.selectFavCount(tech_num);
+	}
+
+	@Override
+	public void insertFav(TechblogFavVO techblogFav) {
+		techblogmapper.insertFav(techblogFav);
+	}
+
+	@Override
+	public void deleteFav(Integer tech_fav_num) {
+		techblogmapper.deleteFav(tech_fav_num);
 	}
 	
 	
