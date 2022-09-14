@@ -39,6 +39,9 @@ public class MemberVO {
 	private String photo_name;
 	private Date reg_date;
 	private Date modify_date;
+	
+	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
+	private String now_passwd;
 
 	//파일 업로드 처리 			//약속된 upload 파라미터 그래야setUploadfile()을 쓸 수 있다.
 	public void setUpload(MultipartFile upload) throws IOException{
