@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class CompanyController {
@@ -39,10 +40,8 @@ public class CompanyController {
         logger.debug("<<count : >>"+ count);
 
         List<CompanyVO> list = null;
-
         if(count>0){
             list = companyService.selectList(map);
-
         }
         mav.addObject("user",user);
         logger.debug("<<user>>"+user);

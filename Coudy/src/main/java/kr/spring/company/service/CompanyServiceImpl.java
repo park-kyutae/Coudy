@@ -46,4 +46,20 @@ public class CompanyServiceImpl implements CompanyService{
     public void insertScrap(CompanyScrapVO companyScrapVO) {
         companyMapper.insertScrap(companyScrapVO);
     }
+    @Override
+    public Integer selectScarp(Integer com_num, Integer mem_num) {
+        return companyMapper.selectScarp(com_num, mem_num);
+    }
+
+    @Override
+    public void deleteScrap(Integer scrap_num) {
+        companyMapper.deleteScrap(scrap_num);
+    }
+
+    @Override
+    public CompanyScrapVO selectScrapOne(CompanyScrapVO companyScrapVO) {
+        return companyMapper.selectScrapOne(companyScrapVO);
+    }
+
+
 }

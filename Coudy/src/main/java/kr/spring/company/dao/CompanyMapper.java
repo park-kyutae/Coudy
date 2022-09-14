@@ -2,10 +2,7 @@ package kr.spring.company.dao;
 
 import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -27,5 +24,14 @@ public interface CompanyMapper {
     public void updateHit(Integer com_num);
 
     @Insert("INSERT INTO com_scrap (scrap_num,mem_num,com_num) VALUES (com_scrap_seq.nextval,#{mem_num},#{com_num})")
-    public void insertScrap(CompanyScrapVO companyScrapVO);
+    void insertScrap(CompanyScrapVO companyScrapVO);
+
+    @Select("SELECT count(*) FROM com_scrap WHERE com_num = #{com_num} AND mem_num=#{mem_num}")
+    Integer selectScarp(Integer com_num,Integer mem_num);
+
+    @Select("SELECT * FROM com_scrap WHERE com_num=#{com_num} AND mem_num=#{mem_num}")
+    CompanyScrapVO selectScrapOne(CompanyScrapVO companyScrapVO);
+
+    @Delete("DELETE FROM com_scrap WHERE scrap_num=#{scrap_num}")
+    public void deleteScrap(Integer scrap_num);
 }

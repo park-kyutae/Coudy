@@ -14,5 +14,9 @@ public interface CompanyService {
     public CompanyVO selectCompany(Integer com_num);
     public void updateHit(Integer com_num);
 
-    public void insertScrap(CompanyScrapVO companyScrapVO);
+    void insertScrap(CompanyScrapVO companyScrapVO);
+    Integer selectScarp(Integer com_num,Integer mem_num);
+    public void deleteScrap(Integer scrap_num);
+
+    CompanyScrapVO selectScrapOne(CompanyScrapVO companyScrapVO);
 }
