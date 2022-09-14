@@ -4,6 +4,7 @@
 <!-- 상단 시작 -->
 <h2 class="align-center">SpringPage</h2>
 <div class="align-right">
+<<<<<<< HEAD
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
@@ -16,6 +17,20 @@
 	</c:if>
 	<c:if test="${!empty user && empty user.nick_name}">
 		[<span class="user_name">${user.id}</span>]
+=======
+	<a href="${pageContext.request.contextPath}/study/studygrouplist.do">스터디</a>
+	<a href="${pageContext.request.contextPath}/techblog/techblogList.do">기술블로그</a>
+	<a href="${pageContext.request.contextPath}/company/comHome.do">채용공고</a>
+	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
+	<c:if test="${!empty user && !empty user.photo}">
+		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
+	</c:if>
+	<c:if test="${!empty user && empty user.photo}">
+		<img src="${pageContext.request.contextPath}/images/face.png" width="25" height="25" class="my-photo">
+	</c:if>
+	<c:if test="${!empty user}">
+		[<span class="user_name">${user.id}</span>
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	</c:if>
 	<c:if test="${empty user}">
 		<a href="${pageContext.request.contextPath}/member/registerUser.do">회원가입</a>

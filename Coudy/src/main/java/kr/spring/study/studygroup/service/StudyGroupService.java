@@ -1,16 +1,14 @@
 package kr.spring.study.studygroup.service;
 
-import kr.spring.study.studygroup.vo.StudyGroupReviewVO;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
 
 import java.util.List;
 import java.util.Map;
 
 public interface StudyGroupService {
-    
-    //전체글 조회
+
+    public int selectStudy_num();
     public List<StudyGroupVO> selectAllStudyGroups(Map<String,Object> map);
-    //스터디 등록
     public void insertStudyGroup(StudyGroupVO studyGroup);
     //스터디 수정
     public void updateStudyGroup(StudyGroupVO studyGroup);

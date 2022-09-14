@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+#techblog_title {
+	background-color: #19abff;
+	color: white;
+	height: 200px;
+	font-size: 22pt;
+	font-weight: bold;
+	display:table;
+  	table-layout:fixed;
+  	text-align:center;
+  	width:100%;
+}
+#techtitle{
+	font-size: 23pt;
+	font-weight: bold;
+}
+#techtitlefont{
+	display:table-cell;
+  	vertical-align:middle;
+}
+#techcontent{
+	font-size: 12pt;
+	text-decoration: none;
+	color: gray;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 500px;
+	height: 20px;
+	display: block;
+}
+#techdate{
+	font-size: 12pt;
+
+}
+#techa{
+	text-decoration: none;
+	color: black;
+}
+#techat{
+	text-decoration: none;
+	color: white;
+}
+#label{
+	font-size: 12pt;
+}
+
+

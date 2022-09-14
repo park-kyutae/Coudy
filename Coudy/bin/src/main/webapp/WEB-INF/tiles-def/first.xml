@@ -15,7 +15,20 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberModify.jsp"/>                   
     </definition>
+<<<<<<< HEAD
     
+=======
+    <definition name="memberLogin" extends="main">
+    	<put-attribute name="title" value="로그인"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/memberLogin.jsp"/>                   
+    </definition>
+    <definition name="memberMyPage" extends="main">
+    	<put-attribute name="title" value="로그인"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/member/memberMyPage.jsp"/>                   
+    </definition>
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 </tiles-definitions>
 
 
