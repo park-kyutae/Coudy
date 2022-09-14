@@ -23,7 +23,7 @@ $(function(){
 		$.ajax({
 			url:'writeFav.do',
 			type:'post',
-			data:{notice_num:$('#notice_num').val()},
+			data:{notice_num:$('#notice_info').attr('data-num')},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -56,5 +56,5 @@ $(function(){
 	}//좋아요 표시 끝
 	
 	//초기 데이터 표시 
-	selectData($('#notice_num').val());
+	selectData($('#notice_info').attr('data-num'));
 });

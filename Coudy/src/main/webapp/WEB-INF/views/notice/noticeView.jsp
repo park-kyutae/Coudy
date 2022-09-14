@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.fav.js"></script>
 
 <div>
 	<h2>${notice.notice_title }</h2>
@@ -18,7 +18,8 @@
 			</c:if>
 		</li>
 		<li>
-			아이디 : ${notice.id }
+		    <%--좋아요 처리시 사용하기 위해 span 태그에 notice_num 접속 표시 --%>
+			아이디 : <span id="notice_info" data-num="${notice.notice_num}">${notice.id }</span>
 			<br>
 			<c:if test="${!empty notice.notice_modify_date }">
 			최근 수정일 : ${notice.notice_modify_date}
