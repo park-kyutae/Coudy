@@ -20,6 +20,13 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/company/comView.jsp"/>
 	</definition>
+	<definition name="resumeForm" extends="main" >
+		<put-attribute name="title" value="입사 지원"/>
+		<put-attribute name="header"
+					   value="/WEB-INF/views/company/resumeFormHeader.jsp"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/company/resumeForm.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -94,7 +95,7 @@ public class CompanyController {
     }
 
     @RequestMapping("/company/comDetail.do")
-    public ModelAndView detail(@RequestParam int com_num){
+    public ModelAndView detail(@RequestParam int com_num, HttpSession session){
         logger.debug("<<companyNum : >>"+com_num);
 
         companyService.updateHit(com_num);
@@ -103,7 +104,21 @@ public class CompanyController {
         CompanyVO companyVO = companyService.selectCompany(com_num);
         companyVO.setCom_title(StringUtil.useNoHtml(companyVO.getCom_title()));
 
+        session.setAttribute("company",companyVO);
+
         return new ModelAndView ("comView","companyVO",companyVO);
+    }
+
+    @RequestMapping("/company/resume.do")
+    public String resumeForm(Model model, HttpSession session, HttpServletRequest request){
+
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        CompanyVO company = (CompanyVO) session.getAttribute("company");
+
+//      CompanyVO companyVO = companyService.selectCompany();
+
+        model.addAttribute("companyVO",company);
+        return "resumeForm";
     }
 
 }

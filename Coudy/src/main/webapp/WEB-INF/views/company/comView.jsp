@@ -15,12 +15,19 @@
     pre{
         font-size: 15pt;
     }
+    .checked {
+        color: orange;
+    }
+    .blank{
+        color: lightgray;
+    }
 </style>
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.82/dist/themes/light.css"/>
 <script type="module"
         src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.82/dist/shoelace.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -49,18 +56,71 @@
                 <span>고용형태 : <i style="color: #0d6efd">${companyVO.com_empType}</i></span>
                 <span class="float-end">근무지역 : ${companyVO.com_address1} </span><br>
             </div>
-            <div class="col-6 text-center align-center">
-                <div class="row d-grid gap-2">
-                    <br>
-                    <button class="scrap_btn btn btn-sm btn-outline-primary mb-2">스크랩
-                        <svg style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                             fill="currentColor" id="star" class="bi bi-star" viewBox="0 0 16 16">
-                            <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                        </svg>
+            <div class="col-6 mx-auto my-auto">
+                <div class="row" style="margin-left: 10rem">
+                    <button style="width: 400px;" class="scrap_btn btn btn-outline-warning">스크랩
+                        <span id="${companyVO.com_num}" data-com-num="${companyVO.com_num}" style="font-size: 23px; cursor: pointer;" class="scrap_btn fa fa-star blank"></span>
+                        <script>
+                            $(function () {
+                                let com_num = ${companyVO.com_num};
+                                function selectData(com_num) {
+                                    $.ajax({
+                                        url: 'getScrap.do',
+                                        type: 'post',
+                                        data: {com_num:com_num},
+                                        dataType: 'json',
+                                        cache: false,
+                                        timeout: 30000,
+                                        success:function (param) {
+                                            displayScrap(param);
+                                        },
+                                        error:function () {
+                                            alert('네트워크오류류류ㅠ')
+                                        }
+                                    })
+                                }
+                                selectData(com_num);
+
+                                function displayScrap(param){
+                                    let id=${companyVO.com_num};
+                                    if(param.status == 'noScrap'){
+                                        document.getElementById(id).classList.replace('checked','blank');
+                                    }else{
+                                        document.getElementById(id).classList.replace('blank', 'checked');
+                                    }
+                                }
+                            });
+                        </script>
                     </button>
                 </div>
-                <div class="row align-center text-center">
-                    <button style="width: 300px;" class="btn btn-sm btn-outline-primary" >즉시지원</button>
+                <div class="row mt-2" style="margin-left: 10rem">
+
+                    <button style="width: 400px;" class="btn btn-outline-primary" onclick="javascript:popup()" >즉시지원</button>
+                    <input type="hidden" value="${companyVO.com_num}" id="com_num" name="com_num">
+                    <script>
+                        // var openWin;
+                        //
+                        // function openChild(){
+                        //     window.name='comView';
+                        //
+                        //     setChildText();
+                        //
+                        //     openWin = window.open("resume.do","resumeForm",
+                        //                                     "width = 500, height = 500, top = 300, left = 300, location = no, resizable = no, scrollbars = no");
+                        //
+                        // }
+                        //
+                        // function setChildText(){
+                        //     openWin.document.getElementById('cInput').value = document.getElementById('pInput').value;
+                        // }
+                        function popup(){
+
+                            var url = "resume.do";
+                            var name = "popup test";
+                            var option = "width = 500, height = 500, top = 300, left = 300, location = no, resizable = no, scrollbars = no"
+                            window.open(url, name, option);
+                        }
+                    </script>
                 </div>
             </div>
         </div>
@@ -120,9 +180,6 @@
         <div class="col-md-3 mt-4 px-4 col-6">
             <svg class="bd-placeholder-img rounded-circle" width="160" height="160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 최종합격" preserveAspectRatio="xMidYMid slice" focusable="false"><title>최종합격</title><rect width="100%" height="100%" fill="#d3d3d3"></rect><text x="30%" y="50%" fill="#000" dy=".3em" style="font-size: 15pt" class="border-0">최종합격</text></svg>
         </div>
-        <form id="scrap_num">
-            <input type="hidden" value="${companyVO.com_num}" id="com_num">
-        </form>
     </div>
 
     <sl-button href="comHome.do">홈으로</sl-button>
