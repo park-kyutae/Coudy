@@ -10,9 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 public class LoginCheckInterceptor 
                       implements HandlerInterceptor{
-	private static final Logger logger =
-			   LoggerFactory.getLogger(
-					    LoginCheckInterceptor.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginCheckInterceptor.class);
 	
 	@Override
 	public boolean preHandle(
@@ -24,13 +22,17 @@ public class LoginCheckInterceptor
 		
 		//로그인 여부 검사
 		HttpSession session = request.getSession();
+		
 		if(session.getAttribute("user")==null) {
 			//로그인이 되지 않은 상태
+			logger.debug("<<로그인 안됨 >> :");
 			response.sendRedirect(
 			 request.getContextPath()+"/member/login.do");
 			return false;
 		}
 		//로그인 되어 있는 상태	
+		logger.debug("<<로그인 됨 >>");
+
 		//요청한 URL 호출
 		return true;
 	}

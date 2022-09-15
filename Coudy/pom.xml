@@ -95,10 +95,28 @@
 			<version>1.18.16</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- 라이브러리 추가 끝 -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+        </dependency>
+        <!-- 라이브러리 추가 끝 -->
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -106,5 +124,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

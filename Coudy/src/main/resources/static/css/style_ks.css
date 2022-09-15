@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+ul{
+	list-style:none;
+	display: inline-block;
+	
+}
+
+ul li{
+	display: inline-block;
+	
+}
+
+.align-left{
+	float:left;
+	padding:5px;
+	width:50%;
+}
+
+.align-center2{
+	margin:0 auto;
+}
+
+
+
