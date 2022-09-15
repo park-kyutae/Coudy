@@ -6,12 +6,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
 </head>
 <body>
-<div id="main">
+<div class="container">
     <h1>스터디 그룹</h1>
     <form action="studygrouplist.do" method="get">
         <ul class="search">
@@ -41,13 +40,16 @@
     <div class="row">
     <c:forEach var="studygroup" items="${list}">
                <!--begin="1" end="3">-->
-            <div class="col-3" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">
-                <div class="card ma-2 pa-3">
+            <div class="col-3">
+                <div class="card ma-2 pa-3" style="width: 15rem;" >
                     <img src="https://i.pravatar.cc/64" class="card-img-top">
-                    <div class="card-body">
-                        <p>${studygroup.name}</p>
-                        <p class="card-text">스터디 방입니다.</p>
-                    </div>
+                    <div class="card-body" width="5000">
+                        <h3 class="card-title">${studygroup.name}</h3>
+                        <p class="card-subtitle">${studygroup.purpose}</p>
+                        <span class="badge bg-info">${studygroup.stack}</span>
+                        <p class="card-text">참여 인원 : ${studygroup.limit}</p>
+                         <button type="button" class="btn btn-primary" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">신청 하기</button>
+                        </div>
                 </div>
             </div>
     </c:forEach>

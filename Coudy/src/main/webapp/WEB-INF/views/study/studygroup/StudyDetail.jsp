@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<meta charset="UTF-8">\
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
 </head>
