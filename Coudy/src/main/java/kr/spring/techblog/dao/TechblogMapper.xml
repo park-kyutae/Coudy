@@ -80,6 +80,32 @@
   		WHERE tech_num=#{tech_num}
   	</update>
   	
+  	  	<!-- 댓글 목록 -->
+  	<select id="selectListReply" parameterType="map"
+  	                    resultType="techblogReplyVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              tech_re_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(tech_re_content,'<','&lt;'),'>','&gt;') tech_re_content,
+  		              ]]>
+  		              tech_re_date,
+  		              tech_re_modifydate,
+  		              tech_num,
+  		              mem_num
+  		            FROM techblog_reply
+  		            JOIN member USING(mem_num)
+  		            WHERE tech_num = #{tech_num}
+  		            ORDER BY tech_re_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	
 </mapper>
 
 

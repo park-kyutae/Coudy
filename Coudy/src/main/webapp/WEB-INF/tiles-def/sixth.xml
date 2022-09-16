@@ -10,9 +10,9 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/techblog/techblogList.jsp"/>                   
     </definition>
-    <definition name="techblogWrite" extends="techblog">
+    <definition name="techblogWrite" extends="techblog2">
     	<put-attribute name="title" value="기술블로그 등록"/>
-    	<put-attribute name="body"
+    	<put-attribute name="bodywu"
     	  value="/WEB-INF/views/techblog/techblogWrite.jsp"/>                   
     </definition>
     <definition name="techblogView" extends="techblog">
@@ -20,9 +20,9 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/techblog/techblogView.jsp"/>                   
     </definition>
-    <definition name="techblogModify" extends="techblog">
+    <definition name="techblogModify" extends="techblog2">
     	<put-attribute name="title" value="기술블로그 수정"/>
-    	<put-attribute name="body"
+    	<put-attribute name="bodywu"
     	  value="/WEB-INF/views/techblog/techblogModify.jsp"/>                   
     </definition>
 </tiles-definitions>

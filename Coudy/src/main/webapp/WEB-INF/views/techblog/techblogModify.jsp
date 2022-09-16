@@ -38,7 +38,13 @@
 	    	<div class="row">
 	    		<div class="col-lg-6">
 		    		<label for="tech_category" class="form-label mt-1" id="label">카테고리</label>
-					<form:input path="tech_category" placeholder="카테고리를 입력해주세요" cssClass="form-control"/>
+		    		<form:select path="tech_category" cssClass="form-select form-select-lg">
+		    			<form:option value="선택" label="선택"/>
+		    			<form:option value="코드개발" label="코드개발"/>
+		    			<form:option value="개발자들의 이야기" label="개발자들의 이야기"/>
+		    			<form:option value="AWS 설정 방법" label="AWS 설정 방법"/>
+		    			<form:option value="코드리뷰" label="코드리뷰"/>
+		    		</form:select>
 					<form:errors path="tech_category" cssClass="error-color"/>
 	    		</div>
 	    	</div>
@@ -49,15 +55,15 @@
 	    	</div>
 	    	<div class="row">
 	    		<div class="col-lg-6 form-check">
-					<label class="form-check-label col-sm-1 mx-2" for="AWS"><form:checkbox path="tech_tag" cssClass="form-check-input" value="AWS" id="AWS"/>AWS</label>
+					<label class="form-check-label col-sm-1 mx-2" for="AWS"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="AWS" id="AWS"/>AWS</label>
 					<form:errors path="tech_tag" cssClass="error-color"/>
-					<label class="form-check-label col-sm-1 mx-2" for="iOS"><form:checkbox path="tech_tag" cssClass="form-check-input" value="iOS" id="iOS"/>iOS</label>
+					<label class="form-check-label col-sm-1 mx-2" for="iOS"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="iOS" id="iOS"/>iOS</label>
 					<form:errors path="tech_tag" cssClass="error-color"/>
-					<label class="form-check-label col-sm-1 mx-1 mr-4" for="Android"><form:checkbox path="tech_tag" cssClass="form-check-input" value="Android" id="Android"/>Android</label>
+					<label class="form-check-label col-sm-1 mx-1 mr-4" for="Android"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="Android" id="Android"/>Android</label>
 					<form:errors path="tech_tag" cssClass="error-color"/>
-					<label class="form-check-label col-sm-1 mx-5" for="WEB"><form:checkbox path="tech_tag" cssClass="form-check-input" value="WEB" id="WEB"/>WEB</label>
+					<label class="form-check-label col-sm-1 mx-5" for="WEB"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="WEB" id="WEB"/>WEB</label>
 					<form:errors path="tech_tag" cssClass="error-color"/>
-					<label class="form-check-label col-sm-2" for="코드리뷰"><form:checkbox path="tech_tag" cssClass="form-check-input" value="코드리뷰" id="코드리뷰"/>코드리뷰</label>
+					<label class="form-check-label col-sm-2" for="코드리뷰"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="코드리뷰" id="코드리뷰"/>코드리뷰</label>
 					<form:errors path="tech_tag" cssClass="error-color"/>
 	    		</div>
 	    	</div>
@@ -93,6 +99,6 @@
 			            onclick="location.href='techblogList.do'">
 	    		</div>
 	    	</div>
+	    	</form:form>
 	    </div>
-	</form:form>
 <!-- 내용 끝 -->
