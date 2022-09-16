@@ -51,6 +51,7 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/notice/Write.do")
 				.addPathPatterns("/notice/Update.do")
 				.addPathPatterns("/notice/Delete.do");
+		//TODO 표현식으로 정리
 		
 
 		registry.addInterceptor(interceptor)
@@ -60,7 +61,7 @@ public class AppConfig implements WebMvcConfigurer{
 		//TODO 로그인 기능 완성 시 삭제
 		registry.addInterceptor(new LoginTestInterceptor())
 				.order(3)
-				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**"));
+				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**","/chat/**"));
 
 
 	}
