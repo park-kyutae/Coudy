@@ -1,6 +1,7 @@
 package kr.spring.company.service;
 
 import kr.spring.company.dao.CompanyMapper;
+import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,11 @@ public class CompanyServiceImpl implements CompanyService{
     @Override
     public CompanyScrapVO selectScrap(Integer com_num, Integer mem_num) {
         return companyMapper.selectScrap(com_num,mem_num);
+    }
+
+    @Override
+    public void insertResume(CompanyResumeVO companyResumeVO) {
+        companyMapper.insertResume(companyResumeVO);
     }
 
 

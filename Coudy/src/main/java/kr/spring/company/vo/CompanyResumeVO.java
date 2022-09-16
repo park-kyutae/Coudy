@@ -78,7 +78,6 @@ public class CompanyResumeVO {
         return "CompanyResumeVO{" +
                 "resume_num=" + resume_num +
                 ", reg_date=" + reg_date +
-                ", uploadfile=" + Arrays.toString(uploadfile) +
                 ", filename='" + filename + '\'' +
                 ", mem_num=" + mem_num +
                 ", com_num=" + com_num +

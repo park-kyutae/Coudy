@@ -1,5 +1,6 @@
 package kr.spring.company.service;
 
+import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
 
@@ -19,4 +20,6 @@ public interface CompanyService {
     public void deleteScrap(Integer scrap_num);
 
     CompanyScrapVO selectScrap(Integer com_num, Integer mem_num);
+
+    public void insertResume(CompanyResumeVO companyResumeVO);
 }

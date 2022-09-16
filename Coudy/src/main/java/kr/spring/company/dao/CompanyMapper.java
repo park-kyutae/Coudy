@@ -1,5 +1,6 @@
 package kr.spring.company.dao;
 
+import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
 import org.apache.ibatis.annotations.*;
@@ -34,4 +35,11 @@ public interface CompanyMapper {
 
     @Delete("DELETE FROM com_scrap WHERE scrap_num=#{scrap_num}")
     public void deleteScrap(Integer scrap_num);
+
+    @Insert("INSERT INTO com_resume (resume_num,uploadfile,filename,mem_num,com_num) VALUES (com_resume_seq.nextval,#{uploadfile},#{filename},#{mem_num},#{com_num})")
+    public void insertResume(CompanyResumeVO companyResumeVO);
+
+    @Select("SELECT * FROM com_resume r JOIN com_info i " +
+            "USING(com_num) WHERE r.resume_num=#{resume_num}")
+    public CompanyResumeVO selectResume(Integer resume_num);
 }

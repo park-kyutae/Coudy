@@ -120,10 +120,23 @@ public class CompanyController {
         model.addAttribute("companyVO",company);
         return "resumeForm";
     }
-//    @PostMapping("/company/resume.do")
-//    public String resumeSubmit(@Valid CompanyResumeVO companyResumeVO){
-//        logger.debug("<<이력서 첨부 파일>>"+companyResumeVO);
-//
-//        return "test";
-//    }
+    @PostMapping("/company/resume.do")
+    public String resumeSubmit(@Valid CompanyResumeVO companyResumeVO,HttpSession session,Model model,HttpServletRequest request){
+        logger.debug("<<이력서 첨부 파일>>"+companyResumeVO);
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        CompanyVO company = (CompanyVO) session.getAttribute("company");
+        companyResumeVO.setMem_num(user.getMem_num());
+        companyResumeVO.setCom_num(company.getCom_num());
+
+        companyService.insertResume(companyResumeVO);
+
+        model.addAttribute("message","추가가 완료되었습니다.");
+        model.addAttribute("url",request.getContextPath()+"/company/comHome");
+
+        return "/common/resultView";
+    }
+
+
+
+
 }
