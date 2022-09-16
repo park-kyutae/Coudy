@@ -14,39 +14,41 @@
 <!-- include ckeditor js -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_kt.css">
+	<div class="container">
 	<form:form action="techblogWrite.do" modelAttribute="techblogVO"
 	        id="register_form"
-	        enctype="multipart/form-data">
+	        enctype="multipart/form-data" cssClass="needs-validation">
 	    <form:errors element="div" cssClass="error-color"/>
-	    <div class="container">
 	    	<div class="row mt-4">
-	    		<div class="col-sm-6">
+	    		<div class="col-lg-6">
 	    			<label for="tech_title" class="form-label mt-1" id="label">제목</label>
 	    			<form:input path="tech_title" placeholder="제목을 입력해주세요" cssClass="form-control"/>
+	    			<div class="invalid-feedback">제목을 입력해주세요!</div>
 					<form:errors path="tech_title" cssClass="error-color"/>
 	    		</div>
 	    	</div>
 	    	<div class="row">
-	    		<div class="col-sm-6">
+	    		<div class="col-lg-6">
 		    		<label for="tech_name" class="form-label mt-1" id="label">작성자</label>
 					<form:input path="tech_name" placeholder="작성자를 입력해주세요" cssClass="form-control"/>
 					<form:errors path="tech_name" cssClass="error-color"/>
 	    		</div>
 	    	</div>
 	    	<div class="row">
-	    		<div class="col-sm-6">
+	    		<div class="col-lg-6">
 		    		<label for="tech_category" class="form-label mt-1" id="label">카테고리</label>
 					<form:input path="tech_category" placeholder="카테고리를 입력해주세요" cssClass="form-control"/>
 					<form:errors path="tech_category" cssClass="error-color"/>
 	    		</div>
 	    	</div>
 	    	<div class="row">
-	    		<div class="col-sm-6">
+	    		<div class="col-lg-6">
 	    			<label for="tech_tag" class="form-label mt-1" id="label">태그</label>	
 	    		</div>
 	    	</div>
 	    	<div class="row">
-	    		<div class="col-sm-6 form-check">
+	    		<div class="col-lg-6 form-check">
 					<label class="form-check-label col-sm-1 mx-2" for="AWS"><form:checkbox path="tech_tag" cssClass="form-check-input" value="AWS" id="AWS"/>AWS</label>
 					<form:errors path="tech_tag" cssClass="error-color"/>
 					<label class="form-check-label col-sm-1 mx-2" for="iOS"><form:checkbox path="tech_tag" cssClass="form-check-input" value="iOS" id="iOS"/>iOS</label>
@@ -60,7 +62,7 @@
 	    		</div>
 	    	</div>
 	    	<div class="row">
-	    		<div class="col-sm-10">
+	    		<div class="col-lg-10">
 	    			<form:textarea path="tech_content"/>
 				<form:errors path="tech_content" 
 				             cssClass="error-color"/>
@@ -84,11 +86,13 @@
 			    </script> 
 	    		</div>
 	    	</div>
-	    </div>
-		<div class="align-center">
-			<form:button>전송</form:button>
-			<input type="button" value="목록"
+	    	<div class="row">
+	    		<div class="col-lg-10">
+	    			<form:button>전송</form:button>
+				<input type="button" value="목록"
 			            onclick="location.href='techblogList.do'">
-		</div>    
-	</form:form>
+	    		</div>
+	    	</div>
+	    	</form:form>
+	    </div>
 <!-- 내용 끝 -->

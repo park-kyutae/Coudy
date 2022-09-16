@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,19 +17,17 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="main">
-	<div id="main_header">
+<div id="main"  class="container">
+	<div class="row" id="main_header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div id="main_body" class="container">
+	<div id="main_body">
 		<div class="row">
-			<div class="col">
 				<tiles:insertAttribute name="bodytitle"/>
-			</div>
 		</div>
 		<div class="row">
-					<div class="col-lg-2 "><tiles:insertAttribute name="sidebar"/></div>
-					<div class="col-lg-10"><tiles:insertAttribute name="body"/></div>
+					<div class="col-2"><tiles:insertAttribute name="sidebar"/></div>
+					<div class="col-10"><tiles:insertAttribute name="body"/></div>
 		</div>
 	</div>
 	<div id="main_footer">
