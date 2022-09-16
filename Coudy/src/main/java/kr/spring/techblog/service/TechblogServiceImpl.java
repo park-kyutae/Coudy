@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.techblog.dao.TechblogMapper;
 import kr.spring.techblog.vo.TechblogFavVO;
+import kr.spring.techblog.vo.TechblogReplyVO;
 import kr.spring.techblog.vo.TechblogVO;
 
 @Service
@@ -77,6 +78,36 @@ public class TechblogServiceImpl implements TechblogService{
 	@Override
 	public void deleteFav(Integer tech_fav_num) {
 		techblogmapper.deleteFav(tech_fav_num);
+	}
+
+	@Override
+	public List<TechblogReplyVO> selectListReply(Map<String, Object> map) {
+		return techblogmapper.selectListReply(map);
+	}
+
+	@Override
+	public int selectRowCountReply(Map<String, Object> map) {
+		return techblogmapper.selectRowCountReply(map);
+	}
+
+	@Override
+	public TechblogReplyVO selectReply(Integer tech_re_num) {
+		return techblogmapper.selectReply(tech_re_num);
+	}
+
+	@Override
+	public void insertReply(TechblogReplyVO techReply) {
+		techblogmapper.insertReply(techReply);
+	}
+
+	@Override
+	public void updateReply(TechblogReplyVO techReply) {
+		techblogmapper.updateReply(techReply);
+	}
+
+	@Override
+	public void deleteReply(Integer tech_re_num) {
+		techblogmapper.deleteReply(tech_re_num);
 	}
 	
 	

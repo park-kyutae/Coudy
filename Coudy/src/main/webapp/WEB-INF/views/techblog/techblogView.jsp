@@ -13,51 +13,19 @@
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/techblog.fav.js"></script>
-<div class="page-main">
-	<h2>${techblog.tech_title}</h2>
-	<ul class="detail-info">
-			<li>
-			<c:if test="${!empty board.photo_name}">
-			<img src="imageView.do?board_num=${board.board_num}&board_type=1" width="40" height="40" class="my-photo">
-			</c:if>
-			<c:if test="${empty board.photo_name}">
-			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
-			</c:if>
-		</li>
-		<li>
-			작성자 : ${techblog.tech_name}
-			<br>
-			<c:if test="${!empty techblog.tech_modifydate}">
-			최근 수정일 : ${techblog.tech_modifydate}	
-			</c:if>
-			<c:if test="${empty techblog.tech_modifydate}">
-			작성일 : ${techblog.tech_date}	
-			</c:if>
-			<br>
-			조회 : ${techblog.tech_hit}
-			<br>
-			카테고리 : ${techblog.tech_category }
-			태그 : ${techblog.tech_tag}
-		</li>
-	</ul>
-	<hr size="1" width="100%">
-	<p>
-		${techblog.tech_content}
-	</p>
-	<div>
-		<%-- 좋아요 --%>
-		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
-		<span id="output_fcount"></span>
-	</div>
-	<hr size="1" width="100%">
-	<div class="align-right">
-		<c:if test="${!empty user && user.mem_num == techblog.mem_num}">
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/techblog.reply.js"></script>
+<div class="container">
+	<div class="row mt-3">
+		<div class="col">
+			<h2>${techblog.tech_title}</h2>
+		</div>
+		<div class="col-lg-2 d-flex justify-content-end">
+			<c:if test="${!empty user && user.mem_num == techblog.mem_num}">
 		<input type="button" value="수정" 
-		  onclick="location.href='techblogUpdate.do?tech_num=${techblog.tech_num}'">
-		<input type="button" value="삭제" id="delete_btn">
+		  onclick="location.href='techblogUpdate.do?tech_num=${techblog.tech_num}'" class="btn btn-primary btn-sm">
+		<input type="button" value="삭제" class="btn btn-danger btn-sm">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -69,8 +37,44 @@
 			};
 		</script>  
 		</c:if>
-		<input type="button" value="목록"
-		       onclick="location.href='techblogList.do'">
+		</div>
+	</div>
+	<hr size="1" width="100%" noshade="noshade">
+	<div class="row">
+		<div class="col">
+			<c:if test="${!empty techblog.tech_modifydate}">
+			${techblog.tech_modifydate}	
+			</c:if>
+			<c:if test="${empty techblog.tech_modifydate}">
+			${techblog.tech_date}	
+			</c:if>
+			${techblog.tech_name}
+			<c:if test="${!empty board.photo_name}">
+			<img src="imageView.do?board_num=${board.board_num}&board_type=1" width="40" height="40" class="my-photo">
+			</c:if>
+			<c:if test="${empty board.photo_name}">
+			<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
+			</c:if>
+		</div>
+		<div class="col d-flex justify-content-end my-1">
+			조회 : ${techblog.tech_hit}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col my-2">
+			태그 ${techblog.tech_tag}
+		</div>
+	</div>
+	<div class="row">
+		<p>
+			${techblog.tech_content}
+		</p>
+	</div>
+	
+	<div>
+		<%-- 좋아요 --%>
+		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
+		<span id="output_fcount"></span>
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
@@ -80,7 +84,7 @@
 			<input type="hidden" name="tech_num"
 			   value="${techblog.tech_num}" id="tech_num">
 			<textarea rows="3" cols="50" 
-			  name="re_content" id="re_content"
+			  name="tech_re_content" id="tech_re_content"
 			  class="rep-content"
 			  <c:if test="${empty user}">disabled="disabled"</c:if>
 			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
@@ -103,6 +107,28 @@
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
 	</div>
 	<!-- 댓글 UI 끝 -->
+	<div class="row justify-content-between">
+		<div class="col">
+			<c:if test="">
+			
+			</c:if>
+			<img src="${pageContext.request.contextPath}/images/chevron-compact-left.svg">
+		</div>
+		<div class="col">
+			
+		</div>
+		<div class="col d-flex justify-content-end">
+			<c:if test="">
+			
+			</c:if>
+			<img src="${pageContext.request.contextPath}/images/chevron-compact-right.svg">
+		</div>
+	</div>
+	<div class="row mt-4">
+		<div class="col">
+			<input type="button" value="목록으로 돌아가기" onclick="location.href='techblogList.do'" class="w-100 btn btn-secondary btn-lg">
+		</div>
+	</div>
 </div>
 <!-- 내용 끝 -->
 
