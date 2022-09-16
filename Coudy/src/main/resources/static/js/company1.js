@@ -1,6 +1,6 @@
 const scrap = {
     init: function() {
-        $(document).on('click', '.scrap_star .scrap_btn', function() {
+        $(document).on('click', '.scrap_star', function() {
             let com_num = $(this).data('com-num');
 
             console.log(com_num);

@@ -2,6 +2,7 @@ package kr.spring.company.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.Arrays;
@@ -9,7 +10,9 @@ import java.util.Arrays;
 public class CompanyResumeVO {
     private int resume_num;
     private Date reg_date;
+    @NotEmpty
     private byte[] uploadfile;
+    @NotEmpty
     private String filename;
     private int mem_num;
     private int com_num;

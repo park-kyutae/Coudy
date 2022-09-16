@@ -25,7 +25,21 @@
     </div>
     <div class="row">
         <div class="col">
-            <form:form modelAttribute="" enctype="multipart/form-data" action=""/>
+            <%--@elvariable id="companyResumeVO" type="kr.spring.company.vo.CompanyResumeVO"--%>
+            <form modelAttribute="companyResumeVO" method="post" enctype="multipart/form-data" action="resume.do" id="resumeForm">
+                <div class="row">
+                    <div class="col">
+                        <label for="upload">파일업로드</label>
+                        <input type="file" name="upload" id="upload">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col g-2">
+                        <input type="submit" class="btn btn-outline-primary" value="전송">
+                        <input type="button" class="btn btn-outline-secondary" value="취소" onclick="javascript:window.close()">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

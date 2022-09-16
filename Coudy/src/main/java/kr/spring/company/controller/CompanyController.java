@@ -1,6 +1,7 @@
 package kr.spring.company.controller;
 
 import kr.spring.company.service.CompanyService;
+import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyVO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.StringUtil;
@@ -109,16 +110,20 @@ public class CompanyController {
         return new ModelAndView ("comView","companyVO",companyVO);
     }
 
-    @RequestMapping("/company/resume.do")
+    @GetMapping("/company/resume.do")
     public String resumeForm(Model model, HttpSession session, HttpServletRequest request){
 
         MemberVO user = (MemberVO) session.getAttribute("user");
         CompanyVO company = (CompanyVO) session.getAttribute("company");
 
-//      CompanyVO companyVO = companyService.selectCompany();
 
         model.addAttribute("companyVO",company);
         return "resumeForm";
     }
-
+//    @PostMapping("/company/resume.do")
+//    public String resumeSubmit(@Valid CompanyResumeVO companyResumeVO){
+//        logger.debug("<<이력서 첨부 파일>>"+companyResumeVO);
+//
+//        return "test";
+//    }
 }
