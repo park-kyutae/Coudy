@@ -25,7 +25,7 @@
 			<c:if test="${!empty user && studygroup.mem_num != user.mem_num}">
 				<button class="btn btn-info" onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'">신청하기</button>
 			</c:if>
-			<c:if test="${!empty user && studygroup.registered eq 'Y'.charAt(0)}">
+			<c:if test="${!empty user && studyuser.registered eq 'Y'.charAt(0) && studyuser.is_group_manager eq 'Y'.charAt(0)}">
 				<button class="btn btn-info" onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'">보이나요</button>
 			</c:if>
 		</div>

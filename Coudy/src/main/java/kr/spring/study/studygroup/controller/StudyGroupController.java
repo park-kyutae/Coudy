@@ -123,13 +123,17 @@ public class StudyGroupController {
     //========상세===========//
     @RequestMapping("/study/studydetail.do")
     public ModelAndView detail(
-            @RequestParam int study_num) {
+            @RequestParam int study_num,HttpSession session) {
 
         logger.debug("<<study_num>> : " + study_num);
+
+
 
         StudyGroupVO studyGroupVO =
                 studyGroupService.selectStudyGroup(study_num);
 
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
         //제목에 태그를 허용하지 않음
         //studyGroupVO.setName(
         //       StringUtil.useNoHtml(studyGroupVO.getName()));
@@ -140,7 +144,14 @@ public class StudyGroupController {
 		 StringUtil.useBrNoHtml(board.getContent()));
 		*/
         //뷰 이름    속성명   속성값
-        return new ModelAndView("DetailStudyGroup","studygroup",studyGroupVO);
+        logger.debug("<<vo>> : " + studyUserVO);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("DetailStudyGroup");
+        model.addObject("studygroup", studyGroupVO);
+        model.addObject("studyuser", studyUserVO);
+
+        return model;
     }
 
     //===========수정===========//

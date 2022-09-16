@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/${pageContext.request.contextPath}js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
     <link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.ko.min.js" type="text/javascript"></script>
@@ -511,6 +511,7 @@
                 cache: false,
                 timeout: 30000,
                 success: function (param) {
+                    console.log(param)
                     if ( param instanceof Array) {
                         for (let x of param) {
                             if (x.field == 'globalError') {

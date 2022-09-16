@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.study.chat.dao.ChatMapper">
+
+
+<!--    <resultMap id="chatMembers" type="kr.spring.study.chat.vo.ChatRoomVO">-->
+<!--        <result column="chat_num" property="chatNum"/>-->
+<!--        <result column="chat_name" property="chatName"/>-->
+<!--        <collection  column="mem_num" property="chatMembers" javaType="java.util.List" ofType="kr.spring.study.chat.vo.ChatMemberVO" select="selectChatMembers"></collection>-->
+<!--    </resultMap>-->
+
+
+<!--    <select id="selectChatDetail" resultMap="chatMembers" parameterType="int">-->
+<!--        select * from CHAT where CHAT_NUM=#{chatNum}-->
+<!--    </select>-->
+
+<!--    <select id="selectChatMembers" resultMap="chatMembers" parameterType="int">-->
+<!--        select MEM_NUM from CHAT_MEMBER where CHAT_NUM=#{chatNum}-->
+<!--    </select>-->
+
+<!--    <select id="selectChatRooms" resultMap="chatMembers" parameterType="int">-->
+<!--        select * from CHAT where CHAT_NUM=#{chatNum}-->
+<!--    </select>-->
+<!--    <update id="createChatMember" parameterType="java.util.Map">-->
+<!--        INSERT into CHAT_MEMBER-->
+<!--        values-->
+<!--        <foreach item="memberVO" collection="memberVOS" separator="," >-->
+<!--            (#{chatNum},#{memberVO.mem_num})-->
+<!--        </foreach>-->
+<!--    </update>-->
+
+
+</mapper>
+
+
+
+
+
+
+

@@ -42,7 +42,7 @@ public class StudyUserServiceImpl implements StudyUserService{
     }
 
     @Override
-    public StudyUserVO selectStudyUser(Integer mem_num) {
-        return studyUserMapper.selectStudyUser(mem_num);
+    public StudyUserVO selectStudyUser(Integer study_num, Integer mem_num) {
+        return studyUserMapper.selectStudyUser(study_num, mem_num);
     }
 }
