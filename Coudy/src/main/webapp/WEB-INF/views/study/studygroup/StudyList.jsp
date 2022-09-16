@@ -6,13 +6,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
 </head>
 <body>
-<div id="main">
-    <h1>스터디 그룹</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+        <h1>스터디 그룹</h1>
+        </div>
+    </div>
+    <hr class="my-2">
     <form action="studygrouplist.do" method="get">
         <ul class="search">
             <li>
@@ -33,6 +37,14 @@
                        onclick="location.href='studygrouplist.do'">
             </li>
         </ul>
+        <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2">
+            <c:if test="${!empty user}">
+                <button type="button" justify="end" class="btn btn-primary" onclick="location.href='studygroupcreate.do'">생성하기</button>
+            </c:if>
+        </div>
+        </div>
     </form>
     <c:if test="${count == 0}">
         <div>표시할 스터디 그룹이 없습니다.</div>
@@ -40,20 +52,23 @@
     <c:if test="${count > 0}">
     <div class="row">
     <c:forEach var="studygroup" items="${list}">
-               <!--begin="1" end="3">-->
-            <div class="col-3" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">
-                <div class="card ma-2 pa-3">
-                    <img src="https://i.pravatar.cc/64" class="card-img-top">
+            <div class="col-3">
+                <div class="card ma-2 mb-3 pa-3" style="width: 15rem;height: 27rem"  >
+                    <img style="height: 200px;" src="https://i.pravatar.cc/64" class="card-img-top">
                     <div class="card-body">
-                        <p>${studygroup.name}</p>
-                        <p class="card-text">스터디 방입니다.</p>
-                    </div>
+                        <div style="height: 75px">
+                        <h3 class="card-title">${studygroup.name}</h3>
+                        </div>
+                        <div style="height: 40px">
+                        <p class="card-subtitle">${studygroup.purpose}</p>
+                        </div>
+                        <span class="badge bg-info">${studygroup.stack}</span>
+                        <p class="card-text text-muted">참여 중인 인원 : 1 / ${studygroup.limit}</p>
+                         <button style="width: 13rem;" type="button" class="btn btn-primary justify-content-md-center" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">신청 하기</button>
+                        </div>
                 </div>
             </div>
     </c:forEach>
-        <c:if test="${!empty user}">
-            <button type="button" class="btn btn-primary" onclick="location.href='studygroupcreate.do'">생성하기</button>
-        </c:if>
     </div>
         <div class="align-center">${page}</div>
     </c:if>

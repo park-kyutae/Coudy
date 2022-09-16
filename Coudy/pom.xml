@@ -107,22 +107,22 @@
         </dependency>
         <!-- 라이브러리 추가 끝 -->
 	</dependencies>
-	
+
 	<build>
-<!-- 		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.properties</include>
-				</includes>
-			</resource>
-		</resources> -->
+		 		<resources>
+                    <resource>
+                        <directory>src/main/java</directory>
+                        <includes>
+                            <include>**/*.xml</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <directory>src/main/java</directory>
+                        <includes>
+                            <include>**/*.properties</include>
+                        </includes>
+                    </resource>
+                </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
