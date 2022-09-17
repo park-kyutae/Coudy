@@ -54,7 +54,7 @@
     <c:forEach var="studygroup" items="${list}">
             <div class="col-3">
                 <div class="card ma-2 mb-3 pa-3" style="width: 15rem;height: 27rem"  >
-                    <img style="height: 200px;" src="https://i.pravatar.cc/64" class="card-img-top">
+                    <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="height: 200px;" >
                     <div class="card-body">
                         <div style="height: 75px">
                         <h3 class="card-title">${studygroup.name}</h3>
