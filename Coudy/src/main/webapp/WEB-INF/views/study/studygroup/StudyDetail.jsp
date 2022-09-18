@@ -16,7 +16,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container bg-secondary bg-gradient">
       <div class="row bg-info bg-gradient">
         <div class="col-3" style="height: 15rem">
           <img
@@ -49,7 +49,6 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <h2>프로젝트 목표 기간</h2>
                 <h5>${studygroup.start_date} ~ ${studygroup.end_date}</h5>
               </div>
-
               <div class="col-9 mb-5">
                 <h2>스터디 희망 지역</h2>
                 <h5>${studygroup.location}</h5>
@@ -100,12 +99,23 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               >
                 <button
                   style="width: 13rem"
-                  class="btn btn-info justify-content-md-center"
+                  class="btn btn-info mt-1 justify-content-md-center"
                   onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'"
                 >
                   신청자 목록
                 </button>
               </c:if>
+                <c:if
+                        test="${!empty user && studyuser.registered eq 'Y'.charAt(0)}"
+                >
+                    <button
+                            style="width: 13rem"
+                            class="btn btn-info mt-1 justify-content-md-center"
+                            onclick="location.href='studymain.do?study_num=${studygroup.study_num}'"
+                    >
+                        입장 하기
+                    </button>
+                </c:if>
             </div>
           </div>
         </div>
