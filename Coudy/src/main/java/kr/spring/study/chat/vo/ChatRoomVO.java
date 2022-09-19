@@ -12,4 +12,8 @@ public class ChatRoomVO {
     public ChatRoomVO(String chatName) {
         this.chatName = chatName;
     }
+
+    public ChatRoomVO(int chatNum) {
+        this.chatNum = chatNum;
+    }
 }

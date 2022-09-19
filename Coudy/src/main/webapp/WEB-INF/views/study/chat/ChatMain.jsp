@@ -13,14 +13,15 @@
     $(function () {
         $('.room_edit').click(function () {
             let chat_num = 'chatNum='+$(this).closest('.room').attr('id');
-            location.href=$(location).attr('pathname')+'/edit?'+chat_num
+            location.href='/chat/edit?'+chat_num
         }); $('#create_room').click(function () {
-            location.href=$(location).attr('pathname')+'/add'
+            location.href='/chat/add'
         });
         $('.chat_room').click(function () {
-            let chat_num = '/'+$(this).closest('.room').attr('id');
-            location.href = $(location).attr('pathname') + chat_num;
+            let chat_num = $(this).closest('.room').attr('id');
+            location.href =  '/chat/'+chat_num;
         })
+
     })
 
 </script>
