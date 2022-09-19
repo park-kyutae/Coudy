@@ -102,7 +102,7 @@ public class ApplicationController {
         StudyGroupVO studyGroupVO =
                 studyGroupService.selectStudyGroup(study_num);
         List<StudyUserVO> list = null;
-        
+
         ModelAndView model = new ModelAndView();
         model.setViewName("MyStudyList");
         model.addObject("studygroup", studyGroupVO);
