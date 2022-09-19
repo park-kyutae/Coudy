@@ -84,6 +84,7 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/forth.xml",
 				"/WEB-INF/tiles-def/fifth.xml",
 				"/WEB-INF/tiles-def/sixth.xml",
+				"/WEB-INF/tiles-def/techblogwu.xml",
 				"/WEB-INF/tiles-def/techblog.xml"
 		});
 		configurer.setCheckRefresh(true);

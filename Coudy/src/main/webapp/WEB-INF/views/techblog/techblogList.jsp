@@ -54,7 +54,7 @@
 					</div>
 					<div class="row">
 						<div class="col my-auto text-muted" id="techcontent">
-							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa">${techblog.tech_content}</a>
+							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa" >${techblog.tech_content}</a>
 						</div>
 					</div>
 					<div class="row">

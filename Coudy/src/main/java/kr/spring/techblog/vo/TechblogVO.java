@@ -30,6 +30,25 @@ public class TechblogVO {
 	private byte[] photo;//프로필 사진
 	private String photo_name;//프로필 사진명
 	
+	//===================checkbox===========================//
+	   //form:checkbox에서 사용할 수 있도록 String -> String[]로 변환 
+	   public String[] getF_tech_tag() {
+	      String[] f_tech_tag = null;
+	      if(tech_tag!=null) f_tech_tag = tech_tag.split(",");
+	      return f_tech_tag;
+	   }
+	   //String[] -> String
+	   public void setF_tech_tag(String[] f_tech_tag) {
+	      if(f_tech_tag!=null) {
+	         this.tech_tag = "";
+	         for(int i=0;i<f_tech_tag.length;i++) {
+	            if(i>0) this.tech_tag += ",";
+	            this.tech_tag += f_tech_tag[i];
+	         }
+	      }
+	   }
+	   //===================checkbox===========================//
+	
 	public byte[] getPhoto() {
 		return photo;
 	}
