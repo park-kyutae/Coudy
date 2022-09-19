@@ -37,6 +37,11 @@ public class StudyUserServiceImpl implements StudyUserService{
     }
 
     @Override
+    public StudyUserVO selectUser(Integer mem_num) {
+        return studyUserMapper.selectUser(mem_num);
+    }
+
+    @Override
     public void deleteApplication(Integer study_user_num) {
 
     }

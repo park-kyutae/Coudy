@@ -48,6 +48,42 @@ public class StudyGroupController {
         return "StudyGroupList";
     }*/
 
+    @GetMapping("/study/studymain.do")
+    public String mainForm() {
+        return "StudyMain";
+    }
+
+    //========스터디방 메인===========//
+    @RequestMapping("/study/studymain.do")
+    public ModelAndView mainForm(
+            @RequestParam int study_num,HttpSession session) {
+
+        logger.debug("<<study_num>> : " + study_num);
+
+        StudyGroupVO studyGroupVO =
+                studyGroupService.selectStudyGroup(study_num);
+
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
+        //제목에 태그를 허용하지 않음
+        //studyGroupVO.setName(
+        //       StringUtil.useNoHtml(studyGroupVO.getName()));
+        //내용에 줄바꿈 처리하면서 태그를 허용하지 않음
+        //ckeditor 사용시 아래 코드 주석 처리
+		/*
+		board.setContent(
+		 StringUtil.useBrNoHtml(board.getContent()));
+		*/
+        //뷰 이름    속성명   속성값
+        logger.debug("<<vo>> : " + studyUserVO);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("StudyMain");
+        model.addObject("studygroup", studyGroupVO);
+        model.addObject("studyuser", studyUserVO);
+
+        return model;
+    }
 
 
     @RequestMapping("/study/studygrouplist.do")
