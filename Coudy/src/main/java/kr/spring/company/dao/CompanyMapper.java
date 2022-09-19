@@ -36,10 +36,17 @@ public interface CompanyMapper {
     @Delete("DELETE FROM com_scrap WHERE scrap_num=#{scrap_num}")
     public void deleteScrap(Integer scrap_num);
 
-    @Insert("INSERT INTO com_resume (resume_num,uploadfile,filename,mem_num,com_num) VALUES (com_resume_seq.nextval,#{uploadfile},#{filename},#{mem_num},#{com_num})")
+    @Insert("INSERT INTO com_resume (resume_num,uploadfile,filename,mem_num,com_num,mem_name) VALUES (com_resume_seq.nextval,#{uploadfile},#{filename},#{mem_num},#{com_num},#{mem_name})")
     public void insertResume(CompanyResumeVO companyResumeVO);
 
     @Select("SELECT * FROM com_resume r JOIN com_info i " +
             "USING(com_num) WHERE r.resume_num=#{resume_num}")
     public CompanyResumeVO selectResume(Integer resume_num);
+
+    @Select("SELECT * FROM COM_RESUME r\n" +
+            "    INNER JOIN COM_INFO CI on CI.COM_NUM = r.COM_NUM\n" +
+            "        WHERE CI.MEM_NUM=#{mem_num}")
+    public List<CompanyResumeVO> resumeList(Integer mem_num);
+
+
 }

@@ -122,21 +122,53 @@ public class CompanyController {
     }
     @PostMapping("/company/resume.do")
     public String resumeSubmit(@Valid CompanyResumeVO companyResumeVO,HttpSession session,Model model,HttpServletRequest request){
-        logger.debug("<<이력서 첨부 파일>>"+companyResumeVO);
+
         MemberVO user = (MemberVO) session.getAttribute("user");
         CompanyVO company = (CompanyVO) session.getAttribute("company");
         companyResumeVO.setMem_num(user.getMem_num());
+        companyResumeVO.setMem_name(user.getName());
         companyResumeVO.setCom_num(company.getCom_num());
 
+
         companyService.insertResume(companyResumeVO);
-
+        logger.debug("<<이력서 첨부 파일>>"+companyResumeVO);
         model.addAttribute("message","추가가 완료되었습니다.");
-        model.addAttribute("url",request.getContextPath()+"/company/comHome");
 
-        return "/common/resultView";
+        return "/company/resultCompany";
     }
 
+    @RequestMapping("/company/managerHome.do")
+    public ModelAndView managerList(HttpSession session,Model model){
+        ModelAndView mav = new ModelAndView();
+        MemberVO user = (MemberVO) session.getAttribute("user");
 
+        List<CompanyResumeVO> list = null;
+        list = companyService.resumeList(user.getMem_num());
 
+        mav.setViewName("managerList");
+        mav.addObject("list",list);
 
+        return mav;
+    }
+    @RequestMapping("/company/file.do")
+    public ModelAndView download(
+            @RequestParam int resume_num) {
+
+        CompanyResumeVO companyResumeVO = companyService.selectResume(resume_num);
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("downloadView");
+        mav.addObject("downloadFile",
+                companyResumeVO.getUploadfile());
+        mav.addObject("filename",
+                companyResumeVO.getFilename());
+
+        return mav;
+    }
+
+    @RequestMapping("/company/myResume.do")
+    public String myResume(){
+
+        return "myResume";
+    }
 }

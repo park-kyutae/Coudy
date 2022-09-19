@@ -67,5 +67,16 @@ public class CompanyServiceImpl implements CompanyService{
         companyMapper.insertResume(companyResumeVO);
     }
 
+    @Override
+    public CompanyResumeVO selectResume(Integer resume_num) {
+        return companyMapper.selectResume(resume_num);
+    }
+
+    @Override
+    public List<CompanyResumeVO> resumeList(Integer mem_num) {
+        return companyMapper.resumeList(mem_num);
+    }
+
+
 
 }

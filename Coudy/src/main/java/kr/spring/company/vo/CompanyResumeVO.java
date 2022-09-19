@@ -16,6 +16,16 @@ public class CompanyResumeVO {
     private String filename;
     private int mem_num;
     private int com_num;
+    private String mem_name;
+
+
+    public String getMem_name() {
+        return mem_name;
+    }
+
+    public void setMem_name(String mem_name) {
+        this.mem_name = mem_name;
+    }
 
     public void setUpload(MultipartFile upload)
             throws IOException {

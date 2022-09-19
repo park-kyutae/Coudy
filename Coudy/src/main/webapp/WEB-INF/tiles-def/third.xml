@@ -27,6 +27,16 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/company/resumeForm.jsp"/>
 	</definition>
+	<definition name="managerList" extends="main" >
+		<put-attribute name="title" value="이력서 확인 페이지"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/company/managerList.jsp"/>
+	</definition>
+	<definition name="myResume" extends="main" >
+		<put-attribute name="title" value="나의 지원현황"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/company/myResume.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

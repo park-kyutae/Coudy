@@ -22,4 +22,6 @@ public interface CompanyService {
     CompanyScrapVO selectScrap(Integer com_num, Integer mem_num);
 
     public void insertResume(CompanyResumeVO companyResumeVO);
+    public CompanyResumeVO selectResume(Integer resume_num);
+    public List<CompanyResumeVO> resumeList(Integer mem_num);
 }
