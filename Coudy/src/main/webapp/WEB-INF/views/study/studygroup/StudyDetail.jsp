@@ -105,6 +105,17 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                   신청자 목록
                 </button>
               </c:if>
+              <c:if
+                      test="${!empty user && studyuser.registered eq 'N'.charAt(0)}"
+              >
+                <button
+                        style="width: 13rem"
+                        class="btn btn-info mt-1 justify-content-md-center"
+                        onclick="location.href='mystudylist.do'"
+                >
+                  신청 확인
+                </button>
+              </c:if>
                 <c:if
                         test="${!empty user && studyuser.registered eq 'Y'.charAt(0)}"
                 >

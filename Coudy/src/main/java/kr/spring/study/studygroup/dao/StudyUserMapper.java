@@ -26,4 +26,7 @@ public interface StudyUserMapper {
     @Select("SELECT * FROM study_user s JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) WHERE s.study_num=#{study_num} AND mem_num=#{mem_num}")
     public StudyUserVO selectStudyUser(Integer study_num, Integer mem_num);
 
+    @Select("SELECT * FROM study_user s JOIN member m USING(mem_num) JOIN member_detail d USING(mem_num) WHERE s.mem_num=#{mem_num}")
+    public StudyUserVO selectUser(Integer mem_num);
+
 }
