@@ -19,6 +19,7 @@ public class MyResumeDTO {
     private String com_name;
     private String com_title;
 
+
     public void setUpload(MultipartFile upload)
             throws IOException {
         //MultipartFile -> byte[] 변환

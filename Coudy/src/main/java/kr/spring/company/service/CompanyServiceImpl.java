@@ -1,10 +1,7 @@
 package kr.spring.company.service;
 
 import kr.spring.company.dao.CompanyMapper;
-import kr.spring.company.vo.CompanyResumeVO;
-import kr.spring.company.vo.CompanyScrapVO;
-import kr.spring.company.vo.CompanyVO;
-import kr.spring.company.vo.MyResumeDTO;
+import kr.spring.company.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,6 +78,11 @@ public class CompanyServiceImpl implements CompanyService{
     @Override
     public List<MyResumeDTO> myResumeList(Integer mem_num) {
         return companyMapper.myResumeList(mem_num);
+    }
+
+    @Override
+    public List<MyScrapDTO> selectMyScrap(Integer mem_num) {
+        return companyMapper.selectMyScrap(mem_num);
     }
 
 

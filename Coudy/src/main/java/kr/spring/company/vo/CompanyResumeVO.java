@@ -18,6 +18,15 @@ public class CompanyResumeVO {
     private int com_num;
     private String mem_name;
 
+    private String mem_email;
+
+    public String getMem_email() {
+        return mem_email;
+    }
+
+    public void setMem_email(String mem_email) {
+        this.mem_email = mem_email;
+    }
 
     public String getMem_name() {
         return mem_name;

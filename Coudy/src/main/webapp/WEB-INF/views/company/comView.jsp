@@ -9,6 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
+    #btn1{
+        background-color: #8541f5;
+        border-color: #8541f5;
+    }
+    #btn1:hover{
+        background-color:#3d0991;
+        border-color:#3d0991;
+    }
+
     span{
         font-size: 15pt;
     }
@@ -95,7 +104,7 @@
                 </div>
                 <div class="row mt-2" style="margin-left: 10rem">
 
-                    <button style="width: 400px;" class="btn btn-outline-primary" onclick="javascript:popup()" >즉시지원</button>
+                    <button style="width: 400px;" id="btn2" class="btn btn-outline-primary" onclick="javascript:popup()" >즉시지원</button>
                     <input type="hidden" value="${companyVO.com_num}" id="com_num" name="com_num">
                     <script>
                         // var openWin;
@@ -182,7 +191,7 @@
         </div>
     </div>
 
-    <sl-button href="comHome.do">홈으로</sl-button>
+    <button id="btn1" class="btn btn-primary" onclick="location.href='/company/comHome.do'">홈으로</button>
 </div>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/js/company1.js"></script>

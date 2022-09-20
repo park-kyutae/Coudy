@@ -24,7 +24,8 @@
           <tr>
             <th scope="col">번호</th>
             <th scope="col">이력서 파일</th>
-            <th scope="col">이름</th>
+            <th scope="col">지원자 Email</th>
+            <th scope="col">지원자 이름</th>
             <th scope="col">보낸 날짜</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
             <tr>
               <th scope="row">${resume.resume_num}</th>
               <td><a href="file.do?resume_num=${resume.resume_num}">${resume.filename}</a></td>
+              <td>${resume.mem_email}</td>
               <td>${resume.mem_name}</td>
               <td>${resume.reg_date}</td>
             </tr>

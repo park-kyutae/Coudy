@@ -4,6 +4,7 @@ import kr.spring.company.service.CompanyService;
 import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyVO;
 import kr.spring.company.vo.MyResumeDTO;
+import kr.spring.company.vo.MyScrapDTO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.StringUtil;
 import org.slf4j.Logger;
@@ -130,6 +131,7 @@ public class CompanyController {
         CompanyVO company = (CompanyVO) session.getAttribute("company");
         companyResumeVO.setMem_num(user.getMem_num());
         companyResumeVO.setMem_name(user.getName());
+        companyResumeVO.setMem_email(user.getEmail());
         companyResumeVO.setCom_num(company.getCom_num());
 
 
@@ -180,4 +182,17 @@ public class CompanyController {
 
         return mav;
     }
+
+    @RequestMapping("company/myScrap.do")
+    public ModelAndView myScrap(HttpSession session){
+        ModelAndView mav = new ModelAndView();
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        List<MyScrapDTO> list = null;
+        list = companyService.selectMyScrap(user.getMem_num());
+        mav.addObject("list",list);
+        mav.setViewName("myScrap");
+
+        return mav;
+    }
+
 }

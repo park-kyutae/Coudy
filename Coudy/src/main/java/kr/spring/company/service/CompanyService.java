@@ -1,9 +1,6 @@
 package kr.spring.company.service;
 
-import kr.spring.company.vo.CompanyResumeVO;
-import kr.spring.company.vo.CompanyScrapVO;
-import kr.spring.company.vo.CompanyVO;
-import kr.spring.company.vo.MyResumeDTO;
+import kr.spring.company.vo.*;
 
 import java.util.List;
 import java.util.Map;
@@ -26,4 +23,5 @@ public interface CompanyService {
     public CompanyResumeVO selectResume(Integer resume_num);
     public List<CompanyResumeVO> resumeList(Integer mem_num);
     public List<MyResumeDTO> myResumeList(Integer mem_num);
+    public List<MyScrapDTO> selectMyScrap(Integer mem_num);
 }

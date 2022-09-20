@@ -37,6 +37,11 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/company/myResume.jsp"/>
 	</definition>
+	<definition name="myScrap" extends="main" >
+		<put-attribute name="title" value="나의 스크랩"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/company/myScrap.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

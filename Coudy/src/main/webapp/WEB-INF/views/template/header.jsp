@@ -11,6 +11,9 @@
 		<a href="${pageContext.request.contextPath}/company/managerHome.do">인사담당관 페이지</a>
 	</c:if>
 	<c:if test="${!empty user}">
+		<a href="${pageContext.request.contextPath}/company/myScrap.do">나의스크랩</a>
+	</c:if>
+	<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/company/myResume.do">지원현황</a>
 	</c:if>
 	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
@@ -30,7 +33,7 @@
 	<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 	</c:if>
-	<c:if test="${!empty user && user.auth == 2}">
+	<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 	</c:if>
 

@@ -1,9 +1,6 @@
 package kr.spring.company.dao;
 
-import kr.spring.company.vo.CompanyResumeVO;
-import kr.spring.company.vo.CompanyScrapVO;
-import kr.spring.company.vo.CompanyVO;
-import kr.spring.company.vo.MyResumeDTO;
+import kr.spring.company.vo.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -37,7 +34,7 @@ public interface CompanyMapper {
     @Delete("DELETE FROM com_scrap WHERE scrap_num=#{scrap_num}")
     public void deleteScrap(Integer scrap_num);
 
-    @Insert("INSERT INTO com_resume (resume_num,uploadfile,filename,mem_num,com_num,mem_name) VALUES (com_resume_seq.nextval,#{uploadfile},#{filename},#{mem_num},#{com_num},#{mem_name})")
+    @Insert("INSERT INTO com_resume (resume_num,uploadfile,filename,mem_num,com_num,mem_name,mem_email) VALUES (com_resume_seq.nextval,#{uploadfile},#{filename},#{mem_num},#{com_num},#{mem_name},#{mem_email})")
     public void insertResume(CompanyResumeVO companyResumeVO);
 
     @Select("SELECT * FROM com_resume r JOIN com_info i " +
@@ -54,4 +51,8 @@ public interface CompanyMapper {
             "        WHERE r.MEM_NUM=#{mem_num}")
     public List<MyResumeDTO> myResumeList(Integer mem_num);
 
+    @Select("SELECT *\n" +
+            "    FROM COM_SCRAP s INNER JOIN COM_INFO CI on s.COM_NUM = CI.COM_NUM\n" +
+            "        WHERE s.MEM_NUM = #{mem_num}")
+    public List<MyScrapDTO> selectMyScrap(Integer mem_num);
 }
