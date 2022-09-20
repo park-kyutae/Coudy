@@ -58,7 +58,7 @@
             </div>
             <div class="col-6 mx-auto my-auto">
                 <div class="row" style="margin-left: 10rem">
-                    <button style="width: 400px;" class="scrap_btn btn btn-outline-warning">스크랩
+                    <button style="width: 400px;" data-com-num="${companyVO.com_num}" class="scrap_btn btn btn-outline-warning">스크랩
                         <span id="${companyVO.com_num}" data-com-num="${companyVO.com_num}" style="font-size: 23px; cursor: pointer;" class="scrap_btn fa fa-star blank"></span>
                         <script>
                             $(function () {

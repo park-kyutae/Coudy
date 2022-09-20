@@ -3,6 +3,7 @@ package kr.spring.company.dao;
 import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyScrapVO;
 import kr.spring.company.vo.CompanyVO;
+import kr.spring.company.vo.MyResumeDTO;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -51,6 +52,6 @@ public interface CompanyMapper {
     @Select("SELECT * FROM COM_RESUME r\n" +
             "    INNER JOIN COM_INFO CI on CI.COM_NUM = r.COM_NUM\n" +
             "        WHERE r.MEM_NUM=#{mem_num}")
-    public List<CompanyResumeVO> myResumeList(Integer mem_num);
+    public List<MyResumeDTO> myResumeList(Integer mem_num);
 
 }

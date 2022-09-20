@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col">번호</th>
                     <th scope="col">회사명</th>
+                    <th scope="col">채용공고</th>
                     <th scope="col">이력서 파일</th>
                     <th scope="col">이름</th>
                     <th scope="col">보낸 날짜</th>
@@ -33,9 +34,8 @@
                 <c:forEach var="resume" items="${list}">
                     <tr>
                         <th scope="row">${resume.resume_num}</th>
-                        <th>
-
-                        </th>
+                        <td>${resume.com_name}</td>
+                        <td><a href="comDetail.do?com_num=${resume.com_num}">${resume.com_title}</a></td>
                         <td><a href="file.do?resume_num=${resume.resume_num}">${resume.filename}</a></td>
                         <td>${resume.mem_name}</td>
                         <td>${resume.reg_date}</td>

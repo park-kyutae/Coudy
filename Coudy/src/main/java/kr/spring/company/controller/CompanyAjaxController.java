@@ -68,7 +68,7 @@ public class CompanyAjaxController {
         Map<String,Object> map = new HashMap<String, Object>();
 
         MemberVO user = (MemberVO) session.getAttribute("user");
-
+        logger.debug("<<스크랩 com_num 들어오냐~?>>"+request.getParameter("com_num"));
         int com_num = Integer.parseInt(request.getParameter("com_num"));
 
         if(user == null){

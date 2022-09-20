@@ -3,6 +3,7 @@ package kr.spring.company.controller;
 import kr.spring.company.service.CompanyService;
 import kr.spring.company.vo.CompanyResumeVO;
 import kr.spring.company.vo.CompanyVO;
+import kr.spring.company.vo.MyResumeDTO;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.StringUtil;
 import org.slf4j.Logger;
@@ -172,11 +173,10 @@ public class CompanyController {
     public ModelAndView myResume(HttpSession session,Model model){
         ModelAndView mav = new ModelAndView();
         MemberVO user = (MemberVO) session.getAttribute("user");
-        List<CompanyResumeVO> list = null;
+        List<MyResumeDTO> list = null;
         list = companyService.myResumeList(user.getMem_num());
         mav.addObject("list",list);
         mav.setViewName("myResume");
-
 
         return mav;
     }
