@@ -17,6 +17,9 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 <style>
+    #oneCompany:hover{
+        box-shadow: 0px 0px 13px grey;
+    }
     .checked {
         color: orange;
     }
@@ -36,12 +39,6 @@
     <div class="align-center">
         <h2>채용 공고</h2>
     </div>
-    <c:if test="${!empty user}">
-    <div>
-        <input type="button" class="btn btn-secondary" value="공고쓰기"
-               onclick="location.href='${pageContext.request.contextPath}/company/insertCom.do'"/>
-    </div>
-    </c:if>
     <c:if test="${count == 0}">
     <div class="result-display">표시할 게시물이 없습니다.</div>
     </c:if>
@@ -50,9 +47,8 @@
          style="background-image: url('https://img.freepik.com/premium-photo/office-space-for-working-with-computers-office-equipment-3d-rendering_537132-492.jpg?w=2000');background-size:cover;background-position:center bottom;">
         <div class="container">
             <div class="row">
-                <div class="mx-auto p-4 col-md-7">
-                    <h1 class="mb-4">I feel the charm of existence in this spot.</h1> <a class="btn btn-primary"
-                                                                                         href="#">Take me there</a>
+                <div class=" mx-auto p-4 col-md-7">
+                    <h1 style="color: whitesmoke;text-shadow:2px 2px 2px black;font-size: 35pt"  class="mb-4">Coudy 채용 센터에 오신걸 환영합니다.</h1>
                 </div>
             </div>
         </div>
@@ -60,10 +56,10 @@
     <div class="container mt-4">
         <div class="row">
             <c:forEach var="company" items="${list}">
-                <div class="col-6 col-lg-3 p-4 border">
+                <div id="oneCompany" class="col-6 col-lg-3 p-4">
                     <a href="comDetail.do?com_num=${company.com_num}"><img class="img d-block mb-3 mx-auto"
                                                                            src="imageView.do?com_num=${company.com_num}&com_type=2"
-                                                                           width="200" height="105"
+                                                                           width="200" height="95"
                                                                            alt="Card image cap"></a>
                     <a style="color: black; text-decoration: none" href="comDetail.do?com_num=${company.com_num}">
                         <h4><b>${company.com_name}</b></h4></a>
@@ -109,9 +105,15 @@
                 </div>
             </c:forEach>
         </div>
+        <c:if test="${!empty user}">
+            <div class="row float-end">
+                <input type="button" class="btn btn-secondary" value="공고쓰기"
+                       onclick="location.href='${pageContext.request.contextPath}/company/insertCom.do'"/>
+            </div>
+        </c:if>
     </div>
-
     </c:if>
+
     <div doz_type="row" doz_grid="6" doz_order="2" doz_flexible="N" class="doz_row">
         <div doz_type="row" doz_grid="5" doz_order="2" doz_flexible="N" class="doz_row">
             <div doz_type="grid" doz_grid="5" doz_flexible="N" class="col-dz col-dz-5">
@@ -123,12 +125,10 @@
                              id="text_w20220525f59f544e93b1e">
 
                             <div class="text-table ">
-                                <div><p><span style="color: rgb(0, 0, 0);"><strong><span
-                                        style="font-size: 24px;">편리한 비즈니스 운영을 위한 완벽한 기능</span></strong></span>
-                                </p>
-                                    <p style="line-height: 1;"><br></p>
-                                    <p style="line-height: 2;"><span
-                                            style="color: rgb(144, 144, 144); font-size: 18px;">아임웹 쇼핑 기능은 비즈니스의 시작부터 완벽한 운영을 도와줍니다. 편리한 상품관리와 간편결제는 기본, 네이버쇼핑, 카카오 쇼핑하우 등 쇼핑몰 운영에 필요한 모든 기능을 한 곳에서 이용해보세요.</span>
+                                <div class="align-center">
+                                    <br>
+                                    <p class="align-center mx-auto text-center" style="line-height: 2;"><span class="align-center"
+                                            style="color: rgb(144, 144, 144); font-size: 18px;">Coudy 채용 서비스는 인증된 회사와 유저간의 완벽한 운영을 도와줍니다. 즉시 이력서 지원은 기본이며 기능을 이용해보세요~</span>
                                     </p></div>
                             </div>
                         </div>

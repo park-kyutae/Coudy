@@ -35,7 +35,7 @@
       <p>${company.com_tag}</p>
     </div>
     <div class="col-sm-3 align-center">
-      <h3>모집일</h3>
+      <h4>모집기간</h4>
       <span>~${company.com_schedule}</span>
     </div>
 
