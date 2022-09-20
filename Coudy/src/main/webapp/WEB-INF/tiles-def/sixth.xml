@@ -10,6 +10,26 @@
     	<put-attribute name="body"
     	  value="/WEB-INF/views/techblog/techblogList.jsp"/>                   
     </definition>
+    <definition name="techblogListA" extends="techblog">
+    	<put-attribute name="title" value="코드 개발"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogListA.jsp"/>                   
+    </definition>
+    <definition name="techblogListB" extends="techblog">
+    	<put-attribute name="title" value="개발자들의 이야기"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogListB.jsp"/>                   
+    </definition>
+    <definition name="techblogListC" extends="techblog">
+    	<put-attribute name="title" value="AWS 정보 공유"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogListC.jsp"/>                   
+    </definition>
+    <definition name="techblogListD" extends="techblog">
+    	<put-attribute name="title" value="코드리뷰"/>
+    	<put-attribute name="body"
+    	  value="/WEB-INF/views/techblog/techblogListD.jsp"/>                   
+    </definition>
     <definition name="techblogWrite" extends="techblog2">
     	<put-attribute name="title" value="기술블로그 등록"/>
     	<put-attribute name="bodywu"

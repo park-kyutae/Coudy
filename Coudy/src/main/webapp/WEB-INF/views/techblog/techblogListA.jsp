@@ -15,10 +15,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 	<div class="container">
 		<div class="row mt-3">
-			<div class="col">
-				<h2><b><a href="${pageContext.request.contextPath}/techblog/techblogList.do" id="techa">전체 목록</a></b></h2>
-				<hr size="6" width="100%" noshade="noshade">
-			</div>
+			<h2><b><a href="${pageContext.request.contextPath}/techblog/techblogListA.do" id="techa">코드 개발</a></b></h2>
+			<hr size="6" width="100%" noshade="noshade">
 		</div>
 		<c:if test="${user.auth > 3}">
 			<div class="row">
@@ -36,7 +34,7 @@
 			</div>
 		</c:if>
 				<c:if test="${count > 0}">
-				<c:forEach var="techblog" items="${list}">
+				<c:forEach var="techblog" items="${listA}">
 					<div class="row">
 						<div class="col my-3" id="techdate">
 							${techblog.tech_date}

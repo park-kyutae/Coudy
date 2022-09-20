@@ -2,6 +2,7 @@ package kr.spring.techblog.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -177,12 +178,13 @@ public class TechblogVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	@Override
 	public String toString() {
 		return "TechblogVO [tech_num=" + tech_num + ", tech_title=" + tech_title + ", tech_name=" + tech_name
 				+ ", tech_date=" + tech_date + ", tech_modifydate=" + tech_modifydate + ", tech_photoname="
 				+ tech_photoname + ", tech_content=" + tech_content + ", tech_hit=" + tech_hit + ", tech_category="
-				+ tech_category + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + "]";
+				+ tech_category + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + ", photo="
+				+ Arrays.toString(photo) + ", photo_name=" + photo_name + "]";
 	}
+	
 }
