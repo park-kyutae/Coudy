@@ -48,5 +48,9 @@ public interface CompanyMapper {
             "        WHERE CI.MEM_NUM=#{mem_num}")
     public List<CompanyResumeVO> resumeList(Integer mem_num);
 
+    @Select("SELECT * FROM COM_RESUME r\n" +
+            "    INNER JOIN COM_INFO CI on CI.COM_NUM = r.COM_NUM\n" +
+            "        WHERE r.MEM_NUM=#{mem_num}")
+    public List<CompanyResumeVO> myResumeList(Integer mem_num);
 
 }

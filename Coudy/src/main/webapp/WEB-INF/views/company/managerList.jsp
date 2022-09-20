@@ -16,7 +16,7 @@
   }
 </style>
 <div class="container">
-  <h2>이력서 확인 페이지</h2>
+  <h2>지원자 목록(이력서 열람 가능)</h2>
   <div class="row">
     <div class="col align-center">
       <table class="table table-hover">

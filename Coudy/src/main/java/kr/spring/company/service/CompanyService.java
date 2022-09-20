@@ -24,4 +24,5 @@ public interface CompanyService {
     public void insertResume(CompanyResumeVO companyResumeVO);
     public CompanyResumeVO selectResume(Integer resume_num);
     public List<CompanyResumeVO> resumeList(Integer mem_num);
+    public List<CompanyResumeVO> myResumeList(Integer mem_num);
 }

@@ -80,7 +80,7 @@ public class CompanyController {
     }
 
     @PostMapping("/company/insertCom.do")
-    public String submit(@Valid CompanyVO companyVO, HttpSession session, BindingResult result, Model model){
+    public String submit(@Valid CompanyVO companyVO, HttpSession session,HttpServletRequest request, BindingResult result, Model model){
         logger.debug("<<companyVO>> : "+companyVO);
 
         if(result.hasErrors()){
@@ -92,7 +92,9 @@ public class CompanyController {
         companyService.insertCompany(companyVO);
         logger.debug("<<user>>성공성곳엄라우니ㅏ룸ㄴ이ㅏㅜ리ㅏㅜㄴㅁㅇ룽"+user);
         model.addAttribute(companyVO);
-        return "comHome";
+        model.addAttribute("message","추가가 완료되었습니다.");
+        model.addAttribute("url",request.getContextPath() + "/company/comHome.do");
+        return "/common/resultView";
     }
 
     @RequestMapping("/company/comDetail.do")
@@ -167,8 +169,15 @@ public class CompanyController {
     }
 
     @RequestMapping("/company/myResume.do")
-    public String myResume(){
+    public ModelAndView myResume(HttpSession session,Model model){
+        ModelAndView mav = new ModelAndView();
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        List<CompanyResumeVO> list = null;
+        list = companyService.myResumeList(user.getMem_num());
+        mav.addObject("list",list);
+        mav.setViewName("myResume");
 
-        return "myResume";
+
+        return mav;
     }
 }
