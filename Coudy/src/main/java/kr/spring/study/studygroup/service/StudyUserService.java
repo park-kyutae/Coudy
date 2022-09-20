@@ -13,4 +13,5 @@ public interface StudyUserService {
     public void updateAuth(StudyUserVO studyUserVO);
     public void deleteApplication(Integer study_user_num);
     public StudyUserVO selectStudyUser(Integer study_num, Integer mem_num);
+    public StudyUserVO selectUser(Integer mem_num);
 }

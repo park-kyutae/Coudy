@@ -1,6 +1,5 @@
 package kr.spring.study.chat.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

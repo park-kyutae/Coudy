@@ -23,15 +23,45 @@
         client.connect({}, function () {
             client.subscribe('/sub/chat/text/' + chatNum, function (chat) {
                 let content = JSON.parse(chat.body);
-                $('#content').append('<li>' + content.payload + '   ' + content.memName + '</li>')
+                $('#content').append('<li>' + content.payload + '--' + content.chatTime + '--' + content.memName + '</li>')
+            });
+            client.subscribe('/sub/chat/file/' + chatNum, function (chat) {
+                let content = JSON.parse(chat.body);
+                console.log(content)
+                $('#content').append('<li><a href="/chat/files/download/'+ content.logNum+'">' + content.originalFileName + '</a>--' + content.chatTime + '--' + content.memName + '</li>')
             });
         });
 
         $('#send_payload').click(function () {
-            client.send('/pub/chat/send', {}, JSON.stringify({chatNum: chatNum, payload: payload.val(),memNum:memNum,memName:memName}));
+            let current_time = new Date().toISOString();
+            client.send('/pub/chat/text/' + chatNum, {}, JSON.stringify({
+                payload: payload.val(),
+                chatTime: current_time,
+                memNum: memNum,
+                memName: memName
+            }));
             payload.val('');
             payload.focus();
         });
+        $('#sub').click(function () {
+            console.log("test")
+            let formData = new FormData($('#file_upload')[0]);
+            console.log(formData)
+            $.ajax({
+                cache: false,
+                url: "/chat/file/" + chatNum,
+                type: 'POST',
+                data: formData,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                timeout: 30000,
+                success: function (data) {
+                },
+                error: function (xhr, status) {
+                }
+            });
+        })
 
     });
 </script>
@@ -47,8 +77,23 @@
         <div class="col">
             <div style="height: 500px;width: 300px">
                 <ul id="content">
+                    <c:forEach items="${chatMessages}" var="chatMessage">
+                        <c:choose>
+                            <c:when test="${chatMessage.chatMessage.startsWith('file://')}">
+                                <li><a href="/chat/files/download/${chatMessage.chatLogNum}">
+                                        ${chatMessage.chatMessage.substring(7)}</a>/${chatMessage.chatTime}/${chatMessage.memName}
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li>${chatMessage.chatMessage}/${chatMessage.chatTime}/${chatMessage.memName}</li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                 </ul>
             </div>
+        </div>
+        <div class="col">
+            <button onclick="location.href='${chatNum}/upload'">파일 보기</button>
         </div>
     </div>
     <div class="row">
@@ -58,6 +103,15 @@
         <div class="col">
             <button class="btn btn-secondary" id="send_payload">전송</button>
         </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form id="file_upload">
+                <input type="hidden" name="memNum" value="${member.memNum}">
+                <input type="file" name="chatFile">
+            </form>
+        </div>
+        <button id="sub">테스트 전송</button>
     </div>
 
 
