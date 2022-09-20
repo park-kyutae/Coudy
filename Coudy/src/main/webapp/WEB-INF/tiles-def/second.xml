@@ -28,7 +28,7 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/application/ApplicationWrite.jsp"/>
 	</definition>
-	<definition name="StudyMain" extends="main">
+	<definition name="StudyMain" extends="mainV2">
 		<put-attribute name="title" value="스터디 메인"/>
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/main/main.jsp"/>

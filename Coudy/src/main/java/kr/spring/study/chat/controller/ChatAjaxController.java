@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/chat")
 @RequiredArgsConstructor
-public class ChatAjaxController {
+public class ChatAjaxController{
     private final ChatService chatService;
 
     @GetMapping("/search-member/{searchWord}")

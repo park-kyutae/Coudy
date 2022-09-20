@@ -12,6 +12,7 @@ public class ChatTextLogVO  {
 
     private int memNum;
     private String chatMessage;
+
     private int chatNum;
     private LocalDateTime chatTime;
     private String memName;

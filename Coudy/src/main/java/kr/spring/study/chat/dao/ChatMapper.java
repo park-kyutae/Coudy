@@ -67,5 +67,12 @@ public interface ChatMapper {
 
     @Select("select CHAT_FILE_LOG_SEQ.nextval from dual")
     int selectChatFileLogSeq();
+    @Select("select * from (select CHAT_LOG.*,MD.NAME from CHAT_LOG join MEMBER_DETAIL MD on CHAT_LOG.MEM_NUM = MD.MEM_NUM order by CHAT_TIME desc ) where CHAT_NUM=#{chatNum} and ROWNUM = 1")
+    ChatTextLogVO selectLatestChatMessagesByChatNum(int chatNum);
+    @Select("select * from (select CHAT_FILE_LOG.*,MD.NAME from CHAT_FILE_LOG join MEMBER_DETAIL MD on CHAT_FILE_LOG.MEM_NUM = MD.MEM_NUM order by CHAT_FILE_TIME desc)" +
+            " where CHAT_NUM=#{chatNum} and ROWNUM =1")
+    ChatFileLogVO selectLatestFilesByChatNum(int chatNum);
+
+
 
 }

@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 public class ChatFileMessage extends ChatMessage{
+
     private String originalFileName;
     private int logNum;
 

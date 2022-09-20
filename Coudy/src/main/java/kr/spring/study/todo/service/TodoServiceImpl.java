@@ -1,8 +1,5 @@
 package kr.spring.study.todo.service;
 
-import kr.spring.study.plan.dao.PlanMapper;
-import kr.spring.study.plan.vo.PlanVO;
-import kr.spring.study.todo.controller.FindTodoForm;
 import kr.spring.study.todo.dao.TodoMapper;
 import kr.spring.study.todo.vo.TodoVO;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +41,10 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void nextStepTodo(TodoVO todoVO) {
         todoMapper.updateProgressTodo(todoVO);
+    }
+
+    @Override
+    public List<TodoVO> findProgressingTodos(int studyNum, int memNum) {
+        return todoMapper.selectProgressingTodos(studyNum,memNum);
     }
 }
