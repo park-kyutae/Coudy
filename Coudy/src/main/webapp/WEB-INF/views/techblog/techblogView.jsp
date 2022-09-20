@@ -21,11 +21,13 @@
 		<div class="col">
 			<h2>${techblog.tech_title}</h2>
 		</div>
-		<div class="col-lg-2 d-flex justify-content-end">
+	</div>
+	<div class="row">
+		<div class="col d-flex justify-content-end">
 			<c:if test="${!empty user && user.mem_num == techblog.mem_num}">
 		<input type="button" value="수정" 
 		  onclick="location.href='techblogUpdate.do?tech_num=${techblog.tech_num}'" class="btn btn-primary btn-sm">
-		<input type="button" value="삭제" class="btn btn-danger btn-sm">
+		<input type="button" value="삭제" class="btn btn-danger btn-sm" id="delete_btn">
 		<script type="text/javascript">
 			let delete_btn = document.getElementById('delete_btn');
 			//이벤트 연결
@@ -107,21 +109,21 @@
 		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
 	</div>
 	<!-- 댓글 UI 끝 -->
-	<div class="row justify-content-between">
+	<div class="row justify-content-between mt-3">
 		<div class="col">
 			<c:if test="">
-			
+				이전 글
 			</c:if>
-			<img src="${pageContext.request.contextPath}/images/chevron-compact-left.svg">
+			<img src="${pageContext.request.contextPath}/images/chevron-compact-left.svg" id="nextbutton">
 		</div>
 		<div class="col">
 			
 		</div>
 		<div class="col d-flex justify-content-end">
 			<c:if test="">
-			
+				다음 글
 			</c:if>
-			<img src="${pageContext.request.contextPath}/images/chevron-compact-right.svg">
+			<img src="${pageContext.request.contextPath}/images/chevron-compact-right.svg" id="nextbutton">
 		</div>
 	</div>
 	<div class="row mt-4">

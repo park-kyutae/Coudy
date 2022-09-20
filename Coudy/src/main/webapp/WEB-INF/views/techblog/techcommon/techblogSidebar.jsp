@@ -22,16 +22,16 @@
 		                    <a href="${pageContext.request.contextPath}/techblog/techblogList.do" id="techa">전체보기</a>
 		            </li>
 		            <li class="nav-item my-1">
-		                    코드 개발
+		            	<a href="${pageContext.request.contextPath}/techblog/techblogListA.do" id="techa">코드 개발</a>
 		            </li>
 		            <li class="nav-item my-1">
-		                    개발자들의 이야기
+		          		<a href="${pageContext.request.contextPath}/techblog/techblogListB.do" id="techa">개발자들의 이야기</a>
 		            </li>
 		            <li class="nav-item my-1">
-		                    AWS 정보 공유
+		            	<a href="${pageContext.request.contextPath}/techblog/techblogListC.do" id="techa">AWS 정보 공유</a>
 		            </li>
 		            <li class="nav-item my-1">
-		                    코드리뷰
+		            	<a href="${pageContext.request.contextPath}/techblog/techblogListD.do" id="techa">코드리뷰</a>
 		            </li>
 		        </ul>
 		    </div>

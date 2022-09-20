@@ -39,11 +39,11 @@
 	    		<div class="col-lg-6">
 		    		<label for="tech_category" class="form-label mt-1" id="label">카테고리</label>
 		    		<form:select path="tech_category" cssClass="form-select form-select-lg">
-		    			<form:option value="선택" label="선택"/>
-		    			<form:option value="코드개발" label="코드개발"/>
-		    			<form:option value="개발자들의 이야기" label="개발자들의 이야기"/>
-		    			<form:option value="AWS 설정 방법" label="AWS 설정 방법"/>
-		    			<form:option value="코드리뷰" label="코드리뷰"/>
+		    			<form:option value="1" label="선택"/>
+		    			<form:option value="2" label="코드개발"/>
+		    			<form:option value="3" label="개발자들의 이야기"/>
+		    			<form:option value="4" label="AWS 설정 방법"/>
+		    			<form:option value="5" label="코드리뷰"/>
 		    		</form:select>
 					<form:errors path="tech_category" cssClass="error-color"/>
 	    		</div>

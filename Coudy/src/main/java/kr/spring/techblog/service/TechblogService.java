@@ -22,6 +22,10 @@ public interface TechblogService {
 	public void updateTechblog(TechblogVO techblog);
 	public void deleteTechblog(Integer tech_num);
 	public void deleteFile(Integer tech_num);
+	public List<TechblogVO>selectListA(Map<String, Object> map);
+	public List<TechblogVO>selectListB(Map<String, Object> map);
+	public List<TechblogVO>selectListC(Map<String, Object> map);
+	public List<TechblogVO>selectListD(Map<String, Object> map);
 	
 	//부모글 좋아요
 	public TechblogFavVO selectFav(TechblogFavVO fav);

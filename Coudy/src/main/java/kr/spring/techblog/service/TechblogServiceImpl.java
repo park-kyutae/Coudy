@@ -52,6 +52,7 @@ public class TechblogServiceImpl implements TechblogService{
 	@Override
 	public void deleteTechblog(Integer tech_num) {
 		techblogmapper.deleteFavByTechblogNum(tech_num);
+		techblogmapper.deleteReplyBytechNum(tech_num);
 		techblogmapper.deleteTechblog(tech_num);
 	}
 
@@ -109,7 +110,27 @@ public class TechblogServiceImpl implements TechblogService{
 	public void deleteReply(Integer tech_re_num) {
 		techblogmapper.deleteReply(tech_re_num);
 	}
-	
+
+	@Override
+	public List<TechblogVO> selectListA(Map<String, Object> map) {
+		return techblogmapper.selectListA(map);
+	}
+
+	@Override
+	public List<TechblogVO> selectListB(Map<String, Object> map) {
+		return techblogmapper.selectListB(map);
+	}
+
+	@Override
+	public List<TechblogVO> selectListC(Map<String, Object> map) {
+		return techblogmapper.selectListC(map);
+	}
+
+	@Override
+	public List<TechblogVO> selectListD(Map<String, Object> map) {
+		return techblogmapper.selectListD(map);
+	}
+
 	
 
 }
