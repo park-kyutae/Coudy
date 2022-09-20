@@ -14,6 +14,11 @@ public class ApplicationVO {
     private String meet_time;
     private String request;
 
+    private String name;
+    private String description;
+    private char registered;
+    private char is_group_manager;
+
     private int study_num;
     private int mem_num;
 }

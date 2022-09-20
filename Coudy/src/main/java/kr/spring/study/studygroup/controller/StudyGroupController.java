@@ -42,17 +42,6 @@ public class StudyGroupController {
         return new StudyGroupVO();
     }
 
-    /*
-    @GetMapping("/study/studygrouplist.do")
-    public String form() {
-        return "StudyGroupList";
-    }*/
-
-    @GetMapping("/study/studymain.do")
-    public String mainForm() {
-        return "StudyMain";
-    }
-
     //========스터디방 메인===========//
     @RequestMapping("/study/studymain.do")
     public ModelAndView mainForm(
@@ -60,8 +49,7 @@ public class StudyGroupController {
 
         logger.debug("<<study_num>> : " + study_num);
 
-        StudyGroupVO studyGroupVO =
-                studyGroupService.selectStudyGroup(study_num);
+        StudyGroupVO studyGroupVO = studyGroupService.selectStudyGroup(study_num);
 
         MemberVO user = (MemberVO) session.getAttribute("user");
         StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
@@ -163,8 +151,6 @@ public class StudyGroupController {
 
         logger.debug("<<study_num>> : " + study_num);
 
-
-
         StudyGroupVO studyGroupVO =
                 studyGroupService.selectStudyGroup(study_num);
 
@@ -196,6 +182,7 @@ public class StudyGroupController {
     public String formUpdate(
             @RequestParam int study_num,
             Model model) {
+
         StudyGroupVO studyGroupVO =
                 studyGroupService.selectStudyGroup(study_num);
 

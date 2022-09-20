@@ -16,20 +16,16 @@
             <h1>나의 스터디 그룹</h1>
         </div>
     </div>
-    <c:forEach var="studygroup" items="${list}">
+    <c:forEach var="mystudylist" items="${list}">
         <div class="col-3">
             <div class="card ma-2 mb-3 pa-3" style="width: 15rem;height: 27rem"  >
                 <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="height: 200px;" >
                 <div class="card-body">
-                    <div style="height: 75px">
-                        <h3 class="card-title">${studygroup.name}</h3>
-                    </div>
-                    <div style="height: 40px">
-                        <p class="card-subtitle">${studygroup.purpose}</p>
-                    </div>
-                    <span class="badge bg-info">${studygroup.stack}</span>
-                    <p class="card-text text-muted">참여 중인 인원 : 1 / ${studygroup.limit}</p>
-                    <button style="width: 13rem;" type="button" class="btn btn-primary justify-content-md-center" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">신청 하기</button>
+                    <p class="card-text text-muted">${mystudylist.name}</p>
+                    <p class="card-text text-muted">${mystudylist.request}</p>
+                    <p class="card-text text-muted">${mystudylist.meet_time}</p>
+                    <p class="card-text text-muted">${mystudylist.career}</p>
+                    <p class="card-text text-muted">${mystudylist.description}</p>
                 </div>
             </div>
         </div>

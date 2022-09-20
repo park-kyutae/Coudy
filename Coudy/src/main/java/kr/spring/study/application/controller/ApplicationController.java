@@ -7,6 +7,7 @@ import kr.spring.study.studygroup.service.StudyGroupService;
 import kr.spring.study.studygroup.service.StudyUserService;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
 import kr.spring.study.studygroup.vo.StudyUserVO;
+import kr.spring.util.PagingUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,16 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ApplicationController {
 
     private static final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
+    private int rowCount = 20;
+    private int pageCount = 10;
 
     @Autowired
     public StudyGroupService studyGroupService;
@@ -92,46 +97,32 @@ public class ApplicationController {
 
     //==나의 스터디 목록==//
     @GetMapping("/study/mystudylist.do")
-    public ModelAndView mystudylist(@RequestParam int study_num, @Valid ApplicationVO applicationVO,
+    public ModelAndView mystudylist(@Valid ApplicationVO applicationVO,
                                     BindingResult result, HttpServletRequest request,
                                     HttpSession session) {
 
+        logger.debug("<<지원 목록>> : " + applicationVO);
+        
         MemberVO user = (MemberVO) session.getAttribute("user");
-        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
 
-        StudyGroupVO studyGroupVO =
-                studyGroupService.selectStudyGroup(study_num);
-        List<StudyUserVO> list = null;
+        List<ApplicationVO> list = null;
+        list = applicationService.selectMyAllApplications(user.getMem_num());
 
         ModelAndView model = new ModelAndView();
         model.setViewName("MyStudyList");
-        model.addObject("studygroup", studyGroupVO);
-        model.addObject("studyuser", studyUserVO);
-
+        model.addObject("list", list);
         return model;
     }
 
     //==관리자 스터디 목록==//
-    @GetMapping("/study/studyuserlist.do")
-    public ModelAndView studyApplication(@Valid ApplicationVO applicationVO,
-                       BindingResult result, HttpServletRequest request,
-                       HttpSession session) {
+    @GetMapping("/study/applicationlist.do")
+    public ModelAndView studyApplication(@RequestParam int study_num) {
 
-        MemberVO user = (MemberVO) session.getAttribute("user");
-        StudyUserVO studyUserVO = studyUserService.selectUser(user.getMem_num());
 
-        StudyGroupVO studyGroupVO =
-                studyGroupService.selectStudyGroup(studyUserVO.getStudy_num());
-
-        List<StudyUserVO> list = null;
 
         ModelAndView model = new ModelAndView();
-        model.setViewName("StudyUserList");
-        model.addObject("studygroup", studyGroupVO);
-        model.addObject("list", list);
-        model.addObject("studyuser", studyUserVO);
-        model.addObject("user", user);
-
+        model.setViewName("ApplicationList");
+        //model.addObject("list", list);
         return model;
     }
 }
