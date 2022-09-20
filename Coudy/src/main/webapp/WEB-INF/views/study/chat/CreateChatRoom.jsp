@@ -138,7 +138,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <span>채팅방 생성</span>
+            <span class="">채팅방 생성</span>
         </div>
         <div class="row">
             <div class="col">

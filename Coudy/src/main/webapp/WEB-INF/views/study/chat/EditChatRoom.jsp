@@ -12,7 +12,7 @@
 <script>
     $(function () {
         function render_member_input() {
-            $('#submit').before('<div class="row member">' +
+            $('#form').append('<div class="row member"><div class="col"> ' +
                 '<div class="row member-input">' +
                 '<div class="col">' +
                 '<input type="text" class="search-member"/>' +
@@ -20,6 +20,7 @@
                 '</div>' +
                 '<div class="col">' +
                 '<img src="/images/delete.svg" style="height: 15px" class="remove_member">' +
+                '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>')
@@ -48,12 +49,13 @@
 
         let ajax_results = [];
         let ajax_count = 0;
+
         function add_search_key_event() {
             $('.search-member').keyup(function () {
                 let results = [];
                 let search_word = $(this).val()
                 let trigger_ele = $(this)
-                if (search_word.length % 4 == 1 || ajax_count ==0) {
+                if (search_word.length % 4 == 1 || ajax_count == 0) {
                     console.log('ajax up')
                     ajax_count++;//TODO 키가 씹힘 문제 해결 후 카운트 삭제
                     $.ajax({
@@ -130,6 +132,7 @@
 
             });
         }
+
         add_search_key_event()
     })
 
@@ -138,59 +141,81 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <span>채팅방 생성</span>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-secondary" id="add_member">추가</button>
-            </div>
-        </div>
-        <div class="row">
-            <form:form modelAttribute="editChatRoomForm" action="">
-                <input type="text" name="chatName" value="${chatRoom.chatName}">
-                <input type="hidden" name="chatNum" value="${chatRoom.chatNum}">
-                <div class="row">
-                    <div class="col">
-                        <span>멤버 추가</span>
-                    </div>
+            <div class="row border-bottom border-2" style="background-color: powderblue">
+                <div class="col text-center">
+                    <span class="fs-3 fw-bolder">채팅방 수정</span>
                 </div>
-                <c:forEach items="${members}" var="member">
+            </div>
+
+            <div class="row">
+                <form:form modelAttribute="editChatRoomForm" action="">
+                    <div class="col" id="form">
+                        <div class="row">
+                            <div class="col">
+                                <span>채팅 방 이름 수정</span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" name="chatName" value="${chatRoom.chatName}">
+                                <input type="hidden" name="chatNum" value="${chatRoom.chatNum}">
+                            </div>
+                        </div>
+
                     <div class="row">
                         <div class="col">
-                            <span>${member.name}</span>
+                            <span>현재 멤버</span>
                         </div>
                     </div>
-                </c:forEach>
-                <div class="row member">
-                    <div class="row member-input">
-                        <div class="col">
-                            <input type="text" class="search-member"/>
-                            <input type="hidden" name="mem_num" class="search-member-num">
+                    <c:forEach items="${members}" var="member">
+                        <div class="row">
+                            <div class="col">
+                                <span>${member.name}</span>
+                            </div>
+                        </div>
+                    </c:forEach>
+                    <div class="row member">
+                        <div class="row">
+                        <div class="row member-input">
+                            <div class="col">
+                                <input type="text" class="search-member"/>
+                                <input type="hidden" name="mem_num" class="search-member-num">
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary" id="add_member">멤버 추가</button>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                </div>
-                <div class="row" id="submit">
-                    <div class="col">
-                        <input type="submit" value="추가">
-                    </div>
-                </div>
-            </form:form>
 
 
-        </div>
-        <div class="row">
-            <div class="col">
+                </div>
+                </form:form>
+
+
+            </div>
+            <div class="fixed-bottom d-flex justify-content-end">
                     <form action="quit" method="post">
                         <div class="row">
                             <div class="col">
                                 <input type="hidden" value="${chatRoom.chatNum}" name="chatNum">
-                                <button type="submit" class="quit_room">나가기</button>
+                                <button type="submit" class="quit_room">채팅방 나가기</button>
+                            </div>
+                        </div><div class="row">
+                            <div class="col">
+                                <input type="hidden" value="${chatRoom.chatNum}" name="chatNum">
+                                <button type="button" onclick="history.go(-1)">취소</button>
+                            </div>
+                        </div>
+                        <div class="row" id="submit">
+                            <div class="col">
+                                <input type="submit" value="추가">
                             </div>
                         </div>
                     </form>
             </div>
         </div>
-
     </div>
 </div>
 </body>

@@ -2,7 +2,6 @@ package kr.spring.study.chat.controller;
 
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
-import kr.spring.study.chat.message.ChatTextMessage;
 import kr.spring.study.chat.service.ChatService;
 import kr.spring.study.chat.vo.ChatFileLogVO;
 import kr.spring.study.chat.vo.ChatRoomVO;
@@ -21,10 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -41,8 +37,8 @@ public class ChatController {
 
     @GetMapping
     public String chatMain(@Login Integer memNum, Model model) {
-        List<ChatRoomVO> chatRooms = chatService.findAllRoomByUser(memNum);
-        model.addAttribute("chatRooms", chatRooms);
+        Map<ChatRoomVO, ChatTextLogVO> latestMessageEachRoom = chatService.findLatestMessageEachRoom(memNum);
+        model.addAttribute("chatRooms", latestMessageEachRoom);
         return "study/chat/ChatMain";
     }
 
@@ -105,31 +101,36 @@ public class ChatController {
     @GetMapping("/{chatNum}")
     public String joinRoom(@Login Integer memNum, @PathVariable Integer chatNum, Model model) {
 
-        String name = memberService.selectMember(memNum).getName();
-        List<ChatTextLogVO> chatTextLogVOList = chatService.findMessagesByChatNum(chatNum);
-        List<ChatTextLogVO> convertFileToTextLogVO = chatService.findFilesByChatNum(chatNum).stream()
-                .map(log -> new ChatTextLogVO(log.getChatFileLogNum(), memNum, "file://" + log.getChatFileName(),
-                        log.getChatNum(), log.getChatFileTime(), log.getMemName()))
-                .collect(Collectors.toList());
-        chatTextLogVOList.addAll(convertFileToTextLogVO);
+        MemberVO memberVO = memberService.selectMember(memNum);
 
-        chatTextLogVOList.stream()
+        List<ChatTextLogVO> chatTextLogVOList = chatService.findMessagesByChatNum(chatNum);
+        chatTextLogVOList.addAll(chatService.findConvertedFilesByChatNum(chatNum));
+
+        List<ChatTextLogVO> chatMessages = sortMessagesByTime(chatTextLogVOList);
+
+        ChatRoomVO chatRoomVO = chatService.findChatRoomByChatNum(chatNum);
+
+        model.addAttribute("member", memberVO);
+        model.addAttribute("chatRoomVO", chatRoomVO);
+        model.addAttribute("chatMessages", chatMessages);
+        return "/study/chat/ChatRoom";
+    }
+
+
+    private static List<ChatTextLogVO> sortMessagesByTime(List<ChatTextLogVO> chatTextLogVOList) {
+        return chatTextLogVOList.stream()
                 .sorted(Comparator.comparing(ChatTextLogVO::getChatTime))
                 .collect(Collectors.toList());
-
-        model.addAttribute("member", new ChatMemberInfo(memNum, name));
-        model.addAttribute("chatMessages", chatTextLogVOList);
-        return "/study/chat/ChatRoom";
     }
 
     @GetMapping("/{chatNum}/upload")
     public String uploadFiles(@Login Integer memNum, @PathVariable Integer chatNum, Model model) {
 
-        String name = memberService.selectMember(memNum).getName();
+//        MemberVO memberVO = memberService.selectMember(memNum);
         List<ChatFileLogVO> filesByChatNum = chatService.findFilesByChatNum(chatNum);
 
 
-        model.addAttribute("member", new ChatMemberInfo(memNum, name));
+//        model.addAttribute("member", memberVO);
         model.addAttribute("chatFiles", filesByChatNum);
 
         return "/study/chat/ChatRoomUpload";
