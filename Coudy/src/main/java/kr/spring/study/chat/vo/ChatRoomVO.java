@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ChatRoomVO {
+
     private int chatNum;
     private String chatName;
 

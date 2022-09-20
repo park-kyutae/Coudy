@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CreateChatRoomForm {
+public class  CreateChatRoomForm {
     private String chatName;
     private String mem_num;
 }

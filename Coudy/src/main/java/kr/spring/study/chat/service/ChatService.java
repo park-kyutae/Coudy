@@ -33,6 +33,8 @@ public interface ChatService {
 
     List<ChatFileLogVO> findFilesByChatNum(int chatNum);
 
+
+
     List<ChatTextLogVO> findConvertedFilesByChatNum(int chatNum);
 
     int getChatFileLogSEQ();

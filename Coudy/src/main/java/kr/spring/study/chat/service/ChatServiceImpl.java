@@ -125,6 +125,7 @@ public class ChatServiceImpl implements ChatService {
             resultMap.put(chatRoomVO, compareChatTime(chatTextLogVO, chatFileLogVO));
         }
         return resultMap;
+
     }
 
     private static ChatTextLogVO compareChatTime(ChatTextLogVO chatTextLogVO, ChatTextLogVO chatFileLogVO) {

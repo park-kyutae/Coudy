@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 @Getter
 @AllArgsConstructor
 public class SearchMemberResult {
+
     private int memNum;
     private String memName;
 }

@@ -8,9 +8,9 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 @Getter
-@ToString
 @AllArgsConstructor
 public abstract class ChatMessage {
+
     private int memNum;
     private String memName;
     private LocalDateTime chatTime;
