@@ -11,7 +11,7 @@
 	crossorigin="anonymous"></script>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
+	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_ks.css">
 
 
@@ -34,8 +34,8 @@
 				placeholder="id" />
 			<form:errors path="id" cssClass="error-color" />
 			<label for="id">아이디</label> 
-			<div class="valid-feedback">Looks good!</div>
 			<div class="invalid-feedback">4~12자 사이의 문구를 입력하세요</div>
+			<div class="valid-feedback">Looks good!</div>
 			
 		</div>
 
@@ -47,10 +47,9 @@
 			<label for="passwd">비밀번호</label>
 			<div class="valid-feedback">Looks good!</div>
 			<div class="invalid-feedback">4~12자 사이의 문구를 입력하세요</div>
-			<div>
-		</div>
-				<input type="submit" class="btn btn-primary mt-3 col-6" style="float:left;border-radius:5px 0 0 5px;" value="login">
-				<input type="button" class="btn btn-outline-secondary mt-3 col-6" style="border-radius:0 5px 5px 0;"
+
+			<input type="submit" class="btn btn-primary mt-3 col-6" style="float:left;border-radius:5px 0 0 5px;" value="login">
+			<input type="button" class="btn btn-outline-secondary mt-3 col-6" style="border-radius:0 5px 5px 0;"
 				onclick="location.href='registerUser.do'" value="Sign">
 				
 		</div>

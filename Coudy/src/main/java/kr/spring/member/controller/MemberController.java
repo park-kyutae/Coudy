@@ -396,7 +396,7 @@ public class MemberController {
 	
 	//회원관리-수정
 	@GetMapping("/member/admin_update.do")
-	public String form( @RequestParam int mem_num, Model model) {
+	public String form(@RequestParam int mem_num, Model model) {
 		
 		MemberVO memberVO = memberService.selectMember(mem_num);
 		
@@ -417,7 +417,7 @@ public class MemberController {
 		model.addAttribute("message","수정이 완료되었습니다.");
 		model.addAttribute("url",request.getContextPath()+"/member/admin_update.do?mem_num="+member.getMem_num());
 		
-		return "common/resultView";
+		return "/member/resultModifyMember";
 	}
 		
 	

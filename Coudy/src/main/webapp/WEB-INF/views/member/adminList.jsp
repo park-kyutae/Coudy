@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/member.admin.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style_ks.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -14,6 +13,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous">
 </script>
+
 
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -75,22 +75,37 @@ a:link{
 				<th>권한</th>
 			</tr>
 			<c:forEach var="member" items="${list}">
-
+			<!-- 팝업스크립트 시작 -->
+			 <script>
+			      function popup(param){			    	  
+			    	  
+			    	  console.log(param+' : 안쪽');
+			    	  //console.log(${member.mem_num}+' : 안쪽');
+			          //var url = '/member/admin_update.do?mem_num=${member.mem_num}';
+			          var name = "popup test";
+			          var option = "width = 350, height = 400, location = no, resizeable = no, scrollbars = no, top=300, left=650";
+			          window.open('admin_update.do?mem_num='+param, name, option);
+			      }
+			 </script>
+			<!-- 팝업스크립트 끝 -->
 				<tr>
 					<td>${member.mem_num }</td>
-					<td><a href="${pageContext.request.contextPath }/member/admin_update.do?mem_num=${member.mem_num}">${member.name }</a></td>
+					<td><button class="btn btn-outline-secondary" onclick="javascript:popup(${member.mem_num})" id="popupBtn">${member.name }</button></td>
 					<td>${member.id }</td>
 					<td>${member.passwd }</td>
 					<td>
 						<c:if test="${member.auth == 0}">탈퇴</c:if> 
 						<c:if test="${member.auth == 1}"><div style="color:#918100;">정지</div></c:if> 
 						<c:if test="${member.auth == 2}"><div style="color:#0032ae;">일반</div></c:if> 
-						<c:if test="${member.auth == 3}"><div style="color:green;">관리</div></c:if>
+						<c:if test="${member.auth == 3}"><div style="color:orange;">인사</div></c:if>
+						<c:if test="${member.auth == 4}"><div style="color:green;">관리</div></c:if>
 					</td>
 				</tr>
+			
 			</c:forEach>
+			
 		</table>
-		<div class="align-center">${page }</div>
+		<br><br><div class="align-center text-center">${page }</div>
 		</div>
 	</div>
 	</c:if>
