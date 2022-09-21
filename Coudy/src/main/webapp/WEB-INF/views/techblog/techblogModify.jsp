@@ -41,9 +41,9 @@
 				             cssClass="error-color"/>
 			</li>
 			<li>
-				<label for="tech_kategorie">카탈로그</label>
-				<form:input path="tech_kategorie"/>
-				<form:errors path="tech_kategorie" 
+				<label for="tech_category">카테고리</label>
+				<form:input path="tech_category"/>
+				<form:errors path="tech_category" 
 				             cssClass="error-color"/>
 			</li>
 			<li><b>내용</b></li>

@@ -26,9 +26,6 @@ class SpringProjectApplicationTests {
 			 studyGroupVO.setLimit(12);
 			 studyGroupVO.setLocation("locate");
 			 studyGroupVO.setName("name");
-			 studyGroupVO.setLimit_date(nowDate);
-			 studyGroupVO.setEnd_date(nowDate);
-			 studyGroupVO.setSatrt_date(nowDate);
 			 studyGroupVO.setStack("java");
 			 studyGroupVO.setPurpose("purpose");
 			 studyGroupVO.setMem_num(memberVO.getMem_num());

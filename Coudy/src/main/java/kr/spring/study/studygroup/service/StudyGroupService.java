@@ -7,6 +7,7 @@ import java.util.Map;
 
 public interface StudyGroupService {
 
+    public int selectStudy_num();
     public List<StudyGroupVO> selectAllStudyGroups(Map<String,Object> map);
     public void insertStudyGroup(StudyGroupVO studyGroup);
     //스터디 수정

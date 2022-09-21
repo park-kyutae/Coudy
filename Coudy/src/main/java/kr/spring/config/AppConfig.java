@@ -40,11 +40,19 @@ public class AppConfig implements WebMvcConfigurer{
 				    new LoginCheckInterceptor())
 				.order(1)
 		        .addPathPatterns("/member/myPage.do")
-				.addPathPatterns("/company/insertCom.do")
+		        .addPathPatterns("/member/update.do")
+		        .addPathPatterns("/member/delete.do")
 				.addPathPatterns("/study/studygroupcreate.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
+				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
-				.addPathPatterns("/techblog/techblogDelete.do");
+				.addPathPatterns("/techblog/techblogDelete.do")
+				.addPathPatterns("/notice/Write.do")
+				.addPathPatterns("/notice/Update.do")
+				.addPathPatterns("/notice/Delete.do")
+				.addPathPatterns("/member/admin_update.do")
+				.addPathPatterns("/member/admin_list.do");
+
 
 		registry.addInterceptor(interceptor)
 				.order(2)
@@ -54,7 +62,6 @@ public class AppConfig implements WebMvcConfigurer{
 		registry.addInterceptor(new LoginTestInterceptor())
 				.order(3)
 				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**"));
-
 
 
 	}
@@ -76,7 +83,8 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/third.xml",
 				"/WEB-INF/tiles-def/forth.xml",
 				"/WEB-INF/tiles-def/fifth.xml",
-				"/WEB-INF/tiles-def/sixth.xml"
+				"/WEB-INF/tiles-def/sixth.xml",
+				"/WEB-INF/tiles-def/techblog.xml"
 		});
 		configurer.setCheckRefresh(true);
 		return configurer;

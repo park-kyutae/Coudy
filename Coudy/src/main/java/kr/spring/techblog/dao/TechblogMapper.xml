@@ -42,6 +42,7 @@
   		              t.tech_name,
   		              t.tech_hit,
   		              t.tech_date,
+  		              t.tech_content,
   		              t.mem_num
   		            FROM techblog t JOIN member m
   		            ON t.mem_num = m.mem_num
@@ -71,12 +72,10 @@
   	<!-- 글수정 -->
   	<update id="updateTechblog" parameterType="techblogVO">
   		UPDATE techblog SET
-  		    <if test="tech_photoname != ''">
-  		    tech_photo=#{tech_photo},
-  		    tech_photoname=#{tech_photoname},
-  		    </if>
   			tech_title=#{tech_title},
   			tech_content=#{tech_content},
+  			tech_tag=#{tech_tag},
+  			tech_category=#{tech_category},
   		    tech_modifydate=SYSDATE
   		WHERE tech_num=#{tech_num}
   	</update>
