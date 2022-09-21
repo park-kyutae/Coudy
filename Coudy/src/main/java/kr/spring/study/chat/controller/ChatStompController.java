@@ -54,6 +54,7 @@ public class ChatStompController {
         String hash = FileStore.getHash(file);
 
         MemberVO member = memberService.selectMember(memNum);
+
         int logNum = chatService.getChatFileLogSEQ();
         ChatFileLogVO chatFileVO = new ChatFileLogVO(logNum,memNum, file.getOriginalFilename(), hash, chatNum);
         chatService.saveFile(chatFileVO, file);

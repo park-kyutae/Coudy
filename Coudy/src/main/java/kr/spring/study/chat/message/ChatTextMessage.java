@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class ChatTextMessage extends ChatMessage{
     private String payload;
 
+
     public ChatTextMessage(int memNum, String memName, LocalDateTime chatTime, String payload) {
         super(memNum, memName, chatTime);
         this.payload = payload;

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class ChatFileLogVO  {
+
     private int chatFileLogNum;
     private int memNum;
     private String chatFileName;

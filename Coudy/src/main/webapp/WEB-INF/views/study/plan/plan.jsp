@@ -923,6 +923,7 @@
     </div>
 </div>
 
+<button onclick="window.open('/chat','test','width=500,height=700');return false;">임시 채팅 버튼</button>
 
 </body>
 </html>
