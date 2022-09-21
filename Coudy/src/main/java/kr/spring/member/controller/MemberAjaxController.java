@@ -2,6 +2,7 @@ package kr.spring.member.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.spring.member.service.MemberService;
@@ -54,7 +56,31 @@ public class MemberAjaxController {
 		return mapAjax;
 		
 	}
-	
+	@RequestMapping("/member/confirmId.do")
+	@ResponseBody
+	public Map<String,String> process(@RequestParam String id){
+		
+		logger.debug("<<id중복체크1>> : " + id);
+		
+		Map<String,String> mapAjax = new HashMap<String,String>();
+		logger.debug("<<id중복체크2>> : " + id);
+
+		MemberVO member = memberService.selectCheckMember(id);
+		logger.debug("<<id중복체크3>> : " + member);
+
+		if(member!=null) {
+			//아이디 중복
+			logger.debug("<<id중복됨!!!!!!>> : " + member);
+			mapAjax.put("result", "duplicated");
+			
+		}else {
+			//아이디 미중복
+			logger.debug("<<id중복체크 통과!!!!!!!>> : " + member);
+			mapAjax.put("result", "good");
+			
+		}
+		return mapAjax;
+	}
 	
 	
 }

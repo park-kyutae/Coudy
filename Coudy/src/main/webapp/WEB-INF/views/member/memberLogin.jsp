@@ -21,11 +21,22 @@
 .align-center2{
 	margin:0 auto;
 }
+
+.btn-primary{
+	background-color:#8541f5;
+	border-color:#8541f5;
+}
+.btn-primary:hover{
+	background-color:#3d0991;
+	border-color:#3d0991;
+}
 </style>
 
 
 <div class="align_center container" style="margin:0 auto;">
-	<h1 class="text-center" >Coudy</h1>
+	<div class="text-center mb-3" >
+		<img src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="20%" height="20%">
+	</div>
 	<%-- <img src="${pageContext.request.contextPath}/images/logo.png"> --%>
 	<br>
 	<form:form class="g-3 needs-validation" id="login_form" action="login.do" modelAttribute="memberVO">
@@ -48,7 +59,7 @@
 			<div class="valid-feedback">Looks good!</div>
 			<div class="invalid-feedback">4~12자 사이의 문구를 입력하세요</div>
 
-			<input type="submit" class="btn btn-primary mt-3 col-6" style="float:left;border-radius:5px 0 0 5px;" value="login">
+			<input type="submit" class="btn btn-primary mt-3 col-6" id="loginSubmit" style="float:left;border-radius:5px 0 0 5px;" value="Login">
 			<input type="button" class="btn btn-outline-secondary mt-3 col-6" style="border-radius:0 5px 5px 0;"
 				onclick="location.href='registerUser.do'" value="Sign">
 				

@@ -22,12 +22,23 @@
 .align-center2{
 	margin:0 auto;
 }
+
+.btn-primary{
+	background-color:#8541f5;
+	border-color:#8541f5;
+}
+.btn-primary:hover{
+	background-color:#3d0991;
+	border-color:#3d0991;
+}
 </style>
 
 
 
 <div class="align_center container">
-	<h2 class="text-center mb-3 mt-3">Coudy</h3>
+<div class="text-center">
+	<img  class="mb-4 mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="15%" height="15%">	
+</div>
 	<form:form class="row g-3 needs-validation" id="change_form" action="changePassword.do" modelAttribute="memberVO">
 		
 		<div class="col-12">
@@ -57,9 +68,9 @@
 		</div>
 		</div>
 		
-		<div class="col-3" style="margin:0 auto;">
-			<input class="btn btn-primary col-6" type="submit" style="float:left;" value="변경하기"></input>
-			<button class="btn btn-secondary col-6" onclick="javascript:history.go(-1); return false;">돌아가기</button>
+		<div class="col-3 mt-3" style="margin:0 auto;">
+			<input class="btn btn-primary col-6" type="submit" style="float:left;border-radius:5px 0 0 5px;" value="변경하기"></input>
+			<button class="btn btn-outline-secondary col-6" style="border-radius:0 5px 5px 0;" onclick="javascript:history.go(-1); return false;">돌아가기</button>
 		</div>
 	</form:form>
 </div>

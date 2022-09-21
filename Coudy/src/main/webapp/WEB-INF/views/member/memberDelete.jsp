@@ -20,6 +20,15 @@
 .align-center2{
 	margin:0 auto;
 }
+
+.btn-primary{
+	background-color:#8541f5;
+	border-color:#8541f5;
+}
+.btn-primary:hover{
+	background-color:#3d0991;
+	border-color:#3d0991;
+}
 </style>
 
 <h2>회원탈퇴 확인</h2>
@@ -55,8 +64,8 @@
 		
 		<div class="col-12">
 			<div style="margin:0 38%;">
-				<button class="btn btn-primary col-6" style="float:left;" type="submit">탈퇴하기</button>
-				<button class="btn btn-secondary col-6" onclick="javascript:history.go(-1); return false;">돌아가기</button>
+				<button class="btn btn-primary col-6" style="float:left; border-radius:5px 0 0 5px;" type="submit">탈퇴하기</button>
+				<button class="btn btn-outline-secondary col-6" style="border-radius:0 5px 5px 0;" onclick="javascript:history.go(-1); return false;">돌아가기</button>
 			</div>
 		</div>
 	</form:form>

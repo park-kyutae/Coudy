@@ -127,14 +127,33 @@ hr:not([size]) {
     height: 90%;
 }
 
+.btn-toggle-nav a:hover, .btn-toggle-nav a:focus{
+	background-color : #e0cffc
+}
+
+.btn-toggle:hover, .btn-toggle:focus{
+	background-color : #e0cffc
+}
+
+.btn-primary{
+	background-color:#8541f5;
+	border-color:#8541f5;
+}
+.btn-primary:hover{
+	background-color:#3d0991;
+	border-color:#3d0991;
+}
+
 </style>
 <br>
 <div class="row" style="margin-left:10%; margin-right:10%">
 <div class="flex-shrink-0 p-3 bg-white"  style="width: 280px;">
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-      <span class="fs-5 fw-semibold"><h3>Coudy</h3></span>
-    </a>
+      <img src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="62%" height="62%">
+      
+<!--       <span class="fs-5 fw-semibold"><h3>Coudy</h3></span>
+ -->    </a>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
@@ -190,14 +209,14 @@ hr:not([size]) {
 			  	<figcaption class="figure-caption mb-2 text-center">현재 프로필 사진입니다.</figcaption>
 			</c:if>
 			
-			<button type="button" class="col-12 btn btn-secondary btn-sm" id="photo_btn">사진수정</button>
+			<button type="button" class="col-12 btn btn-primary btn-sm" id="photo_btn">사진수정</button>
 			
 			<div class="align-center" style="display:none;" id="photo_choice">
 				<input type="file" class="btn btn-secondary btn-sm" id="upload" accept="image/gif,image/png,image/jpeg">
 				<br>
 				<div class="mt-2">				
-					<input type="button" class="col-6 btn btn-secondary" style="float:left;" id="photo_cancel" value="취소">
-					<input type="button" class="col-6 btn btn-primary" id="photo_submit" value="사진저장">
+					<input type="button" class="col-6 btn btn-primary" style="float:left;border-radius:5px 0 0 5px;" id="photo_submit" value="사진저장">
+					<input type="button" class="col-6 btn btn-outline-secondary" style="border-radius:0 5px 5px 0;" id="photo_cancel" value="취소">
 				</div>
 				
 			</div>
@@ -225,8 +244,8 @@ hr:not([size]) {
 			</ul>
 			<div class="">
 				<button type="button" class="btn btn-primary btn-sm" onclick="location.href='updateUser.do'" >정보수정</button>
-				<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='changePassword.do'" >비밀번호변경</button>
-				<button type="button" class="btn btn-secondary btn-sm" onclick="location.href='delete.do'" >회원탈퇴</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='changePassword.do'" >비밀번호변경</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='delete.do'" >회원탈퇴</button>
 			</div>
 		</div>
 	</div>

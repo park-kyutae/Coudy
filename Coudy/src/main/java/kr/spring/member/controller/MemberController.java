@@ -42,6 +42,7 @@ public class MemberController {
 		return new MemberVO();
 	}
 	
+	
 	//=================회원가입==================//
 	//폼 호출
 	@GetMapping("/member/registerUser.do")
@@ -67,6 +68,14 @@ public class MemberController {
 		
 		return "common/notice";
 	}
+	
+	//=============로그인 유효성체크===========//
+		@RequestMapping("/member/loginSubmit.do")
+		public Map<String,String> loginsub(){
+			Map<String,String> mapAjax = new HashMap<String, String>();
+			
+			return mapAjax;
+		}
 	
 	//=============회원로그인===============//
 		//로그인 폼

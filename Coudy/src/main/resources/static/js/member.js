@@ -85,12 +85,12 @@ $(function(){
 	});
 	
 	//취소버튼 처리
-//	$('#photo_cancel').click(function(){
-//		$('.my-photo').attr('src',photo_path);
-//		$('#upload').val('');
-//		$('#photo_choice').hide();
-//		$('#photo_btn').show();
-//	});
+	$('#photo_cancel').click(function(){
+		$('.my-photo').attr('src',photo_path);
+		$('#upload').val('');
+		$('#photo_choice').hide();
+		$('#photo_btn').show();
+	});
 	
 	$('#passwd').keyup(function(){
 		if($('#passwd2').val()!='' && $('#passwd2').val()!=$(this).val()){
@@ -132,5 +132,51 @@ $(function(){
 			return false;
 		}
 	});
+	
+	//로그인처리
+	$('#loginSubmit').click(function(){
+		
+		alert('로그인처리 js들어옴');
+		
+		$.ajax({
+			url:'loginSubmit.do',
+			type:'post',
+			data:{id:$('#id').val()},
+			dataType:'json',
+			cache:'false',
+			success:function(){
+				
+				
+			},
+			error:function(){
+				alert('네트워크오류');
+			}
+			
+			
+		});
+		
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 });

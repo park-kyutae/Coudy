@@ -10,9 +10,19 @@ ul{
 	list-style:none;
 }
 
-label{
-	
+
+#btn1{
+	background-color:#8541f5;
+	border-color:#8541f5;
+	float:left;
+	border-radius:5px 0 0 5px;
 }
+#btn1:hover{
+	background-color:#3d0991;
+	border-color:#3d0991;
+	border-radius:5px 0 0 5px;
+}
+	border-radius:0 5px 5px 0;
 
 </style>
 
@@ -78,8 +88,8 @@ label{
 				<div style="margin:0 5%;">
 					<c:if test="${memberVO.auth!=4}">
 					<input type="hidden" value="${memberVO.mem_num}">
-					<input type="submit" class="btn btn-primary col-6" style="float:left;" value="확인">
-					<input type="button" class="btn btn-secondary col-6" value="취소" onclick="WinClose();">
+					<input type="submit" id="btn1" class="btn btn-primary col-6" value="확인">
+					<input type="button" class="btn btn-outline-secondary col-6" style="border-radius:0 5px 5px 0;"value="취소" onclick="WinClose();">
 					<script>
 						function WinClose(){
 							 window.open('','_self').close(); 
@@ -88,6 +98,10 @@ label{
 					</c:if>
 				</div>
 			</form:form>
+			<div class="text-center">
+				<img  class="mb-4 mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-05.png" width="40%" height="40%">	
+			</div>
+			
 		</div>
 	</div>
 </div>
