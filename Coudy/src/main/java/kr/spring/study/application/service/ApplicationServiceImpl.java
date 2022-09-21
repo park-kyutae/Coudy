@@ -36,4 +36,9 @@ public class ApplicationServiceImpl implements ApplicationService{
     public List<ApplicationVO> selectMyAllApplications(Integer mem_num) {
         return applicationMapper.selectMyAllApplications(mem_num);
     }
+
+    @Override
+    public List<ApplicationVO> selectMyStudyApplications(Integer study_num) {
+        return applicationMapper.selectMyStudyApplications(study_num);
+    }
 }

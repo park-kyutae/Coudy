@@ -17,6 +17,18 @@
         </div>
     </div>
     <c:forEach var="mystudylist" items="${list}">
+    <div class="row row-cols-2 row-cols-md-1 g-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="width : 200px; height: 200px;" >
+                        <h5 class="card-title">${mystudylist.name}</h5>
+                        <p class="card-text">${mystudylist.request}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--경계-->
         <div class="col-3">
             <div class="card ma-2 mb-3 pa-3" style="width: 15rem;height: 27rem"  >
                 <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="height: 200px;" >
@@ -30,40 +42,6 @@
             </div>
         </div>
     </c:forEach>
-    <div class="row row-cols-2 row-cols-md-1 g-4">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${studygroup.name}</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>

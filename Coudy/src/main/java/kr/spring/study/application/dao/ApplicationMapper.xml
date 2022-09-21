@@ -7,6 +7,10 @@
             resultType="ApplicationVO">
     SELECT * FROM application a JOIN studygroup s ON a.study_num = s.study_num JOIN STUDY_USER su ON su.STUDY_NUM = s.STUDY_NUM WHERE a.mem_num=#{mem_num} AND su.mem_num=#{mem_num}
     </select>
+    <select id="selectMyStudyApplications" parameterType="map"
+            resultType="ApplicationVO">
+        SELECT * FROM application a JOIN STUDY_USER su ON su.STUDY_NUM = a.STUDY_NUM WHERE a.study_num=#{study_num} AND a.mem_num = su.MEM_NUM
+    </select>
 </mapper>
 
 

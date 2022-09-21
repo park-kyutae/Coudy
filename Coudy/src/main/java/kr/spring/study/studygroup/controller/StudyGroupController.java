@@ -190,6 +190,7 @@ public class StudyGroupController {
 
         return "ModifyStudyGroup";
     }
+
     //수정 폼에서 전송된 데이터 처리
     @PostMapping("/study/updatestudygroup.do")
     public String submitUpdate(@Valid StudyGroupVO studyGroupVO,

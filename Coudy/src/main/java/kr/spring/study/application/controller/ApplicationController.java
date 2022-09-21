@@ -55,7 +55,6 @@ public class ApplicationController {
         model.addAttribute("studygroup", studyGroupVO);
 
         return "CreateApplication";
-
     }
 
     @PostMapping("/study/applicationcreate.do")
@@ -105,8 +104,7 @@ public class ApplicationController {
         
         MemberVO user = (MemberVO) session.getAttribute("user");
 
-        List<ApplicationVO> list = null;
-        list = applicationService.selectMyAllApplications(user.getMem_num());
+        List<ApplicationVO> list = applicationService.selectMyAllApplications(user.getMem_num());
 
         ModelAndView model = new ModelAndView();
         model.setViewName("MyStudyList");
@@ -116,13 +114,39 @@ public class ApplicationController {
 
     //==관리자 스터디 목록==//
     @GetMapping("/study/applicationlist.do")
-    public ModelAndView studyApplication(@RequestParam int study_num) {
+    public ModelAndView studyApplication(@RequestParam int study_num, HttpSession session) {
+        logger.debug("<<스터디 "+ study_num + "번 방 지원서 조회 : >> ");
 
-
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        List<ApplicationVO> list = applicationService.selectMyStudyApplications(study_num);
 
         ModelAndView model = new ModelAndView();
         model.setViewName("ApplicationList");
-        //model.addObject("list", list);
+        model.addObject("list", list);
         return model;
+    }
+
+    //==스터디 권한 수정==//
+    @PostMapping("/study/updatestudyauth.do")
+    public String submitUpdate(@Valid StudyUserVO studyUserVO,
+                               BindingResult result,
+                               HttpServletRequest request,
+                               Model model) {
+        logger.debug("<<권한 수정>> : " + studyUserVO);
+
+        //유효성 체크 결과 오류가 있으면 폼 호출
+
+
+        //ip셋팅
+        //boardVO.setIp(request.getRemoteAddr());
+        //권한수정
+        studyUserService.updateAuth(studyUserVO);
+
+        //View에 표히살 메시지
+        model.addAttribute("message", "권한 수정 완료");
+        model.addAttribute("url",
+                request.getContextPath()+"/study/applicationlist.do?study_num="+studyUserVO.getStudy_num());
+
+        return "common/resultView";
     }
 }

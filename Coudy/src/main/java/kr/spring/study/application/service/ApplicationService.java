@@ -8,6 +8,7 @@ import java.util.Map;
 public interface ApplicationService {
 
     public List<ApplicationVO> selectMyAllApplications(Integer mem_num);
+    public List<ApplicationVO> selectMyStudyApplications(Integer study_num);
     public void insertApplication(ApplicationVO applicationVO);
     //스터디 갯수 세기
     public int selectRowCount(Map<String,Object> map);

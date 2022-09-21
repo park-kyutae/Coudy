@@ -20,11 +20,11 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
     </select>
-    <!-- 글수정 -->
-    <update id="updateStudyUser" parameterType="studyuserVO">
+
+    <update id="updateAuth" parameterType="studyuserVO">
         UPDATE study_user SET
-        registered=#{registered},
-        WHERE study_user_num=#{study_users_num}
+        registered='Y'
+        WHERE study_user_num=#{study_user_num}
     </update>
 </mapper>
 

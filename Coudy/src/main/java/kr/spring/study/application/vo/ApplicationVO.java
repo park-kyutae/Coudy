@@ -19,6 +19,7 @@ public class ApplicationVO {
     private char registered;
     private char is_group_manager;
 
+    private int study_user_num;
     private int study_num;
     private int mem_num;
 }
