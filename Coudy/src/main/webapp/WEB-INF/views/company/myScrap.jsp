@@ -17,12 +17,50 @@
   b{
     font-size: 20pt;
   }
+  .circle{
+    visibility: hidden;
+  }
+  #oneScrap:hover {
+    background-color: #cfe2ff;
+    border-radius: 5px;
+  }
+  #oneScrap:hover .circle{
+    visibility: visible;
+    color: #8541f5;
+  }
+  /*.noCircle{*/
+  /*  visibility: hidden;*/
+  /*}*/
+  /*.yesCircle{*/
+  /*  visibility: visible;*/
+  /*  color: greenyellow;*/
+  /*}*/
 </style>
+<%--<script>--%>
+<%--    // $('.oneScrap').hover(function (){--%>
+<%--    //   console.log('hover');--%>
+<%--    //   $('.circle').removeClass('noCircle');--%>
+<%--    //   $('.circle').addClass('yesCircle');--%>
+<%--    // });--%>
+<%--    const circle = {--%>
+<%--      init: function () {--%>
+<%--        var box = document.querySelector('.oneScrap');--%>
+<%--        box.addEventListener('mouseover',function(){--%>
+<%--          $(this).data('circle').removeClass('noCircle');--%>
+<%--          $(this).data('circle').addClass('yesCircle');--%>
+<%--        });--%>
+<%--      }--%>
+<%--    }--%>
+<%--    circle.init();--%>
+<%--</script>--%>
 <div class="container">
   <h2>스크랩 공고</h2>
   <hr>
   <c:forEach var="company" items="${list}">
-  <div class="row">
+  <div id="oneScrap" class="row p-4 mb-2 oneScrap">
+<%--    <div class="col-sm-1 float-end mt-lg-5">--%>
+<%--      <span class="circle ">●</span>--%>
+<%--    </div>--%>
     <div class="col-sm-3">
       <a href="comDetail.do?com_num=${company.com_num}"><img class="img mb-3 mx-auto" style="border-radius: 5px"
                                                              src="imageView.do?com_num=${company.com_num}&com_type=2"
