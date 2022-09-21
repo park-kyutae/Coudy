@@ -58,7 +58,7 @@ public class ChatServiceImpl implements ChatService {
         chatMapper.deleteChatMember(memNum, chatNum);
 
         int chatMemberCount = chatMapper.selectChatMemCount(chatNum);
-        if (chatMemberCount < 2) {
+        if (chatMemberCount < 1) {
             chatMapper.deleteChatRoom(chatNum);
         }
     }
