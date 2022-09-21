@@ -64,9 +64,10 @@ public class MemberController {
 		//회원가입
 		memberService.insertMember(memberVO);
 		
-		model.addAttribute("accessMsg","회원가입이 완료되었습니다.");
+		model.addAttribute("message","회원가입이 완료되었습니다.");
+		model.addAttribute("url","/");
 		
-		return "common/notice";
+		return "common/resultView";
 	}
 	
 	//=============로그인 유효성체크===========//
@@ -236,12 +237,13 @@ public class MemberController {
 			return "memberModify";
 		}
 		@PostMapping("member/updateUser.do")
-		public String submitUpdate(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
+		public String submitUpdate(@Valid MemberVO memberVO, BindingResult result, HttpSession session, Model model) {
 			
 			logger.debug("<<회원정보수정 처리>> : " + memberVO);
 			
 			//유효성 체크 결과 오류가 있으면 폼 호출
 			if(result.hasErrors()) {
+				
 				return "memberModify";
 			}
 			
@@ -253,7 +255,10 @@ public class MemberController {
 			//회원정보수정
 			memberService.updateMember(memberVO);
 			
-			return "redirect:/member/myPage.do";
+			model.addAttribute("message","수정이 완료되었습니다!");
+			model.addAttribute("url","/member/myPage.do");
+			
+			return "common/resultView";
 		}
 		
 	//==============회원 탈퇴================

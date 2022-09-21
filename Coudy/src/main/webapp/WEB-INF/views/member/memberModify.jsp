@@ -43,13 +43,6 @@
 
 <div class="input-form">
 
-	<div class="form-floating mb-3">
-		<form:input path="id" class="form-control left-input" placeholder="id"/>
-		<input class="btn btn-secondary right-button" type="button" id="confirmId" autocomplete="new-password" value="아이디중복체크" />
-		<form:errors path="id" cssClass="error-color"/>
-		<label for="id">아이디</label>
-		<div id="message_id1" class="invalid-feedback"></div> 	
-	</div>
 	
  	<div class="form-floating mb-3">
 		<form:input path="name" class="form-control" placeholder="name"/>
@@ -94,7 +87,7 @@
 	
 </div>
 <div class="col-12 input-form">
-	    <button class="btn btn-primary" type="submit" style="width:50%;border-radius:5px 0 0 5px;">수정하기</button>
+	    <button class="btn btn-primary" id="submit" type="submit" style="width:50%;border-radius:5px 0 0 5px;">수정하기</button>
 	    <button class="btn btn-outline-secondary" type="button" style="width:50%;float:right;border-radius:0 5px 5px 0;" onclick="location.href='/main/main.do'">홈으로</button>
 </div>
 </form:form>	

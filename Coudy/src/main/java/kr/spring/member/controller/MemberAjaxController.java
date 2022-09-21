@@ -57,7 +57,7 @@ public class MemberAjaxController {
 		
 	}
 	@RequestMapping("/member/confirmId.do")
-	@ResponseBody
+	@ResponseBody //ajax로 보내는애들은 꼭 필요함
 	public Map<String,String> process(@RequestParam String id){
 		
 		logger.debug("<<id중복체크1>> : " + id);
@@ -81,6 +81,29 @@ public class MemberAjaxController {
 		}
 		return mapAjax;
 	}
+	
+//	@RequestMapping("member/noChangeId.do")
+//	@ResponseBody
+//	public Map<String,String> noChangeId(@RequestParam String id, HttpSession session){
+//	
+//		Map<String,String> mapAjax = new HashMap<String, String>();
+//	
+//		MemberVO user = (MemberVO)session.getAttribute("user");
+//				
+//		MemberVO member = memberService.selectCheckMember(user.getId());
+//		logger.debug("아이디넘어옴?"+id);
+//		if(user.getId()==id) {
+//			logger.debug("아이디 변동 없음");
+//			//아이디 변동 없음 
+//			mapAjax.put("result", "noChanged");
+//		}if(user.getId()!=id) {
+//			logger.debug("아이디 변동 있음");
+//			mapAjax.put("result", "changed");
+//		}
+//		
+//		
+//		return mapAjax;
+//	}
 	
 	
 }
