@@ -13,7 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -85,6 +89,10 @@ public class ChatServiceImpl implements ChatService {
         return chatMapper.selectAllFilesByChatNum(chatNum);
     }
     @Override
+    public List<ChatTextLogVO> findConvertedFilesByChatNum(int chatNum) {
+        return convertFileToTextMessageList(chatMapper.selectAllFilesByChatNum(chatNum));
+    }
+    @Override
     public int getChatFileLogSEQ() {
         return chatMapper.selectChatFileLogSeq();
     }
@@ -104,4 +112,46 @@ public class ChatServiceImpl implements ChatService {
     public ChatFileLogVO findFileByLogNum(int logNum) {
         return chatMapper.selectFileByLogNum(logNum);
     }
+
+    @Override
+    public Map<ChatRoomVO, ChatTextLogVO> findLatestMessageEachRoom(int memNum) {
+        List<ChatRoomVO> chatRoomVOList = chatMapper.selectChatRoomsByUser(memNum);
+        Map<ChatRoomVO, ChatTextLogVO> resultMap = new LinkedHashMap<>();
+
+        for (ChatRoomVO chatRoomVO : chatRoomVOList) {
+            int chatNum = chatRoomVO.getChatNum();
+            ChatTextLogVO chatTextLogVO = chatMapper.selectLatestChatMessagesByChatNum(chatNum);
+            ChatTextLogVO chatFileLogVO = convertFileToTextMessage(chatMapper.selectLatestFilesByChatNum(chatNum));
+            resultMap.put(chatRoomVO, compareChatTime(chatTextLogVO, chatFileLogVO));
+        }
+        return resultMap;
+
+    }
+
+    private static ChatTextLogVO compareChatTime(ChatTextLogVO chatTextLogVO, ChatTextLogVO chatFileLogVO) {
+        ChatTextLogVO resultMessage;
+        if (chatFileLogVO == null) {
+            resultMessage = chatTextLogVO;
+        } else if (chatTextLogVO == null) {
+            resultMessage = chatFileLogVO;
+        } else {
+            resultMessage  = chatTextLogVO.getChatTime().isAfter(chatFileLogVO.getChatTime()) ? chatTextLogVO : chatFileLogVO;
+        }
+        return resultMessage;
+    }
+
+    private static List<ChatTextLogVO> convertFileToTextMessageList(List<ChatFileLogVO> chatFileLogVOList) {
+        List<ChatTextLogVO> convertFileToTextLogVO = chatFileLogVOList.stream()
+                .map(ChatServiceImpl::convertFileToTextMessage)
+                .collect(Collectors.toList());
+
+        return convertFileToTextLogVO;
+    }
+    private static ChatTextLogVO convertFileToTextMessage(ChatFileLogVO chatFileLogVO) {
+        log.info("chatFileLogVO = {}", chatFileLogVO);
+        if (chatFileLogVO == null) return null;
+        return new ChatTextLogVO(chatFileLogVO.getChatFileLogNum(), chatFileLogVO.getMemNum(), "file://" + chatFileLogVO.getChatFileName(),
+                chatFileLogVO.getChatNum(), chatFileLogVO.getChatFileTime(), chatFileLogVO.getMemName());
+    }
+
 }

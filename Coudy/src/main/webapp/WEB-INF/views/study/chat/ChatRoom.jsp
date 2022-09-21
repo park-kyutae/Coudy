@@ -68,14 +68,17 @@
 
 <body>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <span>${chatName}</span>
+        <div class="row">
+            <div class="col">
+                <span class="fs-3 fw-bolder">${chatRoomVO.chatName}</span>
+            </div>
+            <div class="col">
+                <button onclick="location.href='${chatNum}/upload'">파일 보기</button>
+            </div>
         </div>
-    </div>
     <div class="row">
         <div class="col">
-            <div style="height: 500px;width: 300px">
+            <div style="height:500px;overflow: auto">
                 <ul id="content">
                     <c:forEach items="${chatMessages}" var="chatMessage">
                         <c:choose>
@@ -92,28 +95,29 @@
                 </ul>
             </div>
         </div>
-        <div class="col">
-            <button onclick="location.href='${chatNum}/upload'">파일 보기</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="text" id="input_payload" data-mem_num="${member.memNum}" data-mem_name="${member.memName}">
-        </div>
-        <div class="col">
-            <button class="btn btn-secondary" id="send_payload">전송</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <form id="file_upload">
-                <input type="hidden" name="memNum" value="${member.memNum}">
-                <input type="file" name="chatFile">
-            </form>
-        </div>
-        <button id="sub">테스트 전송</button>
+        
     </div>
 
+
+    <div class="fixed-bottom">
+        <div class="row">
+            <div class="col">
+                <input type="text" id="input_payload" data-mem_num="${member.mem_num}" data-mem_name="${member.name}">
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary" id="send_payload">전송</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form id="file_upload">
+                    <input type="hidden" name="memNum" value="${member.mem_num}">
+                    <input type="file" name="chatFile">
+                </form>
+            </div>
+            <button id="sub">테스트 전송</button>
+        </div>
+    </div>
 
 </div>
 
