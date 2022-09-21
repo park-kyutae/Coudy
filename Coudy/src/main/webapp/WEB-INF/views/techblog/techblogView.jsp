@@ -75,7 +75,7 @@
 	
 	<div>
 		<%-- 좋아요 --%>
-		<img id="output_fav" src="${pageContext.request.contextPath}/images/fav01.gif" width="40">
+		<img id="output_fav" src="${pageContext.request.contextPath}/images/heart.svg" width="20">
 		<span id="output_fcount"></span>
 	</div>
 	<hr size="1" width="100%">
