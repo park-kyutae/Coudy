@@ -19,7 +19,7 @@ public class TodoController {
 
 
 
-        return "study/todo/todo";
+        return "todo";
     }
 
 }

@@ -5,7 +5,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/chat-bootstrap.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/sockjs.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/stomp.min.js"></script>
@@ -20,12 +20,13 @@
         }
 
         $('.room_edit').click(function () {
+            event.stopPropagation();
             let chat_num = 'chatNum='+$(this).closest('.room').attr('id');
             location.href='/chat/edit?'+chat_num
         }); $('#create_room').click(function () {
             location.href='/chat/add'
         });
-        $('.chat_room').click(function () {
+        $('.room').click(function () {
             let chat_num = $(this).closest('.room').attr('id');
             location.href =  '/chat/'+chat_num;
         })
@@ -55,20 +56,20 @@
 </script>
 <body>
     <div class="container-fluid">
-        <div class="row border-bottom border-2" style="background-color: powderblue">
-            <div class="col text-center fs-3 fw-bolder">
+        <div class="row chat-header">
+            <div class="col chat-header-text">
                 채팅
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <c:forEach items="${chatRooms}" var="chatRoom">
-                    <div class="row room  border-2 border-bottom p-3" id="${chatRoom.key.chatNum}">
-                        <div class="col room_name">
-                            <span class="chat_room fs-5">${chatRoom.key.chatName}</span>
+                    <div class="row room chat-list pointer" id="${chatRoom.key.chatNum}">
+                        <div class="col col-2  room_name">
+                            <span class=" fs-5 fw-bold">${chatRoom.key.chatName}</span>
                         </div>
-                        <div class="col">
-                            <span class="chat_room fs-5" id="message${chatRoom.key.chatNum}">
+                        <div class="col  w-50">
+                            <span class="text-truncate d-inline-block fs-5 w-100" id="message${chatRoom.key.chatNum}">
                                 <c:choose>
                                     <c:when test="${chatRoom.value.chatMessage.startsWith('file://')}">
                                         ${chatRoom.value.chatMessage.substring(7)}

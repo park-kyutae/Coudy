@@ -5,24 +5,24 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <html>
 <head>
-    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/chat-bootstrap.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
     <title>Title</title>
 </head>
 <script>
     $(function () {
         function render_member_input() {
-            $('#submit').before('<div class="row member">' +
-                '<div class="row member-input">' +
-                '<div class="col">' +
-                '<input type="text" class="search-member"/>' +
+            $('#member_list').append('<li class="member list-group-item">' +
+                '<div class="row">'+
+                '<div class="col">'+
+                '<input type="text" class="search-member form-control"/>' +
                 '<input type="hidden" name="mem_num" class="search-member-num">' +
-                '</div>' +
-                '<div class="col">' +
-                '<img src="/images/delete.svg" style="height: 15px" class="remove_member">' +
-                '</div>' +
-                '</div>' +
-                '</div>')
+                '</div>'+
+                '<div class="col col-1 d-flex justify-content-center">'+
+                '<img src="/images/backspace.svg" style="height: 35px;" class="remove_member ms-1 pointer">'+
+                '</div></div>'+
+                '</li>'
+            )
             $('.remove_member').click(function () {
                 $(this).closest('.member').remove()
 
@@ -48,12 +48,13 @@
 
         let ajax_results = [];
         let ajax_count = 0;
+
         function add_search_key_event() {
             $('.search-member').keyup(function () {
                 let results = [];
                 let search_word = $(this).val()
                 let trigger_ele = $(this)
-                if (search_word.length % 4 == 1 || ajax_count ==0) {
+                if (search_word.length % 4 == 1 || ajax_count == 0) {
                     console.log('ajax up')
                     ajax_count++;//TODO 키가 씹힘 문제 해결 후 카운트 삭제
                     $.ajax({
@@ -96,31 +97,30 @@
         function render_result(trigger_ele, search_word, results) {
             $('#result').remove()
             trigger_ele.closest('.member').append(
-                '<div class="row"  id="result">' +
-                '<div class="col" style="position: absolute">' +
-                '<ul id="result_list">' +
+                '<div class="col" id="result"style="position: absolute; z-index: 1">' +
+                '<ul id="result_list" class="list-group list-group-flush" style="width: 390px">' +
                 '</ul>' +
-                '</div>' +
                 '</div>'
             )
             if (results.length == 0) {
                 $('#result_list').append(
-                    '<li>' +
+                    '<li class="list-group-item">' +
                     '검색 결과가 없습니다' +
                     '</li>'
                 )
             }
             for (let result of results) {
                 $('#result_list').append(
-                    '<li>' +
-                    '<span class="select-member" data-mem_num="' + result.memNum + '">' +
+                    '<li class="list-group-item list-group-item-action select-member" data-mem_num="' +
+                    result.memNum +
+                    '">' +
+                    '<span>' +
                     result.memName +
                     '</span>' +
                     '</li>'
                 )
             }
             $('.select-member').click(function () {
-                $('.search-member').focus()
                 let mem_num = $(this).data('mem_num')
                 console.log($(this).text())
                 let member_input = $(this).closest('.member');
@@ -130,49 +130,64 @@
 
             });
         }
+
         add_search_key_event()
     })
 
 </script>
 <body>
 <div class="container-fluid">
+    <div class="row chat-header mb-3">
+        <div class="col chat-header-text">
+            채팅방 생성
+        </div>
+    </div>
+    <form:form modelAttribute="createChatRoomForm" action="">
     <div class="row">
-        <div class="col">
-            <span class="">채팅방 생성</span>
-        </div>
-        <div class="row">
             <div class="col">
-                <button class="btn btn-secondary" id="add_member">추가</button>
-            </div>
-        </div>
-        <div class="row">
-            <form:form modelAttribute="createChatRoomForm" action="">
-                <form:input path="chatName"/>
-                <input type="hidden" name="mem_num" value="${ownerMemNum}">
+                <div class="row chat-content">
+                    <div class="col">
+                        <label for="chatName" class="chat-title form-label">채팅 방 이름 수정</label>
+                        <form:input path="chatName" cssClass="form-control"/>
+                        <input type="hidden" name="mem_num" value="${ownerMemNum}">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
-                        <span>멤버 추가</span>
+                        <span class="chat-title">멤버 추가</span>
                     </div>
                 </div>
-                <div class="row member">
-                    <div class="row member-input">
-                        <div class="col">
-                            <input type="text" class="search-member"/>
-                            <input type="hidden" name="mem_num" class="search-member-num">
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="submit">
+                <div class="row">
                     <div class="col">
-                        <input type="submit" value="추가">
+                        <ul id="member_list" class="list-group list-group-flush">
+                            <li class="member list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="search-member form-control"/>
+                                        <input type="hidden" name="mem_num" class="search-member-num">
+                                    </div>
+                                    <div class="col col-1 d-flex justify-content-center">
+                                        <img src="/images/plus.svg" height="35px" class="pointer" id="add_member">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </form:form>
-
-
-        </div>
-
+            </div>
     </div>
 </div>
+<div class="fixed-bottom d-flex justify-content-end mb-2">
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <button type="button" class="btn btn-secondary" onclick="history.go(-1)">취소</button>
+                    <input type="submit" value="추가" class="ms-2 btn btn-chat-primary">
+                </div>
+            </div>
+    </div>
+</div>
+</form:form>
+
 </body>
 </html>
