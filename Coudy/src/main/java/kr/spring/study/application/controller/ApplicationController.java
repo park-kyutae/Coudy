@@ -135,8 +135,7 @@ public class ApplicationController {
         logger.debug("<<권한 수정>> : " + studyUserVO);
 
         //유효성 체크 결과 오류가 있으면 폼 호출
-
-
+        
         //ip셋팅
         //boardVO.setIp(request.getRemoteAddr());
         //권한수정

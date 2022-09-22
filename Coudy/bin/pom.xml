@@ -95,15 +95,11 @@
 			<version>1.18.16</version>
 			<scope>provided</scope>
 		</dependency>
-<<<<<<< HEAD
-		<!-- 라이브러리 추가 끝 -->
-=======
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-commons</artifactId>
         </dependency>
         <!-- 라이브러리 추가 끝 -->
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	</dependencies>
 
 	<build>
