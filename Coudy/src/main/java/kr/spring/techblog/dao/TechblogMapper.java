@@ -40,6 +40,7 @@ public interface TechblogMapper {
 	public List<TechblogVO>selectListB(Map<String, Object> map);
 	public List<TechblogVO>selectListC(Map<String, Object> map);
 	public List<TechblogVO>selectListD(Map<String, Object> map);
+	public TechblogVO movePage(Integer tech_num);
 	
 	//부모글 좋아요
 	@Select("SELECT * FROM techblog_fav "
