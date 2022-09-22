@@ -10,10 +10,9 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <title><tiles:getAsString name="title"/></title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
 </head>
 <body>
-<div class="fixed-top">
+<div class="fixed-top bg-white">
     <tiles:insertAttribute name="header"/>
 </div>
 <div class="container-fluid">
@@ -22,11 +21,6 @@
             <div class="row pt-5">
                 <div class="col">
                     <tiles:insertAttribute name="body"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <tiles:insertAttribute name="footer"/>
                 </div>
             </div>
         </div>

@@ -16,14 +16,13 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     />
   </head>
   <body>
-    <div class="container bg-secondary bg-gradient">
-      <div class="row bg-info bg-gradient">
-        <div class="col-3" style="height: 15rem">
+    <div class="container-flud bg-light bg-gradient">
+      <div class="row bg-gradient rounded  mx-5">
+        <div class="col-2" style="height: 15rem">
           <img
             src="${pageContext.request.contextPath}/images/logo.png"
             style="width: 13rem; height: 14rem"
             class="img-thumbnail mt-2 rounded float-start"
-            alt="..."
           />
         </div>
         <div class="col-9 mt-3">
@@ -31,7 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           <p class="text-">${studygroup.purpose}</p>
         </div>
       </div>
-      <div class="row">
+      <div class="row mx-5">
         <div class="col-9">
           <div class="card m-2 mt-3 p-3">
             <div class="row">

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
 </head>
 <body>
-<div class="container">
+<div class="container-flud">
     <div class="row">
         <div class="col-9">
         <h1>스터디 그룹</h1>

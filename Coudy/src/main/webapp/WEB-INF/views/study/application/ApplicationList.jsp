@@ -12,15 +12,15 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-9">
-        <h1>${studygroup.name} 유저 관리</h1>
+        <div class="col-9 my-4">
+        <h1>${studygroup.name} 그룹 유저 관리</h1>
         </div>
     </div>
     <c:forEach var="applicationlist" items="${list}">
     <div class="row row-cols-2 row-cols-md-1 g-4">
             <div class="col-12 my-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body shadow-sm">
                         <div class="row">
                             <div class="col-2">
                                 <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="width : 100px; height: 100px;" >
