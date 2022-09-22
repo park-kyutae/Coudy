@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Component
 @Controller
 @RequestMapping("study/plan")
 @Slf4j
@@ -38,7 +37,7 @@ public class PlanController {
 
         model.addAttribute("studyUserForms", studyUserForms);
 
-        return "study/plan/plan";
+        return "plan";
     }
     @GetMapping("{studyNum}/progress")
     public String progress(@Login Integer memNum,Model model,@PathVariable Integer studyNum) {

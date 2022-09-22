@@ -18,8 +18,7 @@ public class TodoController {
     public String studyMain(@Login Integer memNum, @PathVariable Integer studyNum) {
 
 
-
-        return "study/todo/todo";
+        return "todo";
     }
 
 }

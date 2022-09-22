@@ -5,8 +5,9 @@ import kr.spring.study.studygroup.service.StudyGroupService;
 import kr.spring.study.studygroup.service.StudyUserService;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
 import kr.spring.study.studygroup.vo.StudyUserVO;
+import kr.spring.study.todo.service.TodoService;
+import kr.spring.study.todo.vo.TodoVO;
 import kr.spring.util.PagingUtil;
-import kr.spring.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class StudyGroupController {
@@ -29,6 +31,12 @@ public class StudyGroupController {
     private static final Logger logger = LoggerFactory.getLogger(StudyGroupController.class);
     private int rowCount = 20;
     private int pageCount = 10;
+
+    private final TodoService todoService;
+
+    public StudyGroupController(TodoService todoService) {
+        this.todoService = todoService;
+    }
 
     @Autowired
     private StudyGroupService studyGroupService;
@@ -48,6 +56,50 @@ public class StudyGroupController {
         return "StudyGroupList";
     }*/
 
+
+    //========스터디방 메인===========//
+    @RequestMapping("/study/studymain.do")
+    public ModelAndView mainForm(
+            @RequestParam int study_num,HttpSession session) {
+
+        logger.debug("<<study_num>> : " + study_num);
+
+        StudyGroupVO studyGroupVO =
+                studyGroupService.selectStudyGroup(study_num);
+
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
+        //제목에 태그를 허용하지 않음
+        //studyGroupVO.setName(
+        //       StringUtil.useNoHtml(studyGroupVO.getName()));
+        //내용에 줄바꿈 처리하면서 태그를 허용하지 않음
+        //ckeditor 사용시 아래 코드 주석 처리
+		/*
+		board.setContent(
+		 StringUtil.useBrNoHtml(board.getContent()));
+		*/
+        //뷰 이름    속성명   속성값
+        logger.debug("<<vo>> : " + studyUserVO);
+
+        Map<String, List<TodoVO>> todoEachStudyUsers = getTodoEachStudyUser(study_num);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("StudyMain");
+
+        model.addObject("studygroup", studyGroupVO);
+        model.addObject("studyuser", studyUserVO);
+        model.addObject("todoEachStudyUsers", todoEachStudyUsers);
+
+        return model;
+    }
+
+    private Map<String, List<TodoVO>> getTodoEachStudyUser(int study_num) {
+        List<MemberVO> memberVOList = studyUserService.selectMemberByStudyNum(study_num);
+        Map<String, List<TodoVO>> todoEachMember = new HashMap<>();
+        memberVOList.stream()
+                .forEach(member -> todoEachMember.put(member.getName(), todoService.findProgressingTodos(study_num,member.getMem_num())));
+        return todoEachMember;
+    }
 
 
     @RequestMapping("/study/studygrouplist.do")
@@ -111,6 +163,9 @@ public class StudyGroupController {
         //글쓰기
         studyGroupService.insertStudyGroup(studyGroupVO);
 
+
+
+
                 //View에 표시할 메시지
         model.addAttribute(
                 "message", "글 등록이 완료되었습니다.");
@@ -123,13 +178,17 @@ public class StudyGroupController {
     //========상세===========//
     @RequestMapping("/study/studydetail.do")
     public ModelAndView detail(
-            @RequestParam int study_num) {
+            @RequestParam int study_num,HttpSession session) {
 
         logger.debug("<<study_num>> : " + study_num);
+
+
 
         StudyGroupVO studyGroupVO =
                 studyGroupService.selectStudyGroup(study_num);
 
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
         //제목에 태그를 허용하지 않음
         //studyGroupVO.setName(
         //       StringUtil.useNoHtml(studyGroupVO.getName()));
@@ -140,7 +199,14 @@ public class StudyGroupController {
 		 StringUtil.useBrNoHtml(board.getContent()));
 		*/
         //뷰 이름    속성명   속성값
-        return new ModelAndView("DetailStudyGroup","studygroup",studyGroupVO);
+        logger.debug("<<vo>> : " + studyUserVO);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("DetailStudyGroup");
+        model.addObject("studygroup", studyGroupVO);
+        model.addObject("studyuser", studyUserVO);
+
+        return model;
     }
 
     //===========수정===========//

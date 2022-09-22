@@ -47,6 +47,15 @@ public class MemberVO {
 	private String passwd2;
 	
 	
+	
+
+	public MemberVO() {
+		
+	}
+
+	public MemberVO(int mem_num) {
+		this.mem_num = mem_num;
+	}
 
 	public String getPasswd2() {
 		return passwd2;

@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/${pageContext.request.contextPath}js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
     <title>Title</title>
 </head>
 <script>

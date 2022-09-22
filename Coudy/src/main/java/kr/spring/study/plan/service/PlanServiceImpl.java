@@ -47,6 +47,5 @@ public class PlanServiceImpl implements PlanService{
     public void deletePlan(int planNum) {
         planMapper.deletePlan(planNum);
 
-
     }
 }

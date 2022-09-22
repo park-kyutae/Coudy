@@ -13,23 +13,28 @@
 	crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_kt.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<div class="page-main">
 	<div class="container">
-<c:if test="${!empty user}">
+		<div class="row mt-3">
+			<div class="col">
+				<h2><b><a href="${pageContext.request.contextPath}/techblog/techblogList.do" id="techa">전체 목록</a></b></h2>
+				<hr size="6" width="100%" noshade="noshade">
+			</div>
+		</div>
+		<c:if test="${user.auth > 3}">
 			<div class="row">
 				<div class="col text-sm-end">
 				<input type="button" value="글쓰기"
 				          onclick="location.href='techblogWrite.do'">					
 				</div>
 			</div>
-</c:if>
-				<c:if test="${count == 0}">
-					<div class="row">
-						<div class="col d-flex justify-content-center">
-								표시할 게시물이 없습니다.
-						</div>
-					</div>
-				</c:if>
+		</c:if>
+		<c:if test="${count == 0}">
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+						표시할 게시물이 없습니다.
+				</div>
+			</div>
+		</c:if>
 				<c:if test="${count > 0}">
 				<c:forEach var="techblog" items="${list}">
 					<div class="row">
@@ -49,13 +54,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col my-auto" id="techtitle">
+						<div class="col my-auto" id="techtitle" style="font-size: 22pt;">
 							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa">${techblog.tech_title}</a>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col my-auto text-muted" id="techcontent">
-							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa">${techblog.tech_content}</a>
+						<div class="col my-auto" style="height: 20px; color: gray;">
+							태그 : ${techblog.tech_tag}
 						</div>
 					</div>
 					<div class="row">
@@ -64,93 +69,33 @@
 						</div>
 					</div>
 				</c:forEach>
-						<div class="align-center">
+						<div class="row" align="center">
 						${page}
 						</div>
 						<form action="techblogList.do" id="search_form" method="get">
-							<ul class="list-group list-group-horizontal">
-								<li class="list-group-item">
-									<select name="keyfield" id="keyfield" class="form-select form-select-sm">
-										<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
-										<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>작성자</option>
-										<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
-										<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>제목+내용</option>
-									</select>
-								</li>
-								<li class="list-group-item">
-									<input type="search" name="keyword" id="keyword"
-									               value="${param.keyword}" class="form-control form-control-sm">
-								</li>
-								<li class="list-group-item">
-									<input type="image" name="submit" src="${pageContext.request.contextPath}/images/search.svg" style="vertical-align: center; margin-top: 6px;">
-								</li>
-							</ul>
+							<div class="row d-flex justify-content-center" >
+								<div class="col d-flex justify-content-center">
+									<ul class="list-group list-group-horizontal">
+										<li class="list-group-item">
+											<select name="keyfield" id="keyfield" class="form-select form-select-sm">
+												<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
+												<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>작성자</option>
+												<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
+												<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>제목+내용</option>
+											</select>
+										</li>
+										<li class="list-group-item">
+											<input type="search" name="keyword" id="keyword"
+											               value="${param.keyword}" class="form-control form-control-sm">
+										</li>
+										<li class="list-group-item">
+											<input type="image" name="submit" src="${pageContext.request.contextPath}/images/search.svg" style="vertical-align: center; margin-top: 6px;">
+										</li>
+									</ul>
+								</div>
+							</div>
 					</form>
 				</c:if>
 		</div>
-</div>
-
-<%-- <div class="page-main">
-	---------------------------------검색------------------------------------------------------------
-	<form action="techblogList.do" id="search_form" 
-	                                   method="get">
-		<ul class="search">
-			<li>
-				<select name="keyfield" id="keyfield">
-					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>작성자</option>
-					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
-					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>제목+내용</option>
-				</select>
-			</li>
-			<li>
-				<input type="search" name="keyword" id="keyword"
-				               value="${param.keyword}">
-			</li>
-			<li>
-				<input type="submit" value="찾기">
-				<input type="button" value="목록"
-				    onclick="location.href='techblogList.do'">
-			</li>
-		</ul>
-	</form>
-	---------------------------------검색------------------------------------------------------------
-	<c:if test="${!empty user}">
-	<div class="align-right">
-		<input type="button" value="글쓰기"
-		          onclick="location.href='techblogWrite.do'">
-	</div>
-	</c:if>
-	---------------------------------목록------------------------------------------------------------
-	<c:if test="${count == 0}">
-	<div class="result-display">표시할 게시물이 없습니다.</div>	
-	</c:if>
-	<c:if test="${count > 0}">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th width="400">제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
-		<c:forEach var="techblog" items="${list}">
-		<tr>
-			<td>${techblog.tech_num}</td>
-			<td><a href="techblogDetail.do?tech_num=${techblog.tech_num}">${techblog.tech_title}</a></td>
-			<td>
-				${techblog.tech_name}
-			</td>
-			<td>${techblog.tech_date}</td>
-			<td>${techblog.tech_hit}</td>
-		</tr>
-		</c:forEach>
-	</table>
-	<div class="align-center">${page}</div>
-	</c:if>
-	---------------------------------목록------------------------------------------------------------
-</div> --%>
-<!-- 내용 끝 -->
-
 
 

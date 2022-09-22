@@ -11,6 +11,9 @@ public interface TodoMapper {
     @Select("select TODO_NUM, TODO_CONTENT, TODO_PROGRESS from STUDY_TODO where MEM_NUM=#{memNum} and STUDY_NUM=#{studyNum}")
     List<TodoVO> selectTodos(int memNum, int studyNum);
 
+    @Select("select TODO_NUM, TODO_CONTENT, TODO_PROGRESS from STUDY_TODO where STUDY_NUM=#{studyNum} and MEM_NUM=#{memNum} and TODO_PROGRESS=1")
+    List<TodoVO> selectProgressingTodos(int studyNum,int memNum);
+
     @Update("update STUDY_TODO set TODO_PROGRESS=#{todoProgress} where TODO_NUM=#{todoNum}")
     void updateProgressTodo(TodoVO todoVO);
     @Update("update STUDY_TODO set TODO_CONTENT=#{todoContent} where TODO_NUM=#{todoNum}")
