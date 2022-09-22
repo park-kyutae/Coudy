@@ -8,6 +8,7 @@
 	<a href="${pageContext.request.contextPath}/techblog/techblogList.do">기술블로그</a>
 	<a href="${pageContext.request.contextPath}/company/comHome.do">채용공고</a>
 	<a href="${pageContext.request.contextPath}/notice/list.do">공지게시판</a>
+	<a href="${pageContext.request.contextPath}/teamblog/list.do">TeamBLOG</a>
 <%--	<c:if test="${!empty user && user.auth == 3 || user.auth == 4}">--%>
 <%--		<a href="${pageContext.request.contextPath}/company/managerHome.do">인사담당관 페이지</a>--%>
 <%--	</c:if>--%>

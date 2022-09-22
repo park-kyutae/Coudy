@@ -129,6 +129,7 @@ public class ApplicationController {
         model.addObject("studygroup", studyGroupVO);
 
         return model;
+
     }
 
     //==스터디 권한 수정==//
