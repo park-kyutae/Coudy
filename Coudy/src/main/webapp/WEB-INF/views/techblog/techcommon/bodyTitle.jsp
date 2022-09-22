@@ -15,7 +15,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 	<div class="container">
 	<!-- 쿠디의개발블로그 시작 -->
-		<div class="row">
-							<img src="${pageContext.request.contextPath}/images/techblogtitle.png" id="techtitleimg">
+		<div class="row mt-3">
+							<a href="${pageContext.request.contextPath}/techblog/techblogList.do"><img src="${pageContext.request.contextPath}/images/techblogtitle.png" id="techtitleimg"></a>
 		</div>
 	</div>
