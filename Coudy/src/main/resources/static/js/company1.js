@@ -22,6 +22,7 @@ const scrap = {
                             //window.location.reload();
                             location.reload();
                             //history.go(0);
+
                         }else{
                             alert('스크랩 중 오류');
                         }
@@ -29,6 +30,7 @@ const scrap = {
                     error:function () {
                         alert('네트워크오류발생');
                     }
+
                 });
 
         });

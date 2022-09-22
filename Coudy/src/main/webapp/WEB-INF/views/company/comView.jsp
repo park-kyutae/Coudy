@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <button id="btn1" class="btn btn-primary" onclick="location.href='/company/comHome.do'">홈으로</button>
+    <button id="btn1" class="btn btn-primary float-end mt-5" onclick="location.href='/company/comHome.do'">홈으로</button>
 </div>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/js/company1.js"></script>
