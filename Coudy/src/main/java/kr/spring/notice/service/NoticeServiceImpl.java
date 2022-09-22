@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.spring.notice.dao.NoticeMapper;
 import kr.spring.notice.vo.NoticeFavVO;
+import kr.spring.notice.vo.NoticeReplyVO;
 import kr.spring.notice.vo.NoticeVO;
 
 @Service
@@ -50,8 +51,12 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public void deleteNotice(Integer notice_num) {
-		// TODO Auto-generated method stub
-		
+		//부모글 좋아요 삭제
+		noticeMapper.deleteFavByNoticeNum(notice_num);
+		//댓글이 존재하면 댓글을 우선 삭제하고 부모글을 삭제
+		noticeMapper.deleteReplyByNoticeNum(notice_num);
+		//부모글 삭제
+		noticeMapper.deleteNotice(notice_num);
 	}
 
 	@Override
@@ -77,6 +82,36 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public void deleteFav(Integer notice_fav_num) {
 		noticeMapper.deleteFav(notice_fav_num);
+	}
+
+	@Override
+	public List<NoticeReplyVO> selectListReply(Map<String, Object> map) {
+		return noticeMapper.selectListReply(map);
+	}
+
+	@Override
+	public int selectRowCountReply(Map<String, Object> map) {
+		return noticeMapper.selectRowCountReply(map);
+	}
+
+	@Override
+	public NoticeReplyVO selectReply(Integer notice_re_num) {
+		return noticeMapper.selectReply(notice_re_num);
+	}
+
+	@Override
+	public void insertReply(NoticeReplyVO noticeReply) {
+		noticeMapper.insertReply(noticeReply);
+	}
+
+	@Override
+	public void updateReply(NoticeReplyVO noticeReply) {
+		noticeMapper.updateReply(noticeReply);
+	}
+
+	@Override
+	public void deleteReply(Integer notice_re_num) {
+		noticeMapper.deleteReply(notice_re_num);
 	}
 
 	

@@ -8,6 +8,8 @@
 	<a href="${pageContext.request.contextPath}/techblog/techblogList.do">기술블로그</a>
 	<a href="${pageContext.request.contextPath}/company/comHome.do">채용공고</a>
 	<a href="${pageContext.request.contextPath}/notice/list.do">공지게시판</a>
+	<a href="${pageContext.request.contextPath}/teamblog/list.do">TeamBLOG</a>
+		
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>

@@ -46,9 +46,9 @@ $(function(){
 	function displayFav(param){
 		let output;
 		if(param.status == 'noFav'){
-			output='../images/fav01.gif';
+			output='../images/balloon-heart.svg';
 		}else{
-			output='../images/fav02.gif';
+			output='../images/balloon-heart-fill.svg';
 		}
 		//문서 객체에 추가
 		$('#output_fav').attr('src',output);

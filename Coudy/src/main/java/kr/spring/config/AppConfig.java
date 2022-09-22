@@ -40,15 +40,20 @@ public class AppConfig implements WebMvcConfigurer{
 				    new LoginCheckInterceptor())
 				.order(1)
 		        .addPathPatterns("/member/myPage.do")
-				.addPathPatterns("/study/studygroupcreate.do")
+		        .addPathPatterns("/member/update.do")
+		        .addPathPatterns("/member/delete.do")
+				.addPathPatterns("/study/studydetail.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
+				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
 
 				.addPathPatterns("/techblog/techblogDelete.do")
 				.addPathPatterns("/notice/Write.do")
 				.addPathPatterns("/notice/Update.do")
-				.addPathPatterns("/notice/Delete.do");
-		
+				.addPathPatterns("/notice/Delete.do")
+				.addPathPatterns("/teamblog/Write.do")
+				.addPathPatterns("/teamblog/Update.do")
+				.addPathPatterns("/teamblog/Delete.do");
 
 		registry.addInterceptor(interceptor)
 				.order(2)
