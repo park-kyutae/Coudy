@@ -80,51 +80,73 @@
 	</div>
 	<hr size="1" width="100%">
 	<!-- 댓글 UI 시작 -->
-	<div id="reply_div">
-		<span class="re-title">댓글 달기</span>
-		<form id="re_form">
-			<input type="hidden" name="tech_num"
-			   value="${techblog.tech_num}" id="tech_num">
-			<textarea rows="3" cols="50" 
-			  name="tech_re_content" id="tech_re_content"
-			  class="rep-content"
-			  <c:if test="${empty user}">disabled="disabled"</c:if>
-			  ><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
-			<c:if test="${!empty user}">
-			<div id="re_first">
-				<span class="letter-count">300/300</span>
+	<div class="row">
+		<div id="reply_div">
+			<form id="re_form">
+			<div class="row">
+				<div class="col-1 d-flex justify-content-center p-2">
+					<c:if test="${!empty techblog.photo_name}">
+								<img src="imageView.do?tech_num=${techblog.tech_num}&board_type=1" width="70" height="70" class="my-photo">
+					</c:if>
+					<c:if test="${empty techblog.photo_name}">
+						<img src="${pageContext.request.contextPath}/images/face.png" width="70" height="70" class="my-photo">
+					</c:if>
+				</div>
+				<div class="col-lg-10">
+					<input type="hidden" name="tech_num" value="${techblog.tech_num}" id="tech_num">
+					<textarea style="resize: none;" rows="3" cols="125" name="tech_re_content" id="tech_re_content" class="rep-content form-control" placeholder="댓글 달기..."<c:if test="${empty user}">disabled="disabled"</c:if>><c:if test="${empty user}">로그인해야 작성할 수 있습니다.</c:if></textarea>
+				</div>
+				<div class="col-lg-1 p-2">
+					<c:if test="${!empty user}">
+				<div id="re_first">
+					<span class="letter-count">300/300</span>
+				</div>
+				<div id="re_second">
+					<input type="submit" value="등록" class="btn btn-primary">
+				</div>
+				</c:if>
+				</div>
 			</div>
-			<div id="re_second" class="align-right">
-				<input type="submit" value="전송">
-			</div>
-			</c:if>
-		</form>
+			</form>
+		</div>
 	</div>
 	<!-- 댓글 목록 출력 -->
-	<div id="output"></div>
-	<div class="paging-button" style="display:none;">
-		<input type="button" value="다음글 보기">
-	</div>
-	<div id="loading" style="display:none;">
-		<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
+	<div class="row mt-3">
+		<div id="output"></div>
+			<div class="paging-button" style="display:none;">
+				<input type="button" value="다음글 보기">
+			</div>
+			<div id="loading" style="display:none;">
+				<img src="${pageContext.request.contextPath}/images/loading.gif" width="100" height="100">
+			</div>
 	</div>
 	<!-- 댓글 UI 끝 -->
-	<div class="row justify-content-between mt-3">
-		<div class="col">
-			<c:if test="">
-				이전 글
-			</c:if>
-			<img src="${pageContext.request.contextPath}/images/chevron-compact-left.svg" id="nextbutton">
+	<div class="row mt-3">
+		
+		
+		<c:if test="${move.last == 0}">
+		<div class="col pt-2 fs-5" style="font-weight: bold;">이전글이 없습니다.</div>
+		</c:if>
+		
+		<c:if test="${move.last != 0}">
+			<div class="col-5 d-flex">
+				<a href="techblogDetail.do?tech_num=${move.last}"><img src="${pageContext.request.contextPath}/images/chevron-compact-left.svg" id="techbutton"></a>
+				<a href="techblogDetail.do?tech_num=${move.last}" class="pt-1" id="techabutton"> ${move.lasttitle} </a>
+			</div>
+		</c:if>
+		<div class="col"></div>
+		
+		<c:if test="${move.next != 0}">
+		<div class="col-5 d-flex justify-content-end">
+			<a href="techblogDetail.do?tech_num=${move.next}" id="techabutton" class="pt-1"> ${move.nexttitle} </a>
+			<a href="techblogDetail.do?tech_num=${move.next}"><img src="${pageContext.request.contextPath}/images/chevron-compact-right.svg" id="techbutton"></a>
 		</div>
-		<div class="col">
-			
-		</div>
-		<div class="col d-flex justify-content-end">
-			<c:if test="">
-				다음 글
-			</c:if>
-			<img src="${pageContext.request.contextPath}/images/chevron-compact-right.svg" id="nextbutton">
-		</div>
+		</c:if>
+		
+		<c:if test="${move.next == 0}">
+		<div class="col pt-2 fs-5 d-flex justify-content-end" style="font-weight: bold;">다음글이 없습니다.</div>
+		</c:if>
+		
 	</div>
 	<div class="row mt-4">
 		<div class="col">

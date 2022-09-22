@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 --스터디 모집 게시판
 create table studygroup(
                            study_num number not null,
@@ -75,3 +80,7 @@ create table studygroup_review(
 
 create sequence studygroup_review_seq;
 
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git

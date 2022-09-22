@@ -7,7 +7,9 @@
     	<put-attribute name="title" value="스터디그룹 메인"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/study/studygroup/StudyList.jsp"/>
-    </definition>
+		<put-attribute name="footer"
+					   value=""/>
+	</definition>
 	<definition name="CreateStudyGroup" extends="main">
 		<put-attribute name="title" value="스터디그룹 생성하기"/>
 		<put-attribute name="body"
@@ -38,7 +40,7 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/application/MyApplication.jsp"/>
 	</definition>
-	<definition name="StudyUserList" extends="main">
+	<definition name="ApplicationList" extends="main">
 		<put-attribute name="title" value="스터디 유저 관리"/>
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/application/ApplicationList.jsp"/>

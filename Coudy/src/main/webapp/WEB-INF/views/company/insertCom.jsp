@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.82/dist/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.82/dist/shoelace.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -14,47 +16,59 @@
     <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
         <h2>채용 공고 폼</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. <br>Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
     </div>
-    <form class="needs-validation" novalidate method="post" action="insertCom.do" enctype="multipart/form-data">
+    <form class="m-lg-4 needs-validation" novalidate method="post" action="insertCom.do" enctype="multipart/form-data">
         <div class="row g-3">
             <div class="col-sm-4">
                 <label for="com_name" class="form-label">회사명</label>
                 <input type="text" class="form-control" name="com_name" id="com_name" placeholder="회사명을 입력해주세요." value="" required="">
                 <div class="invalid-feedback">
-                    Please select a valid country.
+                    회사명을 입력해주세요.
                 </div>
             </div>
             <div class="col-sm-6">
                 <label for="com_title" class="form-label">채용공고 제목</label>
                 <input type="text" class="form-control" name="com_title" id="com_title" placeholder="채용정보 제목을 입력해주세요." value="" required="">
-
+                <div class="invalid-feedback">
+                    채용공고 제목을 입력해주세요.
+                </div>
             </div>
             <div class="col-sm-5">
                 <label for="com_career" class="form-label">경력</label>
                 <select class="form-select" name="com_career" id="com_career" required="" >
-                    <option value="1">신입</option>
-                    <option value="2">경력</option>
-                    <option value="3">무관</option>
+                    <option value="">필수 항목입니다.</option>
+                    <option value="신입">신입</option>
+                    <option value="경력">경력</option>
+                    <option value="경력무관">경력무관</option>
                 </select>
             </div>
             <div class="col-sm-5">
                 <label for="com_edu" class="form-label">학력</label>
                 <select class="form-select" name="com_edu" id="com_edu" required="">
-                    <option value="1">고졸</option>
-                    <option value="2">초대졸</option>
-                    <option value="3">대졸</option>
+                    <option value="">필수 항목입니다.</option>
+                    <option value="고졸">고졸</option>
+                    <option value="초대졸">초대졸</option>
+                    <option value="대졸">대졸</option>
+                    <option value="학력무관">학력무관</option>
                 </select>
             </div>
 
             <div class="col-sm-5">
+                <label for="com_empType" class="form-label">고용형태</label>
+                <input type="text" name="com_empType" class="form-control" id="com_empType" placeholder="정규식/계약직/인턴" required="">
+                <div class="invalid-feedback">
+                    고용형태를 입력해주세요.
+                </div>
+            </div>
+            <div class="col-sm-5">
                 <label for="com_pay" class="form-label">급여</label>
                 <input type="text" name="com_pay" class="form-control" id="com_pay" placeholder="급여를 입력해주세요." value="" required="">
+                <div class="invalid-feedback">
+                    급여를 입력해주세요.
+                </div>
             </div>
-            <div class="col-5">
-                <label for="com_empType" class="form-label">고용형태<span class="text-muted">(Optional)</span></label>
-                <input type="text" name="com_empType" class="form-control" id="com_empType" placeholder="정규식/계약직/인턴">
-            </div>
+
 
             <div class="col-sm-5">
                 <label for="com_time" class="form-label">근무시간</label>
@@ -66,39 +80,42 @@
             </div>
             <div class="col-sm-4">
                 <label for="com_zipcode" class="form-label">근무지 우편번호</label>
-                <input type="text" class="form-control" name="com_zipcode" id="com_zipcode">
+                <input type="text" class="form-control" name="com_zipcode" id="com_zipcode" required="">
                 <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"/>
                 <div class="invalid-feedback">
-                    Please select a valid country.
+                    우편번호를 입력해주세요.
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-3">
                 <label for="com_address1" class="form-label">주소</label>
-                <input type="text" class="form-control" name="com_address1" id="com_address1">
+                <input type="text" class="form-control" name="com_address1" id="com_address1" required="">
             </div>
             <div class="col-sm-7">
                 <label for="com_address2" class="form-label">상세주소</label>
-                <input type="text" class="form-control" name="com_address2" id="com_address2">
+                <input type="text" class="form-control" name="com_address2" id="com_address2" required="">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-4">
                 <label for="com_schedule">모집일정</label>
-                <input type="date" class="form-control" name="com_schedule" id="com_schedule">
+                <input type="date" class="form-control" name="com_schedule" id="com_schedule" required="">
             </div>
             <div class="col-6">
                 <label for="com_part">모집구분</label>
-                <input type="text" class="form-control" id="com_part" name="com_part" placeholder="모집구분을 입력해주세요.">
+                <input type="text" class="form-control" id="com_part" name="com_part" placeholder="모집구분을 입력해주세요." required="">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-4">
                 <label>회사포스터 업로드</label>
-                <input class="border" type="file" id="upload" name="upload" accept="image/png,image/jpg,image/jpeg">
+                <input class="border" type="file" id="upload" name="upload" accept="image/png,image/jpg,image/jpeg" required="">
+                <div class="invalid-feedback">
+                    파일을 첨부해주세요.
+                </div>
             </div>
         </div>
         <hr class="my-4">
@@ -106,14 +123,17 @@
         <div class="row">
             <div class="col-4">
                 <label for="com_comTitle">회사소개 제목</label>
-                <input type="text" class="form-control" id="com_comTitle" name="com_comTitle" placeholder="회사소개 제목을 입력해주세요.">
+                <input type="text" class="form-control" id="com_comTitle" name="com_comTitle" placeholder="회사소개 제목을 입력해주세요." required="">
             </div>
         </div>
         <div class="row">
             <div class="col-4">
 
                 <label for=com_comContent>회사소개 내용</label>
-                <textarea id=com_comContent style="font-size: medium;" class="form-text" name="com_comContent" cols="70" rows="5" placeholder="회사 소개 및 인재상 입력해주세요."></textarea>
+                <textarea id=com_comContent style="font-size: medium;" class="form-text" name="com_comContent" cols="70" rows="5" placeholder="회사 소개 및 인재상 입력해주세요." required=""></textarea>
+                <div class="invalid-feedback">
+                    내용을 입력해주세요.
+                </div>
             </div>
         </div>
         <hr class="my-4">
@@ -196,5 +216,27 @@
         element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
+    <%--validation 시작--%>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 </script>
 <%--우편번호 검색 끝--%>
+

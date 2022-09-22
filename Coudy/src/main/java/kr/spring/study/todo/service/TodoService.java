@@ -15,7 +15,10 @@ public interface TodoService {
     void deleteTodo(int todoNum);
 
     List<TodoVO> selectTodos(int memNum, int studyNum);
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 
     List<TodoVO> findProgressingTodos(int studyNum, int memNum);
 }

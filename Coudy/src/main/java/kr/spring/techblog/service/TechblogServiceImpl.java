@@ -131,6 +131,14 @@ public class TechblogServiceImpl implements TechblogService{
 		return techblogmapper.selectListD(map);
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public TechblogVO movePage(Integer tech_num) {
+		return techblogmapper.movePage(tech_num);
+	}
+
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	
 
 }

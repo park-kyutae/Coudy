@@ -61,6 +61,7 @@
     	<put-attribute name="footer" value="/WEB-INF/views/member/blank.jsp"/>
     	                
     </definition>
+
 </tiles-definitions>
 
 

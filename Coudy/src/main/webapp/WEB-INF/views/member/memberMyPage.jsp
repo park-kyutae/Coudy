@@ -169,13 +169,15 @@ hr:not([size]) {
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-          메뉴2
+          Company And Job
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">메뉴1</a></li>
-            <li><a href="#" class="link-dark rounded">메뉴2</a></li>
-            <li><a href="#" class="link-dark rounded">메뉴3</a></li>
+            <li><a href="${pageContext.request.contextPath}/company/myScrap.do" class="link-dark rounded">나의 스크랩</a></li>
+            <li><a href="${pageContext.request.contextPath}/company/myResume.do" class="link-dark rounded">이력서 지원현황</a></li>
+			  <c:if test="${user.auth == 4 || user.auth == 3}">
+            <li><a href="${pageContext.request.contextPath}/company/managerHome.do" class="link-dark rounded">지원자 목록</a></li>
+			  </c:if>
           </ul>
         </div>
       </li>

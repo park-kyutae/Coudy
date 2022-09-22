@@ -8,6 +8,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+<<<<<<< HEAD
+=======
+import lombok.NoArgsConstructor;
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
@@ -168,6 +172,16 @@ public class MemberVO {
 		this.modify_date = modify_date;
 	}
 
+<<<<<<< HEAD
+=======
+	public MemberVO(int mem_num) {
+		this.mem_num = mem_num;
+	}
+
+	public MemberVO() {
+	}
+
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	@Override
 	public String toString() {
 		return "MemberVO [mem_num=" + mem_num + ", auth=" + auth + ", id=" + id + ", name=" + name + ", passwd="

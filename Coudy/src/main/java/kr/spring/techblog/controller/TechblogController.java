@@ -79,7 +79,11 @@ public class TechblogController {
 		
 		return "common/resultView";
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	//===========게시판 글 목록============//
 		@RequestMapping("/techblog/techblogList.do")
 		public ModelAndView process(
@@ -298,7 +302,9 @@ public class TechblogController {
 		//========게시판 글상세===========//
 		@RequestMapping("/techblog/techblogDetail.do")
 		public ModelAndView detail(
-				          @RequestParam int tech_num
+				          @RequestParam int tech_num,
+				          TechblogVO techVO,
+				          Model model
 				          ) {
 			
 			logger.debug("<<tech_num>> : " + tech_num);
@@ -309,6 +315,7 @@ public class TechblogController {
 			TechblogVO techblogVO = 
 					techblogService.selectTechblog(tech_num);
 			
+			
 			//제목에 태그를 허용하지 않음
 			techblogVO.setTech_title(
 				 StringUtil.useNoHtml(techblogVO.getTech_title()));
@@ -318,6 +325,7 @@ public class TechblogController {
 			board.setContent(
 			 StringUtil.useBrNoHtml(board.getContent()));
 			*/
+			model.addAttribute("move",techblogService.movePage(techVO.getTech_num()));
 			                          //뷰 이름    속성명   속성값
 			return new ModelAndView("techblogView","techblog",techblogVO);
 		}

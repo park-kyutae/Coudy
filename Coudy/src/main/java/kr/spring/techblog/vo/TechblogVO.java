@@ -31,6 +31,37 @@ public class TechblogVO {
 	private byte[] photo;//프로필 사진
 	private String photo_name;//프로필 사진명
 	
+	private int next;
+	private int last;
+	private String nexttitle;
+	private String lasttitle;
+	
+	
+	
+	public int getNext() {
+		return next;
+	}
+	public void setNext(int next) {
+		this.next = next;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		this.last = last;
+	}
+	public String getNexttitle() {
+		return nexttitle;
+	}
+	public void setNexttitle(String nexttitle) {
+		this.nexttitle = nexttitle;
+	}
+	public String getLasttitle() {
+		return lasttitle;
+	}
+	public void setLasttitle(String lasttitle) {
+		this.lasttitle = lasttitle;
+	}
 	//===================checkbox===========================//
 	   //form:checkbox에서 사용할 수 있도록 String -> String[]로 변환 
 	   public String[] getF_tech_tag() {
@@ -184,7 +215,8 @@ public class TechblogVO {
 				+ ", tech_date=" + tech_date + ", tech_modifydate=" + tech_modifydate + ", tech_photoname="
 				+ tech_photoname + ", tech_content=" + tech_content + ", tech_hit=" + tech_hit + ", tech_category="
 				+ tech_category + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + ", photo="
-				+ Arrays.toString(photo) + ", photo_name=" + photo_name + "]";
+				+ Arrays.toString(photo) + ", photo_name=" + photo_name + ", next=" + next + ", last=" + last
+				+ ", nexttitle=" + nexttitle + ", lasttitle=" + lasttitle + "]";
 	}
 	
 }
