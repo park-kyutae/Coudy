@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
@@ -39,6 +40,30 @@ public class MemberVO {
 	private String photo_name;
 	private Date reg_date;
 	private Date modify_date;
+	
+	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
+	private String now_passwd;
+	
+	@Pattern(regexp="^[A-Za-z0-9]{4,12}$")
+	private String passwd2;
+	
+	
+
+	public String getPasswd2() {
+		return passwd2;
+	}
+
+	public void setPasswd2(String passwd2) {
+		this.passwd2 = passwd2;
+	}
+
+	public String getNow_passwd() {
+		return now_passwd;
+	}
+
+	public void setNow_passwd(String now_passwd) {
+		this.now_passwd = now_passwd;
+	}
 
 	//파일 업로드 처리 			//약속된 upload 파라미터 그래야setUploadfile()을 쓸 수 있다.
 	public void setUpload(MultipartFile upload) throws IOException{
@@ -133,6 +158,13 @@ public class MemberVO {
 	}
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
+	}
+
+	public MemberVO(int mem_num) {
+		this.mem_num = mem_num;
+	}
+
+	public MemberVO() {
 	}
 
 	@Override

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.study.studygroup.dao.StudyUserMapper">
+    <select id="selectListStudyUser" parameterType="map"
+            resultType="StudyUserVO">
+        SELECT
+        *
+        FROM (SELECT
+        a.*,
+        rownum rnum
+        FROM (SELECT
+        s.study_user_num,
+        s.mem_num
+        FROM study_user s JOIN member m
+        ON s.mem_num = m.mem_num
+        ORDER BY s.study_num DESC)a)
+        <![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+    </select>
+
+    <update id="updateAuth" parameterType="studyuserVO">
+        UPDATE study_user SET
+        registered='Y'
+        WHERE study_user_num=#{study_user_num}
+    </update>
+</mapper>
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ package kr.spring.techblog.vo;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -29,6 +30,56 @@ public class TechblogVO {
 	private String id;
 	private byte[] photo;//프로필 사진
 	private String photo_name;//프로필 사진명
+	
+	private int next;
+	private int last;
+	private String nexttitle;
+	private String lasttitle;
+	
+	
+	
+	public int getNext() {
+		return next;
+	}
+	public void setNext(int next) {
+		this.next = next;
+	}
+	public int getLast() {
+		return last;
+	}
+	public void setLast(int last) {
+		this.last = last;
+	}
+	public String getNexttitle() {
+		return nexttitle;
+	}
+	public void setNexttitle(String nexttitle) {
+		this.nexttitle = nexttitle;
+	}
+	public String getLasttitle() {
+		return lasttitle;
+	}
+	public void setLasttitle(String lasttitle) {
+		this.lasttitle = lasttitle;
+	}
+	//===================checkbox===========================//
+	   //form:checkbox에서 사용할 수 있도록 String -> String[]로 변환 
+	   public String[] getF_tech_tag() {
+	      String[] f_tech_tag = null;
+	      if(tech_tag!=null) f_tech_tag = tech_tag.split(",");
+	      return f_tech_tag;
+	   }
+	   //String[] -> String
+	   public void setF_tech_tag(String[] f_tech_tag) {
+	      if(f_tech_tag!=null) {
+	         this.tech_tag = "";
+	         for(int i=0;i<f_tech_tag.length;i++) {
+	            if(i>0) this.tech_tag += ",";
+	            this.tech_tag += f_tech_tag[i];
+	         }
+	      }
+	   }
+	   //===================checkbox===========================//
 	
 	public byte[] getPhoto() {
 		return photo;
@@ -158,12 +209,14 @@ public class TechblogVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	@Override
 	public String toString() {
 		return "TechblogVO [tech_num=" + tech_num + ", tech_title=" + tech_title + ", tech_name=" + tech_name
 				+ ", tech_date=" + tech_date + ", tech_modifydate=" + tech_modifydate + ", tech_photoname="
 				+ tech_photoname + ", tech_content=" + tech_content + ", tech_hit=" + tech_hit + ", tech_category="
-				+ tech_category + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + "]";
+				+ tech_category + ", tech_tag=" + tech_tag + ", mem_num=" + mem_num + ", id=" + id + ", photo="
+				+ Arrays.toString(photo) + ", photo_name=" + photo_name + ", next=" + next + ", last=" + last
+				+ ", nexttitle=" + nexttitle + ", lasttitle=" + lasttitle + "]";
 	}
+	
 }

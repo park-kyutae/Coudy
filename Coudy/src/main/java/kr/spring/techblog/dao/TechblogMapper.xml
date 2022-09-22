@@ -15,7 +15,7 @@
 					t.tech_title LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 2">
-					t.tech_name LIKE '%' || #{keyword} || '%' OR
+					t.tech_name LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 3">
 					t.tech_content LIKE '%' || #{keyword} || '%'
@@ -27,6 +27,19 @@
 			</if>
 		</where>  	
   	</select>
+  	<select id="movePage" parameterType="int" resultType="techblogVO">
+	select * from(SELECT 
+			tech_num,
+	         LEAD(tech_num,1) OVER(ORDER BY tech_num) AS next,
+	         LAG(tech_num,1) OVER(ORDER BY tech_num) AS last,
+	         tech_title,
+	         LEAD(tech_title,1) OVER(ORDER BY tech_num) AS nexttitle,
+	         LAG(tech_title,1) OVER(ORDER BY tech_num) AS lasttitle
+	         
+			FROM techblog
+	        order by tech_num DESC) 
+	        WHERE tech_num = #{tech_num}
+	</select>
   	<select id="selectList" parameterType="map"
   	                         resultType="techblogVO">
   		SELECT
@@ -42,7 +55,7 @@
   		              t.tech_name,
   		              t.tech_hit,
   		              t.tech_date,
-  		              t.tech_content,
+  		              t.tech_tag,
   		              t.mem_num
   		            FROM techblog t JOIN member m
   		            ON t.mem_num = m.mem_num
@@ -52,7 +65,7 @@
 								t.tech_title LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 2">
-								t.tech_name LIKE '%' || #{keyword} || '%' OR
+								t.tech_name LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 3">
 								t.tech_content LIKE '%' || #{keyword} || '%'
@@ -68,7 +81,178 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
-  	
+  	<!-- 코드 개발 -->
+  	<select id="selectListA" parameterType="map"
+  	                         resultType="techblogVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              t.tech_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(t.tech_title,'<','&lt;'),'>','&gt;') tech_title,
+  		              ]]>
+  		              t.tech_name,
+  		              t.tech_hit,
+  		              t.tech_date,
+  		              t.tech_tag,
+  		              t.mem_num
+  		            FROM techblog t JOIN member m
+  		            ON t.mem_num = m.mem_num
+  		            <where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								t.tech_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								t.tech_name LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								t.tech_title LIKE '%' || #{keyword} || '%' OR
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where> 
+					WHERE t.tech_category LIKE '%2%' 
+  		            ORDER BY t.tech_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	<!-- 개발자들 이야기 -->
+  	  	<select id="selectListB" parameterType="map"
+  	                         resultType="techblogVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              t.tech_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(t.tech_title,'<','&lt;'),'>','&gt;') tech_title,
+  		              ]]>
+  		              t.tech_name,
+  		              t.tech_hit,
+  		              t.tech_date,
+  		              t.tech_tag,
+  		              t.mem_num
+  		            FROM techblog t JOIN member m
+  		            ON t.mem_num = m.mem_num
+  		            <where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								t.tech_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								t.tech_name LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								t.tech_title LIKE '%' || #{keyword} || '%' OR
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where> 
+					WHERE t.tech_category LIKE '%3%' 
+  		            ORDER BY t.tech_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	<!-- AWS 정보 공유 -->
+  	  	  	<select id="selectListC" parameterType="map"
+  	                         resultType="techblogVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              t.tech_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(t.tech_title,'<','&lt;'),'>','&gt;') tech_title,
+  		              ]]>
+  		              t.tech_name,
+  		              t.tech_hit,
+  		              t.tech_date,
+  		              t.tech_tag,
+  		              t.mem_num
+  		            FROM techblog t JOIN member m
+  		            ON t.mem_num = m.mem_num
+  		            <where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								t.tech_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								t.tech_name LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								t.tech_title LIKE '%' || #{keyword} || '%' OR
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where> 
+					WHERE t.tech_category LIKE '%4%' 
+  		            ORDER BY t.tech_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	<!-- 코드 리뷰 -->
+  	  	  	<select id="selectListD" parameterType="map"
+  	                         resultType="techblogVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              t.tech_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(t.tech_title,'<','&lt;'),'>','&gt;') tech_title,
+  		              ]]>
+  		              t.tech_name,
+  		              t.tech_hit,
+  		              t.tech_date,
+  		              t.tech_tag,
+  		              t.mem_num
+  		            FROM techblog t JOIN member m
+  		            ON t.mem_num = m.mem_num
+  		            <where>
+						<if test="keyword != null and keyword != ''">
+							<if test="keyfield == 1">
+								t.tech_title LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 2">
+								t.tech_name LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 3">
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 4">
+								t.tech_title LIKE '%' || #{keyword} || '%' OR
+								t.tech_content LIKE '%' || #{keyword} || '%'
+							</if>
+						</if>
+					</where> 
+					WHERE t.tech_category LIKE '%5%' 
+  		            ORDER BY t.tech_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
   	<!-- 글수정 -->
   	<update id="updateTechblog" parameterType="techblogVO">
   		UPDATE techblog SET
@@ -79,6 +263,33 @@
   		    tech_modifydate=SYSDATE
   		WHERE tech_num=#{tech_num}
   	</update>
+  	
+  	  	<!-- 댓글 목록 -->
+  	<select id="selectListReply" parameterType="map"
+  	                    resultType="techblogReplyVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              tech_re_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(tech_re_content,'<','&lt;'),'>','&gt;') tech_re_content,
+  		              ]]>
+  		              tech_re_date,
+  		              tech_re_modifydate,
+  		              tech_num,
+  		              id,
+  		              mem_num
+  		            FROM techblog_reply
+  		            JOIN member_detail USING(mem_num)
+  		            WHERE tech_num = #{tech_num}
+  		            ORDER BY tech_re_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
   	
 </mapper>
 

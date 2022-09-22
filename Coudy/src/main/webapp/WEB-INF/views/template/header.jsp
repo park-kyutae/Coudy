@@ -10,6 +10,16 @@
 	<a href="${pageContext.request.contextPath}/notice/list.do">공지게시판</a>
 	<a href="${pageContext.request.contextPath}/teamblog/list.do">TeamBLOG</a>
 		
+<%--	<c:if test="${!empty user && user.auth == 3 || user.auth == 4}">--%>
+<%--		<a href="${pageContext.request.contextPath}/company/managerHome.do">인사담당관 페이지</a>--%>
+<%--	</c:if>--%>
+<%--	<c:if test="${!empty user}">--%>
+<%--		<a href="${pageContext.request.contextPath}/company/myScrap.do">나의스크랩</a>--%>
+<%--	</c:if>--%>
+<%--	<c:if test="${!empty user}">--%>
+<%--		<a href="${pageContext.request.contextPath}/company/myResume.do">지원현황</a>--%>
+<%--	</c:if>--%>
+	<a href="${pageContext.request.contextPath}/board/list.do">게시판</a>
 	<c:if test="${!empty user && !empty user.photo}">
 		<img src="${pageContext.request.contextPath}/member/photoView.do" width="25" height="25" class="my-photo">
 	</c:if>
@@ -26,9 +36,10 @@
 	<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 	</c:if>
-	<c:if test="${!empty user && user.auth == 2}">
+	<c:if test="${!empty user}">
 		<a href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 	</c:if>
+
 	<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
 </div>
 <!-- 상단 끝 -->

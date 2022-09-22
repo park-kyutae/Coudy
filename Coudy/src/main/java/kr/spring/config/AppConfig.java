@@ -43,6 +43,7 @@ public class AppConfig implements WebMvcConfigurer{
 		        .addPathPatterns("/member/update.do")
 		        .addPathPatterns("/member/delete.do")
 				.addPathPatterns("/study/studydetail.do")
+				.addPathPatterns("/study/studygroupcreate.do")
 				.addPathPatterns("/techblog/techblogWrite.do")
 				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
@@ -53,7 +54,16 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/notice/Delete.do")
 				.addPathPatterns("/teamblog/Write.do")
 				.addPathPatterns("/teamblog/Update.do")
-				.addPathPatterns("/teamblog/Delete.do");
+				.addPathPatterns("/teamblog/Delete.do")
+		//TODO 표현식으로 정리
+
+				.addPathPatterns("/techblog/techblogDelete.do")
+				.addPathPatterns("/notice/Write.do")
+				.addPathPatterns("/notice/Update.do")
+				.addPathPatterns("/notice/Delete.do")
+				.addPathPatterns("/member/admin_update.do")
+				.addPathPatterns("/member/admin_list.do");
+
 
 		registry.addInterceptor(interceptor)
 				.order(2)
@@ -62,7 +72,7 @@ public class AppConfig implements WebMvcConfigurer{
 		//TODO 로그인 기능 완성 시 삭제
 		registry.addInterceptor(new LoginTestInterceptor())
 				.order(3)
-				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**"));
+				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**","/chat/**"));
 
 
 	}
@@ -85,6 +95,8 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/forth.xml",
 				"/WEB-INF/tiles-def/fifth.xml",
 				"/WEB-INF/tiles-def/sixth.xml",
+				"/WEB-INF/tiles-def/techblogwu.xml",
+				"/WEB-INF/tiles-def/mainV2.xml",
 				"/WEB-INF/tiles-def/techblog.xml"
 		});
 		configurer.setCheckRefresh(true);

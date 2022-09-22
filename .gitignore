@@ -23,5 +23,9 @@ target/
 *.tar.gz
 *.rar
 
+#pom.xml 깃 커밋 방지를 위한 추가한 코드 by 병욱
+target/
+dir.propeties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.DS_Store

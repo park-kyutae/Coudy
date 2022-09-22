@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-
 <tiles-definitions>
     <definition name="StudyGroupList" extends="main">
     	<put-attribute name="title" value="스터디그룹 메인"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/study/studygroup/StudyList.jsp"/>
-    </definition>
+		<put-attribute name="footer"
+					   value=""/>
+	</definition>
 	<definition name="CreateStudyGroup" extends="main">
 		<put-attribute name="title" value="스터디그룹 생성하기"/>
 		<put-attribute name="body"
@@ -30,7 +30,21 @@
 		<put-attribute name="body"
 					   value="/WEB-INF/views/study/application/ApplicationWrite.jsp"/>
 	</definition>
-
+	<definition name="StudyMain" extends="mainV2">
+		<put-attribute name="title" value="스터디 메인"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/main/main.jsp"/>
+	</definition>
+	<definition name="MyStudyList" extends="main">
+		<put-attribute name="title" value="나의 스터디 목록"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/application/MyApplication.jsp"/>
+	</definition>
+	<definition name="ApplicationList" extends="main">
+		<put-attribute name="title" value="스터디 유저 관리"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/application/ApplicationList.jsp"/>
+	</definition>
 </tiles-definitions>
 
 

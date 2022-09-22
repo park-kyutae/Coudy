@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 CREATE TABLE techblog(
 	tech_num number not null,
 	tech_title varchar2(150) not null,
@@ -63,3 +65,4 @@ create table techblog_fav(
 
 create sequence techblog_fav_seq;
 
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git

@@ -5,13 +5,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div id="container">
+<div class="container">
     <h1>스터디 그룹 개설하기</h1>
     <form class="row g-3 needs-validation" method="post" action="studygroupcreate.do">
         <input type="hidden" id="registered" name="registered" value="Y">

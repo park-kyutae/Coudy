@@ -1,5 +1,8 @@
 package kr.spring.member.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +26,7 @@ public class MemberServiceImpl implements MemberService{
 	public void insertMember(MemberVO member) {
 		member.setMem_num(memberMapper.selectMem_num());
 		memberMapper.insertMember(member); //부모 
-		memberMapper.insertMember_detail(member); //자식  
+		memberMapper.insertMember_detail(member); //자식   
 		
 	}
 
@@ -39,17 +42,21 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void updateMember(MemberVO member) {
-		
+		//memberMapper.updateMember(member);
+		memberMapper.updateMember_detail(member);
 	}
 
 	@Override
 	public void updatePasswd(MemberVO member) {
+		memberMapper.updatePasswd(member);
 		
 	}
 
 	@Override
 	public void deleteMember(Integer mem_num) {
-		
+		memberMapper.deleteMember(mem_num);
+		memberMapper.deleteMember_detail(mem_num);
+
 	}
 
 	@Override
@@ -57,6 +64,23 @@ public class MemberServiceImpl implements MemberService{
 		memberMapper.updateProfile(member);
 		
 	}
+
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return memberMapper.selectRowCount(map);
+	}
+
+	@Override
+	public List<MemberVO> selectList(Map<String, Object> map) {
+		return memberMapper.selectList(map);
+	}
+
+	@Override
+	public void updateByAdmin(MemberVO member) {
+		memberMapper.updateByAdmin(member);
+	}
+
+
 
 
 }

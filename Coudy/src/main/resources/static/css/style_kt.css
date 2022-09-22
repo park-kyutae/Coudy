@@ -1,33 +1,29 @@
 @charset "UTF-8";
 
-#techblog_title {
-	background-color: #19abff;
-	color: white;
-	height: 200px;
-	font-size: 22pt;
-	font-weight: bold;
-	display:table;
-  	table-layout:fixed;
-  	text-align:center;
-  	width:100%;
-}
 #techtitle{
-	font-size: 23pt;
+	font-size: 15pt;
 	font-weight: bold;
+}
+#techtitleimg{
+	height: 500px;
+	border : solid;
+	border-bottom-color:#6425CD;
+	border-top-color:#6425CD;
+	border-width: 0 0 3px 0 ;
 }
 #techtitlefont{
 	display:table-cell;
   	vertical-align:middle;
 }
 #techcontent{
-	font-size: 12pt;
+	font-size: 10pt;
 	text-decoration: none;
 	color: gray;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	width: 500px;
-	height: 20px;
+	height: 25px;
 	display: block;
 }
 #techdate{
@@ -45,5 +41,22 @@
 #label{
 	font-size: 12pt;
 }
+#techbutton{
+	width: 50px;
+	height: 50px;
+}
 
-
+#error_color{
+	color : red;
+	font-style: red;
+	font-weight: bold;
+}
+#techabutton{
+	text-decoration: none;
+	color: black;
+	font-size: 20pt;
+	font-weight: bold;
+	overflow: hidden;
+ 	text-overflow: ellipsis;
+	white-space: nowrap;
+}
