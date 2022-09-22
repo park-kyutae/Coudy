@@ -82,6 +82,11 @@ public class MemberAjaxController {
 		return mapAjax;
 	}
 	
+
+	
+	
+	
+	
 //	@RequestMapping("member/noChangeId.do")
 //	@ResponseBody
 //	public Map<String,String> noChangeId(@RequestParam String id, HttpSession session){

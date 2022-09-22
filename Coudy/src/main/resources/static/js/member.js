@@ -1,6 +1,9 @@
 $(function(){
 	
 	
+	
+	
+	
 	//===========MyPage 프로필사진=============//
 	$('#photo_btn').click(function(){
 		$('#photo_choice').show();
@@ -133,29 +136,6 @@ $(function(){
 		}
 	});
 	
-	//로그인처리
-	$('#loginSubmit').click(function(){
-		
-		alert('로그인처리 js들어옴');
-		
-		$.ajax({
-			url:'loginSubmit.do',
-			type:'post',
-			data:{id:$('#id').val()},
-			dataType:'json',
-			cache:'false',
-			success:function(){
-				
-				
-			},
-			error:function(){
-				alert('네트워크오류');
-			}
-			
-			
-		});
-		
-	});
 	
 	
 	

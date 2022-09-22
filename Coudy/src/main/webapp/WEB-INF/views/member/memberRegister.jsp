@@ -52,8 +52,6 @@
 		<form:errors path="id" cssClass="error-color"/>
 		<label for="id">아이디</label>
 		<div id="message_id1" class="invalid-feedback"></div>
-
-     	
 	</div>
 	
 	<div class="form-floating mb-3">

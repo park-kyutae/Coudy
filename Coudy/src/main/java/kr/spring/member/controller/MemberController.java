@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.service.MemberService;
@@ -70,13 +71,51 @@ public class MemberController {
 		return "common/resultView";
 	}
 	
-	//=============로그인 유효성체크===========//
-		@RequestMapping("/member/loginSubmit.do")
-		public Map<String,String> loginsub(){
-			Map<String,String> mapAjax = new HashMap<String, String>();
-			
-			return mapAjax;
-		}
+//	//=======================로그인 유효성 체크===========================//
+//	@RequestMapping("/member/loginSubmit.do")
+//	@ResponseBody
+//	public ModelAndView loginValid(@RequestParam String id, @RequestParam String passwd, HttpSession session){
+//		
+//		Map<String, String> mapAjax = new HashMap<String, String>();
+//		
+//		ModelAndView mav = new ModelAndView();
+//		
+//		
+//		MemberVO member =null;
+//		member = memberService.selectCheckMember(id);
+//		
+//		boolean check = false;
+//		
+//		if(member != null) {
+//			check = member.isCheckedPasswd(passwd);
+//		}
+//		
+//		if(member == null) {
+//			mav.addObject("result", "hasNoData");
+//			formLogin();
+//			logger.debug("<<hasNoData로 들어옴 >>" + member+" ::::::: "+id+"::::"+passwd);
+//		}
+//		
+//		if(!check) {
+//			mav.addObject("result", "checkedFail");
+//			formLogin();
+//			logger.debug("<<checkedFail로 들어옴 >>" + member+" ::::::: "+id+"::::"+passwd);
+//			
+//		}
+//		
+//		if(check) {
+//			mav.addObject("result", "success");
+//			session.setAttribute("user", member);
+//			mav.setViewName("/main/main.do");
+//			logger.debug("<<success로 들어옴 >>" + member+" ::::::: "+id+"::::"+passwd);
+//			
+//		}
+//		
+//		
+//		
+//		return mav;
+//		
+//	}
 	
 	//=============회원로그인===============//
 		//로그인 폼
@@ -84,6 +123,54 @@ public class MemberController {
 		public String formLogin() {
 			return "memberLogin"; 
 		}
+		
+//		//=======================로그인 유효성 체크===========================//
+//		@RequestMapping("/member/loginSubmit.do")
+//		@ResponseBody
+//		public ModelAndView loginValid(@RequestParam String id, @RequestParam String passwd, HttpSession session){
+//			
+//			Map<String, String> mapAjax = new HashMap<String, String>();
+//			
+//			ModelAndView mav = new ModelAndView();
+//			
+//			
+//			MemberVO member =null;
+//			member = memberService.selectCheckMember(id);
+//			
+//			boolean check = false;
+//			
+//			if(member != null) {
+//				check = member.isCheckedPasswd(passwd);
+//			}
+//			
+//			if(member == null) {
+//				mav.addObject("result", "hasNoData");
+//				formLogin();
+//				logger.debug("<<hasNoData로 들어옴 >>" + member+" ::::::: "+id+"::::"+passwd);
+//			}
+//			
+//			if(!check) {
+//				mav.addObject("result", "checkedFail");
+//				formLogin();
+//				logger.debug("<<checkedFail로 들어옴 >>" + member+" ::::::: "+id+"::::"+passwd);
+//				
+//			}
+//			
+//			if(check) {
+//				mav.addObject("result", "success");
+//				session.setAttribute("user", member);
+//				mav.setViewName("/main/main.do");
+//				logger.debug("<<success로 들어옴 >>" + member+" ::::::: "+id+"::::"+passwd);
+//				
+//			}
+//			
+//			
+//			
+//			return mav;
+//			
+//		}
+	
+	//==================================================================================//	
 		
 		//로그인 폼에서 전송된 데이터 처리
 		@PostMapping("/member/login.do")
@@ -99,9 +186,6 @@ public class MemberController {
 
 			try {
 				member = memberService.selectCheckMember(memberVO.getId());
-				logger.debug("<<try 멤버  >> : " + memberVO);
-				logger.debug("<<try 멤버  >> : " + member);
-
 				
 				boolean check= false;
 				
@@ -117,6 +201,7 @@ public class MemberController {
 					
 					logger.debug("<<인증성공>>");
 					logger.debug("<<아이디>> : "+member.getId());
+					
 
 					
 					return "redirect:/main/main.do";
