@@ -79,11 +79,7 @@ public class TechblogController {
 		
 		return "common/resultView";
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	//===========게시판 글 목록============//
 		@RequestMapping("/techblog/techblogList.do")
 		public ModelAndView process(

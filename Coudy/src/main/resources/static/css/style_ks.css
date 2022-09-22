@@ -2,15 +2,7 @@
 
 ul{
 	list-style:none;
-<<<<<<< HEAD
 
-}
-
-.align-left{
-	float:left;
-	padding:5px;
-	width:50%;
-=======
 	display: inline-block;
 	
 }
@@ -28,7 +20,6 @@ ul li{
 
 .align-center2{
 	margin:0 auto;
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 }
 
 

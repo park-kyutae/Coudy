@@ -19,10 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.techblog.service.TechblogService;
 import kr.spring.techblog.vo.TechblogFavVO;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 import kr.spring.techblog.vo.TechblogReplyVO;
 import kr.spring.util.PagingUtil;
 

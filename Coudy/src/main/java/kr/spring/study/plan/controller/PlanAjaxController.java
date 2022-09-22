@@ -30,10 +30,7 @@ public class PlanAjaxController {
 
 
         //일정 삭제할 권한 있는지 검사 >> 인터셉터에서 처리?aop
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
         isInvalidDate(form.getPlanStartDate(), form.getPlanEndDate(), result);
 
 

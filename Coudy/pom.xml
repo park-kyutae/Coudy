@@ -109,11 +109,8 @@
 	</dependencies>
 
 	<build>
-<<<<<<< HEAD
-<!-- 		 		<resources>
-=======
+
 <!--		 		<resources>
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
                     <resource>
                         <directory>src/main/java</directory>
                         <includes>
@@ -126,11 +123,8 @@
                             <include>**/*.properties</include>
                         </includes>
                     </resource>
-<<<<<<< HEAD
-                </resources> -->
-=======
+
                 </resources>-->
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

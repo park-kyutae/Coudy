@@ -18,10 +18,7 @@ public class TodoController {
     public String studyMain(@Login Integer memNum, @PathVariable Integer studyNum) {
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
         return "todo";
     }
 

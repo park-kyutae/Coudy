@@ -1,9 +1,6 @@
 package kr.spring.study.studygroup.service;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 import kr.spring.member.vo.MemberVO;
 import kr.spring.study.studygroup.vo.StudyUserVO;
 

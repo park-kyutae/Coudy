@@ -10,12 +10,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<<<<<<< HEAD
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-=======
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_ks.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/loginSubmit.js"></script>
 

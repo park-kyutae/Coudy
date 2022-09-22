@@ -10,10 +10,7 @@ import java.util.List;
 public interface TodoMapper {
     @Select("select TODO_NUM, TODO_CONTENT, TODO_PROGRESS from STUDY_TODO where MEM_NUM=#{memNum} and STUDY_NUM=#{studyNum}")
     List<TodoVO> selectTodos(int memNum, int studyNum);
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
     @Select("select TODO_NUM, TODO_CONTENT, TODO_PROGRESS from STUDY_TODO where STUDY_NUM=#{studyNum} and MEM_NUM=#{memNum} and TODO_PROGRESS=1")
     List<TodoVO> selectProgressingTodos(int studyNum,int memNum);
 

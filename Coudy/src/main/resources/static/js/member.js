@@ -88,21 +88,13 @@ $(function(){
 	});
 	
 	//취소버튼 처리
-<<<<<<< HEAD
-	$('#photo_cancel').click(function(){
-		$('.my-photo').attr('src',photo_path);
-		$('#upload').val('');
-		$('#photo_choice').hide();
-		$('#photo_btn').show();
-	});
-=======
+
 //	$('#photo_cancel').click(function(){
 //		$('.my-photo').attr('src',photo_path);
 //		$('#upload').val('');
 //		$('#photo_choice').hide();
 //		$('#photo_btn').show();
 //	});
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 	
 	$('#passwd').keyup(function(){
 		if($('#passwd2').val()!='' && $('#passwd2').val()!=$(this).val()){
@@ -145,30 +137,4 @@ $(function(){
 		}
 	});
 	
-<<<<<<< HEAD
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-=======
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 });

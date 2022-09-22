@@ -18,61 +18,6 @@
 
 <h2>비밀번호 변경</h2>
 
-<<<<<<< HEAD
-<style>
-.align-center2{
-	margin:0 auto;
-}
-
-.btn-primary{
-	background-color:#8541f5;
-	border-color:#8541f5;
-}
-.btn-primary:hover{
-	background-color:#3d0991;
-	border-color:#3d0991;
-}
-</style>
-
-
-
-<div class="align_center container">
-<div class="text-center">
-	<img  class="mb-4 mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="15%" height="15%">	
-</div>
-	<form:form class="row g-3 needs-validation" id="change_form" action="changePassword.do" modelAttribute="memberVO">
-		
-		<div class="col-12">
-		<div class="form-floating mb-2 col-3 align-center2">
-			<form:password id="now_passwd" path="now_passwd" class="form-control" placeholder="now_passwd" value="" required=""/>
-			<form:errors id="now_passwd" path="now_passwd" cssClass="error-color" />
-			<label for="now_passwd">현재 비밀번호</label>
-			<div class="valid-feedback">Looks good!</div>
-		</div>
-		</div>
-
-		<div class="col-12">
-		<div class="form-floating mb-2 col-3 align-center2">
-			<form:password id="passwd" path="passwd" class="form-control" placeholder="passwd" />
-			<form:errors id="passwd" path="passwd" cssClass="error-color" />
-			<label for="passwd">새 비밀번호</label>
-			<div class="valid-feedback">Looks good!</div>
-		</div>
-		</div>
-		
-		<div class="col-12">
-		<div class="form-floating mb-2 col-3 align-center2">
-			<input type="password" id="passwd2" class="form-control" placeholder="passwd2"/> 
-			<label for="passwd2">새 비밀번호 확인</label>
-			<div class="valid-feedback">Looks good!</div>
-			<div id="message_id" class="invalid-feedback">4~12의 숫자, 영문을 입력해주세요</div>
-		</div>
-		</div>
-		
-		<div class="col-3 mt-3" style="margin:0 auto;">
-			<input class="btn btn-primary col-6" type="submit" style="float:left;border-radius:5px 0 0 5px;" value="변경하기"></input>
-			<button class="btn btn-outline-secondary col-6" style="border-radius:0 5px 5px 0;" onclick="javascript:history.go(-1); return false;">돌아가기</button>
-=======
 
 
 <div class="align_center container">
@@ -101,7 +46,6 @@
 
 		<div>
 			<button class="btn btn-primary" type="submit">Submit form</button>
->>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 		</div>
 	</form:form>
 </div>
