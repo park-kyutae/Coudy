@@ -5,7 +5,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="main" 
+    <definition name="secondmain"
        template="/WEB-INF/views/template/layout.jsp">
     	<put-attribute name="title" value="SpringPage"/>
     	<put-attribute name="header"

@@ -85,10 +85,52 @@ $(function(){
 	});
 	
 	//취소버튼 처리
-	$('#photo_cancel').click(function(){
-		$('.my-photo').attr('src',photo_path);
-		$('#upload').val('');
-		$('#photo_choice').hide();
-		$('#photo_btn').show();
+//	$('#photo_cancel').click(function(){
+//		$('.my-photo').attr('src',photo_path);
+//		$('#upload').val('');
+//		$('#photo_choice').hide();
+//		$('#photo_btn').show();
+//	});
+	
+	$('#passwd').keyup(function(){
+		if($('#passwd2').val()!='' && $('#passwd2').val()!=$(this).val()){
+			$('#message_id').text('비밀번호 불일치').css('color','red');
+			
+		}else if($('#passwd2').val()!='' && $('#passwd2').val()==$(this).val()){
+			$('#message_id').text('비밀번호 일치').css('color','#000');
+		}
 	});
+	
+	$('#passwd2').keyup(function(){
+		if($('#passwd').val()!='' && $('#passwd').val()!=$(this).val()){
+			$('#message_id').text('비밀번호 불일치').css('color','red');
+			
+		}else if($('#passwd').val()!='' && $('#passwd').val()==$(this).val()){
+			$('#message_id').text('비밀번호 일치').css('color','#000');
+		}
+	});
+	
+	$('#change_form').submit(function(){
+		if($('#now_passwd').val().trim()==''){
+			alert('현재 비밀번호를 입력하세요!');
+			$('#now_passwd').val('').focus();
+			return false;
+		}
+		if($('#passwd').val().trim()==''){
+			alert('새비밀번호를 입력하세요!');
+			$('#passwd').val('').focus();
+			return false;
+		}
+		if($('#passwd2').val().trim()==''){
+			alert('새비밀번호 확인을 입력하세요!');
+			$('#passwd2').val('').focus();
+			return false;
+		}
+		if($('#passwd').val()!=$('#passwd2').val()){
+			$('#message_id').text('비밀번호 불일치')
+			                .css('color','red');
+			return false;
+		}
+	});
+	
 });

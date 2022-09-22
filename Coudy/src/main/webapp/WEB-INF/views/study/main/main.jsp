@@ -104,7 +104,7 @@
         .timeline-steps .timeline-step:not(:last-child):after {
             content: "";
             display: block;
-            border-top: .25rem dotted #3b82f6;
+            border-top: .25rem dotted #6610f2;
             width: 3.46rem;
             position: absolute;
             left: 7.5rem;
@@ -114,7 +114,7 @@
         .timeline-steps .timeline-step:not(:first-child):before {
             content: "";
             display: block;
-            border-top: .25rem dotted #3b82f6;
+            border-top: .25rem dotted #6610f2;
             width: 3.8125rem;
             position: absolute;
             right: 7.5rem;
@@ -134,12 +134,13 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background-color: #3b82f6
+        background-color: #6610f2;
+        cursor: pointer;
     }
 
     .timeline-steps .timeline-content .inner-circle:before {
         content: "";
-        background-color: #3b82f6;
+        background-color: #6610f2;
         display: inline-block;
         height: 3rem;
         width: 3rem;
@@ -159,22 +160,25 @@
 </style>
 <body>
 <div class="container">
-    <div class="row mb-5">
+    <div class="row study-nav-row">
         <div class="col">
-            <span class="fs-1">스터디 이름</span>
+            <span class="study-nav-text">스터디 이름</span>
         </div>
     </div>
-    <div class="row mb-5">
+    <div class="row study-content">
         <div class="col ">
             <div class="timeline-steps aos-init aos-animate" id="progress_div" data-aos="fade-up">
             </div>
         </div>
     </div>
-    <div class="row row-cols-3 d-flex justify-content-center mb-5">
+    <div class="row study-content">
+        <div class="col"><span class="fs-3">진행 중인 할일</span></div>
+    </div>
+    <div class="row row-cols-3 study-content">
         <c:forEach items="${todoEachStudyUsers}" var="todo">
             <div class="col">
                         <ul class="list-group ">
-                            <li class="list-group-item bg-text-primary">${todo.key}</li>
+                            <li class="study-li-head">${todo.key}</li>
                             <c:forEach items="${todo.value}" var="todoList">
                                 <li class="list-group-item">&#10132;${todoList.todoContent}</li>
                             </c:forEach>
@@ -184,7 +188,7 @@
     </div>
 
 
-    <div class="row d-flex justify-content-center">
+    <div class="row study-content">
         <div class="col bg-secondary bg-opacity-25 rounded m-2 col-3">
             <div class="row">
                 <div class="col">

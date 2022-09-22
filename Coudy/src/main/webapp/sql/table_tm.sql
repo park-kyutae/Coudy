@@ -61,3 +61,19 @@ create table com_apply(
 );
 
 create sequence com_apply_seq;
+
+create table com_resume(
+                           resume_num number not null,
+                           reg_date date default sysdate not null,
+                           uploadfile blob not null,
+                           filename varchar2(100) not null,
+                           mem_num number not null,
+                           com_num number not null,
+                           constraint com_resume_pk primary key (resume_num),
+                           constraint com_resume_fk1 foreign key (com_num)
+                               references com_info (com_num),
+                           constraint com_resume_fk2 foreign key (mem_num)
+                               references member (mem_num)
+);
+
+create sequence com_resume_seq;

@@ -33,7 +33,12 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
-    public List<ApplicationTemp> selectAllStudyGroups(Map<String, Object> map) {
-        return null;
+    public List<ApplicationVO> selectMyAllApplications(Integer mem_num) {
+        return applicationMapper.selectMyAllApplications(mem_num);
+    }
+
+    @Override
+    public List<ApplicationVO> selectMyStudyApplications(Integer study_num) {
+        return applicationMapper.selectMyStudyApplications(study_num);
     }
 }

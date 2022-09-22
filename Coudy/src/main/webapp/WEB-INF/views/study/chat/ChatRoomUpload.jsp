@@ -5,50 +5,43 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 <html>
 <head>
-  <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-  <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
-  <script src="${pageContext.request.contextPath}/js/sockjs.min.js"></script>
-  <script src="${pageContext.request.contextPath}/js/stomp.min.js"></script>
-  <title>Title</title>
+    <link href="${pageContext.request.contextPath}/css/chat-bootstrap.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/sockjs.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/stomp.min.js"></script>
+    <title>Title</title>
 </head>
 <script>
 </script>
 
 <body>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <span>${chatName}</span>
+    <div class="row chat-header">
+        <div class="col chat-header-text">
+            업로드한 파일들
+        </div>
     </div>
-  </div>
-  <div class="row">
-
-    <div class="col">
-      <ul>
+    <div class="row row-cols-4">
         <c:forEach items="${chatFiles}" var="file">
-          <li>
-            <c:set var="pos" value="${file.chatFileName.lastIndexOf('.')}"/>
-            <c:set var="ext" value="${file.chatFileName.substring(pos+1)}"/>
-            <a href="/chat/files/download/${file.chatFileLogNum}">
+            <div class="col text-center">
+                <c:set var="pos" value="${file.chatFileName.lastIndexOf('.')}"/>
+                <c:set var="ext" value="${file.chatFileName.substring(pos+1)}"/>
+                <a href="/chat/files/download/${file.chatFileLogNum}">
+                    <c:choose>
+                        <c:when test="${ext == 'png' || ext == 'jpg'||ext == 'jpeg'}">
+                            <img class="file w-100" src="/chat/files/${file.chatFileLogNum}">
+                            ${file.chatFileName}
+                        </c:when>
+                        <c:otherwise>
+                            <img class="file w-100" src="/images/file.svg" >
+                            ${file.chatFileName}
+                        </c:otherwise>
+                    </c:choose>
+                </a>
+            </div>
 
-              <c:choose>
-                <c:when test="${ext == 'png' || ext == 'jpg'||ext == 'jpeg'}">
-                  <img class="file" src="/chat/files/${file.chatFileLogNum}" style="height: 20px">
-                  ${file.chatFileName}
-                </c:when>
-                <c:otherwise>
-                  <img class="file" src="/images/file.svg" style="height: 20px">
-                  ${file.chatFileName}
-                </c:otherwise>
-              </c:choose>
-            </a>
-
-          </li>
         </c:forEach>
-      </ul>
     </div>
-  </div>
-
 
 
 </div>

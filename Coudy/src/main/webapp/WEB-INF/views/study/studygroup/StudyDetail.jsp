@@ -100,7 +100,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 <button
                   style="width: 13rem"
                   class="btn btn-info mt-1 justify-content-md-center"
-                  onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'"
+                  onclick="location.href='applicationlist.do?study_num=${studygroup.study_num}'"
                 >
                   신청자 목록
                 </button>

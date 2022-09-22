@@ -9,7 +9,7 @@
 <style>
 .input-form{
 	margin:0 auto; 
-	width:50%;
+	width:30%;
 }
 
 .right-button{
