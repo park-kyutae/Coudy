@@ -88,6 +88,7 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/main.xml",
 				"/WEB-INF/tiles-def/first.xml",
 				"/WEB-INF/tiles-def/second.xml",
+				"/WEB-INF/tiles-def/second_main.xml",
 				"/WEB-INF/tiles-def/third.xml",
 				"/WEB-INF/tiles-def/forth.xml",
 				"/WEB-INF/tiles-def/fifth.xml",

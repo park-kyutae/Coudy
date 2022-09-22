@@ -67,6 +67,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               </div>
               <span class="badge bg-info">${studygroup.stack}</span>
               <p class="card-text text-muted">
+                마감일 : ${studygroup.limit_date}
+              </p>
+              <p class="card-text text-muted">
                 참여 중인 인원 : 1 / ${studygroup.limit}
               </p>
               <c:if test="${!empty user && studygroup.mem_num == user.mem_num}">
@@ -79,7 +82,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 </button>
                 <button
                   style="width: 13rem"
-                  class="btn btn-danger"
+                  class="btn btn-danger mt-1"
                   onclick="location.href='deletestudygroup.do?study_num=${studygroup.study_num}'"
                 >
                   삭제하기
@@ -88,7 +91,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               <c:if test="${!empty user && studygroup.mem_num != user.mem_num}">
                 <button
                   style="width: 13rem"
-                  class="btn btn-info"
+                  class="btn btn-info mt-1"
                   onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'"
                 >
                   신청하기
