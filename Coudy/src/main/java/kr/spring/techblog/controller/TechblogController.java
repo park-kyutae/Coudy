@@ -79,7 +79,7 @@ public class TechblogController {
 		
 		return "common/resultView";
 	}
-	
+
 	//===========게시판 글 목록============//
 		@RequestMapping("/techblog/techblogList.do")
 		public ModelAndView process(

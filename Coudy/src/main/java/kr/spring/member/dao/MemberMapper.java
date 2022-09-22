@@ -40,7 +40,7 @@ public interface MemberMapper {
 	public void updateMember(MemberVO member);
 	
 	@Update("UPDATE member_detail SET name=#{name}, phone=#{phone}, email=#{email}, zipcode=#{zipcode}, "
-			+ "address1=#{address1}, address2=#{address2}, id=#{id}, modify_date=SYSDATE WHERE mem_num=#{mem_num}")
+			+ "address1=#{address1}, address2=#{address2}, modify_date=SYSDATE WHERE mem_num=#{mem_num}")
 	public void updateMember_detail(MemberVO member);
 	
 	@Update("UPDATE member_detail SET passwd=#{passwd} WHERE mem_num=#{mem_num}")

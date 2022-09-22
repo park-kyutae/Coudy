@@ -38,6 +38,11 @@ public class StudyUserServiceImpl implements StudyUserService{
     }
 
     @Override
+    public void updateRejectAuth(StudyUserVO studyUserVO) {
+        studyUserMapper.updateRejectAuth(studyUserVO);
+    }
+
+    @Override
     public StudyUserVO selectUser(Integer mem_num) {
         return studyUserMapper.selectUser(mem_num);
     }

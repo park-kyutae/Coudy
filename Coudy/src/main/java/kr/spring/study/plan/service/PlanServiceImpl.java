@@ -46,5 +46,6 @@ public class PlanServiceImpl implements PlanService{
     @Override
     public void deletePlan(int planNum) {
         planMapper.deletePlan(planNum);
+
     }
 }

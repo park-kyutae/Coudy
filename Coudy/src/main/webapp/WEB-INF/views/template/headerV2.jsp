@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div class="row border-bottom" style="height: 40px" >
 		<div class="col">
-			<span class="fs-3">logo</span>
+			<span >
+				<img class="mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="10%" height="60%">
+			</span>
 		</div>
 		<div class="col text-end">
 			<a class="fs-6" style="line-height: 40px" href="${pageContext.request.contextPath}/study/studygrouplist.do">스터디</a>
