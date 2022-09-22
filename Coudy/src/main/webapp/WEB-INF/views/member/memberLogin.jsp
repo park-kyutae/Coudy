@@ -16,8 +16,6 @@
 
 
 
-<h2>로그인</h2>
-
 <style>
 .align-center2{
 	margin:0 auto;
@@ -32,8 +30,7 @@
 	border-color:#3d0991;
 }
 </style>
-
-<div class="align_center container" style="margin:0 auto;">
+<div class="align_center container mt-5" style="margin:0 auto;">
 	<div class="text-center mb-3" >
 		<img src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="20%" height="20%">
 	</div>

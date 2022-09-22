@@ -201,7 +201,7 @@ hr:not([size]) {
 		<figure class="figure border-top">
 			<div class="mb-3"></div>
 			<c:if test="${empty member.photo_name}">
-				<img src="${pageContext.request.contextPath }/images/face.png" width="300" height="300" class="figure-img img-fluid rounded my-photo">
+				<img src="${pageContext.request.contextPath }/images/face.png" width="300" height="300" class="figure-img img-fluid rounded my-photo" style="box-shadow:0 0 5px gray;">
 			  	<figcaption class="figure-caption mb-2 text-center">현재 프로필 사진이 없습니다.</figcaption>
 			</c:if>
 			<c:if test="${!empty member.photo_name}">
