@@ -150,6 +150,7 @@ public class MemberController {
 			
 			//request에 참조할 수 있도록 함  -->?
 			model.addAttribute("member",member);
+			model.addAttribute("user",user);
 			
 			return "memberMyPage";
 		}
