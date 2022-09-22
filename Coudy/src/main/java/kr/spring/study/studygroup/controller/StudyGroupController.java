@@ -68,7 +68,7 @@ public class StudyGroupController {
                 studyGroupService.selectStudyGroup(study_num);
 
         MemberVO user = (MemberVO) session.getAttribute("user");
-        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
+        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, 999);
         //제목에 태그를 허용하지 않음
         //studyGroupVO.setName(
         //       StringUtil.useNoHtml(studyGroupVO.getName()));

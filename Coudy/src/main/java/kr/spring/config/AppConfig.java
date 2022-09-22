@@ -51,7 +51,7 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/techblog/techblogDelete.do")
 				.addPathPatterns("/notice/Write.do")
 				.addPathPatterns("/notice/Update.do")
-				.addPathPatterns("/notice/Delete.do");
+				.addPathPatterns("/notice/Delete.do")
 		//TODO 표현식으로 정리
 
 				.addPathPatterns("/techblog/techblogDelete.do")
