@@ -9,30 +9,36 @@
 <style>
 .input-form{
 	margin:0 auto; 
-	width:50%;
+	width:30%;
 }
 
 .right-button{
 	width:30%;
 	height:58px;
+	border-radius:0 5px 5px 0;
 
 }
 
 .left-input{
 	width:70%;
 	float:left; 
+	border-radius:5px 0 0 5px;
+	
 }
 
 </style>
 
 
 <h2>회원가입</h2>
+
+<h1 class="text-center mb-3 mt-3" >Coudy</h1>
+
 <form:form id="register_form" action="registerUser.do" modelAttribute="memberVO">
 <div class="input-form">
 
 	<div class="form-floating mb-3">
 		<form:input path="id" class="form-control left-input" placeholder="id"/>
-		<input class="btn btn-secondary right-button" type="button" value="아이디중복체크"/>
+		<input class="btn btn-secondary right-button" type="button" value="아이디중복체크" />
 		<form:errors path="id" cssClass="error-color"/>
 		<label for="id">아이디</label>
 		<span id="message_id"></span>
@@ -104,6 +110,10 @@
 </div>
 </form:form>	
 
+<br><br>
+<div class="text-center" style="color:gray;">
+	&copy 만나서 반갑습니다. <i><b>Coudy</b></i> 입니다.
+</div>
 
 
 

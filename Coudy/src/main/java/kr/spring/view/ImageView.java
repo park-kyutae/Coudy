@@ -19,11 +19,7 @@ import org.springframework.web.servlet.view.AbstractView;
 @Component //자동보관되게
 public class ImageView extends AbstractView{
 
-//	public DownloadView() { 									//생성자 지워줌
-//						//@Component로 자동생성되게 이 주소 29라인
-//		setContentType("application/download; charset=utf-8");
-//	}
-	
+
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -65,8 +61,3 @@ public class ImageView extends AbstractView{
 	} //여기까지 처리하면 boardController로 감
 
 }
-
-
-
-
-

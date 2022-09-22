@@ -1,5 +1,6 @@
 package kr.spring.study.studygroup.service;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.study.studygroup.dao.StudyUserMapper;
 import kr.spring.study.studygroup.vo.StudyUserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,10 @@ public class StudyUserServiceImpl implements StudyUserService{
     @Override
     public StudyUserVO selectStudyUser(Integer study_num, Integer mem_num) {
         return studyUserMapper.selectStudyUser(study_num, mem_num);
+    }
+
+    @Override
+    public List<MemberVO> selectMemberByStudyNum(Integer study_num) {
+        return studyUserMapper.selectMemberByStudyNum(study_num);
     }
 }

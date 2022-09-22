@@ -36,6 +36,10 @@ public interface TechblogMapper {
 	@Update("UPDATE techblog SET tech_photo='',"
 			+ "tech_photoname='' WHERE tech_num=#{tech_num}")
 	public void deleteFile(Integer tech_num);
+	public List<TechblogVO>selectListA(Map<String, Object> map);
+	public List<TechblogVO>selectListB(Map<String, Object> map);
+	public List<TechblogVO>selectListC(Map<String, Object> map);
+	public List<TechblogVO>selectListD(Map<String, Object> map);
 	
 	//부모글 좋아요
 	@Select("SELECT * FROM techblog_fav "

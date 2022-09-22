@@ -1,5 +1,9 @@
 package kr.spring.member.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,7 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import kr.spring.member.service.MemberService;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.util.AuthCheckException;
-import kr.spring.util.FileUtil;  
+import kr.spring.util.FileUtil;
+import kr.spring.util.PagingUtil;  
 
 @Controller    
 public class MemberController {
@@ -145,6 +150,7 @@ public class MemberController {
 			
 			//request에 참조할 수 있도록 함  -->?
 			model.addAttribute("member",member);
+			model.addAttribute("user",user);
 			
 			return "memberMyPage";
 		}
@@ -302,7 +308,118 @@ public class MemberController {
 	public String formChangePassword() {
 		return "memberChangePassword";
 	}
+	
+	@PostMapping("/member/changePassword.do")
+	public String submitChangePassword(
+										@Valid MemberVO memberVO,
+										BindingResult result,
+										Model model,
+										HttpSession session,
+										HttpServletRequest request) {
 		
+		logger.debug("<<비밀번호 변경>>");
+		
+		//유효성 체크
+		//now_password, password만 처리
+		if(result.hasFieldErrors("now_passwd") || result.hasFieldErrors("passwd")) {
+			return formChangePassword();
+		}
+		
+		//세션에서 user값 가져오기
+		MemberVO user =	 (MemberVO)session.getAttribute("user");
+		memberVO.setMem_num(user.getMem_num());
+		
+		//비밀번호 일치여부 체크 위해서 회원정보 호출
+		MemberVO db_member = memberService.selectMember(memberVO.getMem_num());
+		
+		//폼에서 전송한 현재 비밀번호와 DB에서 받아온 현재 비밀번호 일치 여부 체크
+		if(db_member.getPasswd().equals(user.getPasswd())) {
+			//rejectValue(String field, Strig ErrorCode, String defaultMessage) : 
+								//필드에 대한 에러코드를 추가 에러코드에 대한 메세지가 존재하지 않을 경우 defaultMessage를 사용
+			result.rejectValue("now_passwd", "invalidPassword");
+		}
+		
+		//비밀번호 변경
+		memberService.updatePasswd(memberVO);
+		
+		//View에서 표시할 메세지
+		model.addAttribute("message", "비밀번호 변경 완료");
+		
+		//url을 보내? 왜?
+		model.addAttribute("url", request.getContextPath()+"/member/myPage.do");
+		
+		
+		
+		return "common/resultView";
+		
+	}
+	
+	//===================관리자=======================//
+	//회원관리
+	
+	@RequestMapping("/member/admin_list.do")
+	public ModelAndView formAdminList( @RequestParam(value="pageNum",defaultValue="1")
+										int currentPage,
+									   @RequestParam(value="keyfield",defaultValue="")
+										String keyfield,
+									   @RequestParam(value="keyword", defaultValue="")
+									    String keyword) {
+
+		Map<String,Object> map = new HashMap<String,Object>();
+		
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		//총 글의 개수 또는 검색된 글의 개수
+		int count = memberService.selectRowCount(map);
+		
+		
+		//페이지 처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, 20, 10, "admin_list.do");
+		
+		map.put("start", page.getStartRow());
+		map.put("end", page.getEndRow());
+		
+		List<MemberVO> list=null;
+		
+		if(count >0) {
+			list = memberService.selectList(map); 
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("page", page.getPage());
+		
+		return mav;
+	}
+	
+	//회원관리-수정
+	@GetMapping("/member/admin_update.do")
+	public String form(@RequestParam int mem_num, Model model) {
+		
+		MemberVO memberVO = memberService.selectMember(mem_num);
+		
+		model.addAttribute("memberVO",memberVO); //jsp ModelAttribute값과 이름이 똑같아야함
+		
+		return "admin_memberModify";
+	}
+	
+	@PostMapping("/member/admin_update.do")
+	public String submit(MemberVO member, Model model,  HttpServletRequest request) {
+		
+		//service로 회원정보 수정
+		memberService.updateByAdmin(member);
+		
+		logger.debug("<<관리자 회원정보 수정>>"+member);
+		
+		//view에 표시될 메세지?
+		model.addAttribute("message","수정이 완료되었습니다.");
+		model.addAttribute("url",request.getContextPath()+"/member/admin_update.do?mem_num="+member.getMem_num());
+		
+		return "/member/resultModifyMember";
+	}
 		
 	
 } 

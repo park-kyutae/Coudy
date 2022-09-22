@@ -18,7 +18,7 @@ spring:
       max-lifetime: 1800000
         
   messages: #메시지
-    basename: messages.validation,messages.PlanAndChatValidation
+    basename: messages.validation,messages.PlanAndChatValidation,messages.techblogValidation
     encoding: UTF-8
     
   devtools:

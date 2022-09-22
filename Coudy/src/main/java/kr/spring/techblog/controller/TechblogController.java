@@ -79,7 +79,6 @@ public class TechblogController {
 		
 		return "common/resultView";
 	}
-	
 	//===========게시판 글 목록============//
 		@RequestMapping("/techblog/techblogList.do")
 		public ModelAndView process(
@@ -123,7 +122,178 @@ public class TechblogController {
 			
 			return mav;
 		}
-		
+		//===========게시판 글 A목록============//
+		@RequestMapping("/techblog/techblogListA.do")
+		public ModelAndView processA(
+				@RequestParam(value="pageNum",defaultValue="1") 
+				int currentPage,
+				@RequestParam(value="keyfield",defaultValue="")
+				String keyfield,
+				@RequestParam(value="keyword",defaultValue="")
+				String keyword) {
+			
+			Map<String,Object> map = 
+					    new HashMap<String,Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			
+			//글의 총개수(검색된 글의 개수)
+			int count = techblogService.selectRowCount(map);
+			
+			logger.debug("<<count>> : " + count);
+			
+			//페이지 처리
+			PagingUtil page = 
+					new PagingUtil(keyfield,keyword,
+							currentPage,count,
+							rowCount,pageCount,"techblogListA.do");
+			
+			List<TechblogVO> listA = null;
+			if(count > 0) {
+				
+				map.put("start", page.getStartRow());
+				map.put("end", page.getEndRow());
+				
+				listA = techblogService.selectListA(map);
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("techblogListA");
+			mav.addObject("count", count);
+			mav.addObject("listA", listA);
+			mav.addObject("page", page.getPage());
+			
+			return mav;
+		}		
+		//===========게시판 글 B목록============//
+				@RequestMapping("/techblog/techblogListB.do")
+				public ModelAndView processB(
+						@RequestParam(value="pageNum",defaultValue="1") 
+						int currentPage,
+						@RequestParam(value="keyfield",defaultValue="")
+						String keyfield,
+						@RequestParam(value="keyword",defaultValue="")
+						String keyword) {
+					
+					Map<String,Object> map = 
+							    new HashMap<String,Object>();
+					map.put("keyfield", keyfield);
+					map.put("keyword", keyword);
+					
+					//글의 총개수(검색된 글의 개수)
+					int count = techblogService.selectRowCount(map);
+					
+					logger.debug("<<count>> : " + count);
+					
+					//페이지 처리
+					PagingUtil page = 
+							new PagingUtil(keyfield,keyword,
+									currentPage,count,
+									rowCount,pageCount,"techblogListB.do");
+					
+					List<TechblogVO> listB = null;
+					if(count > 0) {
+						
+						map.put("start", page.getStartRow());
+						map.put("end", page.getEndRow());
+						
+						listB = techblogService.selectListB(map);
+					}
+					
+					ModelAndView mav = new ModelAndView();
+					mav.setViewName("techblogListB");
+					mav.addObject("count", count);
+					mav.addObject("listB", listB);
+					mav.addObject("page", page.getPage());
+					
+					return mav;
+				}
+				//===========게시판 글 C목록============//
+				@RequestMapping("/techblog/techblogListC.do")
+				public ModelAndView processC(
+						@RequestParam(value="pageNum",defaultValue="1") 
+						int currentPage,
+						@RequestParam(value="keyfield",defaultValue="")
+						String keyfield,
+						@RequestParam(value="keyword",defaultValue="")
+						String keyword) {
+					
+					Map<String,Object> map = 
+							    new HashMap<String,Object>();
+					map.put("keyfield", keyfield);
+					map.put("keyword", keyword);
+					
+					//글의 총개수(검색된 글의 개수)
+					int count = techblogService.selectRowCount(map);
+					
+					logger.debug("<<count>> : " + count);
+					
+					//페이지 처리
+					PagingUtil page = 
+							new PagingUtil(keyfield,keyword,
+									currentPage,count,
+									rowCount,pageCount,"techblogListC.do");
+					
+					List<TechblogVO> listC = null;
+					if(count > 0) {
+						
+						map.put("start", page.getStartRow());
+						map.put("end", page.getEndRow());
+						
+						listC = techblogService.selectListC(map);
+					}
+					
+					ModelAndView mav = new ModelAndView();
+					mav.setViewName("techblogListC");
+					mav.addObject("count", count);
+					mav.addObject("listC", listC);
+					mav.addObject("page", page.getPage());
+					
+					return mav;
+				}
+				//===========게시판 글 C목록============//
+				@RequestMapping("/techblog/techblogListD.do")
+				public ModelAndView processD(
+						@RequestParam(value="pageNum",defaultValue="1") 
+						int currentPage,
+						@RequestParam(value="keyfield",defaultValue="")
+						String keyfield,
+						@RequestParam(value="keyword",defaultValue="")
+						String keyword) {
+					
+					Map<String,Object> map = 
+							    new HashMap<String,Object>();
+					map.put("keyfield", keyfield);
+					map.put("keyword", keyword);
+					
+					//글의 총개수(검색된 글의 개수)
+					int count = techblogService.selectRowCount(map);
+					
+					logger.debug("<<count>> : " + count);
+					
+					//페이지 처리
+					PagingUtil page = 
+							new PagingUtil(keyfield,keyword,
+									currentPage,count,
+									rowCount,pageCount,"techblogListD.do");
+					
+					List<TechblogVO> listD = null;
+					if(count > 0) {
+						
+						map.put("start", page.getStartRow());
+						map.put("end", page.getEndRow());
+						
+						listD = techblogService.selectListD(map);
+					}
+					
+					ModelAndView mav = new ModelAndView();
+					mav.setViewName("techblogListD");
+					mav.addObject("count", count);
+					mav.addObject("listD", listD);
+					mav.addObject("page", page.getPage());
+					
+					return mav;
+				}
 		//========게시판 글상세===========//
 		@RequestMapping("/techblog/techblogDetail.do")
 		public ModelAndView detail(

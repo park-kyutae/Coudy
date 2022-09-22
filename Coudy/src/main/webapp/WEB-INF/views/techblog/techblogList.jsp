@@ -14,21 +14,27 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_kt.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
 	<div class="container">
-<c:if test="${!empty user}">
+		<div class="row mt-3">
+			<div class="col">
+				<h2><b><a href="${pageContext.request.contextPath}/techblog/techblogList.do" id="techa">전체 목록</a></b></h2>
+				<hr size="6" width="100%" noshade="noshade">
+			</div>
+		</div>
+		<c:if test="${user.auth > 3}">
 			<div class="row">
 				<div class="col text-sm-end">
 				<input type="button" value="글쓰기"
 				          onclick="location.href='techblogWrite.do'">					
 				</div>
 			</div>
-</c:if>
-				<c:if test="${count == 0}">
-					<div class="row">
-						<div class="col d-flex justify-content-center">
-								표시할 게시물이 없습니다.
-						</div>
-					</div>
-				</c:if>
+		</c:if>
+		<c:if test="${count == 0}">
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+						표시할 게시물이 없습니다.
+				</div>
+			</div>
+		</c:if>
 				<c:if test="${count > 0}">
 				<c:forEach var="techblog" items="${list}">
 					<div class="row">
@@ -48,13 +54,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col my-auto" id="techtitle">
+						<div class="col my-auto" id="techtitle" style="font-size: 22pt;">
 							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa">${techblog.tech_title}</a>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col my-auto text-muted" id="techcontent">
-							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa" >${techblog.tech_content}</a>
+						<div class="col my-auto" style="height: 20px; color: gray;">
+							태그 : ${techblog.tech_tag}
 						</div>
 					</div>
 					<div class="row">

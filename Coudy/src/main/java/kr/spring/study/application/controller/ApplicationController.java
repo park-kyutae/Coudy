@@ -1,6 +1,7 @@
 package kr.spring.study.application.controller;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.study.application.dao.ApplicationMapper;
 import kr.spring.study.application.service.ApplicationService;
 import kr.spring.study.application.vo.ApplicationVO;
 import kr.spring.study.studygroup.service.StudyGroupService;

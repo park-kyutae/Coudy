@@ -17,11 +17,10 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="main"  class="container">
-	<div class="row" id="main_header">
+<div class="container">
+	<div class="row">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div id="main_body">
 		<div class="row">
 				<tiles:insertAttribute name="bodytitle"/>
 		</div>
@@ -29,10 +28,7 @@
 					<div class="col-2"><tiles:insertAttribute name="sidebar"/></div>
 					<div class="col-10"><tiles:insertAttribute name="body"/></div>
 		</div>
-	</div>
-	<div id="main_footer">
 		<tiles:insertAttribute name="footer"/>
-	</div>
 </div>
 </body>
 </html>

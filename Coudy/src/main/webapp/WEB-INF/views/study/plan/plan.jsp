@@ -3,18 +3,86 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!-- ✅ load jquery UI ✅ -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<html>
-<head>
-    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
     <link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.ko.min.js" type="text/javascript"></script>
-    <title>Title</title>
-</head>
-<body>
+<style>
+    body {
+        margin-top: 20px;
+    }
 
+    .timeline-steps {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap
+    }
+
+    .timeline-steps .timeline-step {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 1rem
+    }
+
+    @media (min-width: 768px) {
+        .timeline-steps .timeline-step:not(:last-child):after {
+            content: "";
+            display: block;
+            border-top: .25rem dotted #6610f2;
+            width: 3.46rem;
+            position: absolute;
+            left: 7.5rem;
+            top: .3125rem
+        }
+
+        .timeline-steps .timeline-step:not(:first-child):before {
+            content: "";
+            display: block;
+            border-top: .25rem dotted #6610f2;
+            width: 3.8125rem;
+            position: absolute;
+            right: 7.5rem;
+            top: .3125rem
+        }
+    }
+
+    .timeline-steps .timeline-content {
+        width: 10rem;
+        text-align: center
+    }
+
+    .timeline-steps .timeline-content .inner-circle {
+        border-radius: 1.5rem;
+        height: 1rem;
+        width: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #6610f2;
+        cursor: pointer;
+    }
+
+    .timeline-steps .timeline-content .inner-circle:before {
+        content: "";
+        background-color: #6610f2;
+        display: inline-block;
+        height: 3rem;
+        width: 3rem;
+        min-width: 3rem;
+        border-radius: 6.25rem;
+    }
+
+    .is-completed:before {
+        opacity: 0
+    }
+
+    .is-not-completed:before {
+        opacity: .5
+    }
+
+
+</style>
 <script>
     $(function () {
         let date = new Date();
@@ -28,29 +96,32 @@
         let plans
         let init_plan_color = $('.init_color').attr('name')
 
-        jQuery.fn.serializeObject = function() {
+        jQuery.fn.serializeObject = function () {
             var obj = null;
             try {
-                if(this[0].tagName && this[0].tagName.toUpperCase() == "FORM" ) {
+                if (this[0].tagName && this[0].tagName.toUpperCase() == "FORM") {
                     var arr = this.serializeArray();
-                    if(arr){ obj = {};
-                        jQuery.each(arr, function() {
+                    if (arr) {
+                        obj = {};
+                        jQuery.each(arr, function () {
                             if (this.value == 'on') {
                                 obj[this.name] = 'true';
-                            }else if (this.value == 'off'){
+                            } else if (this.value == 'off') {
                                 obj[this.name] = 'false';
-                            }else {
+                            } else {
                                 obj[this.name] = this.value;
                             }
-                            });
+                        });
 
                     }
                 }
-            }catch(e) {
+            } catch (e) {
                 alert(e.message);
-            }finally {}
+            } finally {
+            }
             return obj;
         }
+
         function reset_validation() {
             $('.invalid-feedback').text('')
             $('.global_validation').text('')
@@ -59,6 +130,7 @@
             $('.global_validation').text('')
             $('#create_modal input').removeClass('is-invalid')
         }
+
         function hide_create_modal() {
             $('#create_modal_container').css(
                 {
@@ -117,8 +189,8 @@
             }
 
             function render_dates() {
-                let current_month_div_1 = "<div class='current_month border day col' style='cursor: pointer;width:14%;'  id='";
-                let div_1 = "<div class='border day col' style='cursor: pointer; width:14%;' id='";
+                let current_month_div_1 = "<div class='current_month border day col pointer' style='width:14%;'  id='";
+                let div_1 = "<div class='border day col pointer' style='width:14%;' id='";
                 let current_month_div_2 = "'><div class='row '><div class='col '>";
                 let div_2 = "'> <div class='row '><div class='col text-secondary'>";
                 let div_3 = "</div></div></div>";
@@ -213,12 +285,12 @@
                             'display': 'block',
                         }
                     )
-                    let rel_height = $(window).height()-y;
+                    let rel_height = $(window).height() - y;
                     if (rel_height < 550) {
                         $('#create_modal').css(
                             {
                                 'display': 'block',
-                                'top': y-(550-rel_height),
+                                'top': y - (550 - rel_height),
                                 'left': x
                             }
                         );
@@ -253,9 +325,9 @@
         };
         const find_plans = function () {
             $.ajax({
-                url: $(location).attr('pathname')+"/find",
+                url: $(location).attr('pathname') + "/find",
                 type: 'get',
-                data: 'thisYearMonth='+year + "-" + real_month + "-01",
+                data: 'thisYearMonth=' + year + "-" + real_month + "-01",
                 dataType: 'json',
                 cache: false,
                 timeout: 30000,
@@ -290,10 +362,10 @@
                     const plan_height = '25px';
 
                     const div_1 = "<div class='row plan' id='";
-                    let div_2 = "'><div class='text-truncate text-black  fs-6 fst-italic' style='cursor: pointer; height:" + plan_height + ";background-color:#";
+                    let div_2 = "'><div class='text-truncate text-black  fs-6 fst-italic pointer' style=' height:" + plan_height + ";background-color:#";
                     let div_3 = "'>";
                     const div_4 = "</div></div>"
-                    let empty_div = '<div class="row empty" ><div class="col" style="height:' + plan_height + '"></div></div>';
+                    let empty_div = '<div class="row empty" ><div class=" col" style="height:' + plan_height + '"></div></div>';
 
 
                     let start_year_month_date = new Date(plan.planStartDate);
@@ -331,13 +403,13 @@
                         }
                         let ordered_div = $(x).children().eq(order - 1);
                         if (is_first) {
-                            if (plan.planIsCompleted) result_div = div_1 + plan.planNum + div_2 + plan.planColor + div_3 +'&#10003; '+ plan.planContent + div_4;
+                            if (plan.planIsCompleted) result_div = div_1 + plan.planNum + div_2 + plan.planColor + div_3 + '&#10003; ' + plan.planContent + div_4;
                             else result_div = div_1 + plan.planNum + div_2 + plan.planColor + div_3 + plan.planContent + div_4;
                             is_first = !is_first;
-                        } else result_div =div_1 + plan.planNum + div_2 + plan.planColor + div_3 + div_4;
+                        } else result_div = div_1 + plan.planNum + div_2 + plan.planColor + div_3 + div_4;
 
                         if (ordered_div.hasClass('empty')) {
-                             ordered_div.replaceWith(result_div);
+                            ordered_div.replaceWith(result_div);
 
                         } else {
                             $(x).append(result_div);
@@ -363,12 +435,12 @@
                         'display': 'block',
                     }
                 )
-                let rel_height = $(window).height()-y;
+                let rel_height = $(window).height() - y;
                 if (rel_height < 550) {
                     $('#update_modal').css(
                         {
                             'display': 'block',
-                            'top': y-(550-rel_height),
+                            'top': y - (550 - rel_height),
                             'left': x
                         }
                     );
@@ -468,7 +540,7 @@
 
         $('#create_submit').click(function () {
 
-                reset_validation();
+            reset_validation();
             $.ajax({
                 url: $(location).attr('pathname'),
                 type: 'post',
@@ -478,11 +550,11 @@
                 cache: false,
                 timeout: 30000,
                 success: function (param) {
-                    if ( param instanceof Array) {
+                    if (param instanceof Array) {
                         for (let x of param) {
                             if (x.field == 'globalError') {
                                 $('.global_validation').text(x.message)
-                            }else {
+                            } else {
                                 let selector = $('form[name=' + x.objectName + '] input[name=' + x.field + ']');
                                 selector.addClass('is-invalid')
                                 selector.next().text(x.message)
@@ -512,11 +584,11 @@
                 timeout: 30000,
                 success: function (param) {
                     console.log(param)
-                    if ( param instanceof Array) {
+                    if (param instanceof Array) {
                         for (let x of param) {
                             if (x.field == 'globalError') {
                                 $('.global_validation').text(x.message)
-                            }else {
+                            } else {
                                 let selector = $('form[name=' + x.objectName + '] input[name=' + x.field + ']');
                                 selector.addClass('is-invalid')
                                 selector.next().text(x.message)
@@ -539,7 +611,7 @@
                 url: $(location).attr('pathname'),
                 type: 'delete',
                 data: JSON.stringify({
-                    "planNum":$('#update_plan_num').val()
+                    "planNum": $('#update_plan_num').val()
                 }),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
@@ -586,27 +658,132 @@
             language: "ko"
 
         });//datepicker end
+        //-----------------------------------------------------------------------
+        const find_plans_progress = function () {
+            console.log($(location).attr('pathname'))
+            $.ajax({
+                url: $(location).attr('pathname') + "/progress/find-all-shared",
+                type: 'get',
+                dataType: 'json',
+                cache: false,
+                timeout: 30000,
+                success: function (plans) {
+                    console.log(plans)
+                    render_progress(plans)
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+        }
+        const div_1 = '<div class="timeline-step">' +
+            '<div class="timeline-content">' +
+            '<div class="inner-circle '
+        const div_2 = '" id="';
+        const div_3 = '"></div>' +
+            '<p class="h6 mt-3 mb-1">';
+        const div_4 = '</p><p class="h6 text-muted mb-0 mb-lg-0">'
+        const div_5 = '</p></div></div>';
+
+        function render_progress(plans) {
+            $('#progress_div').children().remove()
+            for (let plan of plans) {
+                let date = plan.planStartDate + '<br>~' + plan.planEndDate;
+
+                let result;
+                if (plan.planIsCompleted == true) {
+                    result = div_1 + 'is-completed' + div_2 + plan.planNum + div_3 + plan.planContent + div_4 + date + div_5;
+                } else {
+                    result = div_1 + 'is-not-completed' + div_2 + plan.planNum + div_3 + plan.planContent + div_4 + date + div_5;
+
+                }
+                $('#progress_div').append(result);
+
+
+            }
+            $('.inner-circle').click(function () {
+                console.log('inner')
+                $.ajax({
+                    url: $(location).attr('pathname') + "/progress/update-completed",
+                    type: 'patch',
+                    data: JSON.stringify({
+                        "planNum": $(this).attr('id')
+                    }),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 30000,
+                    success: function () {
+                        find_plans_progress();
+                        find_plans()
+                    },
+                    error: function () {
+                        alert('error');
+                    }
+                });
+            });
+        }
+
+        //TODO 일정 추가 시 진행도도 같이 갱신되야
+        find_plans_progress();
     })
 
 
 </script>
+<style>
+    .calender-week {
+        min-height: 80px;
+
+    }
+    .modal-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    .color_pick {
+       height: 20px;
+    }
+    .modal{
+        display: none;
+        position: absolute;
+        width: 300px;
+    }
+</style>
+
 <div class="container">
-    <div class="row">
+    <div class="row study-nav-row">
+        <div class="col">
+            <span class="study-nav-text">일정</span>
+        </div>
+    </div>
+
+
+    <div class="row study-content">
+        <div class="col ">
+            <div class="timeline-steps aos-init aos-animate" id="progress_div" data-aos="fade-up">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row study-content">
 
         <div class="col-12">
             <div class="row mb-2">
                 <div class="col-2"></div>
                 <div class="col-1"></div>
                 <div class="col"></div>
-                <div class="col-1 d-flex align-items-center justify-content-end"><img src="/images/arrow_backward.svg"
+                <div class="col-1 d-flex align-items-center justify-content-end pointer"><img src="/images/arrow_backward.svg"
                                                                                       class="h-75"
-                                                                                      style="cursor: pointer"
                                                                                       id="calender_back"
                                                                                       alt="calender_back"></div>
                 <div class="col-2 fs-2 text-center" id="year"></div>
                 <div class="col-1 fs-2 text-center" id="month"></div>
-                <div class="col-1 d-flex align-items-center"><img src="/images/arrow_forward.svg" class="h-75 "
-                                                                  style="cursor: pointer"
+                <div class="col-1 d-flex align-items-center pointer"><img src="/images/arrow_forward.svg" class="h-75 "
                                                                   id="calender_forward" alt="calender_forward"></div>
                 <div class="col"></div>
                 <div class="col-1 d-flex justify-content-end align-items-end">
@@ -647,13 +824,13 @@
                 <div class="col-2">
                     <div class="row mb-1">
                         <div class="col">
-                            <span class="select_plan fw-bolder" style="cursor: pointer" id="team">#팀 일정</span>
+                            <span class="select_plan fw-bolder pointer" id="team">#팀 일정</span>
                         </div>
                     </div>
                     <c:forEach items="${studyUserForms}" var="studyUser">
                         <div class="row mb-1">
                             <div class="col">
-                                <span class="select_plan" style="cursor: pointer"
+                                <span class="select_plan pointer "
                                       id="${studyUser.memNum}">#${studyUser.studyUserName}</span>
                             </div>
                         </div>
@@ -662,12 +839,12 @@
                 </div>
                 <div class="col  border border-1">
                     <div class="calender">
-                        <div class="row" id="week1" style="min-height: 80px"></div>
-                        <div class="row" id="week2" style="min-height: 80px"></div>
-                        <div class="row" id="week3" style="min-height: 80px"></div>
-                        <div class="row" id="week4" style="min-height: 80px"></div>
-                        <div class="row" id="week5" style="min-height: 80px"></div>
-                        <div class="row" id="week6" style="min-height: 80px"></div>
+                        <div class="row calender-week" id="week1"></div>
+                        <div class="row calender-week" id="week2"></div>
+                        <div class="row calender-week" id="week3"></div>
+                        <div class="row calender-week" id="week4"></div>
+                        <div class="row calender-week" id="week5"></div>
+                        <div class="row calender-week" id="week6"></div>
                     </div>
                 </div>
 
@@ -676,9 +853,8 @@
 
     </div>
 </div>
-<div id="create_modal_container" style="display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0">
-    <div id="create_modal" class="bg-light container shadow-lg rounded-1 border" title="추가"
-         style="display: none;position: absolute; width: 300px">
+<div id="create_modal_container" class="modal-container">
+    <div id="create_modal" class="bg-light container shadow-lg rounded-1 border modal" title="추가">
 
         <form id="create_plan_form" class="mb-5" name="createPlanForm">
             <div class="row mt-2 mb-2">
@@ -723,23 +899,23 @@
                 <div class="col-10">
                     <div class="row">
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5 border border-2 border-dark init_color"
-                                 style="background-color: #AFC4E7;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 border border-2 pointer color_pick border-dark init_color"
+                                 style="background-color: #AFC4E7;"
                                  name="AFC4E7"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #EEAFAF;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #EEAFAF;"
                                  name="EEAFAF"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #BAE7AF;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #BAE7AF;"
                                  name="BAE7AF"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #FCFFB0;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #FCFFB0;"
                                  name="FCFFB0"></div>
                         </div>
 
@@ -747,23 +923,23 @@
                     <div class="row">
 
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #FDC4F8;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #FDC4F8;"
                                  name="FDC4F8"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #F3CDA0;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #F3CDA0;"
                                  name="F3CDA0"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #83A7A3;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #83A7A3;"
                                  name="83A7A3"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="create_plan_color_pick rounded-5"
-                                 style="background-color: #CB9FFD;height: 20px; cursor: pointer;"
+                            <div class="create_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #CB9FFD;"
                                  name="CB9FFD"></div>
                         </div>
                         <input type="hidden" id="create_plan_color" name="planColor" value="" required>
@@ -795,8 +971,7 @@
     </div>
 </div>
 <div id="update_modal_container" style="display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0">
-    <div id="update_modal" class="bg-light container shadow-lg rounded-1 border" title="추가"
-         style="display: none;position: absolute; width: 300px">
+    <div id="update_modal" class="bg-light container shadow-lg rounded-1 border modal" title="추가">
 
         <form id="update_plan_form" class="mb-5" name="updatePlanForm">
             <input type="hidden" id="update_plan_num" name="planNum" value="">
@@ -843,23 +1018,23 @@
                 <div class="col-10">
                     <div class="row">
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5 border border-2 border-dark init_color"
-                                 style="background-color: #AFC4E7;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick border border-2 border-dark init_color"
+                                 style="background-color: #AFC4E7;"
                                  name="AFC4E7"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #EEAFAF;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #EEAFAF;"
                                  name="EEAFAF"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #BAE7AF;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #BAE7AF;"
                                  name="BAE7AF"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #FCFFB0;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #FCFFB0;"
                                  name="FCFFB0"></div>
                         </div>
 
@@ -867,23 +1042,23 @@
                     <div class="row">
 
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #FDC4F8;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #FDC4F8;"
                                  name="FDC4F8"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #F3CDA0;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #F3CDA0;"
                                  name="F3CDA0"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #83A7A3;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #83A7A3;"
                                  name="83A7A3"></div>
                         </div>
                         <div class="col g-0">
-                            <div class="update_plan_color_pick rounded-5"
-                                 style="background-color: #CB9FFD;height: 20px; cursor: pointer;"
+                            <div class="update_plan_color_pick rounded-5 pointer color_pick"
+                                 style="background-color: #CB9FFD;"
                                  name="CB9FFD"></div>
                         </div>
                         <input type="hidden" id="update_plan_color" name="planColor" value="" required>
@@ -924,5 +1099,3 @@
 </div>
 
 
-</body>
-</html>
