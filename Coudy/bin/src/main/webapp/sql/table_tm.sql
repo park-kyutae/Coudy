@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 CREATE TABLE com_info(
  com_num                             NUMBER(20)       NOT NULL,
  mem_num                             NUMBER(20)       NOT NULL,
@@ -63,4 +67,7 @@ create table com_apply(
 );
 
 create sequence com_apply_seq;
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 >>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git

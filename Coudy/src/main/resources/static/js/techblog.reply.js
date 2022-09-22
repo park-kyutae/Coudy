@@ -32,8 +32,7 @@ $(function(){
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
-					output += '<h4>';
-					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="30" height="30" class="my-photo">';
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="70" height="70" class="my-photo">';
 					
 					output += '<div class="sub-item">';
 					output += '<p>' + item.tech_re_content.replace(/\r\n/g,'<br>') + '</p>';

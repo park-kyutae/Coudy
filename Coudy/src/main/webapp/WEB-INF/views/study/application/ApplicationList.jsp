@@ -13,43 +13,56 @@
 <div class="container">
     <div class="row">
         <div class="col-9">
-        <h1>스터디 그룹 유저 관리</h1>
+        <h1>${studygroup.name} 유저 관리</h1>
         </div>
     </div>
+    <c:forEach var="applicationlist" items="${list}">
     <div class="row row-cols-2 row-cols-md-1 g-4">
-        <div class="col">
-            <div class="card bg-secondary">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <div class="col-12 my-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="width : 100px; height: 100px;" >
+                            </div>
+                            <div class="col-10">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <h4 class="card-title"> ${applicationlist.name}</h4>
+                                        <p class="card-subtitle"> 경력 : ${applicationlist.career}, 요구사항 : ${applicationlist.request}, 가능한 시간 : ${applicationlist.meet_time} </p>
+                                        <c:if test="${!empty user && applicationlist.registered eq 'Y'.charAt(0)}"><strong>승인</strong></c:if>
+                                        <c:if test="${!empty user && applicationlist.registered eq 'N'.charAt(0)}"><strong>미승인</strong></c:if>
+                                    </div>
+                                    <div class="col-3">
+                                        <c:if
+                                                test="${!empty user && applicationlist.registered eq 'N'.charAt(0)}"
+                                        >
+                                            <div>
+                                                <form class="row g-3 justify-content-end" method="post" action="updatestudyauth.do">
+                                                    <input type="hidden" id="study_num_accept" name="study_num" value="${applicationlist.study_num}">
+                                                    <input type="submit" class="btn btn-primary rounded" style="width: 120px; height: 100px;" value="승인 하기">
+                                                </form>
+                                            </div>
+                                        </c:if>
+                                        <c:if
+                                                test="${!empty user && applicationlist.registered eq 'Y'.charAt(0)}"
+                                        >
+                                            <div>
+                                                <form class="row g-3 justify-content-end" method="post" action="updaterejectauth.do">
+                                                    <input type="hidden" id="study_num_reject" name="study_num" value="${applicationlist.study_num}">
+                                                    <input type="submit" class="btn btn-danger rounded" style="width: 120px; height: 100px;" value="승인 취소">
+                                                </form>
+                                            </div>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </c:forEach>
 </div>
 </body>
 </html>

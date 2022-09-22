@@ -20,47 +20,18 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
     </select>
-    <!-- 글수정 -->
-    <update id="updateStudyUser" parameterType="studyuserVO">
+
+    <update id="updateAuth" parameterType="studyuserVO">
         UPDATE study_user SET
-        registered=#{registered},
-        WHERE study_user_num=#{study_users_num}
+        registered='Y'
+        WHERE study_user_num=#{study_user_num}
     </update>
 
-    <!-- 댓글 목록
-    {이거는 위에 꺼
-    <if test="filename != ''">
-            uploadfile=#{uploadfile},
-            filename=#{filename},
-        </if>}
-
-    <select id="selectListReply" parameterType="map"
-            resultType="boardReplyVO">
-        SELECT
-            *
-        FROM (SELECT
-                  a.*,
-                  rownum rnum
-              FROM (SELECT
-                        re_num,
-  		              <![CDATA[
-                        REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
-  		              ]]>
-  		              re_date,
-                        re_mdate,
-                        board_num,
-                        mem_num,
-                        id,
-                        nick_name
-                    FROM spboard_reply
-                             JOIN spmember USING(mem_num)
-                    WHERE board_num = #{board_num}
-                    ORDER BY re_num DESC)a)
-  		<![CDATA[
-        WHERE rnum >= #{start} AND rnum <= #{end}
-        ]]>
-    </select>
-    -->
+    <update id="updateRejectAuth" parameterType="studyuserVO">
+        UPDATE study_user SET
+            registered='N'
+        WHERE study_user_num=#{study_user_num}
+    </update>
 </mapper>
 
 

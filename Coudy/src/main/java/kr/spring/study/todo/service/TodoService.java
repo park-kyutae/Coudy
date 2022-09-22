@@ -16,5 +16,6 @@ public interface TodoService {
 
     List<TodoVO> selectTodos(int memNum, int studyNum);
 
+
     List<TodoVO> findProgressingTodos(int studyNum, int memNum);
 }

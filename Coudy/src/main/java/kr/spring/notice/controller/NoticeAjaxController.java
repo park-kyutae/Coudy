@@ -1,8 +1,11 @@
 package kr.spring.notice.controller;
 
+import java.util.Collections; 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.spring.member.vo.MemberVO;
 import kr.spring.notice.service.NoticeService;
 import kr.spring.notice.vo.NoticeFavVO;
+import kr.spring.notice.vo.NoticeReplyVO;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class NoticeAjaxController {
@@ -126,4 +131,151 @@ public class NoticeAjaxController {
 		}
 		return mapJson;		
 	}
+	
+	//===========댓글 등록==============//
+		@RequestMapping("/notice/writeReply.do")
+		@ResponseBody
+		public Map<String,String> writeReply(
+				NoticeReplyVO noticeReplyVO,
+				HttpSession session,
+				HttpServletRequest request){
+			
+			logger.debug("<<댓글 등록>> : "+noticeReplyVO);
+			
+			Map<String,String> mapAjax = new HashMap<String,String>();
+			
+			MemberVO user=(MemberVO)session.getAttribute("user");
+			if(user==null) {
+				mapAjax.put("result", "logout");
+			}else {
+				noticeReplyVO.setMem_num(user.getMem_num());
+				noticeReplyVO.setNotice_re_ip(request.getRemoteAddr());
+				noticeService.insertReply(noticeReplyVO);
+				mapAjax.put("result", "success");
+			}
+			return mapAjax;
+		}
+		
+		//=========댓글목록============//
+		@RequestMapping("/notice/listReply.do")
+		@ResponseBody
+		public Map<String,Object> getList(
+				 @RequestParam(value="pageNum",defaultValue="1") 
+				  int currentPage,
+				  @RequestParam int notice_num,
+				  HttpSession session){
+			
+			logger.debug("<<currentPage>> : " + currentPage);
+			logger.debug("<<notice_num>> : " + notice_num);
+			
+			Map<String,Object> map = 
+					new HashMap<String,Object>();
+			map.put("notice_num", notice_num);
+			
+			//총 글의 개수
+			int count = 
+				noticeService.selectRowCountReply(map);
+			
+			PagingUtil page = 
+					new PagingUtil(currentPage,count,
+							rowCount,pageCount,null);
+			
+			map.put("start", page.getStartRow());
+			map.put("end", page.getEndRow());
+			
+			List<NoticeReplyVO> list = null;
+			if(count > 0) {
+				list = noticeService.selectListReply(map);
+			}else {
+				list = Collections.emptyList();
+			}
+			
+			Map<String,Object> mapAjax = 
+					new HashMap<String,Object>();
+			mapAjax.put("count", count);
+			mapAjax.put("rowCount", rowCount);
+			mapAjax.put("list", list);
+			
+			//로그인 한 회원정보 셋팅
+			MemberVO user = 
+				 (MemberVO)session.getAttribute("user");
+			if(user!=null) {
+				mapAjax.put(
+						"user_num", user.getMem_num());
+			}
+			
+			return mapAjax;
+		}
+		
+		//==========댓글 수정==========//
+		@RequestMapping("/notice/updateReply.do")
+		@ResponseBody
+		public Map<String,String> modifyReply(
+				      NoticeReplyVO noticeReplyVO,
+				      HttpSession session,
+				      HttpServletRequest request){
+			
+			logger.debug("<<댓글 수정>> : " + noticeReplyVO);
+			
+			Map<String,String> mapAjax = 
+					new HashMap<String,String>();
+			
+			MemberVO user = 
+					(MemberVO)session.getAttribute("user");
+			NoticeReplyVO db_reply = 
+					noticeService.selectReply(
+							     noticeReplyVO.getNotice_re_num());
+			if(user==null) {//로그인이 되지 않는 경우
+				mapAjax.put("result", "logout");
+			}else if(user!=null && 
+				  user.getMem_num()==db_reply.getMem_num()) {
+				//로그인 회원번호와 작성자 회원번호 일치
+				
+				//ip 등록
+				noticeReplyVO.setNotice_re_ip(request.getRemoteAddr());
+				
+				//댓글 수정
+				noticeService.updateReply(noticeReplyVO);
+				mapAjax.put("result", "success");
+			}else {
+				//로그인 회원번호와 작성자 회원번호 불일치
+				mapAjax.put("result", "wrongAccess");
+			}
+			return mapAjax;
+		}
+		//==========댓글 삭제==========//
+		@RequestMapping("/notice/deleteReply.do")
+		@ResponseBody
+		public Map<String,String> deleteReply(
+				            @RequestParam int notice_re_num,
+				            HttpSession session){
+			
+			logger.debug("<<notice_re_num>> : " + notice_re_num);
+			
+			Map<String,String> mapAjax =
+					new HashMap<String,String>();
+			
+			MemberVO user = 
+				(MemberVO)session.getAttribute("user");
+			NoticeReplyVO db_reply = 
+					noticeService.selectReply(notice_re_num);
+			if(user==null) {
+				//로그인이 되지 않은 경우
+				mapAjax.put("result", "logout");
+			}else if(user!=null && 
+			  user.getMem_num()==db_reply.getMem_num()) {
+				//로그인이 되어 있고 
+				//로그인한 회원번호와 작성자 회원번호 일치
+				
+				//댓글 삭제
+				noticeService.deleteReply(notice_re_num);
+				
+				mapAjax.put("result", "success");
+			}else {
+				//로그인한 회원번호와 작성자 회원번호 불일치
+				mapAjax.put("result", "wrongAccess");
+			}
+			return mapAjax;
+		}
+
 }

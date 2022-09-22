@@ -12,6 +12,7 @@ import java.util.Date;
 @Getter
 @ToString
 public class UpdatePlanForm {
+
     //    @NotNull
     private int planNum;
     @NotBlank

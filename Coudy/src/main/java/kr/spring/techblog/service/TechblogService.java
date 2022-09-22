@@ -26,6 +26,7 @@ public interface TechblogService {
 	public List<TechblogVO>selectListB(Map<String, Object> map);
 	public List<TechblogVO>selectListC(Map<String, Object> map);
 	public List<TechblogVO>selectListD(Map<String, Object> map);
+	public TechblogVO movePage(Integer tech_num);
 	
 	//부모글 좋아요
 	public TechblogFavVO selectFav(TechblogFavVO fav);

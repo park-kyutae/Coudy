@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,6 +49,15 @@ public class MemberVO {
 	private String passwd2;
 	
 	
+	
+
+	public MemberVO() {
+		
+	}
+
+	public MemberVO(int mem_num) {
+		this.mem_num = mem_num;
+	}
 
 	public String getPasswd2() {
 		return passwd2;
@@ -160,12 +170,6 @@ public class MemberVO {
 		this.modify_date = modify_date;
 	}
 
-	public MemberVO(int mem_num) {
-		this.mem_num = mem_num;
-	}
-
-	public MemberVO() {
-	}
 
 	@Override
 	public String toString() {

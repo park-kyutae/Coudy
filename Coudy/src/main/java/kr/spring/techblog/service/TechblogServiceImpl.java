@@ -131,6 +131,12 @@ public class TechblogServiceImpl implements TechblogService{
 		return techblogmapper.selectListD(map);
 	}
 
+
+	@Override
+	public TechblogVO movePage(Integer tech_num) {
+		return techblogmapper.movePage(tech_num);
+	}
+
 	
 
 }
