@@ -21,7 +21,9 @@
 		    	<form:form action="techblogWrite.do" modelAttribute="techblogVO"
 		        id="register_form"
 		        enctype="multipart/form-data" cssClass="needs-validation">
+
 		        <form:errors element="div" id="error_color"/>
+
 	    		<div class="col-lg">
 	    			<label for="tech_title" class="form-label mt-1 fs-2" id="label">제목</label>
 	    			<form:input path="tech_title" placeholder="제목을 입력해주세요" cssClass="form-control"/>
@@ -39,7 +41,9 @@
 	    		<div class="col-lg">
 		    		<label for="tech_category" class="form-label mt-1 fs-2" id="label">카테고리</label>
 		    		<form:select path="tech_category" cssClass="form-select form-select-lg">
+
 		    			<option label="선택"/>
+
 		    			<form:option value="2" label="코드개발"/>
 		    			<form:option value="3" label="개발자들의 이야기"/>
 		    			<form:option value="4" label="AWS 설정 방법"/>
