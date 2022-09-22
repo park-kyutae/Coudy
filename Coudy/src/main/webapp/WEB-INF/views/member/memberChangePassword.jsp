@@ -18,48 +18,34 @@
 
 <h2>비밀번호 변경</h2>
 
-<style>
-.align-center2{
-	margin:0 auto;
-}
-</style>
-
 
 
 <div class="align_center container">
-	<h2 class="text-center mb-3 mt-3">Coudy</h3>
-	<form:form class="row g-3 needs-validation" id="change_form" action="changePassword.do" modelAttribute="memberVO">
+	<form:form class="row g-3 needs-validation" id="update_passwd_form" action="changePassword.do" modelAttribute="memberVO">
 		
-		<div class="col-12">
-		<div class="form-floating mb-2 col-3 align-center2">
-			<form:password id="now_passwd" path="now_passwd" class="form-control" placeholder="now_passwd" value="" required=""/>
-			<form:errors id="now_passwd" path="now_passwd" cssClass="error-color" />
+		<div class="form-floating mb-3">
+			<form:password path="now_passwd" class="form-control" placeholder="now_passwd" />
+			<form:errors path="now_passwd" cssClass="error-color" />
 			<label for="now_passwd">현재 비밀번호</label>
 			<div class="valid-feedback">Looks good!</div>
 		</div>
-		</div>
 
-		<div class="col-12">
-		<div class="form-floating mb-2 col-3 align-center2">
-			<form:password id="passwd" path="passwd" class="form-control" placeholder="passwd" />
-			<form:errors id="passwd" path="passwd" cssClass="error-color" />
+		<div class="form-floating mb-3">
+			<form:password path="passwd" class="form-control" placeholder="passwd" />
+			<form:errors path="passwd" cssClass="error-color" />
 			<label for="passwd">새 비밀번호</label>
 			<div class="valid-feedback">Looks good!</div>
 		</div>
-		</div>
 		
-		<div class="col-12">
-		<div class="form-floating mb-2 col-3 align-center2">
-			<input type="password" id="passwd2" class="form-control" placeholder="passwd2"/> 
+		<div class="form-floating mb-3">
+			<form:password path="passwd2" class="form-control" placeholder="passwd2" /> 
+			<form:errors path="passwd2" cssClass="error-color" />
 			<label for="passwd2">새 비밀번호 확인</label>
 			<div class="valid-feedback">Looks good!</div>
-			<div id="message_id" class="invalid-feedback">4~12의 숫자, 영문을 입력해주세요</div>
 		</div>
-		</div>
-		
-		<div class="col-3" style="margin:0 auto;">
-			<input class="btn btn-primary col-6" type="submit" style="float:left;" value="변경하기"></input>
-			<button class="btn btn-secondary col-6" onclick="javascript:history.go(-1); return false;">돌아가기</button>
+
+		<div>
+			<button class="btn btn-primary" type="submit">Submit form</button>
 		</div>
 	</form:form>
 </div>

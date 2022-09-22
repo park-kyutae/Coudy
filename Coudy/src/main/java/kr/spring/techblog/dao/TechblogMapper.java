@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.spring.techblog.vo.TechblogFavVO;
+import kr.spring.techblog.vo.TechblogReplyVO;
 import kr.spring.techblog.vo.TechblogVO;
 
 @Mapper
@@ -35,6 +36,10 @@ public interface TechblogMapper {
 	@Update("UPDATE techblog SET tech_photo='',"
 			+ "tech_photoname='' WHERE tech_num=#{tech_num}")
 	public void deleteFile(Integer tech_num);
+	public List<TechblogVO>selectListA(Map<String, Object> map);
+	public List<TechblogVO>selectListB(Map<String, Object> map);
+	public List<TechblogVO>selectListC(Map<String, Object> map);
+	public List<TechblogVO>selectListD(Map<String, Object> map);
 	
 	//부모글 좋아요
 	@Select("SELECT * FROM techblog_fav "
@@ -50,4 +55,30 @@ public interface TechblogMapper {
 	public void deleteFav(Integer tech_fav_num);
 	@Delete("DELETE FROM techblog_fav WHERE tech_num=#{tech_num}")
 	public void deleteFavByTechblogNum(Integer tech_num);
+	
+	//댓글
+	public List<TechblogReplyVO> selectListReply(
+			                  Map<String,Object> map);
+	@Select("SELECT COUNT(*) FROM techblog_reply t "
+			+ "JOIN member m ON t.mem_num=m.mem_num "
+			+ "WHERE tech_num=#{tech_num}")
+	public int selectRowCountReply(Map<String,Object> map);
+	@Select("SELECT * FROM techblog_reply WHERE tech_re_num=#{tech_re_num}")
+	public TechblogReplyVO selectReply(Integer tech_re_num);
+	@Insert("INSERT INTO techblog_reply (tech_re_num,"
+			+ "tech_re_content,tech_num,mem_num) "
+			+ "VALUES (techblog_reply_seq.nextval,#{tech_re_content},"
+			+ "#{tech_num},#{mem_num})")
+	public void insertReply(TechblogReplyVO techReply);
+	@Update("UPDATE techblog_reply SET "
+			+ "tech_re_content=#{tech_re_content},"
+			+ "tech_re_date=SYSDATE WHERE tech_re_num=#{tech_re_num}")
+	public void updateReply(TechblogReplyVO techReply);
+	@Delete("DELETE FROM techblog_reply WHERE tech_re_num=#{tech_re_num}")
+	public void deleteReply(Integer tech_re_num);
+	//부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
+	@Delete("DELETE FROM techblog_reply "
+			+ "WHERE tech_num=#{tech_num}")
+	public void deleteReplyBytechNum(
+			                       Integer tech_num);
 }

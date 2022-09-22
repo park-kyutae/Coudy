@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class ApplicationController {
@@ -87,5 +89,50 @@ public class ApplicationController {
                 "url", request.getContextPath() + "/study/studygrouplist.do");
 
         return "common/resultView";
+    }
+
+    //==나의 스터디 목록==//
+    @GetMapping("/study/mystudylist.do")
+    public ModelAndView mystudylist(@RequestParam int study_num, @Valid ApplicationVO applicationVO,
+                                    BindingResult result, HttpServletRequest request,
+                                    HttpSession session) {
+
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
+
+        StudyGroupVO studyGroupVO =
+                studyGroupService.selectStudyGroup(study_num);
+        List<StudyUserVO> list = null;
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("MyStudyList");
+        model.addObject("studygroup", studyGroupVO);
+        model.addObject("studyuser", studyUserVO);
+
+        return model;
+    }
+
+    //==관리자 스터디 목록==//
+    @GetMapping("/study/studyuserlist.do")
+    public ModelAndView studyApplication(@Valid ApplicationVO applicationVO,
+                       BindingResult result, HttpServletRequest request,
+                       HttpSession session) {
+
+        MemberVO user = (MemberVO) session.getAttribute("user");
+        StudyUserVO studyUserVO = studyUserService.selectUser(user.getMem_num());
+
+        StudyGroupVO studyGroupVO =
+                studyGroupService.selectStudyGroup(studyUserVO.getStudy_num());
+
+        List<StudyUserVO> list = null;
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("StudyUserList");
+        model.addObject("studygroup", studyGroupVO);
+        model.addObject("list", list);
+        model.addObject("studyuser", studyUserVO);
+        model.addObject("user", user);
+
+        return model;
     }
 }

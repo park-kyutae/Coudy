@@ -30,7 +30,7 @@ public class PlanAjaxController {
 
 
         //일정 삭제할 권한 있는지 검사 >> 인터셉터에서 처리?aop
-        isInvalidDate(form.getPlanStartDate(),form.getPlanEndDate(),result);
+        isInvalidDate(form.getPlanStartDate(), form.getPlanEndDate(), result);
 
 
         if (result.hasErrors()) {
@@ -46,27 +46,28 @@ public class PlanAjaxController {
 
     @PatchMapping
     public Map<String, Object> updatePlan(@Login Integer mem_num, @Validated @RequestBody UpdatePlanForm form,
-                                          BindingResult result, Locale locale, @PathVariable Integer studyNum) throws ParseException {
+                                          BindingResult result, Locale locale, @PathVariable Integer studyNum) throws ParseException, BindException {
         log.info("Call PlanAjaxController.updatePlan --- Variable = form = {}", form);
         log.info("Call PlanAjaxController.updatePlan --- Variable = result.getAllErrors() = {}", result.getAllErrors());
-        isInvalidDate(form.getPlanStartDate(),form.getPlanEndDate(),result);
-
-        if (!result.hasErrors()) {
-            PlanVO planVO = new PlanVO(form.getPlanNum(), studyNum, form.getPlanContent(), form.getPlanStartDate(),
-                    form.getPlanEndDate(), form.getPlanColor(), mem_num, form.isPlanIsCompleted(), form.isPlanIsShared());
-            planService.updatePlan(planVO);
+        isInvalidDate(form.getPlanStartDate(), form.getPlanEndDate(), result);
+        if (result.hasErrors()) {
+            throw new BindException(result);
         }
+        PlanVO planVO = new PlanVO(form.getPlanNum(), studyNum, form.getPlanContent(), form.getPlanStartDate(),
+                form.getPlanEndDate(), form.getPlanColor(), mem_num, form.isPlanIsCompleted(), form.isPlanIsShared());
+        planService.updatePlan(planVO);
         return Map.of("result", "success");
     }
+
     @PatchMapping("/progress/update-completed")
-    public Map<String, Object> updateIsCompleted(@Login Integer mem_num,  @Validated@RequestBody CommonPlanNumForm form,
-                                           @PathVariable Integer studyNum) {
+    public Map<String, Object> updateIsCompleted(@Login Integer mem_num, @Validated @RequestBody CommonPlanNumForm form,
+                                                 @PathVariable Integer studyNum) {
         planService.updateIsCompleted(form.getPlanNum());
         return Map.of("result", "success");
     }
 
     @DeleteMapping
-    public Map<String, Object> deletePlan(@Login Integer mem_num, @Validated@RequestBody CommonPlanNumForm form, @PathVariable Integer studyNum) {
+    public Map<String, Object> deletePlan(@Login Integer mem_num, @Validated @RequestBody CommonPlanNumForm form, @PathVariable Integer studyNum) {
         log.info("Call PlanAjaxController.deletePlan --- Variable = mem_num = {}", mem_num);
         planService.deletePlan(form.getPlanNum());
 
@@ -88,10 +89,11 @@ public class PlanAjaxController {
         log.info("Call PlanAjaxController.findPlans --- Variable = plans = {}", plans);
         return plans;
     }
+
     @GetMapping("/progress/find-all-shared")
-    public List<FindSharedForm> findAllSharedPlan(@Login Integer mem_num,@PathVariable Integer studyNum) {
-        List<FindSharedForm> plans= planService.findAllPlan(studyNum).stream()
-                .map(x -> new FindSharedForm(x.getPlanNum(),x.getPlanContent(),x.getPlanStartDate(),x.getPlanEndDate(),x.getPlanColor(),x.isPlanIsCompleted()))
+    public List<FindSharedForm> findAllSharedPlan(@Login Integer mem_num, @PathVariable Integer studyNum) {
+        List<FindSharedForm> plans = planService.findAllPlan(studyNum).stream()
+                .map(x -> new FindSharedForm(x.getPlanNum(), x.getPlanContent(), x.getPlanStartDate(), x.getPlanEndDate(), x.getPlanColor(), x.isPlanIsCompleted()))
                 .collect(Collectors.toList());
         return plans;
     }

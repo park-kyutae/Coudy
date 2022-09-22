@@ -15,4 +15,6 @@ public interface TodoService {
     void deleteTodo(int todoNum);
 
     List<TodoVO> selectTodos(int memNum, int studyNum);
+
+    List<TodoVO> findProgressingTodos(int studyNum, int memNum);
 }
