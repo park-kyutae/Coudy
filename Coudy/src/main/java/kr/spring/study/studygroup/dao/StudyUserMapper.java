@@ -20,6 +20,7 @@ public interface StudyUserMapper {
     public void insertStudyUser(StudyUserVO studyUserVO);
     public int selectRowCount(Map<String,Object> map);
     public void updateAuth(StudyUserVO studyUserVO);
+    public void updateRejectAuth(StudyUserVO studyUserVO);
     @Delete("")
     public void deleteApplication(Integer study_user_num);
 

@@ -121,9 +121,13 @@ public class ApplicationController {
         MemberVO user = (MemberVO) session.getAttribute("user");
         List<ApplicationVO> list = applicationService.selectMyStudyApplications(study_num);
 
+        StudyGroupVO studyGroupVO = studyGroupService.selectStudyGroup(study_num);
+
         ModelAndView model = new ModelAndView();
         model.setViewName("ApplicationList");
         model.addObject("list", list);
+        model.addObject("studygroup", studyGroupVO);
+
         return model;
 
     }
@@ -142,6 +146,28 @@ public class ApplicationController {
         //boardVO.setIp(request.getRemoteAddr());
         //권한수정
         studyUserService.updateAuth(studyUserVO);
+
+        //View에 표히살 메시지
+        model.addAttribute("message", "권한 수정 완료");
+        model.addAttribute("url",
+                request.getContextPath()+"/study/applicationlist.do?study_num="+studyUserVO.getStudy_num());
+
+        return "common/resultView";
+    }
+    //==스터디 권한 거절로 수정==//
+    @PostMapping("/study/updaterejectauth.do")
+    public String submitUpdateforReject(@Valid StudyUserVO studyUserVO,
+                               BindingResult result,
+                               HttpServletRequest request,
+                               Model model) {
+        logger.debug("<<권한 수정>> : " + studyUserVO);
+
+        //유효성 체크 결과 오류가 있으면 폼 호출
+
+        //ip셋팅
+        //boardVO.setIp(request.getRemoteAddr());
+        //권한수정
+        studyUserService.updateRejectAuth(studyUserVO);
 
         //View에 표히살 메시지
         model.addAttribute("message", "권한 수정 완료");
