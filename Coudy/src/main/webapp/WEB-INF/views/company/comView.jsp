@@ -38,8 +38,8 @@
 
 </div>
 <div class="container" style="height: 1500px">
-    <div class="row-cols-4 align-center">
-        <div class="align-center col-sm-12">
+    <div class="row-cols-4">
+        <div class="col-sm-12">
             <h4>${companyVO.com_name}</h4>
             <span class="float-end">조회수 : ${companyVO.com_hit}</span>
             <h2>${companyVO.com_title}</h2>
