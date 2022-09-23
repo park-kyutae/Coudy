@@ -18,7 +18,8 @@
     </div>
     <c:forEach var="applicationlist" items="${list}">
     <div class="row row-cols-2 row-cols-md-1 g-4">
-            <div class="col-12 my-4">
+        <div class="col-2"></div>
+            <div class="col-8 my-4">
                 <div class="card">
                     <div class="card-body shadow-sm">
                         <div class="row">
@@ -61,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            <div class="col-2"></div>
         </div>
     </c:forEach>
 </div>

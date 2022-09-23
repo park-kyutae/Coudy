@@ -31,7 +31,7 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">스터디 설명</label>
-            <input type="text" class="form-control" id="description" name="description" required>
+            <textarea  type="text" class="form-control" id="description" name="description" required></textarea>
             <div class="invalid-feedback">
                 스터디를 설명해 주세요.
             </div>
@@ -53,7 +53,7 @@
         </div>
         <div class="mb-3">
             <label for="location" class="form-label">스터디 지역</label>
-            <input type="text" class="form-control" id="location" name="location" required>
+            <textarea  type="text" class="form-control" id="location" name="location" required></textarea>
             <div class="invalid-feedback">
                 스터디 지역을 입력하세요.
             </div>
