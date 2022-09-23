@@ -1,6 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <!-- ✅ load jquery UI ✅ -->
@@ -13,7 +12,9 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.ko.min.js" type="text/javascript"></script>
     <title><tiles:getAsString name="title"/></title>
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <tiles:insertAttribute name="header"/>
@@ -42,6 +43,8 @@
     </div>
 
 </div>
-
 </body>
 </html>
+
+
+

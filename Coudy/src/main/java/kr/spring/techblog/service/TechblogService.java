@@ -16,6 +16,10 @@ public interface TechblogService {
 	//부모글
 	public List<TechblogVO>selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
+	public int selectRowCountA(Map<String, Object> map);
+	public int selectRowCountB(Map<String, Object> map);
+	public int selectRowCountC(Map<String, Object> map);
+	public int selectRowCountD(Map<String, Object> map);
 	public void insertTechblog(TechblogVO techblog);
 	public TechblogVO selectTechblog(Integer tech_num);
 	public void updateTechblogHit(Integer tech_num);
