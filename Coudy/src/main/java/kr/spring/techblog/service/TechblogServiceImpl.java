@@ -137,6 +137,7 @@ public class TechblogServiceImpl implements TechblogService{
 		return techblogmapper.movePage(tech_num);
 	}
 
+
 	@Override
 	public int selectRowCountA(Map<String, Object> map) {
 		return techblogmapper.selectRowCountA(map);
