@@ -5,59 +5,51 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
  <tiles-definitions>
-    <definition name="memberRegister" extends="mainV2">
+    <definition name="memberRegister" extends="main">
     	<put-attribute name="title" value="회원가입"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberRegister.jsp"/>                   
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
 
     </definition>
-    <definition name="memberModify" extends="mainV2">
+    <definition name="memberModify" extends="main">
     	<put-attribute name="title" value="회원정보 수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberModify.jsp"/>                   
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
 
     </definition>
-    <definition name="memberLogin" extends="mainV2"> 
+    <definition name="memberLogin" extends="main"> 
     	<put-attribute name="title" value="로그인"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberLogin.jsp"/>                   
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
 
     </definition>
-    <definition name="memberMyPage" extends="mainV2">
+    <definition name="memberMyPage" extends="main">
     	<put-attribute name="title" value="마이페이지"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberMyPage.jsp"/>                   
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
 
     </definition>
-    <definition name="memberDelete" extends="mainV2">
+    <definition name="memberDelete" extends="main">
     	<put-attribute name="title" value="회원탈퇴"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberDelete.jsp"/>                   
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
 
     </definition>
-    <definition name="memberChangePassword" extends="mainV2">
+    <definition name="memberChangePassword" extends="main">
     	<put-attribute name="title" value="비밀번호변경"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/memberChangePassword.jsp"/>                   
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
 
     </definition>
-    <definition name="adminList" extends="mainV2">
+    <definition name="adminList" extends="main">
     	<put-attribute name="title" value="회원관리"/>
-       	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>    	
     	<put-attribute name="body"
     	  value="/WEB-INF/views/member/adminList.jsp"/>                   
     </definition>
-    <definition name="admin_memberModify" extends="mainV2">
+    <definition name="admin_memberModify" extends="main">
     	<put-attribute name="header" value="/WEB-INF/views/member/blank.jsp"/>
     	<put-attribute name="title" value="회원권한수정"/>
     	<put-attribute name="body"  value="/WEB-INF/views/member/admin_memberModify.jsp"/>  
-    	<put-attribute name="studySidebar" value="/WEB-INF/views/member/blank.jsp"/>   
     	<put-attribute name="footer" value="/WEB-INF/views/member/blank.jsp"/>
     	                
     </definition>
