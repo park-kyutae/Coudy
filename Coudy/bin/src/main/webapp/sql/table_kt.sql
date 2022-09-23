@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 CREATE TABLE techblog(
 	tech_num number not null,
 	tech_title varchar2(150) not null,
@@ -65,4 +69,7 @@ create table techblog_fav(
 
 create sequence techblog_fav_seq;
 
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git
 >>>>>>> branch 'main' of https://github.com/park-kyutae/Coudy.git

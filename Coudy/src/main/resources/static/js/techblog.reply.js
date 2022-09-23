@@ -32,6 +32,9 @@ $(function(){
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
+
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="70" height="70" class="my-photo">';
+
 					output += '<div class="sub-item">';
 					output += '<div class="row my-3">';
 					

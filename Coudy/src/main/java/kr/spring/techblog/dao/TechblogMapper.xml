@@ -114,6 +114,7 @@
 			</if>
 		</where>  	
   	</select>
+
   	<select id="selectRowCountD" parameterType="map"
   	                    resultType="integer">
 		SELECT
@@ -142,6 +143,7 @@
 			</if>
 		</where>  	
   	</select>
+
   	<select id="movePage" parameterType="int" resultType="techblogVO">
 	select * from(SELECT 
 			tech_num,

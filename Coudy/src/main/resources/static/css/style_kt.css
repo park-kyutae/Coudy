@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 #techtitle{
 	font-size: 15pt;
 	font-weight: bold;
@@ -51,6 +52,7 @@
 	font-style: red;
 	font-weight: bold;
 }
+
 #techabutton{
 	text-decoration: none;
 	color: black;
@@ -60,7 +62,9 @@
  	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
 a:visited{
 	
 	font-weight: bold;
 }
+

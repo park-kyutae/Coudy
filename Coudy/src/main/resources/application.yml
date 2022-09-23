@@ -53,5 +53,4 @@ server:
     include-stacktrace: never
     include-exception: false
     include-message: never
-file:
-  #절대 경로 끝에 윈도우 \ 맥 / 붙여줘야함
+

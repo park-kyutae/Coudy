@@ -5,11 +5,11 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="secondmain"
-       template="/WEB-INF/views/template/layout.jsp">
+    <definition name="second_main"
+       template="/WEB-INF/views/template/layoutV3.jsp">
     	<put-attribute name="title" value="SpringPage"/>
     	<put-attribute name="header"
-    	   value="/WEB-INF/views/template/header.jsp"/>
+    	   value="/WEB-INF/views/template/headerV2.jsp"/>
     	<put-attribute name="body"
     	             value="/WEB-INF/views/main/main.jsp"/>    
     	<put-attribute name="footer"
