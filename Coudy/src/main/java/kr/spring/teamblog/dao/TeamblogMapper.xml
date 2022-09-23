@@ -43,6 +43,7 @@
   					b.team_filename,
   					b.team_reg_date,
   					b.mem_num,
+  					b.team_content,
   					m.id
   				FROM teamblog b JOIN member_detail m
   				ON b.mem_num=m.mem_num

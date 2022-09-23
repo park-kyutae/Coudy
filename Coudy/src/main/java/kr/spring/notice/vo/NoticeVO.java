@@ -21,6 +21,17 @@ public class NoticeVO {
 	private String notice_ip;
 	private int mem_num;
 	
+	
+	/*private int study_num;
+	
+	public int getStudy_num() {
+		return study_num;
+	}
+
+	public void setStudy_num(int study_num) {
+		this.study_num = study_num;
+	}*/
+
 	private String id;
 	private byte[] photo;//프로필 사진
 	private String photo_name;//프로필 이름
@@ -136,6 +147,15 @@ public class NoticeVO {
 		this.photo_name = photo_name;
 	}
 
+	/*@Override
+	public String toString() {
+		return "NoticeVO [notice_num=" + notice_num + ", notice_title=" + notice_title + ", notice_content="
+				+ notice_content + ", notice_hit=" + notice_hit + ", notice_reg_date=" + notice_reg_date
+				+ ", notice_modify_date=" + notice_modify_date + ", notice_filename=" + notice_filename + ", notice_ip="
+				+ notice_ip + ", mem_num=" + mem_num + ", study_num=" + study_num + ", id=" + id + ", photo_name="
+				+ photo_name + "]";
+	}*/
+
 	@Override
 	public String toString() {
 		return "NoticeVO [notice_num=" + notice_num + ", notice_title=" + notice_title + ", notice_content="
@@ -143,7 +163,7 @@ public class NoticeVO {
 				+ ", notice_modify_date=" + notice_modify_date + ", notice_filename=" + notice_filename + ", notice_ip="
 				+ notice_ip + ", mem_num=" + mem_num + ", id=" + id + ", photo_name=" + photo_name + "]";
 	}
-
+	
 	
 
 

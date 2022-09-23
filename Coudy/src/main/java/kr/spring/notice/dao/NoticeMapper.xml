@@ -44,8 +44,10 @@
   					b.notice_reg_date,
   					b.mem_num,
   					m.id
+  					
   				FROM notice b JOIN member_detail m
   				ON b.mem_num=m.mem_num
+  				
   				<where>
 		 			<if test="keyword != null and keyword != ''">
 		 				<if test="keyfield == 1">
