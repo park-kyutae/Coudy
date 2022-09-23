@@ -21,6 +21,121 @@
 					t.tech_content LIKE '%' || #{keyword} || '%'
 				</if>
 				<if test="keyfield == 4">
+					t.tech_tag LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 5">
+					t.tech_title LIKE '%' || #{keyword} || '%' OR
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+  	</select>
+  	<select id="selectRowCountA" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM techblog t JOIN member m
+		ON t.mem_num = m.mem_num
+		<where>
+			t.tech_category = '2'
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					t.tech_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					t.tech_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					t.tech_tag LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 5">
+					t.tech_title LIKE '%' || #{keyword} || '%' OR
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+  	</select>
+  	<select id="selectRowCountB" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM techblog t JOIN member m
+		ON t.mem_num = m.mem_num
+		<where>
+			t.tech_category = '3'
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					t.tech_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					t.tech_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					t.tech_tag LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 5">
+					t.tech_title LIKE '%' || #{keyword} || '%' OR
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+  	</select>
+  	<select id="selectRowCountC" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM techblog t JOIN member m
+		ON t.mem_num = m.mem_num
+		<where>
+			t.tech_category = '4'
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					t.tech_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					t.tech_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					t.tech_tag LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 5">
+					t.tech_title LIKE '%' || #{keyword} || '%' OR
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>  	
+  	</select>
+  	<select id="selectRowCountD" parameterType="map"
+  	                    resultType="integer">
+		SELECT
+		  COUNT(*)
+		FROM techblog t JOIN member m
+		ON t.mem_num = m.mem_num
+		<where>
+			t.tech_category = '5'
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					t.tech_title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					t.tech_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					t.tech_content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					t.tech_tag LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 5">
 					t.tech_title LIKE '%' || #{keyword} || '%' OR
 					t.tech_content LIKE '%' || #{keyword} || '%'
 				</if>
@@ -71,6 +186,9 @@
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 4">
+								t.tech_tag LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 5">
 								t.tech_title LIKE '%' || #{keyword} || '%' OR
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
@@ -113,6 +231,9 @@
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 4">
+								t.tech_tag LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 5">
 								t.tech_title LIKE '%' || #{keyword} || '%' OR
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
@@ -156,6 +277,9 @@
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 4">
+								t.tech_tag LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 5">
 								t.tech_title LIKE '%' || #{keyword} || '%' OR
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
@@ -199,6 +323,9 @@
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 4">
+								t.tech_tag LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 5">
 								t.tech_title LIKE '%' || #{keyword} || '%' OR
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
@@ -242,6 +369,9 @@
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>
 							<if test="keyfield == 4">
+								t.tech_tag LIKE '%' || #{keyword} || '%'
+							</if>
+							<if test="keyfield == 5">
 								t.tech_title LIKE '%' || #{keyword} || '%' OR
 								t.tech_content LIKE '%' || #{keyword} || '%'
 							</if>

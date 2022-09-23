@@ -18,6 +18,10 @@ public interface TechblogMapper {
 	//부모글
 	public List<TechblogVO>selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
+	public int selectRowCountA(Map<String, Object> map);
+	public int selectRowCountB(Map<String, Object> map);
+	public int selectRowCountC(Map<String, Object> map);
+	public int selectRowCountD(Map<String, Object> map);
 	@Insert("INSERT INTO techblog (tech_num,tech_title,tech_name,"
 			+ "tech_content,tech_category,"
 			+ "tech_tag,mem_num) VALUES (techblog_seq.nextval,#{tech_title},"

@@ -16,6 +16,6 @@
 	<div class="container">
 	<!-- 쿠디의개발블로그 시작 -->
 		<div class="row mt-3">
-							<a href="${pageContext.request.contextPath}/techblog/techblogList.do"><img src="${pageContext.request.contextPath}/images/techblogtitle.png" id="techtitleimg"></a>
+							<a href="${pageContext.request.contextPath}/techblog/techblogList.do"><img src="${pageContext.request.contextPath}/images/techblogtitle.png" id="techtitleimg" class="col-lg"></a>
 		</div>
 	</div>

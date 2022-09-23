@@ -139,7 +139,7 @@ public class TechblogController {
 			map.put("keyword", keyword);
 			
 			//글의 총개수(검색된 글의 개수)
-			int count = techblogService.selectRowCount(map);
+			int count = techblogService.selectRowCountA(map);
 			
 			logger.debug("<<count>> : " + count);
 			
@@ -182,7 +182,7 @@ public class TechblogController {
 					map.put("keyword", keyword);
 					
 					//글의 총개수(검색된 글의 개수)
-					int count = techblogService.selectRowCount(map);
+					int count = techblogService.selectRowCountB(map);
 					
 					logger.debug("<<count>> : " + count);
 					
@@ -225,7 +225,7 @@ public class TechblogController {
 					map.put("keyword", keyword);
 					
 					//글의 총개수(검색된 글의 개수)
-					int count = techblogService.selectRowCount(map);
+					int count = techblogService.selectRowCountC(map);
 					
 					logger.debug("<<count>> : " + count);
 					
@@ -252,7 +252,7 @@ public class TechblogController {
 					
 					return mav;
 				}
-				//===========게시판 글 C목록============//
+				//===========게시판 글 D목록============//
 				@RequestMapping("/techblog/techblogListD.do")
 				public ModelAndView processD(
 						@RequestParam(value="pageNum",defaultValue="1") 
@@ -268,7 +268,7 @@ public class TechblogController {
 					map.put("keyword", keyword);
 					
 					//글의 총개수(검색된 글의 개수)
-					int count = techblogService.selectRowCount(map);
+					int count = techblogService.selectRowCountD(map);
 					
 					logger.debug("<<count>> : " + count);
 					
