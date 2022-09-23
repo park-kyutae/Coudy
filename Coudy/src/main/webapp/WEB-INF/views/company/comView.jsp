@@ -9,14 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
-    #btn1{
-        background-color: #8541f5;
-        border-color: #8541f5;
-    }
-    #btn1:hover{
-        background-color:#3d0991;
-        border-color:#3d0991;
-    }
 
     span{
         font-size: 15pt;

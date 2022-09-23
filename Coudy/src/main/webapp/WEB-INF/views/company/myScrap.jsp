@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <style>
   a {
+
     text-decoration: none;
     color: #595959;
   }
@@ -68,8 +69,8 @@
                                                              alt="Card image cap"></a>
     </div>
     <div class="col-sm-6">
-      <a href="#">${company.com_name}</a><br>
-      <b><a href="#">${company.com_title}</a></b>
+      <a href="comDetail.do?com_num=${company.com_num}">${company.com_name}</a><br>
+      <b><a href="comDetail.do?com_num=${company.com_num}">${company.com_title}</a></b>
       <p>${company.com_tag}</p>
     </div>
     <div class="col-sm-3 align-center">
