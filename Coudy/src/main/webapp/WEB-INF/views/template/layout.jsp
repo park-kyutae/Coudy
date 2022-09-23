@@ -13,6 +13,8 @@
     <meta charset="UTF-8">
     <title><tiles:getAsString name="title"/></title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
 </head>
 
 <style>
