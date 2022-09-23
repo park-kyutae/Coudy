@@ -2,9 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
+
+<style>
+#t{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
 
 
-	<div class="row border-bottom" style="height: 40px;background-color:white;">
+
+	<div class="row border-bottom" id="t" style="height: 40px;background-color:white;">
 		<div class="col">
 			<span >
 				<a href="/">
@@ -40,7 +50,7 @@
 			<c:if test="${!empty user && user.auth == 4}">
 				<a  href="${pageContext.request.contextPath}/member/admin_list.do">회원관리</a>
 			</c:if>
-			&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;
 		</div>
 	</div>
 

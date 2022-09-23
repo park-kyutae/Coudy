@@ -88,7 +88,7 @@
 </div>
 <div class="col-12 input-form">
 	    <button class="btn btn-primary" id="submit" type="submit" style="width:50%;border-radius:5px 0 0 5px;">수정하기</button>
-	    <button class="btn btn-outline-secondary" type="button" style="width:50%;float:right;border-radius:0 5px 5px 0;" onclick="location.href='/main/main.do'">홈으로</button>
+	    <button class="btn btn-outline-secondary" type="button" style="width:50%;float:right;border-radius:0 5px 5px 0;" onclick="location.href='/member/myPage.do'">뒤로가기</button>
 </div>
 </form:form>	
 
