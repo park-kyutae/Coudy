@@ -20,7 +20,9 @@
     <div class="row mt-4">
         <br>
         <div class="col">
-        ${companyVO.com_name}에 입사지원 하기<br>
+            <h3>
+            ${companyVO.com_name}에 입사지원 하기<br><br>
+            </h3>
         </div>
     </div>
     <div class="row">
@@ -29,11 +31,11 @@
             <form modelAttribute="companyResumeVO" method="post" enctype="multipart/form-data" action="resume.do" id="resumeForm">
                 <div class="row">
                     <div class="col">
-                        <label for="upload">파일업로드</label>
+                        <label for="upload">이력서 첨부파일</label>
                         <input type="file" name="upload" id="upload">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-5 float-end">
                     <div class="col g-2">
                         <input type="submit" class="btn btn-outline-primary" value="전송">
                         <input type="button" class="btn btn-outline-secondary" value="취소" onclick="javascript:window.close()">

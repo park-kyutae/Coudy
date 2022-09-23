@@ -52,15 +52,16 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/notice/Write.do")
 				.addPathPatterns("/notice/Update.do")
 				.addPathPatterns("/notice/Delete.do")
+				.addPathPatterns("/teamblog/Write.do")
+				.addPathPatterns("/teamblog/Update.do")
+				.addPathPatterns("/teamblog/Delete.do")
 		//TODO 표현식으로 정리
-
-				.addPathPatterns("/techblog/techblogDelete.do")
+		.addPathPatterns("/techblog/techblogDelete.do")
 				.addPathPatterns("/notice/Write.do")
 				.addPathPatterns("/notice/Update.do")
 				.addPathPatterns("/notice/Delete.do")
 				.addPathPatterns("/member/admin_update.do")
 				.addPathPatterns("/member/admin_list.do");
-
 
 		registry.addInterceptor(interceptor)
 				.order(2)
@@ -88,6 +89,7 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/main.xml",
 				"/WEB-INF/tiles-def/first.xml",
 				"/WEB-INF/tiles-def/second.xml",
+				"/WEB-INF/tiles-def/second_main.xml",
 				"/WEB-INF/tiles-def/third.xml",
 				"/WEB-INF/tiles-def/forth.xml",
 				"/WEB-INF/tiles-def/fifth.xml",

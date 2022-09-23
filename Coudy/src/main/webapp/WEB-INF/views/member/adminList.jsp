@@ -30,6 +30,16 @@ a:link{
 	color:gray;
 }
 
+.btn-primary{
+	background-color:#8541f5;
+	border-color:#8541f5;
+}
+.btn-primary:hover{
+	background-color:#3d0991;
+	border-color:#3d0991;
+}
+
+
 </style>
 
 <div class="page-main container">
@@ -37,6 +47,8 @@ a:link{
 	<h4>관리자페이지</h4>
 	<div class="row">
 		<div class="col align-center text-center">
+			<img  class="mb-4 mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="20%" height="35%">
+			
 			<form action="admin_list.do" id="search_form"
 			                                    method="get">
 				<ul class="search nav justify-content-center mb-5 mt-2">
@@ -51,7 +63,7 @@ a:link{
 						<input class="form-control" type="search" name="keyword" id="keyword" value="${param.keyword}" style="border-radius:0 0 0 0;">
 					</li>
 					<li>
-						<input type="submit" class="btn btn-secondary" value="찾기" style="border-radius:0 10px 10px 0;">
+						<input type="submit" class="btn btn-primary" value="찾기" style="border-radius:0 10px 10px 0;">
 						<input type="button" class="btn btn-outline-secondary" value="목록"
 						    onclick="location.href='admin_list.do'" style="border-radius: 10px;">
 					</li>

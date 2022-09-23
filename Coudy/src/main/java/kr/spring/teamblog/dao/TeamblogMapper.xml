@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.teamblog.dao.TeamblogMapper">  
+ 	
+ 	<select id="selectRowCount" parameterType="map" resultType="integer">
+ 		SELECT 
+ 			COUNT(*)
+ 		FROM teamblog b JOIN member_detail m
+ 		ON b.mem_num = m.mem_num 
+ 		<where>
+ 			<if test="keyword != null and keyword != ''">
+ 				<if test="keyfield == 1">
+ 					b.team_title LIKE '%' || #{keyword} || '%' <!-- LIKE : 포함되어 있는걸 검색 -->
+ 				</if>
+ 				<if test="keyfield==2">
+ 					m.id LIKE '%' || #{keyword} || '%' 
+ 				</if>
+ 				<if test="keyfield ==3">
+ 					b.team_content LIKE '%' || #{keyword} || '%'
+ 				</if>
+ 				<if test="keyfield==4">
+ 					b.team_title LIKE '%' || #{keyword} || '%' OR
+ 					b.team_content LIKE '%' || #{keyword} || '%'
+ 				</if>
+ 			</if>
+ 		</where>
+  	</select>
+  	
+  	<select id="selectList" parameterType="map" resultType="teamblogVO">
+  		SELECT
+  		*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			FROM(SELECT
+  					b.team_num,
+  					<![CDATA[
+  					REPLACE(REPLACE(b.team_title,'<','&lt;'),'>','&gt;') team_title,
+  					]]>
+  					b.team_hit,
+  					b.team_filename,
+  					b.team_reg_date,
+  					b.mem_num,
+  					b.team_content,
+  					m.id
+  				FROM teamblog b JOIN member_detail m
+  				ON b.mem_num=m.mem_num
+  				<where>
+		 			<if test="keyword != null and keyword != ''">
+		 				<if test="keyfield == 1">
+		 					b.team_title LIKE '%' || #{keyword} || '%' <!-- LIKE : 포함되어 있는걸 검색 /  % : 뒤에 추가 검색 -->
+		 				</if>
+		 				<if test="keyfield==2">
+		 					m.id LIKE '%' || #{keyword} || '%'
+		 				</if>
+		 				<if test="keyfield ==3">
+		 					b.team_content LIKE '%' || #{keyword} || '%'
+		 				</if>
+		 				<if test="keyfield==4">
+		 					b.team_title LIKE '%' || #{keyword} || '%' OR
+		 					b.team_content LIKE '%' || #{keyword} || '%'
+		 				</if>
+		 			</if>
+		 		</where>
+  				ORDER BY b.team_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	
+  	
+  	<update id="updateTeamblog" parameterType="teamblogVO">
+  		UPDATE teamblog SET
+	  		<if test="team_filename != ''">
+	  		team_uploadfile=#{team_uploadfile},
+	  		team_filename=#{team_filename},
+	  		</if>
+	  		team_title=#{team_title},
+	  		team_content=#{team_content},
+	  		team_ip=#{team_ip},
+	  		team_modify_date=SYSDATE
+  		WHERE team_num=#{team_num}
+  	</update>
+  	
+  	<select id="selectListReply" parameterType="map" resultType="teamblogReplyVO">
+  		SELECT
+  		*
+  		FROM (SELECT
+  				a.*,
+  				rownum rnum
+  			FROM(SELECT
+  					team_re_num,
+  					<![CDATA[
+  					REPLACE(REPLACE(team_re_content,'<','&lt;'),'>','&gt;') team_re_content,
+  					]]>
+  					team_re_date,
+  					team_re_mdate,
+  					team_num,
+  					mem_num,
+  					id
+  				FROM teamblog_reply
+  				JOIN member_detail USING(mem_num)
+  				WHERE team_num=#{team_num}
+  				ORDER BY team_re_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
+  	
+</mapper>
+
+
+
+
+
+
+

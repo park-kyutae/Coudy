@@ -1,6 +1,7 @@
 package kr.spring.notice.controller;
 
 import java.util.HashMap; 
+
 import java.util.List;
 import java.util.Map;
 
@@ -204,6 +205,25 @@ public class NoticeController {
 		model.addAttribute("message","글수정 완료!!");
 		model.addAttribute("url",request.getContextPath()+"/notice/detail.do?notice_num="+noticeVO.getNotice_num());
 
+		return "common/resultView";
+	}
+	
+	//========공지글 삭제==========//
+	@RequestMapping("/notice/delete.do")
+	public String submitDelete(
+			@RequestParam int notice_num,
+			Model model,
+			HttpServletRequest request) {
+		
+		logger.debug("<<글 삭제>> : "+notice_num);
+		
+		//글 삭제 
+		noticeService.deleteNotice(notice_num);
+		
+		//View에 표시할 메시지
+		model.addAttribute("message", "글 삭제 완료!!");
+		model.addAttribute("url",request.getContextPath()+"/notice/list.do");
+		
 		return "common/resultView";
 	}
 

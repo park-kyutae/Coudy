@@ -38,13 +38,16 @@
   					<![CDATA[
   					REPLACE(REPLACE(b.notice_title,'<','&lt;'),'>','&gt;') notice_title,
   					]]>
+  					b.notice_content,
   					b.notice_hit,
   					b.notice_filename,
   					b.notice_reg_date,
   					b.mem_num,
   					m.id
+  					
   				FROM notice b JOIN member_detail m
   				ON b.mem_num=m.mem_num
+  				
   				<where>
 		 			<if test="keyword != null and keyword != ''">
 		 				<if test="keyfield == 1">
@@ -80,6 +83,32 @@
 	  		notice_modify_date=SYSDATE
   		WHERE notice_num=#{notice_num}
   	</update>
+  	
+  	<select id="selectListReply" parameterType="map"
+  	                    resultType="noticeReplyVO">
+  		SELECT
+  		   *
+  		FROM (SELECT
+  		        a.*,
+  		        rownum rnum
+  		      FROM (SELECT
+  		              notice_re_num,
+  		              <![CDATA[
+  		              REPLACE(REPLACE(notice_re_content,'<','&lt;'),'>','&gt;') notice_re_content,
+  		              ]]>
+  		              notice_re_date,
+  		              notice_re_mdate,
+  		              notice_num,
+  		              mem_num,
+  		              id
+  		            FROM notice_reply
+  		            JOIN member_detail USING(mem_num)
+  		            WHERE notice_num = #{notice_num}
+  		            ORDER BY notice_re_num DESC)a)
+  		<![CDATA[
+  		WHERE rnum >= #{start} AND rnum <= #{end}
+  		]]>
+  	</select>
   	
 </mapper>
 
