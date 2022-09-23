@@ -1,5 +1,6 @@
 package kr.spring.study.studygroup.service;
 
+
 import kr.spring.member.vo.MemberVO;
 import kr.spring.study.studygroup.vo.StudyUserVO;
 
@@ -12,6 +13,7 @@ public interface StudyUserService {
     public void insertStudyUser(StudyUserVO studyUserVO);
     public int selectRowCount(Map<String,Object> map);
     public void updateAuth(StudyUserVO studyUserVO);
+    public void updateRejectAuth(StudyUserVO studyUserVO);
     public void deleteApplication(Integer study_user_num);
     public StudyUserVO selectStudyUser(Integer study_num, Integer mem_num);
     public StudyUserVO selectUser(Integer mem_num);

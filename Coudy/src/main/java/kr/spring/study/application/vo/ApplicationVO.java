@@ -15,7 +15,6 @@ public class ApplicationVO {
     private String request;
 
     private String name;
-    private String description;
     private char registered;
     private char is_group_manager;
 

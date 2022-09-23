@@ -1,6 +1,9 @@
 $(function(){
 	
 	
+	
+	
+	
 	//===========MyPage 프로필사진=============//
 	$('#photo_btn').click(function(){
 		$('#photo_choice').show();
@@ -85,6 +88,7 @@ $(function(){
 	});
 	
 	//취소버튼 처리
+
 //	$('#photo_cancel').click(function(){
 //		$('.my-photo').attr('src',photo_path);
 //		$('#upload').val('');
