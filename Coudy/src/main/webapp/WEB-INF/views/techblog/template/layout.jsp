@@ -15,6 +15,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 	crossorigin="anonymous"></script>
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="container">
