@@ -3,9 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 내용 시작 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.fav.js"></script>
-
 <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
    rel="stylesheet"
@@ -15,12 +12,15 @@
    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
    crossorigin="anonymous"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.fav.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_ik.css">
 <style>
 	a:link {color: black; text-decoration: none;}
 	a:visited {color: black; text-decoration: none;}
 </style>
 
+<br><br><br>
 
 <div class="container">
 	<!-- <div class="p-4 p-md-5 mb-4 rounded text-white"
@@ -34,9 +34,13 @@
 	
 	
 	
+	<div class="row g-5  bg-success rounded"  style="background-image: url('https://t1.daumcdn.net/cfile/tistory/213A744B58EC2A4409');
+	 background-size:cover;
+	 background-position:center center;">
+	<div class="col">
 	
-	<div class="row g-5 border border-primary border-3">
-	<h3 class="pb-4 mb-4 fst-italic">NOTICE</h3>
+	<h3 class="pb-4 mb-4 fst-italic " >NOTICE</h3>
+	</div>
 	</div>
 	<!-- <hr  style="border-top:5px solid #CB28BE" size="1" width="100%">
 	 -->
@@ -80,7 +84,7 @@
 	<form  class="d-flex" action="list.do" id="search_form" method="get">
 				<select name="keyfield" id="keyfield" class="btn btn-light btn-sm" >
 					<option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>   >제목</option>
-					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>   >ID+별명</option>
+					<option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>   >ID</option>
 					<option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>   >내용</option>
 					<option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>   >제목+내용</option>
 				</select>
@@ -100,7 +104,7 @@
 	</c:if>
 	
 </div>
-
+</div>
 
 <%-- <div class="page-main">	
 	
