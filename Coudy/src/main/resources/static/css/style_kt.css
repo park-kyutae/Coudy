@@ -62,9 +62,16 @@
  	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+<<<<<<< HEAD
+#header{
+	text-decoration:none;
+	 color:gray;
+}
+=======
 
 a:visited{
 	
 	font-weight: bold;
 }
 
+>>>>>>> 70377d55c4969cc2f09a2828d30648d596b27a0c
