@@ -62,7 +62,7 @@
  	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-a:visited{
-	
-	font-weight: bold;
+#header{
+	text-decoration:none;
+	 color:gray;
 }
