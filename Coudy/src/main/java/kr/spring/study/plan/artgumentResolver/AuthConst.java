@@ -1,5 +1,5 @@
 package kr.spring.study.plan.artgumentResolver;
 
 public interface AuthConst {
-    String MEMBER = "mem_num";
+    String MEMBER = "user";
 }

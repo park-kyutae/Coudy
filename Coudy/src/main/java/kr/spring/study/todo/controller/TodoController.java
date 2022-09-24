@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/study/todo")
 public class TodoController {
     @GetMapping("/{studyNum}")
-    public String studyMain(@Login Integer memNum, @PathVariable Integer studyNum) {
+    public String studyMain(@PathVariable Integer studyNum) {
 
 
 

@@ -1,5 +1,6 @@
 package kr.spring.study.plan.testUtil;
 
+import kr.spring.member.vo.MemberVO;
 import kr.spring.study.plan.artgumentResolver.AuthConst;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -12,7 +13,7 @@ public class LoginTestInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         if (session.getAttribute(AuthConst.MEMBER) == null) {
-            session.setAttribute(AuthConst.MEMBER, 1);
+            session.setAttribute(AuthConst.MEMBER, new MemberVO(1));
         }
         return true;
 
