@@ -6,24 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-bootstrap.css">
-
 </head>
-<style>
-a:hover{
-	 text-decoration:none;
-	 color:gray;
-}
-a{
-	color:black;
-}
-</style>
 <body>
-
-	<div class="row">
 		<tiles:insertAttribute name="header"/>
-	</div>
 	<div class="container">
 		<div class="row">
 				<tiles:insertAttribute name="bodytitle"/>
