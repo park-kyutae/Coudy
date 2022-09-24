@@ -9,7 +9,7 @@
        template="/WEB-INF/views/techblog/template/layout.jsp">
     	<put-attribute name="title" value="SpringPage"/>
     	<put-attribute name="header"
-    	   value="/WEB-INF/views/template/header.jsp"/>
+    	   value="/WEB-INF/views/techblog/template/header.jsp"/>
     	<put-attribute name="bodytitle"
     	   value="/WEB-INF/views/techblog/techcommon/bodyTitle.jsp"/>
     	<put-attribute name="sidebar"
