@@ -12,7 +12,7 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.ko.min.js" type="text/javascript"></script>
     <title><tiles:getAsString name="title"/></title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">--%>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
 </head>
