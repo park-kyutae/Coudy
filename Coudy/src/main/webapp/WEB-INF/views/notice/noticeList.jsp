@@ -47,10 +47,12 @@
 	<!-- 게시글 -->
 	<c:if test="${count==0 }">
 	<div class="result-display">표시할 게시물이 없습니다.</div>
+	</div>
 	</c:if>
 	
 	
 	<c:if test="${count>0 }">
+	<br><br><br><br>
 	<c:forEach var="notice" items="${list }">
 	<div class="list-group col-md-12">
 		<div class="row g-0  overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -94,14 +96,20 @@
 	</form>
 	</div>
 	<div class="col-4 align-right">
-	<c:if test="${!empty user }">
+	
+	</div>
+	
+	
+		</c:if>
+	
+	<div class="col-12 align-right">
+	<c:if test="${ user.mem_num eq '202'}">
 		<input class="btn btn-light btn-sm" type="button" value="글쓰기" onclick="location.href='write.do'">
 	</c:if>
 	</div>
 	
 	<br><br>
 	<div style="text-align:center;">${page }</div>
-	</c:if>
 	
 </div>
 </div>

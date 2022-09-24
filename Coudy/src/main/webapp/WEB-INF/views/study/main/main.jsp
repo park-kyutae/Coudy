@@ -192,7 +192,7 @@
         <div class="col bg-secondary bg-opacity-25 rounded m-2 col-3">
             <div class="row">
                 <div class="col">
-                    <span> <button style="width: 13rem;" type="button" class="btn btn-primary justify-content-md-center" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">공지사항</button></span>
+                    <span><a href="${pageContext.request.contextPath}/notice/list.do?notice_num=${notice.notice_num }"  >공지사항</a></span>
                 </div>
             </div>
             <div class="row">
