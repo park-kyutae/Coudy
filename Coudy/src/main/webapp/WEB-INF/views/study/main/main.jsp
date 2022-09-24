@@ -22,7 +22,7 @@
     <div class="row row-cols-3 study-content">
         <c:forEach items="${todoEachStudyUsers}" var="todo">
             <div class="col">
-                <ul class="list-group go_todo pointer">
+                <ul class="list-group go_todo pointer mb-3">
                     <li class="study-li-head">${todo.key}</li>
                     <c:forEach begin="0" end="5" step="1" varStatus="status">
                         <c:choose>
@@ -37,37 +37,5 @@
                 </ul>
             </div>
         </c:forEach>
-    </div>
-
-    <div class="row study-content">
-        <div class="col">
-            <span class="fs-3">팀 커뮤니티</span>
-        </div>
-    </div>
-    <div class="row study-content row-cols-2">
-        <div class="col    ">
-                    <ul class="list-group list-group-flush ">
-                        <li class="list-group-item list-group-item-action bg-text-primary bg-opacity-50 rounded border-0 fw-bold">
-                            공지사항
-                        </li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                    </ul>
-        </div>
-        <div class="col    ">
-                    <ul class="list-group list-group-flush ">
-                        <li class="list-group-item list-group-item-action bg-text-primary bg-opacity-50 rounded border-0 fw-bold">
-                            팀 블로그
-                        </li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                        <li class="list-group-item list-group-item-action">게시글</li>
-                    </ul>
-        </div>
     </div>
 </div>

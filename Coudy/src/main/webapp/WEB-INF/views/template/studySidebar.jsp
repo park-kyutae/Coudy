@@ -20,10 +20,10 @@
             let path = '/study/studymain.do?study_num='
             go_somewhere(path)
         });
-        $('.go_blog').click(function () {
-            let path = '/study/notice/list.do?study_num='
-            go_somewhere(path)
-        });
+        // $('.go_blog').click(function () {
+        //     let path = '/study/notice/list.do?study_num='
+        //     go_somewhere(path)
+        // });
         function go_somewhere(path) {
             location.href=path+studyNum
         }
@@ -67,9 +67,6 @@
         </div>
         <div class="p-2 rounded-circle bg-secondary bg-opacity-25 mx-1 ">
             <img src="/images/todo.svg"  class="pointer go_todo">
-        </div>
-        <div class="p-2 rounded-circle bg-secondary bg-opacity-25 mx-1 ">
-            <img src="/images/blog.svg"  class="pointer go_blog">
         </div>
       </div>
 </div>

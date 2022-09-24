@@ -15,9 +15,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<div class="fixed-top">
     <tiles:insertAttribute name="header"/>
-</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col">

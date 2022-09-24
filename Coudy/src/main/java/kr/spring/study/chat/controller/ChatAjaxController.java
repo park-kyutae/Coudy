@@ -21,8 +21,6 @@ public class ChatAjaxController{
 
     @GetMapping("/search-member/{searchWord}")
     public List<SearchMemberResult> searchMember(@PathVariable String searchWord) {
-
-
         List<SearchMemberResult> results = chatService.searchMemberByMemberName(searchWord).stream()
                 .map(member -> new SearchMemberResult(member.getMem_num(), member.getName()))
                 .collect(Collectors.toList());
