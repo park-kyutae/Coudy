@@ -24,13 +24,13 @@
     <update id="updateAuth" parameterType="studyuserVO">
         UPDATE study_user SET
         registered='Y'
-        WHERE study_user_num=#{study_user_num}
+        WHERE study_num=#{study_num}
     </update>
 
     <update id="updateRejectAuth" parameterType="studyuserVO">
         UPDATE study_user SET
             registered='N'
-        WHERE study_user_num=#{study_user_num}
+        WHERE study_num=#{study_num}
     </update>
 </mapper>
 

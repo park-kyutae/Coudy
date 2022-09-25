@@ -10,39 +10,79 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-9">
-            <h1>나의 스터디 그룹</h1>
+    <div class="container-flud">
+        <main>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">        
+                        <div class="my-3 p-4 p-md-5 mb-4 text-white rounded bg-dark g-4">
+                          <div class="row">
+                        <div class="col-12 text-center">
+                          <h2>${user.name}의 스터디 그룹</h2>
+                        </div>
+                          </div>
+
+                      </div>
+                    </div> 
+              </div>
+        <c:if test="${!empty list}">
+        <div class="row p-5 bg-light">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="row">
+                    <h2>스터디 목록</h2>
+                    <c:if test="${empty list}"> 등록된 신청서가 없습니다.</c:if>
+                    <c:if test="${!empty list}">
+                    <c:forEach var="mystudylist" items="${list}">
+                    <div class="row row-cols-2 row-cols-md-1 g-2">
+                        <div class="col-2"></div>
+                            <div class="col-8">
+                                <div class="card">
+                                    <div class="card-body shadow-sm">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="width : 100px; height: 100px;" >
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="row">
+                                                    <div class="col-9">
+                                                        <h4 class="card-title"> ${mystudylist.name}</h4>
+                                                        <p class="card-subtitle"> 경력 : ${mystudylist.career}, 요구사항 : ${mystudylist.request}, 가능한 시간 : ${mystudylist.meet_time} </p>
+                                                        <c:if test="${!empty user && mystudylist.registered eq 'Y'.charAt(0)}"><strong>승인ㅇ</strong></c:if>
+                                                        <c:if test="${!empty user && mystudylist.registered eq 'N'.charAt(0)}"><strong>미승인</strong></c:if>
+                                                    </div>
+                                                    <div class="col-3 justify-content-end">
+                                                        <c:if
+                                                                test="${!empty user && mystudylist.registered eq 'N'.charAt(0)}"
+                                                        >
+                                                            <div>
+                                                                <input type="submit" class="btn btn-primary rounded bg-gray" style="width: 120px; height: 100px;" value="승인 대기">
+                                                            </div>
+                                                        </c:if>
+                                                        <c:if
+                                                                test="${!empty user && mystudylist.registered eq 'Y'.charAt(0)}"
+                                                        >
+                                                            <div class="g-3 justify-content-end">
+                                                                <input type="submit" class="btn btn-primary rounded" style="width: 120px; height: 100px;" onclick="location.href='studymain.do?study_num=${mystudylist.study_num}'" value="입장 하기">
+                                                            </div>
+                                                        </c:if>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+                    </c:forEach>
+                </c:if>
+                </div>
+            </div>
+        </c:if>
         </div>
     </div>
-    <c:forEach var="mystudylist" items="${list}">
-    <div class="row row-cols-2 row-cols-md-1 g-4">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="width : 200px; height: 200px;" >
-                        <h5 class="card-title">${mystudylist.name}</h5>
-                        <p class="card-text">${mystudylist.request}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--경계-->
-        <div class="col-3">
-            <div class="card ma-2 mb-3 pa-3" style="width: 15rem;height: 27rem"  >
-                <img src="${pageContext.request.contextPath}/images/logo.png" class="card-img-top" style="height: 200px;" >
-                <div class="card-body">
-                    <p class="card-text text-muted">${mystudylist.name}</p>
-                    <p class="card-text text-muted">${mystudylist.request}</p>
-                    <p class="card-text text-muted">${mystudylist.meet_time}</p>
-                    <p class="card-text text-muted">${mystudylist.career}</p>
-                    <p class="card-text text-muted">${mystudylist.description}</p>
-                </div>
-            </div>
-        </div>
-    </c:forEach>
-</div>
+    </main>
 </body>
 </html>
 

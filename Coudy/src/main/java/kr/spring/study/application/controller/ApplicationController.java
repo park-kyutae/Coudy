@@ -122,11 +122,13 @@ public class ApplicationController {
         List<ApplicationVO> list = applicationService.selectMyStudyApplications(study_num);
 
         StudyGroupVO studyGroupVO = studyGroupService.selectStudyGroup(study_num);
+        int userTotal = applicationService.selectApplicants(study_num);
 
         ModelAndView model = new ModelAndView();
         model.setViewName("ApplicationList");
         model.addObject("list", list);
         model.addObject("studygroup", studyGroupVO);
+        model.addObject("total", userTotal);
 
         return model;
 

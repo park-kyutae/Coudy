@@ -77,8 +77,8 @@
             <div class="d-flex justify-content-end mb-5">
             <c:if test="${!empty user}">
             <button type="button" justify="end" class="btn btn-text-primary text-white" onclick="location.href='studygroupcreate.do'">생성하기</button>
-        </div>
         </c:if>
+        </div>
         </div>
         <div class="col-2"></div>
     </div>

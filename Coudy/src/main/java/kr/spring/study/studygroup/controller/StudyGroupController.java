@@ -1,6 +1,8 @@
 package kr.spring.study.studygroup.controller;
 
 import kr.spring.member.vo.MemberVO;
+import kr.spring.study.application.dao.ApplicationMapper;
+import kr.spring.study.application.service.ApplicationService;
 import kr.spring.study.studygroup.service.StudyGroupService;
 import kr.spring.study.studygroup.service.StudyUserService;
 import kr.spring.study.studygroup.vo.StudyGroupVO;
@@ -37,6 +39,9 @@ public class StudyGroupController {
     public StudyGroupController(TodoService todoService) {
         this.todoService = todoService;
     }
+
+    @Autowired
+    private ApplicationService applicationService;
 
     @Autowired
     private StudyGroupService studyGroupService;
@@ -155,9 +160,6 @@ public class StudyGroupController {
         //글쓰기
         studyGroupService.insertStudyGroup(studyGroupVO);
 
-
-
-
                 //View에 표시할 메시지
         model.addAttribute(
                 "message", "글 등록이 완료되었습니다.");
@@ -174,20 +176,10 @@ public class StudyGroupController {
 
         logger.debug("<<study_num>> : " + study_num);
 
-        StudyGroupVO studyGroupVO =
-                studyGroupService.selectStudyGroup(study_num);
+        StudyGroupVO studyGroupVO = studyGroupService.selectStudyGroup(study_num);
 
         MemberVO user = (MemberVO) session.getAttribute("user");
         StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
-        //제목에 태그를 허용하지 않음
-        //studyGroupVO.setName(
-        //       StringUtil.useNoHtml(studyGroupVO.getName()));
-        //내용에 줄바꿈 처리하면서 태그를 허용하지 않음
-        //ckeditor 사용시 아래 코드 주석 처리
-		/*
-		board.setContent(
-		 StringUtil.useBrNoHtml(board.getContent()));
-		*/
         //뷰 이름    속성명   속성값
         logger.debug("<<vo>> : " + studyUserVO);
 
@@ -206,8 +198,7 @@ public class StudyGroupController {
             @RequestParam int study_num,
             Model model) {
 
-        StudyGroupVO studyGroupVO =
-                studyGroupService.selectStudyGroup(study_num);
+        StudyGroupVO studyGroupVO = studyGroupService.selectStudyGroup(study_num);
 
         model.addAttribute("studygroup", studyGroupVO);
 

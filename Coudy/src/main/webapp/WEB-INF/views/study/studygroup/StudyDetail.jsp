@@ -51,8 +51,7 @@
                     class="list-group-item d-flex justify-content-between lh-sm"
             >
               <div>
-                <h6 class="my-0"><strong>스터디 상세 설명</strong></h6>
-                <small class="text-muted">Brief description</small>
+                <h6 class="my-2"><strong>스터디 상세 설명</strong></h6>
               </div>
             </li>
 
@@ -60,28 +59,7 @@
                     class="list-group-item d-flex justify-content-between lh-sm"
             >
               <div>
-                <h6 class="my-0">${studygroup.description}</h6>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-md-6 col-lg-12 order-md-last">
-          <ul class="list-group mb-3">
-            <li
-                    class="list-group-item d-flex justify-content-between lh-sm"
-            >
-              <div>
-                <h6 class="my-0"><strong>사용 기술</strong></h6>
-                <small class="text-muted">Brief description</small>
-              </div>
-            </li>
-
-            <li
-                    class="list-group-item d-flex justify-content-between lh-sm"
-            >
-              <div>
-                <h6 class="my-0">${studygroup.stack}</h6>
+                <h6 class="my-4">${studygroup.description}</h6>
               </div>
             </li>
           </ul>
@@ -93,8 +71,7 @@
                     class="list-group-item d-flex justify-content-between lh-sm"
             >
               <div>
-                <h6 class="my-0"><strong>프로젝트 목표 기간</strong></h6>
-                <small class="text-muted">Brief description</small>
+                <h6 class="my-2"><strong>사용 기술</strong></h6>
               </div>
             </li>
 
@@ -102,7 +79,27 @@
                     class="list-group-item d-flex justify-content-between lh-sm"
             >
               <div>
-                <h6 class="my-0">
+                <h6 class="my-4">${studygroup.stack}</h6>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-12 order-md-last">
+          <ul class="list-group mb-3">
+            <li
+                    class="list-group-item d-flex justify-content-between lh-sm"
+            >
+              <div>
+                <h6 class="my-2"><strong>프로젝트 목표 기간</strong></h6>
+              </div>
+            </li>
+
+            <li
+                    class="list-group-item d-flex justify-content-between lh-sm"
+            >
+              <div>
+                <h6 class="my-4">
                   ${studygroup.start_date} ~ ${studygroup.end_date}
                 </h6>
               </div>
@@ -116,8 +113,7 @@
                     class="list-group-item d-flex justify-content-between lh-sm"
             >
               <div>
-                <h6 class="my-0"><strong>스터디 희망 지역</strong></h6>
-                <small class="text-muted">Brief description</small>
+                <h6 class="my-2"><strong>스터디 희망 지역</strong></h6>
               </div>
             </li>
 
@@ -125,7 +121,7 @@
                     class="list-group-item d-flex justify-content-between lh-sm"
             >
               <div>
-                <h6 class="my-0">${studygroup.location}</h6>
+                <h6 class="my-4">${studygroup.location}</h6>
               </div>
             </li>
           </ul>
