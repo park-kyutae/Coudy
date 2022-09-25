@@ -201,6 +201,7 @@
   		WHERE rnum >= #{start} AND rnum <= #{end}
   		]]>
   	</select>
+  	
   	<!-- 코드 개발 -->
   	<select id="selectListA" parameterType="map"
   	                         resultType="techblogVO">

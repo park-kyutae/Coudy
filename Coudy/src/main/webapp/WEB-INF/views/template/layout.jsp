@@ -28,9 +28,7 @@ a{
 </style>
 
 <body>
-<div class="sticky-top my-1">
     <tiles:insertAttribute name="header"/>
-</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col">

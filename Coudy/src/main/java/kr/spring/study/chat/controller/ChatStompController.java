@@ -48,19 +48,18 @@ public class ChatStompController {
 
     @ResponseBody
     @PostMapping("/chat/file/{chatNum}")
-    public Map<String, Object> sendFile(@Login Integer memNum, @PathVariable Integer chatNum, @ModelAttribute ChatFileForm chatFile)
+    public Map<String, Object> sendFile(@Login MemberVO member, @PathVariable Integer chatNum, @ModelAttribute ChatFileForm chatFile)
             throws IOException, NoSuchAlgorithmException {
         MultipartFile file = chatFile.getChatFile();
         String hash = FileStore.getHash(file);
 
-        MemberVO member = memberService.selectMember(memNum);
 
         int logNum = chatService.getChatFileLogSEQ();
-        ChatFileLogVO chatFileVO = new ChatFileLogVO(logNum,memNum, file.getOriginalFilename(), hash, chatNum);
+        ChatFileLogVO chatFileVO = new ChatFileLogVO(logNum,member.getMem_num(), file.getOriginalFilename(), hash, chatNum);
         chatService.saveFile(chatFileVO, file);
 
 
-        template.convertAndSend("/sub/chat/file/" + chatNum, new ChatFileMessage(memNum, member.getName(),
+        template.convertAndSend("/sub/chat/file/" + chatNum, new ChatFileMessage(member.getMem_num(), member.getName(),
                  LocalDateTime.now(),chatFileVO.getChatFileName(), logNum));
 
         return Map.of("result","success");

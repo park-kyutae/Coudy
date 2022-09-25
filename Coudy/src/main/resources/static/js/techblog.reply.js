@@ -52,8 +52,8 @@ $(function(){
 					}
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="수정" class="modify-btn btn btn-primary btn-sm">';
-						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="삭제" class="delete-btn btn btn-danger btn-sm">';
+						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="수정" class="modify-btn btn btn-text-primary btn-sm">';
+						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="삭제" class="delete-btn btn btn-text-danger btn-sm">';
 					}
 					
 					output += '</div>';
