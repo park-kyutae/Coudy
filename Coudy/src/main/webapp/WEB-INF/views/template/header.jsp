@@ -42,7 +42,7 @@
 				<c:if test="${!empty user}">
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 				</c:if>
-				<c:if test="${!empty user && user.auth == 2}">
+				<c:if test="${!empty user}">
 					<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a></li>
 				</c:if>
 
