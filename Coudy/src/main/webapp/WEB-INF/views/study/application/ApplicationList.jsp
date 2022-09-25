@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-9 my-4">
-        <h1>${studygroup.name} 그룹 유저 관리</h1>
+        <h1>${studygroup.name}그룹 유저 관리</h1>
         </div>
     </div>
     <c:forEach var="applicationlist" items="${list}">
@@ -29,10 +29,9 @@
                             <div class="col-10">
                                 <div class="row">
                                     <div class="col-9">
-                                        <h4 class="card-title"> ${applicationlist.name}</h4>
+                                        <h4 class="card-title"> ${applicationlist.name} <c:if test="${!empty user && applicationlist.registered eq 'Y'.charAt(0)}"><strong>승인</strong></c:if>
+                                            <c:if test="${!empty user && applicationlist.registered eq 'N'.charAt(0)}"><strong>미승인</strong></c:if></h4>
                                         <p class="card-subtitle"> 경력 : ${applicationlist.career}, 요구사항 : ${applicationlist.request}, 가능한 시간 : ${applicationlist.meet_time} </p>
-                                        <c:if test="${!empty user && applicationlist.registered eq 'Y'.charAt(0)}"><strong>승인</strong></c:if>
-                                        <c:if test="${!empty user && applicationlist.registered eq 'N'.charAt(0)}"><strong>미승인</strong></c:if>
                                     </div>
                                     <div class="col-3">
                                         <c:if
@@ -40,6 +39,7 @@
                                         >
                                             <div>
                                                 <form class="row g-3 justify-content-end" method="post" action="updatestudyauth.do">
+                                                    <input type="hidden" id="study_user_num_accept" name="study_user_num" value="${applicationlist.study_user_num}">
                                                     <input type="hidden" id="study_num_accept" name="study_num" value="${applicationlist.study_num}">
                                                     <input type="submit" class="btn btn-primary rounded" style="width: 120px; height: 100px;" value="승인 하기">
                                                 </form>
@@ -50,6 +50,7 @@
                                         >
                                             <div>
                                                 <form class="row g-3 justify-content-end" method="post" action="updaterejectauth.do">
+                                                    <input type="hidden" id="study_user_num_reject" name="study_user_num" value="${applicationlist.study_user_num}">
                                                     <input type="hidden" id="study_num_reject" name="study_num" value="${applicationlist.study_num}">
                                                     <input type="submit" class="btn btn-danger rounded" style="width: 120px; height: 100px;" value="승인 취소">
                                                 </form>
