@@ -143,7 +143,7 @@
                 마감일 : ${studygroup.limit_date}
               </p>
               <p class="card-text text-muted">
-                참여 중인 인원 : 1 / ${studygroup.limit}
+                참여 중인 인원 : ${total} / ${studygroup.limit}
               </p>
               <c:if
                       test="${!empty user && studygroup.mem_num == user.mem_num}"
@@ -175,7 +175,7 @@
                 </button>
               </c:if>
               <c:if
-                      test="${!empty user && studyuser.registered eq 'Y'.charAt(0) && studyuser.is_group_manager eq 'Y'.charAt(0)}"
+                      test="${!empty user && studyuser.is_group_manager eq 'Y'.charAt(0)}"
               >
                 <button
                         style="width: 13rem"

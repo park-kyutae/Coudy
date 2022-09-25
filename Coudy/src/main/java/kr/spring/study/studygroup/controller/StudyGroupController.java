@@ -182,11 +182,13 @@ public class StudyGroupController {
         StudyUserVO studyUserVO = studyUserService.selectStudyUser(study_num, user.getMem_num());
         //뷰 이름    속성명   속성값
         logger.debug("<<vo>> : " + studyUserVO);
+        int userTotal = studyUserService.selectApplicants(study_num);
 
         ModelAndView model = new ModelAndView();
         model.setViewName("DetailStudyGroup");
         model.addObject("studygroup", studyGroupVO);
         model.addObject("studyuser", studyUserVO);
+        model.addObject("total", userTotal);
 
         return model;
     }

@@ -11,13 +11,6 @@
             resultType="ApplicationVO">
         SELECT * FROM application a JOIN member_detail m ON a.MEM_NUM = m.MEM_NUM JOIN STUDY_USER su ON su.STUDY_NUM = a.STUDY_NUM WHERE a.study_num=#{study_num} AND a.mem_num = su.MEM_NUM
     </select>
-    <select id="selectApplicants" parameterType="map" resultType="integer">
-        SELECT
-        COUNT(*)
-        FROM Application a JOIN member m
-        ON a.mem_num = m.mem_num
-        WHERE a.study_num=#{study_num}
-    </select>
 </mapper>
 
 
