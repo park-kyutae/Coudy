@@ -16,6 +16,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -36,16 +38,16 @@ public class ChatController {
 
 
     @GetMapping
-    public String chatMain(@Login Integer memNum, Model model) {
-        Map<ChatRoomVO, ChatTextLogVO> latestMessageEachRoom = chatService.findLatestMessageEachRoom(memNum);
+    public String chatMain(@Login MemberVO memberVO, Model model) {
+        Map<ChatRoomVO, ChatTextLogVO> latestMessageEachRoom = chatService.findLatestMessageEachRoom(memberVO.getMem_num());
         model.addAttribute("chatRooms", latestMessageEachRoom);
         return "study/chat/ChatMain";
     }
 
     @GetMapping("/add")
-    public String addRoomView(@Login Integer memNum, Model model) {
+    public String addRoomView(@Login MemberVO member, Model model) {
         model.addAttribute("createChatRoomForm", new CreateChatRoomForm());
-        model.addAttribute("ownerMemNum", memNum);
+        model.addAttribute("ownerMemNum", member.getMem_num());
 
         return "study/chat/CreateChatRoom";
 
@@ -53,9 +55,13 @@ public class ChatController {
     }
 
     @PostMapping("/add")
-    public String addRoom(@Login Integer memNum, @ModelAttribute CreateChatRoomForm form, RedirectAttributes redirectAttributes) {
-        log.info("form = {}", form);
+    public String addRoom(@Validated @ModelAttribute CreateChatRoomForm form, BindingResult result, RedirectAttributes redirectAttributes) {
+        log.info("result = {}", result);
 
+        if (result.hasErrors()) {
+            log.info("result = {}", result);
+            return "study/chat/CreateChatRoom";
+        }
         ChatRoomVO chatRoomVO = new ChatRoomVO(form.getChatName());
 
         List<MemberVO> members = Arrays.stream(form.getMem_num().split(","))
@@ -71,7 +77,7 @@ public class ChatController {
     }
 
     @GetMapping("/edit")
-    public String editRoomView(@Login Integer memNum, @RequestParam Integer chatNum, Model model) {
+    public String editRoomView(@RequestParam Integer chatNum, Model model) {
         ChatRoomVO chatRoom = chatService.findChatRoomByChatNum(chatNum);
         List<MemberVO> members = chatService.selectChatRoomMembers(chatNum);
         model.addAttribute("chatRoom", chatRoom);
@@ -82,11 +88,20 @@ public class ChatController {
     }
 
     @PostMapping("/edit")
-    public String editRoom(@Login Integer memNum, @ModelAttribute EditChatRoomForm form, @RequestParam Integer chatNum, Model model) {
+    public String editRoom(@Validated @ModelAttribute EditChatRoomForm form,BindingResult result, @RequestParam Integer chatNum, Model model) {
 //        List<MemberVO> members = Arrays.stream(form.getMem_num().split(","))
 //                .map(mem_num -> new MemberVO(Integer.parseInt(mem_num)))
 //                .collect(Collectors.toList());
 
+        if (result.hasErrors()) {
+            log.info("result = {}", result);
+            ChatRoomVO chatRoom = chatService.findChatRoomByChatNum(chatNum);
+            List<MemberVO> members = chatService.selectChatRoomMembers(chatNum);
+
+            model.addAttribute("chatRoom", chatRoom);
+            model.addAttribute("members", members);
+            return "study/chat/EditChatRoom";
+        }
         List<MemberVO> members = new ArrayList<>();
         for (String mem_num :
                 form.getMem_num().split(",")) {
@@ -100,9 +115,8 @@ public class ChatController {
     }
 
     @GetMapping("/{chatNum}")
-    public String joinRoom(@Login Integer memNum, @PathVariable Integer chatNum, Model model) {
+    public String joinRoom(@Login MemberVO member, @PathVariable Integer chatNum, Model model) {
 
-        MemberVO memberVO = memberService.selectMember(memNum);
 
         List<ChatTextLogVO> chatTextLogVOList = chatService.findMessagesByChatNum(chatNum);
         chatTextLogVOList.addAll(chatService.findConvertedFilesByChatNum(chatNum));
@@ -111,7 +125,7 @@ public class ChatController {
 
         ChatRoomVO chatRoomVO = chatService.findChatRoomByChatNum(chatNum);
 
-        model.addAttribute("member", memberVO);
+        model.addAttribute("member", member);
         model.addAttribute("chatRoomVO", chatRoomVO);
         model.addAttribute("chatMessages", chatMessages);
         return "/study/chat/ChatRoom";
@@ -125,7 +139,7 @@ public class ChatController {
     }
 
     @GetMapping("/{chatNum}/upload")
-    public String uploadFiles(@Login Integer memNum, @PathVariable Integer chatNum, Model model) {
+    public String uploadFiles( @PathVariable Integer chatNum, Model model) {
 
 //        MemberVO memberVO = memberService.selectMember(memNum);
         List<ChatFileLogVO> filesByChatNum = chatService.findFilesByChatNum(chatNum);
@@ -138,8 +152,8 @@ public class ChatController {
     }
 
     @PostMapping("/quit")
-    public String quitRoom(@Login Integer memNum, @RequestParam Integer chatNum, Model model) {
-        chatService.quitChatRoom(new MemberVO(memNum), new ChatRoomVO(chatNum));
+    public String quitRoom(@Login MemberVO member, @RequestParam Integer chatNum, Model model) {
+        chatService.quitChatRoom(member, new ChatRoomVO(chatNum));
         return "redirect:/chat";
     }
 

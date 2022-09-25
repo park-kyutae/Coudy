@@ -7,6 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div style="height: 20px" >
+<div style="background-color: #e0cffc;color: #8541f5" class="align-center text-center mx-auto" >
     <h2 class="mb-3">Coudy 채용센터 - ${companyVO.com_name}</h2>
 </div>

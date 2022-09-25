@@ -5,50 +5,50 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="noticeList" extends="main">
+    <definition name="noticeList" extends="mainV2">
     	<put-attribute name="title" value="공지게시판목록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/notice/noticeList.jsp"/>                   
     </definition>
     
-    <definition name="noticeWrite" extends="main">
+    <definition name="noticeWrite" extends="mainV2">
     	<put-attribute name="title" value="공지게시판 글쓰기"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/notice/noticeWrite.jsp"/>                   
     </definition>
     
-    <definition name="noticeView" extends="main">
+    <definition name="noticeView" extends="mainV2">
     	<put-attribute name="title" value="공지게시판 글상세"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/notice/noticeView.jsp"/>                   
     </definition>
     
-     <definition name="noticeModify" extends="main">
+     <definition name="noticeModify" extends="mainV2">
     	<put-attribute name="title" value="공지게시판 글수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/notice/noticeModify.jsp"/>                   
     </definition>
     
     <!-- 팀블로그 -->
-    <definition name="teamblogList" extends="main">
+    <definition name="teamblogList" extends="mainV2">
     	<put-attribute name="title" value="팀블로그목록"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/teamBlog/teamList.jsp"/>                   
     </definition>
     
-      <definition name="teamblogWrite" extends="main">
+      <definition name="teamblogWrite" extends="mainV2">
     	<put-attribute name="title" value="팀블로그글쓰기"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/teamBlog/teamWrite.jsp"/>                   
     </definition>
     
-     <definition name="teamblogView" extends="main">
+     <definition name="teamblogView" extends="mainV2">
     	<put-attribute name="title" value="팀블로그글상세"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/teamBlog/teamView.jsp"/>                   
     </definition>
     
-       <definition name="teamblogModify" extends="main">
+       <definition name="teamblogModify" extends="mainV2">
     	<put-attribute name="title" value="팀블로그 글수정"/>
     	<put-attribute name="body"
     	  value="/WEB-INF/views/teamBlog/teamModify.jsp"/>                   

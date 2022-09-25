@@ -9,14 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
-    #btn1{
-        background-color: #8541f5;
-        border-color: #8541f5;
-    }
-    #btn1:hover{
-        background-color:#3d0991;
-        border-color:#3d0991;
-    }
 
     span{
         font-size: 15pt;
@@ -46,8 +38,8 @@
 
 </div>
 <div class="container" style="height: 1500px">
-    <div class="row-cols-4 align-center">
-        <div class="align-center col-sm-12">
+    <div class="row-cols-4">
+        <div class="col-sm-12">
             <h4>${companyVO.com_name}</h4>
             <span class="float-end">조회수 : ${companyVO.com_hit}</span>
             <h2>${companyVO.com_title}</h2>
@@ -191,7 +183,7 @@
         </div>
     </div>
 
-    <button id="btn1" class="btn btn-primary" onclick="location.href='/company/comHome.do'">홈으로</button>
+    <button id="btn1" class="btn btn-primary float-end mt-5" onclick="location.href='/company/comHome.do'">홈으로</button>
 </div>
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/js/company1.js"></script>

@@ -1,7 +1,11 @@
 package kr.spring.config;
 
+import kr.spring.interceptor.StudyInterceptor;
 import kr.spring.study.plan.artgumentResolver.LoginArgumentResolver;
 import kr.spring.study.plan.testUtil.LoginTestInterceptor;
+import kr.spring.study.studygroup.service.StudyGroupService;
+import kr.spring.study.studygroup.service.StudyUserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -21,16 +25,20 @@ import java.util.List;
 //자바코드 기반 설정 클래스
 
 @Configuration
-public class AppConfig implements WebMvcConfigurer{
+@RequiredArgsConstructor
+public class AppConfig implements WebMvcConfigurer {
 
-	WriterCheckInterceptor interceptor;
-	//WriterCheckInterceptor에서 BoardService 객체를
-	//주입받아야 하기때문에 Bean 객체로 등록함
-	@Bean
-	public WriterCheckInterceptor interceptor() {
-		interceptor = new WriterCheckInterceptor();
-		return interceptor;
-	}
+    WriterCheckInterceptor interceptor;
+    private final StudyUserService studyUserService;
+    private final StudyGroupService studyGroupService;
+
+    //WriterCheckInterceptor에서 BoardService 객체를
+    //주입받아야 하기때문에 Bean 객체로 등록함
+    @Bean
+    public WriterCheckInterceptor interceptor() {
+        interceptor = new WriterCheckInterceptor();
+        return interceptor;
+    }
 
 	//인터셉터 지정
 	@Override
@@ -48,30 +56,38 @@ public class AppConfig implements WebMvcConfigurer{
 				.addPathPatterns("/member/changePassword.do")
 				.addPathPatterns("/techblog/techblogUpdate.do")
 
-				.addPathPatterns("/techblog/techblogDelete.do")
-				.addPathPatterns("/notice/Write.do")
-				.addPathPatterns("/notice/Update.do")
-				.addPathPatterns("/notice/Delete.do")
-				.addPathPatterns("/teamblog/Write.do")
-				.addPathPatterns("/teamblog/Update.do")
-				.addPathPatterns("/teamblog/Delete.do")
-		//TODO 표현식으로 정리
-		.addPathPatterns("/techblog/techblogDelete.do")
-				.addPathPatterns("/notice/Write.do")
-				.addPathPatterns("/notice/Update.do")
-				.addPathPatterns("/notice/Delete.do")
-				.addPathPatterns("/member/admin_update.do")
-				.addPathPatterns("/member/admin_list.do");
+                .addPathPatterns("/techblog/techblogDelete.do")
+                .addPathPatterns("/notice/Write.do")
+                .addPathPatterns("/notice/Update.do")
+                .addPathPatterns("/notice/Delete.do")
+                //TODO 표현식으로 정리
 
-		registry.addInterceptor(interceptor)
-				.order(2)
-		.addPathPatterns("/techblog/techblogUpdate.do")
-		.addPathPatterns("/techblog/techblogDelete.do");
-		//TODO 로그인 기능 완성 시 삭제
-		registry.addInterceptor(new LoginTestInterceptor())
-				.order(3)
-				.addPathPatterns(Arrays.asList("/study/plan/**","/study/todo/**","/chat/**"));
+                .addPathPatterns("/techblog/techblogDelete.do")
+                .addPathPatterns("/notice/Write.do")
+                .addPathPatterns("/notice/Update.do")
+                .addPathPatterns("/notice/Delete.do")
+                .addPathPatterns("/member/admin_update.do")
+                .addPathPatterns("/member/admin_list.do")
+                .addPathPatterns("/chat/**")
+                .addPathPatterns("/study/todo/**")
+                .addPathPatterns("/study/plan/**")
+                .addPathPatterns("/study/studymain.do");
 
+
+        registry.addInterceptor(interceptor)
+                .order(2)
+                .addPathPatterns("/techblog/techblogUpdate.do")
+                .addPathPatterns("/techblog/techblogDelete.do");
+
+        registry.addInterceptor(new StudyInterceptor(studyUserService, studyGroupService))
+                .order(3)
+                .addPathPatterns("/study/todo/**")
+                .addPathPatterns("/study/studymain.do")
+                .addPathPatterns("/study/plan/**");
+		//테스트 용 기능
+//		registry.addInterceptor(new LoginTestInterceptor())
+//				.order(4)
+//				.addPathPatterns(Arrays.asList("/**"));
 
 	}
 
@@ -89,7 +105,7 @@ public class AppConfig implements WebMvcConfigurer{
 				"/WEB-INF/tiles-def/main.xml",
 				"/WEB-INF/tiles-def/first.xml",
 				"/WEB-INF/tiles-def/second.xml",
-				"/WEB-INF/tiles-def/second_main.xml",
+				"/WEB-INF/tiles-def/secondMain.xml",
 				"/WEB-INF/tiles-def/third.xml",
 				"/WEB-INF/tiles-def/forth.xml",
 				"/WEB-INF/tiles-def/fifth.xml",

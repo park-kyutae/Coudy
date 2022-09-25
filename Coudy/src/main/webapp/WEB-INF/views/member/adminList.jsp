@@ -47,7 +47,7 @@ a:link{
 	<h4>관리자페이지</h4>
 	<div class="row">
 		<div class="col align-center text-center">
-			<img  class="mb-4 mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="20%" height="40%">
+			<img  class="mb-4 mt-2" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" width="20%" height="35%">
 			
 			<form action="admin_list.do" id="search_form"
 			                                    method="get">

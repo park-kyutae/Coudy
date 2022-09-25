@@ -1,25 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>    
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title><tiles:getAsString name="title"/></title>
-
-<%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">--%>
+    <link href="${pageContext.request.contextPath}/css/custom-bootstrap.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js" type="text/javascript"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <title><tiles:getAsString name="title"/></title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
 </head>
+
+<style>
+a:hover{
+	 text-decoration:none;
+	 color:gray;
+}
+a{
+	color:black;
+}
+</style>
+
 <body>
-<div id="main">
-	<div id="main_header">
-		<tiles:insertAttribute name="header"/>
-	</div>
-	<div id="main_body">
-		<tiles:insertAttribute name="body"/>
-	</div>
-	<div id="main_footer">
-		<tiles:insertAttribute name="footer"/>
-	</div>
+    <tiles:insertAttribute name="header"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <tiles:insertAttribute name="body"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <tiles:insertAttribute name="footer"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>

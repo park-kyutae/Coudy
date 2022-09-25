@@ -36,9 +36,6 @@
     }
 </style>
 <div class="">
-    <div class="align-center">
-        <h2>채용 공고</h2>
-    </div>
     <c:if test="${count == 0}">
     <div class="result-display">표시할 게시물이 없습니다.</div>
     </c:if>
@@ -105,7 +102,7 @@
                 </div>
             </c:forEach>
         </div>
-        <c:if test="${!empty user}">
+        <c:if test="${!empty user && user.auth == 3 || user.auth == 4}">
             <div class="row float-end">
                 <input type="button" class="btn btn-secondary" value="공고쓰기"
                        onclick="location.href='${pageContext.request.contextPath}/company/insertCom.do'"/>

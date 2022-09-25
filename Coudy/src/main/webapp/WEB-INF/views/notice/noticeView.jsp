@@ -18,26 +18,28 @@
    crossorigin="anonymous"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_ik.css">
 
-
+<br><br><br>
 <div class="container">
 	
 	<!-- =======================고정 상단바========= -->
-	<div class="p-4 p-md-5 mb-4 rounded text-white"
+	<!-- <div class="p-4 p-md-5 mb-4 rounded text-white"
 	 style="background-image: url('https://t1.daumcdn.net/cfile/tistory/213A744B58EC2A4409');
 	 background-size:cover;
 	 background-position:center center;">
 		<div class="col-md-6 px-0">
 			<h1 class="text-primary display-4 fst-italic ">Team1 PROJECT</h1>
 		</div>
-	</div>
+	</div> -->
 	<!-- ==========================================  -->
 	
-	<div class="row g-5">
-	<h3 class="pb-4 mb-4 fst-italic">NOTICE</h3>
+	<div class="row g-5  bg-success rounded"  style="background-image: url('https://t1.daumcdn.net/cfile/tistory/213A744B58EC2A4409');
+	 background-size:cover;
+	 background-position:center center;">
+	<div class="col">
+	
+	<h3 class="pb-4 mb-4 fst-italic " >NOTICE</h3>
 	</div>
-	<hr  style="border-top:5px solid #CB28BE" size="1" width="100%">
-	
-	
+	</div>
 	<h1 class="fw-bold">${notice.notice_title }</h1>
 
 	<!-- ===============개인 아이디 표시================= -->
@@ -152,6 +154,7 @@
 	<!-- 댓글 UI 끝 -->
 	
 </div>
+
 
 
 

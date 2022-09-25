@@ -32,25 +32,33 @@ $(function(){
 				//댓글 목록 작업
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
+
 					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="70" height="70" class="my-photo">';
-					
+
 					output += '<div class="sub-item">';
-					output += '<p>' + item.tech_re_content.replace(/\r\n/g,'<br>') + '</p>';
+					output += '<div class="row my-3">';
 					
+					output += '<div class="col-lg-1">';
+					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="70" height="70" class="my-photo">';
+					output += '</div>';
+					output += '<div class="col-lg-10">';
+					
+					output += item.id;
+					output += '<p>' + item.tech_re_content.replace(/\r\n/g,'<br>') + '</p>';
 					if(item.tech_re_modifydate){
 						output += '<span class="modify-date">최근 수정일 : ' + item.tech_re_modifydate + '</span>';
 					}else{
 						output += '<span class="modify-date">등록일 : ' + item.tech_re_date + '</span>';
 					}
-					
 					if(param.user_num==item.mem_num){
 						//로그인한 회원번호와 댓글 작성자 회원번호가 일치
-						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="수정" class="modify-btn">';
-						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="삭제" class="delete-btn">';
+						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="수정" class="modify-btn btn btn-text-primary btn-sm">';
+						output += ' <input type="button" data-num="'+ item.tech_re_num +'" value="삭제" class="delete-btn btn btn-text-danger btn-sm">';
 					}
-					output += '<hr size="1" noshade>';
+					
 					output += '</div>';
-					output += '</div>'; 
+					output += '</div>';
+					output += '</div>';
 					
 					//문서 객체에 추가
 					$('#output').append(output);
@@ -149,15 +157,21 @@ $(function(){
 		
 		//댓글 수정폼 UI
 		let modifyUI = '<form id="mre_form">';
+		modifyUI += '<div class="row">';
+		modifyUI += '<div class="col-lg-10">';
 		modifyUI += '<input type="hidden" name="tech_re_num" id="mre_num" value="'+ tech_re_num +'">';
-		modifyUI += '<textarea rows="3" cols="50" name="tech_re_content" id="mre_content" class="rep-content">'+ content +'</textarea>';
+		modifyUI += '<textarea rows="3" cols="50" name="tech_re_content" id="mre_content" class="rep-content form-control" style="resize: none;">'+ content +'</textarea>';
+		modifyUI += '</div>';
+		modifyUI += '<div class="col-lg-1">';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
-		modifyUI += '<div id="mre_second" class="align-right">';
-		modifyUI += '<input type="submit" value="수정">';
-		modifyUI += ' <input type="button" value="취소" class="re-reset">';
+		modifyUI += '<div id="mre_second">';
+		modifyUI += '<input type="submit" value="수정" class="btn btn-primary btn-sm">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset btn btn-secondary btn-sm">';
+		modifyUI += '</div>';
 		modifyUI += '</div>';
 		modifyUI += '<hr size="1" noshade width="96%">';
 		modifyUI += '</form>';
+		
 		
 		//이전에 이미 수정하는 댓글이 있을 경우 수정 버튼을
 		//클릭하면 숨김 sub-item을 환원시키고 수정폼을 초기화
