@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+		"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+		"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="StudyGroupList" extends="second_main">
-    	<put-attribute name="title" value="스터디그룹 메인"/>
-    	<put-attribute name="body"
-    	  value="/WEB-INF/views/study/studygroup/StudyList.jsp"/>
+	<definition name="StudyGroupList" extends="second_main">
+		<put-attribute name="title" value="스터디그룹 메인"/>
+		<put-attribute name="body"
+					   value="/WEB-INF/views/study/studygroup/StudyList.jsp"/>
 	</definition>
 	<definition name="CreateStudyGroup" extends="second_main">
 		<put-attribute name="title" value="스터디그룹 생성하기"/>
@@ -44,6 +44,3 @@
 					   value="/WEB-INF/views/study/application/ApplicationList.jsp"/>
 	</definition>
 </tiles-definitions>
-
-
-

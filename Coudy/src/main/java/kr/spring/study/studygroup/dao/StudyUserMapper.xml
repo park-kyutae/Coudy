@@ -32,6 +32,14 @@
             registered='N'
         WHERE study_user_num=#{study_user_num}
     </update>
+
+    <select id="selectApplicants" parameterType="map" resultType="integer">
+        SELECT
+        COUNT(*)
+        FROM STUDY_USER su JOIN STUDYGROUP s
+        ON su.STUDY_NUM = s.STUDY_NUM
+        WHERE su.REGISTERED = 'Y' AND su.study_num = #{study_num}
+    </select>
 </mapper>
 
 

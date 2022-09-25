@@ -17,6 +17,7 @@ public interface StudyUserService {
     public void deleteApplication(Integer study_user_num);
     public StudyUserVO selectStudyUser(Integer study_num, Integer mem_num);
     public StudyUserVO selectUser(Integer mem_num);
+    public int selectApplicants(Integer study_num);
 
     List<MemberVO> selectMemberByStudyNum(Integer study_num);
 }
