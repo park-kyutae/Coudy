@@ -102,7 +102,7 @@
                 </div>
             </c:forEach>
         </div>
-        <c:if test="${!empty user}">
+        <c:if test="${!empty user && user.auth == 3 || user.auth == 4}">
             <div class="row float-end">
                 <input type="button" class="btn btn-secondary" value="공고쓰기"
                        onclick="location.href='${pageContext.request.contextPath}/company/insertCom.do'"/>

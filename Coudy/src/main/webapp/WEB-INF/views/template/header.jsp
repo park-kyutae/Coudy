@@ -33,7 +33,7 @@
 			<c:if test="${!empty user}">
 				<a class="fs-6" style="line-height: 40px" href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
 			</c:if>
-			<c:if test="${!empty user && user.auth == 2}">
+			<c:if test="${!empty user}">
 				<a class="fs-6" style="line-height: 40px" href="${pageContext.request.contextPath}/member/myPage.do">MY페이지</a>
 			</c:if>
 		
