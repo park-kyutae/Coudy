@@ -33,11 +33,8 @@ $(function(){
 				$(param.list).each(function(index,item){
 					let output = '<div class="item">';
 
-					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="70" height="70" class="my-photo">';
-
 					output += '<div class="sub-item">';
 					output += '<div class="row my-3">';
-					
 					output += '<div class="col-lg-1">';
 					output += '<img src="../member/viewProfile.do?mem_num='+ item.mem_num +'" width="70" height="70" class="my-photo">';
 					output += '</div>';
@@ -179,7 +176,7 @@ $(function(){
 		initModifyForm();
 		
 		//지금 클릭해서 수정하고자 하는 데이터는 감추기
-		$(this).parent().hide();
+		$(this).parents('sub-item').hide();
 		
 		//수정 폼을 수정하고자 하는 데이터가 있는 div에 노출
 		$(this).parents('.item').append(modifyUI);
