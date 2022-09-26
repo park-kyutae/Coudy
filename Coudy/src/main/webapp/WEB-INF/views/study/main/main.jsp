@@ -189,7 +189,7 @@
 
 
     <div class="row study-content">
-        <div class="col bg-secondary bg-opacity-25 rounded m-2 col-3">
+       <%--  <div class="col bg-secondary bg-opacity-25 rounded m-2 col-3">
             <div class="row">
                 <div class="col">
                     <span><a href="${pageContext.request.contextPath}/notice/list.do?notice_num=${notice.notice_num }"  >공지사항</a></span>
@@ -206,8 +206,8 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="col bg-secondary bg-opacity-25 rounded m-2 col-3">
+        </div> --%>
+       <!--  <div class="col bg-secondary bg-opacity-25 rounded m-2 col-3">
             <div class="row">
                 <div class="col">
                     <span>팀 블로그</span>
@@ -224,7 +224,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 </body>
