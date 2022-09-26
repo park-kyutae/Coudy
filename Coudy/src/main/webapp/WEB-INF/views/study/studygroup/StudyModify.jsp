@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
+		<div class="row mt-5">
 			<div class="col-2"></div>
 			<div class="col-8">
 				<h1>스터디 그룹 개설하기</h1>
