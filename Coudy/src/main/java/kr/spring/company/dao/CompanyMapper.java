@@ -43,12 +43,12 @@ public interface CompanyMapper {
 
     @Select("SELECT * FROM COM_RESUME r\n" +
             "    INNER JOIN COM_INFO CI on CI.COM_NUM = r.COM_NUM\n" +
-            "        WHERE CI.MEM_NUM=#{mem_num}")
+            "        WHERE CI.MEM_NUM=#{mem_num} ORDER BY r.RESUME_NUM DESC")
     public List<CompanyResumeVO> resumeList(Integer mem_num);
 
     @Select("SELECT * FROM COM_RESUME r\n" +
             "    INNER JOIN COM_INFO CI on CI.COM_NUM = r.COM_NUM\n" +
-            "        WHERE r.MEM_NUM=#{mem_num}")
+            "        WHERE r.MEM_NUM=#{mem_num} ORDER BY r.RESUME_NUM DESC")
     public List<MyResumeDTO> myResumeList(Integer mem_num);
 
     @Select("SELECT *\n" +
