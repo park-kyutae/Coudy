@@ -157,13 +157,11 @@ hr:not([size]) {
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          메뉴1
+          Study Room
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">메뉴1</a></li>
-            <li><a href="#" class="link-dark rounded">메뉴2</a></li>
-            <li><a href="#" class="link-dark rounded">메뉴3</a></li>
+            <li><a href="${pageContext.request.contextPath}/study/mystudylist.do" class="link-dark rounded">나의 스터디 목록</a></li>
           </ul>
         </div>
       </li>

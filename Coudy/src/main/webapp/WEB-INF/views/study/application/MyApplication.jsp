@@ -30,7 +30,7 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <div class="row">
-                    <h2>스터디 목록</h2>
+                    <h2>나의 스터디 목록</h2>
                     <c:if test="${empty list}"> 등록된 신청서가 없습니다.</c:if>
                     <c:if test="${!empty list}">
                     <c:forEach var="mystudylist" items="${list}">
@@ -48,7 +48,7 @@
                                                     <div class="col-9">
                                                         <h4 class="card-title"> ${mystudylist.name}</h4>
                                                         <p class="card-subtitle"> 경력 : ${mystudylist.career}, 요구사항 : ${mystudylist.request}, 가능한 시간 : ${mystudylist.meet_time} </p>
-                                                        <c:if test="${!empty user && mystudylist.registered eq 'Y'.charAt(0)}"><strong>승인ㅇ</strong></c:if>
+                                                        <c:if test="${!empty user && mystudylist.registered eq 'Y'.charAt(0)}"><strong>승인</strong></c:if>
                                                         <c:if test="${!empty user && mystudylist.registered eq 'N'.charAt(0)}"><strong>미승인</strong></c:if>
                                                     </div>
                                                     <div class="col-3">
@@ -56,7 +56,7 @@
                                                                 test="${!empty user && mystudylist.registered eq 'N'.charAt(0)}"
                                                         >
                                                             <div class="row g-3 justify-content-end">
-                                                                <input type="submit" class="btn btn-primary rounded bg-gray" style="width: 120px; height: 100px;" value="승인 대기">
+                                                                <input type="submit" class="btn btn-primary rounded bg-secondary text-white" style="width: 120px; height: 100px;" value="승인 대기">
                                                             </div>
                                                         </c:if>
                                                         <c:if
