@@ -60,11 +60,11 @@
 	    	</div>
 	    	<div class="row">
 	    		<div class="col-lg form-check">
-					<label class="form-check-label col-sm-1 mx-2" for="AWS"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="AWS" id="AWS"/>AWS</label>
-					<label class="form-check-label col-sm-1 mx-2" for="iOS"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="iOS" id="iOS"/>iOS</label>
-					<label class="form-check-label col-sm-1 mx-1 mr-4" for="Android"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="Android" id="Android"/>Android</label>
-					<label class="form-check-label col-sm-1 mx-5" for="WEB"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="WEB" id="WEB"/>WEB</label>
-					<label class="form-check-label col-sm-2" for="코드리뷰"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="코드리뷰" id="코드리뷰"/>코드리뷰</label>
+					<label class="form-check-label col-sm-1 mx-2" for="#AWS"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="#AWS" id="#AWS"/>#AWS</label>
+					<label class="form-check-label col-sm-1 mx-2" for="#iOS"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="#iOS" id="iOS"/>#iOS</label>
+					<label class="form-check-label col-sm-1 mx-1 mr-4" for="#Android"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="#Android" id="#Android"/>#Android</label>
+					<label class="form-check-label col-sm-1 mx-5" for="#WEB"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="#WEB" id="#WEB"/>#WEB</label>
+					<label class="form-check-label col-sm-2" for="#코드리뷰"><form:checkbox path="f_tech_tag" cssClass="form-check-input" value="#코드리뷰" id="#코드리뷰"/>#코드리뷰</label>
 	    		</div>
 	    	</div>
 	    	<div class="row">
