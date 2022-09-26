@@ -16,7 +16,5 @@ public class  EditChatRoomForm {
     private String chatName;
     @NotNull
     private int chatNum;
-    @NotBlank
-    @Pattern(regexp = "^[[0-9],]*[0-9]$")
     private String  mem_num;
 }

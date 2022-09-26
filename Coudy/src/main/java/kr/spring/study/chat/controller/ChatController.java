@@ -117,7 +117,7 @@ public class ChatController {
     @GetMapping("/{chatNum}")
     public String joinRoom(@Login MemberVO member, @PathVariable Integer chatNum, Model model) {
 
-
+        MemberVO memberDetail = memberService.selectMember(member.getMem_num());
         List<ChatTextLogVO> chatTextLogVOList = chatService.findMessagesByChatNum(chatNum);
         chatTextLogVOList.addAll(chatService.findConvertedFilesByChatNum(chatNum));
 
@@ -125,7 +125,7 @@ public class ChatController {
 
         ChatRoomVO chatRoomVO = chatService.findChatRoomByChatNum(chatNum);
 
-        model.addAttribute("member", member);
+        model.addAttribute("member", memberDetail);
         model.addAttribute("chatRoomVO", chatRoomVO);
         model.addAttribute("chatMessages", chatMessages);
         return "/study/chat/ChatRoom";
