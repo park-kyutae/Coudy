@@ -27,11 +27,11 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <tiles:insertAttribute name="footer"/>
-                </div>
-            </div>
+<%--            <div class="row">--%>
+<%--                <div class="col">--%>
+<%--                    <tiles:insertAttribute name="footer"/>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
         <div class="col-2">
             <div class="row pt-5">
