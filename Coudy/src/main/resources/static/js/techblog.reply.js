@@ -162,8 +162,8 @@ $(function(){
 		modifyUI += '<div class="col-lg-1">';
 		modifyUI += '<div id="mre_first"><span class="letter-count">300/300</span></div>';
 		modifyUI += '<div id="mre_second">';
-		modifyUI += '<input type="submit" value="수정" class="btn btn-primary btn-sm">';
-		modifyUI += ' <input type="button" value="취소" class="re-reset btn btn-secondary btn-sm">';
+		modifyUI += '<input type="submit" value="수정" class="btn btn-text-primary btn-sm">';
+		modifyUI += ' <input type="button" value="취소" class="re-reset btn btn-text-secondary btn-sm">';
 		modifyUI += '</div>';
 		modifyUI += '</div>';
 		modifyUI += '<hr size="1" noshade width="96%">';
