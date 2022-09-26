@@ -71,8 +71,9 @@
       </div>
 </div>
 
-<div class="fixed-bottom d-flex justify-content-end ">
-    <div class="bg-opacity-10 bg-secondary rounded-circle mb-3 me-3 p-3">
+
+<div class="fixed-bottom d-flex justify-content-end " style="pointer-events: none">
+    <div class="bg-opacity-10 bg-secondary rounded-circle mb-3 me-3 p-3 pointer" style="pointer-events: auto">
         <img class="pointer " src="/images/chat3.svg"
              onclick="window.open('/chat','test','width=500,height=700');return false;" style="filter: invert(31%) sepia(35%) saturate(503%) hue-rotate(202deg) brightness(94%) contrast(91%);">
     </div>

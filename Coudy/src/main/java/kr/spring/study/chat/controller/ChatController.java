@@ -20,8 +20,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriUtils;
 
 import java.net.MalformedURLException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -171,8 +173,9 @@ public class ChatController {
         UrlResource resource = new UrlResource("file:" + dir + chatFileLogVO.getChatFileHash());
 
         String chatFileName = chatFileLogVO.getChatFileName();
-
-        String contentDisposition = "attachment; filename=\"" + chatFileName + "\"";
+        log.info("chatFileName = {}", chatFileName);
+        String encodeUploadFileName = UriUtils.encode(chatFileName, StandardCharsets.UTF_8);
+        String contentDisposition = "attachment; filename=\"" + encodeUploadFileName + "\"";
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition)
