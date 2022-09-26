@@ -32,27 +32,29 @@
 					<div class="row">
 						<div class="col my-3" id="techdate">
 							${techblog.tech_date}
-							${techblog.tech_name}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col my-auto" id="techtitle" style="font-size: 22pt;">
+							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa">${techblog.tech_title}</a>
+							<span class="fs-6 mb-5">
+								<img src="${pageContext.request.contextPath}/images/eye-fill.svg" class="">
+								${techblog.tech_hit}
+							</span>
+						</div>
+					</div>
+					<div class="row mt-4">
+						<div class="col">
 							<c:if test="${!empty techblog.photo_name}">
 								<img src="imageView.do?tech_num=${techblog.tech_num}&board_type=1" width="40" height="40" class="my-photo">
 							</c:if>
 							<c:if test="${empty techblog.photo_name}">
 								<img src="${pageContext.request.contextPath}/images/face.png" width="40" height="40" class="my-photo">
 							</c:if>
+							${techblog.tech_name}
 						</div>
-						<div class="col my-auto mx-3">
-						<img src="${pageContext.request.contextPath}/images/eye-fill.svg" class="mx-2">
-							${techblog.tech_hit}
-						</div>
-					</div>
-					<div class="row">
-						<div class="col my-auto" id="techtitle" style="font-size: 22pt;">
-							<a href="techblogDetail.do?tech_num=${techblog.tech_num}" id="techa">${techblog.tech_title}</a>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col my-auto" style="height: 20px; color: gray;">
-							태그 : ${techblog.tech_tag}
+						<div class="col my-auto d-flex justify-content-end" style="height: 20px; color: gray;">
+							태그 ${techblog.tech_tag}
 						</div>
 					</div>
 					<div class="row">

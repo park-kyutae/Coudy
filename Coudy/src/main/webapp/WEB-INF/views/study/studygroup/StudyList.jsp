@@ -58,8 +58,13 @@
                         <p class="card-subtitle">${studygroup.purpose}</p>
                         </div>
                         <span class="badge bg-info">${studygroup.stack}</span>
-                        <p class="card-text text-muted">참여 중인 인원 : 1 / ${studygroup.limit}</p>
-                         <button style="width: 13rem;" type="button" class="btn btn-text-primary text-white justify-content-md-center" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">신청 하기</button>
+                        <p class="card-text text-muted">참여 중인 인원 : ${studygroup.total} / ${studygroup.limit}</p>
+                        <c:if test="${studygroup.total >= studygroup.limit}">
+                            <button style="width: 13rem;" type="button" class="btn btn-secondary text-white justify-content-md-center" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">모집 완료</button>
+                            </c:if>
+                            <c:if test="${studygroup.total < studygroup.limit}">
+                               <button style="width: 13rem;" type="button" class="btn btn-text-primary text-white justify-content-md-center" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'">신청 하기</button>
+                               </c:if>
                         </div>
                 </div>
             </div>
