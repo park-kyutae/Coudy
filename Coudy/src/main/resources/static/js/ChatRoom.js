@@ -5,7 +5,7 @@ $(function () {
     let payload = $('#input_payload');
     let memNum = payload.data('mem_num');
     let memName = payload.data('mem_name');
-
+    console.log(memName);
     client.connect({}, function () {
         client.subscribe('/sub/chat/text/' + chatNum, function (chat) {
             let content = JSON.parse(chat.body);
