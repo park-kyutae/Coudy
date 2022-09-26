@@ -13,6 +13,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/member.js?"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style_ks.css">
 
 
@@ -43,28 +44,27 @@
 		
 		<div class="col-12">
 		<div class="form-floating mb-2 col-3 align-center2">
-			<form:password id="now_passwd" path="now_passwd" class="form-control" placeholder="now_passwd" value="" required=""/>
-			<form:errors id="now_passwd" path="now_passwd" cssClass="error-color" />
+			<form:password path="now_passwd" class="form-control" placeholder="now_passwd"/>
+			<form:errors path="now_passwd" cssClass="error-color" />
 			<label for="now_passwd">현재 비밀번호</label>
-			<div class="valid-feedback">Looks good!</div>
+			<div class="valid-feedback"></div>
 		</div>
 		</div>
 
 		<div class="col-12">
 		<div class="form-floating mb-2 col-3 align-center2">
-			<form:password id="passwd" path="passwd" class="form-control" placeholder="passwd" />
-			<form:errors id="passwd" path="passwd" cssClass="error-color" />
+			<form:password path="passwd" class="form-control" placeholder="passwd" />
+			<form:errors path="passwd" cssClass="error-color" />
 			<label for="passwd">새 비밀번호</label>
-			<div class="valid-feedback">Looks good!</div>
 		</div>
 		</div>
 		
 		<div class="col-12">
 		<div class="form-floating mb-2 col-3 align-center2">
-			<input type="password" id="passwd2" class="form-control" placeholder="passwd2"/> 
+			<input type="password" id="passwd2" name="passwd2" class="form-control" placeholder="passwd2"/> 
 			<label for="passwd2">새 비밀번호 확인</label>
-			<div class="valid-feedback">Looks good!</div>
-			<div id="message_id" class="invalid-feedback">4~12의 숫자, 영문을 입력해주세요</div>
+			<form:errors path="passwd2" cssClass="error-color"/>
+			<div id="message_id" class="invalid-feedback">아아아ㄴㄴㄴ</div>
 		</div>
 		</div>
 		
@@ -73,4 +73,6 @@
 			<button class="btn btn-outline-secondary col-6" style="border-radius:0 5px 5px 0;" onclick="javascript:history.go(-1); return false;">돌아가기</button>
 		</div>
 	</form:form>
+
+	
 </div>
