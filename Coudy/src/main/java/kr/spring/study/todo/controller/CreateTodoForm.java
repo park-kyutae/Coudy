@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @Setter
 @ToString
 public class CreateTodoForm {
-    @Size(max = 15)
+    @Size(max = 30)
     @NotBlank
     private String todoContent;
 

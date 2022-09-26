@@ -15,7 +15,7 @@ import java.util.Map;
 public class ModifyTodoForm {
 
     private int todoNum;
-    @Size(max = 15)
+    @Size(max = 30)
     @NotBlank
     private String todoContent;
 }
