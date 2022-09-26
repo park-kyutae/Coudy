@@ -25,14 +25,19 @@
                       </div>
                     </div> 
               </div>
-        <c:if test="${!empty list}">
         <div class="row p-5 bg-light">
             <div class="col-2"></div>
             <div class="col-8">
                 <div class="row">
                     <h2>스터디 신청 목록</h2>
                     <h5><strong>지원 현황</strong> ${total}/${studygroup.limit}</h5>
-                    <c:if test="${empty list}"> 등록된 신청서가 없습니다.</c:if>
+                    <c:if test="${empty list}">
+                        <div class="card my-3 pt-2">
+                            <div class="card-body shadow-sm text-center">
+                                <p>등록된 신청서가 없습니다.</p>  
+                            </div>
+                        </div>
+                    </c:if>
                     <c:if test="${!empty list}">
                     <c:forEach var="applicationlist" items="${list}">
                     <div class="row row-cols-2 row-cols-md-1 g-2">
@@ -86,10 +91,9 @@
                         </div>
                     </c:forEach>
                 </c:if>
-                <input type="button" class="btn btn-primary btn-text-primary" onclick="history.back()" value="뒤로가기"></input>
+                <input type="button" class="btn btn-primary btn-text-primary" onclick="location.href='studydetail.do?study_num=${studygroup.study_num}'" value="뒤로가기"></input>
                 </div>
             </div>
-        </c:if>
         </div>
     </div>
     </main>

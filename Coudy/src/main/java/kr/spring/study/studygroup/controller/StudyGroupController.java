@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 public class StudyGroupController {
 
     private static final Logger logger = LoggerFactory.getLogger(StudyGroupController.class);
-    private int rowCount = 20;
+    private int rowCount = 12;
     private int pageCount = 10;
 
     private final TodoService todoService;

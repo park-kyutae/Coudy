@@ -25,13 +25,18 @@
                       </div>
                     </div> 
               </div>
-        <c:if test="${!empty list}">
         <div class="row p-5 bg-light">
             <div class="col-2"></div>
             <div class="col-8">
                 <div class="row">
                     <h2>나의 스터디 목록</h2>
-                    <c:if test="${empty list}"> 등록된 신청서가 없습니다.</c:if>
+                    <c:if test="${empty list}"> 
+                        <div class="card my-3 pt-2">
+                            <div class="card-body shadow-sm text-center">
+                                <p>신청한 스터디가 없습니다.</p>  
+                            </div>
+                        </div>
+                    </c:if>
                     <c:if test="${!empty list}">
                     <c:forEach var="mystudylist" items="${list}">
                     <div class="row row-cols-2 row-cols-md-1 g-2">
@@ -79,7 +84,6 @@
                 </c:if>
                 </div>
             </div>
-        </c:if>
         </div>
     </div>
     </main>

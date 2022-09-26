@@ -8,6 +8,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/js/bootstrap.min.js">
+    <style>
+   a{
+	text-decoration:none;
+    }
+    a:visited{
+	color:gray;
+    }
+    a:link{
+	color:gray;
+    }
+</style>
 </head>
 <body>
 <div class="container-flud">
@@ -17,34 +28,24 @@
             <h2>스터디 그룹</h2>
             <p class="text-muted">누구나 만들고 신청할 수 있는 쿠디 스터디 그룹</p>
           </div>
-    <!-- <form action="studygrouplist.do" method="get">
-        <ul class="search">
-            <li>
-                <select name="keyfield" id="keyfield">
-                    <option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
-                    <option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>ID+별명</option>
-                    <option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>내용</option>
-                    <option value="4" <c:if test="${param.keyfield == 4}">selected</c:if>>제목+내용</option>
-                </select>
-            </li>
-            <li>
-                <input type="search" name="keyword" id="keyword"
-                       value="${param.keyword}">
-            </li>
-            <li>
-                <input type="submit" value="찾기">
-                <input type="button" value="목록"
-                       onclick="location.href='studygrouplist.do'">
-            </li>
-        </ul>
-    </form> -->
     <c:if test="${count == 0}">
-        <div>표시할 스터디 그룹이 없습니다.</div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="card my-3 pt-2">
+                    <div class="card-body shadow-sm text-center">
+                        <p>표시할 스터디 그룹이 없습니다.</p>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
     </c:if>
     <c:if test="${count > 0}">
     <div class="row p-5 bg-light">
         <div class="col-2"></div>
         <div class="col-8">
+            <h4><strong>총 ${count}개</strong></h4>
             <div class="row">
             <c:forEach var="studygroup" items="${list}">
                 <div class="col-2">
@@ -76,6 +77,27 @@
         <div class="row">
          <div class="col-2"></div>
              <div class="col-8">
+                <div class="row">
+                    <div class="col align-center text-center">                        
+                        <form action="studygrouplist.do" method="get">
+                            <ul class="search nav justify-content-center mb-5 mt-2">
+                                <li>
+                                    <select name="keyfield" class="form-select" style="border-radius:10px 0 0 10px;">
+                                        <option value="1" <c:if test="${param.keyfield == 1}">selected</c:if>>제목</option>
+                                        <option value="2" <c:if test="${param.keyfield == 2}">selected</c:if>>기술스택</option>
+                                        <option value="3" <c:if test="${param.keyfield == 3}">selected</c:if>>제목+스택</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <input class="form-control" type="search" name="keyword" id="keyword" value="${param.keyword}" style="border-radius:0 0 0 0;">
+                                </li>
+                                <li>
+                                    <input type="submit" class="btn btn-primary" value="찾기" style="border-radius:0 10px 10px 0;">
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
                <div class="d-flex justify-content-center">
                 ${page}
                </div>

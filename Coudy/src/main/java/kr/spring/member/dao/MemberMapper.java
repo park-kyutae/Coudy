@@ -63,9 +63,6 @@ public interface MemberMapper {
 	
 	@Update("Update member SET auth=#{auth} WHERE mem_num=#{mem_num}")
 	public void updateByAdmin(MemberVO member);
-	
-	
-	
 }
 
 
