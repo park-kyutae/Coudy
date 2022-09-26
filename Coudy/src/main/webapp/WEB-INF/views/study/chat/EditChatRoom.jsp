@@ -10,7 +10,12 @@
     <script src="${pageContext.request.contextPath}/js/EditChatRoom.js" type="text/javascript"></script>
     <title>Title</title>
 </head>
+<script>
+    $(function () {
+        $('.invalid-feedback').parent().children('input[type=text]').addClass('is-invalid')
+    })
 
+</script>
 <body>
 <div class="container-fluid">
     <div class="row chat-header mb-3">
@@ -23,9 +28,10 @@
             <div class="col" id="form">
                 <div class="row chat-content">
                     <div class="col">
-                        <label for="chat_name_input" class="chat-title form-label">채팅 방 이름 수정</label>
+                        <label for="chat_name_input" class="chat-title form-label">채팅 이름 수정</label>
                         <input type="text" class="form-control" id="chat_name_input" name="chatName"
                                value="${chatRoom.chatName}">
+                        <form:errors cssClass="invalid-feedback" path="chatName"/>
                         <input type="hidden" name="chatNum" value="${chatRoom.chatNum}">
                     </div>
                 </div>
@@ -45,6 +51,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="text" class="search-member form-control"/>
+                                        <form:errors cssClass="invalid-feedback" path="mem_num"/>
                                         <input type="hidden" name="mem_num" class="search-member-num">
                                     </div>
                                     <div class="col col-1 d-flex justify-content-center">

@@ -56,14 +56,4 @@ public class StudyGroupServiceImpl implements StudyGroupService{
     public StudyGroupVO selectStudyGroup(Integer study_num) {
         return studyGroupMapper.selectStudyGroup(study_num);
     }
-
-   /* @Override
-    public void insertStudyGroupReview(StudyGroupReviewVO studyGroupReview) {
-
-    }
-
-    @Override
-    public void updateStudyGroupReview(StudyGroupReviewVO studyGroupReview) {
-
-    }*/
 }

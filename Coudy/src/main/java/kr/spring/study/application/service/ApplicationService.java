@@ -11,7 +11,8 @@ public interface ApplicationService {
     public List<ApplicationVO> selectMyStudyApplications(Integer study_num);
     public void insertApplication(ApplicationVO applicationVO);
     //스터디 갯수 세기
-    public int selectRowCount(Map<String,Object> map);
+    public int selectApplicants(Integer study_num);
+
     //스터디 선택
     public ApplicationVO selectStudyGroup(Integer study_num);
 }

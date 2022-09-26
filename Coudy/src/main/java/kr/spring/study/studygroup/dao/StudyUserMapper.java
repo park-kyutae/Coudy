@@ -32,4 +32,6 @@ public interface StudyUserMapper {
 
     @Select("SELECT * FROM MEMBER_DETAIL md JOIN STUDY_USER S on md.MEM_NUM = s.MEM_NUM where STUDY_NUM=#{study_num}")
     public List<MemberVO> selectMemberByStudyNum(Integer study_num);
+
+    public int selectApplicants(Integer study_num);
 }

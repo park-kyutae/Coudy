@@ -1,13 +1,20 @@
 $(function(){
 	
-	
-	
-	
-	
+
 	//===========MyPage 프로필사진=============//
 	$('#photo_btn').click(function(){
 		$('#photo_choice').show();
 		$(this).hide();
+	});
+	
+	//취소버튼 처리
+
+	$('#photo_cancel').click(function(){
+		console.log('취소버튼 들어옴?')
+		$('.my-photo').attr('src',photo_path);
+		$('#upload').val('');
+		$('#photo_choice').hide();
+		$('#photo_btn').show();
 	});
 	
 
@@ -87,32 +94,64 @@ $(function(){
 		
 	});
 	
-	//취소버튼 처리
-
-//	$('#photo_cancel').click(function(){
-//		$('.my-photo').attr('src',photo_path);
-//		$('#upload').val('');
-//		$('#photo_choice').hide();
-//		$('#photo_btn').show();
-//	});
+	//===================비밀번호 변경======================//
 	
-	$('#passwd').keyup(function(){
-		if($('#passwd2').val()!='' && $('#passwd2').val()!=$(this).val()){
-			$('#message_id').text('비밀번호 불일치').css('color','red');
-			
-		}else if($('#passwd2').val()!='' && $('#passwd2').val()==$(this).val()){
-			$('#message_id').text('비밀번호 일치').css('color','#000');
-		}
-	});
+	let checkPasswd = 0;
+	
 	
 	$('#passwd2').keyup(function(){
 		if($('#passwd').val()!='' && $('#passwd').val()!=$(this).val()){
-			$('#message_id').text('비밀번호 불일치').css('color','red');
+			console.log('passwd2버튼 들어옴?')
+			$('#message_id').removeClass('valid-feedback');
+			$('#message_id').addClass('invalid-feedback');
+			$('#message_id').text('비밀번호가 일치하지 않습니다.');
+			
+			$('#passwd').removeClass('is-valid');
+			$('#passwd2').removeClass('is-valid');
+			$('#passwd').addClass('is-invalid');
+			$('#passwd2').addClass('is-invalid');
+			checkPasswd=0;
 			
 		}else if($('#passwd').val()!='' && $('#passwd').val()==$(this).val()){
-			$('#message_id').text('비밀번호 일치').css('color','#000');
+			console.log('passwd2버튼 들어옴?')
+			$('#message_id').removeClass('invalid-feedback');
+			$('#message_id').addClass('valid-feedback');
+			$('#message_id').text('비밀번호가 일치합니다.');
+			
+			$('#passwd').removeClass('is-invalid');
+			$('#passwd2').removeClass('is-invalid');
+			$('#passwd').addClass('is-valid');
+			$('#passwd2').addClass('is-valid');
+			checkPasswd=1;
 		}
 	});
+	$('#passwd').keyup(function(){
+		if($('#passwd2').val()!='' && $('#passwd2').val()!=$(this).val()){
+			console.log('passwd2버튼 들어옴?')
+			$('#message_id').removeClass('valid-feedback');
+			$('#message_id').addClass('invalid-feedback');
+			$('#message_id').text('비밀번호가 일치하지 않습니다.');
+			
+			$('#passwd').removeClass('is-valid');
+			$('#passwd2').removeClass('is-valid');
+			$('#passwd').addClass('is-invalid');
+			$('#passwd2').addClass('is-invalid');
+			checkPasswd=0;
+			
+		}else if($('#passwd2').val()!='' && $('#passwd2').val()==$(this).val()){
+			console.log('passwd2버튼 들어옴?')
+			$('#message_id').removeClass('invalid-feedback');
+			$('#message_id').addClass('valid-feedback');
+			$('#message_id').text('비밀번호가 일치합니다.');
+			
+			$('#passwd').removeClass('is-invalid');
+			$('#passwd2').removeClass('is-invalid');
+			$('#passwd').addClass('is-valid');
+			$('#passwd2').addClass('is-valid');
+			checkPasswd=1;
+		}
+	});
+	
 	
 	$('#change_form').submit(function(){
 		if($('#now_passwd').val().trim()==''){
@@ -130,9 +169,11 @@ $(function(){
 			$('#passwd2').val('').focus();
 			return false;
 		}
-		if($('#passwd').val()!=$('#passwd2').val()){
-			$('#message_id').text('비밀번호 불일치')
-			                .css('color','red');
+
+		if(checkPasswd=0){
+			console.log('passwd2버튼 들어옴?')
+
+			alert('비밀번호가 일치하지 않습니다.');
 			return false;
 		}
 	});

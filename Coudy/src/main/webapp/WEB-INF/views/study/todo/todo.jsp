@@ -10,7 +10,7 @@
             <span class="study-nav-text">Todos</span>
         </div>
     </div>
-    <div class="row study-content">
+    <div class="row study-content row-cols-3">
         <div class="col">
             <ul class="list-group" id="before_start_todo">
                 <li class="study-li-head">시작 전</li>

@@ -55,7 +55,7 @@ $(function () {
         const div_3 = '<input type="checkbox" style="height: 20px;width:20px;" src="/images/arrow_forward.svg" class="form-check-input  me-3 '
         // const div_3 = '<img src="/images/arrow_forward.svg" class="'
         const div_4 = '"> ';
-        const div_5 = '<input type="text" class="fs-5 content_input border-0" value="';
+        const div_5 = '<input type="text" class="fs-5 content_input border-0 w-75" value="';
         const div_6 = '"><img src="/images/backspace.svg" class="delete_todo" >'
         const div__ = ' </li>';
         $.ajax({
