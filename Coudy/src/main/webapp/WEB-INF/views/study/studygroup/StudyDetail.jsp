@@ -145,6 +145,9 @@
               <p class="card-text text-muted">
                 참여 중인 인원 : ${total} / ${studygroup.limit}
               </p>
+              <c:if test="${empty studyuser.registered || studyuser.registered eq 'N'.charAt(0) && total >= studygroup.limit}">
+                  <h2 class="text-center">모집 완료</h2>
+              </c:if>
               <c:if
                       test="${!empty user && studygroup.mem_num == user.mem_num}"
               >
@@ -164,7 +167,7 @@
                 </button>
               </c:if>
               <c:if
-                      test="${!empty user && studygroup.mem_num != user.mem_num && empty studyuser.registered}"
+                      test="${!empty user && studygroup.mem_num != user.mem_num && empty studyuser.registered && (total < studygroup.limit)}"
               >
                 <button
                         style="width: 13rem"
@@ -196,9 +199,7 @@
                   신청 확인
                 </button>
               </c:if>
-              <c:if
-                      test="${!empty user && studyuser.registered eq 'Y'.charAt(0)}"
-              >
+              <c:if test="${!empty user && studyuser.registered eq 'Y'.charAt(0)}">
                 <button
                         style="width: 13rem"
                         class="btn btn-text-primary text-white mt-1 justify-content-md-center"
@@ -206,7 +207,7 @@
                 >
                   입장 하기
                 </button>
-              </c:if>
+                </c:if>
             </div>
           </div>
         </div>
