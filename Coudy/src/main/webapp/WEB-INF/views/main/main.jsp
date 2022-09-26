@@ -22,7 +22,7 @@
 	 }
 }
 
-a:hover{
+#ks a:hover{
  text-decoration:none;
 }
 
@@ -37,20 +37,20 @@ font-family: 'Noto Sans KR', sans-serif;
 <div class="container-fluid" id="ks">
 	<div class="text-center" style="margin:200px auto;">
 <c:if test="${empty user}">
-		<a href="${pageContext.request.contextPath}/member/login.do">
+		<a class="text-decoration-none" href="${pageContext.request.contextPath}/member/login.do">
 		<img src="${pageContext.request.contextPath}/images/COUDY_logo-05.png">
 		<br>
 		<div style="font-size:50px;color:gray;" class="my-5" id="t">
-			쿠디와 시작하기
+			<span>쿠디와 시작하기</span>
 		</div>
 		</a>
 </c:if>
 <c:if test="${!empty user}">
-		<a href="${pageContext.request.contextPath}/member/myPage.do">
+		<a class="text-decoration-none" href="${pageContext.request.contextPath}/member/myPage.do">
 		<img src="${pageContext.request.contextPath}/images/COUDY_logo-05.png">
 		<br>
 		<div style="font-size:50px;color:gray;" class="my-5" id="t">
-			쿠디와 시작하기
+			<span>쿠디와 시작하기</span>
 		</div>
 		</a>
 </c:if>

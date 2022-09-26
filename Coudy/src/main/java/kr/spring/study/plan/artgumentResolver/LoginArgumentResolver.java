@@ -1,6 +1,7 @@
 package kr.spring.study.plan.artgumentResolver;
 
 
+import kr.spring.member.vo.MemberVO;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -14,8 +15,8 @@ public class LoginArgumentResolver implements HandlerMethodArgumentResolver {
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         boolean hasParameterAnnotation = parameter.hasParameterAnnotation(Login.class);
-        boolean hasIntegerType = Integer.class.isAssignableFrom(parameter.getParameterType());
-        return hasParameterAnnotation && hasIntegerType;
+        boolean hasMemberType = MemberVO.class.isAssignableFrom(parameter.getParameterType());
+        return hasParameterAnnotation && hasMemberType;
     }
 
     @Override

@@ -102,7 +102,7 @@
                 </div>
             </c:forEach>
         </div>
-        <c:if test="${!empty user}">
+        <c:if test="${!empty user && user.auth == 3 || user.auth == 4}">
             <div class="row float-end">
                 <input type="button" class="btn btn-secondary" value="공고쓰기"
                        onclick="location.href='${pageContext.request.contextPath}/company/insertCom.do'"/>
@@ -110,31 +110,6 @@
         </c:if>
     </div>
     </c:if>
-
-    <div doz_type="row" doz_grid="6" doz_order="2" doz_flexible="N" class="doz_row">
-        <div doz_type="row" doz_grid="5" doz_order="2" doz_flexible="N" class="doz_row">
-            <div doz_type="grid" doz_grid="5" doz_flexible="N" class="col-dz col-dz-5">
-                <div doz_type="widget" id="w20220525f59f544e93b1e">
-                    <div class="_widget_data " data-widget-name="텍스트" data-widget-type="text"
-                         data-widget-anim="none" data-widget-anim-duration="0.7"
-                         data-widget-anim-delay="0" data-widget-parent-is-mobile="N">
-                        <div doz_type="text" class="widget _text_wrap widget_text_wrap fr-view "
-                             id="text_w20220525f59f544e93b1e">
-
-                            <div class="text-table ">
-                                <div class="align-center">
-                                    <br>
-                                    <p class="align-center mx-auto text-center" style="line-height: 2;"><span class="align-center"
-                                            style="color: rgb(144, 144, 144); font-size: 18px;">Coudy 채용 서비스는 인증된 회사와 유저간의 완벽한 운영을 도와줍니다. 즉시 이력서 지원은 기본이며 기능을 이용해보세요~</span>
-                                    </p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/js/company1.js"></script>

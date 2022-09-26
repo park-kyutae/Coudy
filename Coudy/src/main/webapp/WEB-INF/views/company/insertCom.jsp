@@ -14,9 +14,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <div class="bg-light">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-        <h2>채용 공고 폼</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. <br>Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <img class="d-block mx-auto mb-4" src="${pageContext.request.contextPath}/images/COUDY_logo-04.png" alt="" width="130" height="57">
+        <h2>채용 공고 작성</h2>
+<%--        <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. <br>Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>--%>
     </div>
     <form class="m-lg-4 needs-validation" novalidate method="post" action="insertCom.do" enctype="multipart/form-data">
         <div class="row g-3">

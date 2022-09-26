@@ -3,7 +3,6 @@ package kr.spring.study.application.service;
 import kr.spring.study.application.dao.ApplicationMapper;
 import kr.spring.study.application.vo.ApplicationVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.system.ApplicationTemp;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,8 +22,8 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
-    public int selectRowCount(Map<String, Object> map) {
-        return 0;
+    public int selectApplicants(Integer study_num) {
+        return applicationMapper.selectApplicants(study_num);
     }
 
     @Override

@@ -3,15 +3,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 내용 시작 -->
 <!-- include libraries(jquery,bootstrap) -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 .ck-editor__editable_inline{
 	min-height:500px;
 }
 </style>
 <!-- include ckeditor js -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-bootstrap.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/uploadAdapter.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/techblog.js"></script>
@@ -92,9 +91,9 @@
 	    	</div>
 	    	<div class="row">
 	    		<div class="col-lg my-3">
-	    			<input type="submit" value="수정" class="btn btn-primary">
+	    			<input type="submit" value="수정" class="btn btn-text-primary">
 				<input type="button" value="목록"
-			            onclick="location.href='techblogList.do'" class="btn btn-secondary">
+			            onclick="location.href='techblogList.do'" class="btn btn-text-secondary">
 	    		</div>
 	    	</div>
 	    	</form:form>

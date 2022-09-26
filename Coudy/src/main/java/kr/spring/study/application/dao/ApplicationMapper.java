@@ -16,6 +16,6 @@ public interface ApplicationMapper {
             "VALUES (application_seq.nextval,#{career},#{meet_time},#{request},#{study_num},#{mem_num})")
     public void insertApplication(ApplicationVO applicationVO);
 
-    public int selectRowCount(Map<String,Object> map);
+    public int selectApplicants(Integer study_num);
     public ApplicationVO selectApplication(Integer application_num);
 }

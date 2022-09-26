@@ -37,7 +37,6 @@ public class TechblogVO {
 	private String lasttitle;
 	
 	
-	
 	public int getNext() {
 		return next;
 	}
