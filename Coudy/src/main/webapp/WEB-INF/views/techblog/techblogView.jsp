@@ -56,7 +56,10 @@
 	</div>
 	<div class="row">
 		<div class="col my-2">
-			태그 ${techblog.tech_tag}
+			<b>태그</b>
+			<span style="background-color: #F2F2F2;">
+			${techblog.tech_tag}
+			</span>
 		</div>
 	</div>
 	<div class="row">

@@ -51,18 +51,18 @@
                                                         <c:if test="${!empty user && mystudylist.registered eq 'Y'.charAt(0)}"><strong>승인ㅇ</strong></c:if>
                                                         <c:if test="${!empty user && mystudylist.registered eq 'N'.charAt(0)}"><strong>미승인</strong></c:if>
                                                     </div>
-                                                    <div class="col-3 justify-content-end">
+                                                    <div class="col-3">
                                                         <c:if
                                                                 test="${!empty user && mystudylist.registered eq 'N'.charAt(0)}"
                                                         >
-                                                            <div>
+                                                            <div class="row g-3 justify-content-end">
                                                                 <input type="submit" class="btn btn-primary rounded bg-gray" style="width: 120px; height: 100px;" value="승인 대기">
                                                             </div>
                                                         </c:if>
                                                         <c:if
                                                                 test="${!empty user && mystudylist.registered eq 'Y'.charAt(0)}"
                                                         >
-                                                            <div class="g-3 justify-content-end">
+                                                            <div class="row g-3 justify-content-end">
                                                                 <input type="submit" class="btn btn-primary rounded" style="width: 120px; height: 100px;" onclick="location.href='studymain.do?study_num=${mystudylist.study_num}'" value="입장 하기">
                                                             </div>
                                                         </c:if>

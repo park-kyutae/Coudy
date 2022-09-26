@@ -47,7 +47,10 @@
         s.start_date,
         s.end_date,
         s.reg_date,
-        s.mem_num
+        s.mem_num,
+        (SELECT COUNT(*)
+        FROM STUDY_USER su
+        WHERE su.REGISTERED = 'Y' AND su.STUDY_NUM = s.study_num GROUP BY su.STUDY_NUM) AS total
         FROM studygroup s JOIN member m
         ON s.mem_num = m.mem_num
         <where>
