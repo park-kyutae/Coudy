@@ -82,7 +82,7 @@
 			<div class="row">
 				<div class="col-1 d-flex justify-content-center p-2">
 					<c:if test="${!empty techblog.photo_name}">
-								<img src="imageView.do?tech_num=${techblog.tech_num}&board_type=1" width="70" height="70" class="my-photo">
+								<img src="imageView.do?tech_num=${techblog.tech_num}&tech_type=1" width="70" height="70" class="my-photo">
 					</c:if>
 					<c:if test="${empty techblog.photo_name}">
 						<img src="${pageContext.request.contextPath}/images/face.png" width="70" height="70" class="my-photo">
