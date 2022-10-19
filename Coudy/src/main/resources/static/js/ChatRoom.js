@@ -109,7 +109,7 @@ $(function () {
     })
     $('#file_input').change(function () {
         console.log('text')
-        if (confirm("파일을 전송하시겠습니까?")) {
+         // if (confirm("파일을 전송하시겠습니까?")) {
             let formData = new FormData($('#file_upload')[0]);
             console.log(formData)
             $.ajax({
@@ -122,11 +122,12 @@ $(function () {
                 contentType: false,
                 timeout: 30000,
                 success: function (data) {
+                    $(this).val('')
                 },
                 error: function (xhr, status) {
                 }
             });
-        } else $(this).val('')
+        // } else
     })
 
     function scroll_bottom() {

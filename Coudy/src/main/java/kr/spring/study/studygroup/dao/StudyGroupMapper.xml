@@ -56,17 +56,14 @@
         <where>
             <if test="keyword != null and keyword != ''">
                 <if test="keyfield == 1">
-                    s.stack LIKE '%' || #{keyword} || '%'
+                    s.name LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 2">
-                    s.limit LIKE '%' || #{keyword} || '%'
+                    s.stack LIKE '%' || #{keyword} || '%'
                 </if>
                 <if test="keyfield == 3">
-                    s.name LIKE '%' || #{keyword} || '%'
-                </if>
-                <if test="keyfield == 4">
-                    s.stack LIKE '%' || #{keyword} || '%' OR
-                    s.name LIKE '%' || #{keyword} || '%'
+                    s.name LIKE '%' || #{keyword} || '%' OR
+                    s.stack LIKE '%' || #{keyword} || '%'
                 </if>
             </if>
         </where>

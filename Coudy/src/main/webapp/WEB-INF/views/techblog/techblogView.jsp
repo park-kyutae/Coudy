@@ -8,6 +8,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/videoAdapter.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/techblog.fav.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/techblog.reply.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style_kt.css">
 <div class="container">
 	<div class="row mt-3">
 		<div class="col">

@@ -135,7 +135,7 @@
               <div style="height: 75px">
                 <h3 class="card-title">${studygroup.name}</h3>
               </div>
-              <div style="height: 40px">
+              <div style="height: 45px">
                 <p class="card-subtitle">${studygroup.purpose}</p>
               </div>
               <span class="badge bg-info">${studygroup.stack}</span>
@@ -145,7 +145,7 @@
               <p class="card-text text-muted">
                 참여 중인 인원 : ${total} / ${studygroup.limit}
               </p>
-              <c:if test="${empty studyuser.registered || studyuser.registered eq 'N'.charAt(0) && total >= studygroup.limit}">
+              <c:if test="${(empty studyuser.registered || studyuser.registered eq 'N'.charAt(0)) && total >= studygroup.limit}">
                   <h2 class="text-center">모집 완료</h2>
               </c:if>
               <c:if
@@ -171,7 +171,7 @@
               >
                 <button
                         style="width: 13rem"
-                        class="btn btn-info mt-1"
+                        class="btn btn-info mt-1 text-white"
                         onclick="location.href='applicationcreate.do?study_num=${studygroup.study_num}'"
                 >
                   신청하기
@@ -182,7 +182,7 @@
               >
                 <button
                         style="width: 13rem"
-                        class="btn btn-info mt-1 justify-content-md-center"
+                        class="btn btn-info mt-1 text-white justify-content-md-center"
                         onclick="location.href='applicationlist.do?study_num=${studygroup.study_num}'"
                 >
                   신청자 목록
@@ -193,7 +193,7 @@
               >
                 <button
                         style="width: 13rem"
-                        class="btn btn-info mt-1 justify-content-md-center"
+                        class="btn btn-info mt-1 text-white justify-content-md-center"
                         onclick="location.href='mystudylist.do'"
                 >
                   신청 확인
