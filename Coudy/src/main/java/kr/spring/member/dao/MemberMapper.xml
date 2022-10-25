@@ -12,6 +12,7 @@
 			<if test="keyword != null and keyword != ''">
 				<if test="keyfield == 1">
 					d.id LIKE '%' || #{keyword} || '%'
+					
 				</if>
 				<if test="keyfield == 2">
 					d.name LIKE '%'|| #{keyword} ||'%'

@@ -145,9 +145,7 @@
               <p class="card-text text-muted">
                 참여 중인 인원 : ${total} / ${studygroup.limit}
               </p>
-              <c:if test="${(empty studyuser.registered || studyuser.registered eq 'N'.charAt(0)) && total >= studygroup.limit}">
-                  <h2 class="text-center">모집 완료</h2>
-              </c:if>
+            
               <c:if
                       test="${!empty user && studygroup.mem_num == user.mem_num}"
               >

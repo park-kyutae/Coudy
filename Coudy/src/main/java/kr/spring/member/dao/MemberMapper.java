@@ -59,6 +59,7 @@ public interface MemberMapper {
 	
 	//============관리자===============//
 	public int selectRowCount(Map<String,Object> map);
+	
 	public List<MemberVO> selectList(Map<String,Object> map);
 	
 	@Update("Update member SET auth=#{auth} WHERE mem_num=#{mem_num}")
